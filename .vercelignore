@@ -3,3 +3,4 @@ README.md
 node_modules
 *.log
 .output
+docker-compose.yml

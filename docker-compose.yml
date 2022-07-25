@@ -1,12 +1,6 @@
 version: '3.7'
 
 services:
-  app:
-    build: .
-    restart: always
-    environment:
-      NUXT_MONGODB_URI: mongodb://localhost:27017
-
   mongo:
     image: mongo
     restart: always
