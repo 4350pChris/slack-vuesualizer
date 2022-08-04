@@ -5,8 +5,22 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  css: ["@/assets/css/tailwind.css"],
+  css: ["assets/css/tailwind.css"],
   runtimeConfig: {
     mongodbUri: "",
+  },
+  modules: [
+    [
+      "unplugin-icons/nuxt",
+      {
+        autoInstall: true,
+      },
+    ],
+  ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
 });
