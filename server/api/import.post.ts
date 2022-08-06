@@ -13,19 +13,25 @@ const saveToDb = async (coll: string, docs: any[]) => {
   await db.collection(coll).insertMany(docs);
 };
 
-const processPath = async (path: string, topLevel = false): Promise<void> => {
-  const fileName = path.split("/").at(topLevel ? -1 : -2);
+const processPath = async (path: string, level = 0): Promise<void> => {
+  const fileName = path.split("/").at(level === 1 ? -1 : -2);
+  const collection = level === 1 ? fileName.split(".json")[0] : fileName;
   if (path.endsWith(".json")) {
-    const withoutExtension = fileName.split(".json")[0];
     const data = await readFromFile(path);
-    await saveToDb(withoutExtension, data);
+    await saveToDb(collection, data);
   } else {
     const db = await mongo();
+    console.log("Importing " + collection);
     try {
-      await db.dropCollection(fileName);
-      console.log("Dropping " + fileName);
+      await db.dropCollection(collection);
     } catch (e) {}
-    (await listDir(path)).map((p) => processPath(join(path, p)));
+    await db
+      .collection(collection)
+      .createIndex({ text: "text" }, { default_language: "german" });
+    await Promise.all(
+      (await listDir(path)).map((p) => processPath(join(path, p), level + 1))
+    );
+    console.log("Done importing " + collection);
   }
 };
 
@@ -36,7 +42,10 @@ export default defineEventHandler(async (event) => {
     throw new Error("File not found");
   }
   const unzippedFilePath = await unzipUpload(file.filepath);
-  await processPath(unzippedFilePath, true);
+  await processPath(unzippedFilePath);
 
-  return "";
+  console.log("--- Done ---");
+
+  event.res.statusCode = 201;
+  return {};
 });
