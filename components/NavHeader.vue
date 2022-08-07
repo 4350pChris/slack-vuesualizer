@@ -10,9 +10,10 @@
       </label>
     </div>
     <div class="navbar-center">
-      <span class="text-xl">Slack Vuesualizer</span>
+      <MessageSearch />
     </div>
     <div class="navbar-end">
+      <span class="hidden md:inline-block text-xl mr-4">Slack Vuesualizer</span>
       <a
         class="btn btn-ghost btn-circle"
         href="https://github.com/4350pChris/slack-export-vuer"
@@ -26,5 +27,5 @@
 
 <script lang="ts" setup>
 import MenuIcon from "~icons/line-md/menu";
-import GithubIcon from "~icons/line-md/github";
+import GithubIcon from "~icons/line-md/github-loop";
 </script>

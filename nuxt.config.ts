@@ -16,11 +16,17 @@ export default defineNuxtConfig({
         autoInstall: true,
       },
     ],
+    "@vueuse/nuxt",
   ],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
+    },
+  },
+  router: {
+    options: {
+      linkExactActiveClass: "active",
     },
   },
 });

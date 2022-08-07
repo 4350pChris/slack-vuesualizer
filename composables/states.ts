@@ -1,5 +1,3 @@
-import type { Channel } from "~~/types/Channel";
-import { User } from "~~/types/User";
+import type { User } from "~~/types/User";
 
-export const useChannels = useState<Channel[]>("channels", () => []);
-export const useUsers = useState<User[]>("users", () => []);
+export const useUsers = () => useState<User[]>("users", () => []);

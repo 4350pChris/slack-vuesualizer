@@ -19,6 +19,8 @@
     "unplugin-icons": "^0.14.8"
   },
   "dependencies": {
+    "@vueuse/core": "^9.1.0",
+    "@vueuse/nuxt": "^9.1.0",
     "adm-zip": "^0.5.9",
     "formidable": "^2.0.1",
     "mongodb": "^4.8.1"

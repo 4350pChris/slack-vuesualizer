@@ -15,13 +15,13 @@
 </template>
 
 <script lang="ts" setup>
-const { data: channels } = await useFetch("/api/channels");
+const { data } = await useFetch("/api/channels");
 
-if (!channels) {
+if (!data.value) {
   await navigateTo("/upload");
 }
 
 const sortedChannels = computed(() =>
-  channels.value.sort((a, b) => a.name.localeCompare(b.name))
+  data.value.sort((a, b) => a.name.localeCompare(b.name))
 );
 </script>

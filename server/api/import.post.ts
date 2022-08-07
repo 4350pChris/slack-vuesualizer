@@ -18,20 +18,22 @@ const saveToDb = async (coll: string, docs: any[]) => {
 };
 
 const processPath = async (path: string, level = 0): Promise<void> => {
-  const fileName = path.split("/").at(level === 1 ? -1 : -2);
-  const collection = level === 1 ? fileName.split(".json")[0] : fileName;
   if (path.endsWith(".json")) {
-    const data = await readFromFile(path);
-    await saveToDb(collection, data);
+    const data = (await readFromFile(path)) as any[];
+    if (level < 2) {
+      const collection = path.split("/").at(-1).split(".json")[0];
+      await saveToDb(collection, data);
+    } else {
+      const channel = path.split("/").at(-2);
+      await saveToDb(
+        "messages",
+        data.map((d) => ({ ...d, channel }))
+      );
+    }
   } else {
-    const db = await mongo();
-    await db
-      .collection(collection)
-      .createIndex({ text: "text" }, { default_language: "german" });
     await Promise.all(
       (await listDir(path)).map((p) => processPath(join(path, p), level + 1))
     );
-    console.log("Done importing " + collection);
   }
 };
 
@@ -45,6 +47,9 @@ export default defineEventHandler(async (event) => {
 
   const db = await mongo();
   await db.dropDatabase();
+  const msgCol = db.collection("messages");
+  await msgCol.createIndex({ text: "text" }, { default_language: "german" });
+  await msgCol.createIndex({ channel: 1 });
   await processPath(unzippedFilePath);
 
   console.log("--- Done ---");
