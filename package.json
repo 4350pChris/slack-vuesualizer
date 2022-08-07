@@ -7,6 +7,7 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@iconify-json/line-md": "^1.1.13",
     "@iconify-json/mdi": "^1.1.29",
     "@tailwindcss/typography": "^0.5.4",
     "@types/adm-zip": "^0.5.0",
@@ -15,7 +16,7 @@
     "daisyui": "^2.20.0",
     "nuxt": "3.0.0-rc.6",
     "tailwindcss": "^3.1.6",
-    "unplugin-icons": "^0.14.7"
+    "unplugin-icons": "^0.14.8"
   },
   "dependencies": {
     "adm-zip": "^0.5.9",

@@ -1,5 +1,9 @@
-import mongo from "../utils/mongo";
-import { getFilesFromRequest, listDir, unzipUpload } from "../utils/fileUpload";
+import mongo from "~/server/utils/mongo";
+import {
+  getFilesFromRequest,
+  listDir,
+  unzipUpload,
+} from "~/server/utils/fileUpload";
 import { readFile } from "fs/promises";
 import { join } from "path";
 
@@ -21,10 +25,6 @@ const processPath = async (path: string, level = 0): Promise<void> => {
     await saveToDb(collection, data);
   } else {
     const db = await mongo();
-    console.log("Importing " + collection);
-    try {
-      await db.dropCollection(collection);
-    } catch (e) {}
     await db
       .collection(collection)
       .createIndex({ text: "text" }, { default_language: "german" });
@@ -42,6 +42,9 @@ export default defineEventHandler(async (event) => {
     throw new Error("File not found");
   }
   const unzippedFilePath = await unzipUpload(file.filepath);
+
+  const db = await mongo();
+  await db.dropDatabase();
   await processPath(unzippedFilePath);
 
   console.log("--- Done ---");

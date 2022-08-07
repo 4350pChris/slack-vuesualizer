@@ -1,6 +1,6 @@
 <template>
   <div class="prose">
-    <h1>hi</h1>
-    <NuxtLink to="/upload">Upload</NuxtLink>
+    <h1>Placeholder</h1>
+    <p>what to put here</p>
   </div>
 </template>
