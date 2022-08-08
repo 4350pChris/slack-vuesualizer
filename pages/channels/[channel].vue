@@ -1,5 +1,6 @@
 <template>
   <ChannelHeader :channel="channel" />
+  <MessageList :messages="messages" />
 </template>
 
 <script lang="ts" setup>
