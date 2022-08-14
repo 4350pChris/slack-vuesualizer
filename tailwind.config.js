@@ -5,10 +5,21 @@ module.exports = {
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
-    "nuxt.config.ts"
+    "nuxt.config.ts",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        blink: "blink 2s cubic-bezier(0.4, 0, 0.6, 1)",
+      },
+      keyframes: {
+        blink: {
+          "50%": {
+            opacity: 0.5,
+          },
+        },
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {

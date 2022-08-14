@@ -2,7 +2,7 @@
   <DynamicScroller
     class="h-full"
     :items="messages"
-    :min-item-size="48"
+    :min-item-size="56"
     keyField="_id"
     ref="scroller"
   >
@@ -13,7 +13,10 @@
         :size-dependencies="[item.replies, item.files, item.text]"
         :data-index="index"
       >
-        <MessageItem :message="item" />
+        <MessageItem
+          :class="{ 'animate-blink': messageId === item._id }"
+          :message="item"
+        />
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>
@@ -28,11 +31,21 @@ interface Props {
   messages: Message[];
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const scroller = ref(null);
+const route = useRoute();
+
+const messageId = computed(() => route.query.message);
 
 onMounted(() => {
-  scroller.value.scrollToBottom();
+  if (messageId.value) {
+    const index = props.messages.findIndex(
+      ({ _id }) => _id === messageId.value
+    );
+    setTimeout(() => scroller.value.scrollToItem(index), 0);
+  } else {
+    scroller.value.scrollToBottom();
+  }
 });
 </script>

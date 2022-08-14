@@ -2,7 +2,7 @@
   <div class="p-4 rounded bg-base-200">
     <ul class="list-none flex flex-col gap-4" v-if="results.length > 0">
       <li v-for="result in results" :key="result._id">
-        <a :href="`/channels/${result.channel}`">
+        <a :href="`/channels/${result.channel}?message=${result._id}`">
           <MessageItem :message="result" />
         </a>
       </li>
