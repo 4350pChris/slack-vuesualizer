@@ -1,6 +1,9 @@
 <template>
-  <ChannelHeader :channel="channel" />
-  <MessageList :messages="messages" />
+  <section>
+    <ChannelHeader class="mb-8" :channel="channel" />
+    <h2 class="text-lg font-bold mb-4">Messages</h2>
+    <MessageList :messages="messages" />
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -21,6 +24,15 @@ const { data: messages } = await useFetch<Message[]>(
   `/api/channels/${route.params.channel}/messages`,
   {
     initialCache: false,
+    transform: (messages) =>
+      messages.map((m) => {
+        const replies = m.replies?.map((reply) =>
+          messages.find(
+            (inner) => reply.ts === inner.ts && reply.user === inner.user
+          )
+        );
+        return { ...m, replies };
+      }),
   }
 );
 </script>

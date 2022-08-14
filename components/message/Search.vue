@@ -1,14 +1,14 @@
 <template>
-  <div class="w-full max-w-sm">
+  <div class="w-full max-w-xl">
     <input
       type="text"
       placeholder="Search messages"
-      class="input input-bordered"
+      class="input input-bordered w-full"
       v-model="query"
     />
-    <div v-if="query" class="relative">
+    <div v-if="query" class="relative z-20">
       <MessageResults
-        class="absolute top-0 inset-x-0 w-full overflow-y-auto"
+        class="absolute top-0 inset-x-0 w-full overflow-y-auto max-h-[80vh]"
         :results="results"
       />
     </div>

@@ -1,12 +1,14 @@
 <template>
-  <ul class="list-none" v-if="results.length > 0">
-    <li v-for="result in results" :key="result._id">
-      <a :href="`/channels/${result.channel}`">
-        <MessageItem :message="result" />
-      </a>
-    </li>
-  </ul>
-  <p v-else>No results found.</p>
+  <div class="p-4 rounded bg-base-200">
+    <ul class="list-none flex flex-col gap-4" v-if="results.length > 0">
+      <li v-for="result in results" :key="result._id">
+        <a :href="`/channels/${result.channel}`">
+          <MessageItem :message="result" />
+        </a>
+      </li>
+    </ul>
+    <p v-else>No results found.</p>
+  </div>
 </template>
 
 <script lang="ts" setup>

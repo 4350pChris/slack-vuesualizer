@@ -1,7 +1,7 @@
 <template>
   <div class="avatar">
     <div class="w-12 h-12 rounded-full">
-      <img :src="src" />
+      <img :src="src" decoding="async" />
     </div>
   </div>
 </template>

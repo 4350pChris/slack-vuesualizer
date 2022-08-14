@@ -19,9 +19,10 @@ export type File = {
   user: string;
   url_private: string;
   permalink: string;
+  mode?: string;
 };
 
-export type Message = {
+export type ApiMessage = {
   _id: string;
   type: string;
   channel: string;
@@ -39,4 +40,8 @@ export type Message = {
   reply_users_count?: number;
   reply_count?: number;
   files?: File[];
+};
+
+export type Message = ApiMessage & {
+  replies?: Message[];
 };

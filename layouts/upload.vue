@@ -1,6 +1,8 @@
 <template>
-  <main class="flex flex-col items-center justify-center h-screen bg-base-200">
+  <div class="flex flex-col items-center justify-center h-screen bg-base-100">
     <NavHeader />
-    <slot />
-  </main>
+    <main class="p-6">
+      <slot />
+    </main>
+  </div>
 </template>

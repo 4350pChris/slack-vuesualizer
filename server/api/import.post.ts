@@ -6,6 +6,7 @@ import {
 } from "~/server/utils/fileUpload";
 import { readFile } from "fs/promises";
 import { join } from "path";
+import type { ApiMessage } from "~~/types/Message";
 
 const readFromFile = async (dir: string) => {
   const contents = await readFile(dir, { encoding: "utf-8" });
@@ -47,9 +48,10 @@ export default defineEventHandler(async (event) => {
 
   const db = await mongo();
   await db.dropDatabase();
-  const msgCol = db.collection("messages");
+  const msgCol = db.collection<ApiMessage>("messages");
   await msgCol.createIndex({ text: "text" }, { default_language: "german" });
   await msgCol.createIndex({ channel: 1 });
+  await msgCol.createIndex({ user: 1, ts: 1 });
   await processPath(unzippedFilePath);
 
   console.log("--- Done ---");
