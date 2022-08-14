@@ -1,12 +1,16 @@
 <template>
-  <section>
+  <section class="flex flex-col h-full">
     <ChannelHeader class="mb-8" :channel="channel" />
-    <h2 class="text-lg font-bold mb-4">Messages</h2>
-    <MessageList :messages="messages" />
+    <h2 class="text-lg font-bold mb-4">Messages ({{ messages.length }})</h2>
+    <div v-if="pending" class="h-full w-full flex justify-center">
+      <LoadingSpinner class="w-12 h-12" />
+    </div>
+    <MessageList v-else :messages="messages" />
   </section>
 </template>
 
 <script lang="ts" setup>
+import LoadingSpinner from "~icons/line-md/loading-alt-loop";
 import type { Channel } from "~/types/Channel";
 import type { Message } from "~/types/Message";
 
@@ -20,19 +24,10 @@ const { data: channel } = await useFetch<Channel>(
   }
 );
 
-const { data: messages } = await useFetch<Message[]>(
+const { data: messages, pending } = await useLazyFetch<Message[]>(
   `/api/channels/${route.params.channel}/messages`,
   {
     initialCache: false,
-    transform: (messages) =>
-      messages.map((m) => {
-        const replies = m.replies?.map((reply) =>
-          messages.find(
-            (inner) => reply.ts === inner.ts && reply.user === inner.user
-          )
-        );
-        return { ...m, replies };
-      }),
   }
 );
 </script>

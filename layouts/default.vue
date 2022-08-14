@@ -1,9 +1,9 @@
 <template>
   <div class="bg-base-100 drawer drawer-mobile">
     <input id="drawer" class="drawer-toggle" type="checkbox" />
-    <div class="drawer-content">
+    <div class="overflow-x-hidden drawer-content">
       <NavHeader />
-      <main class="w-full max-w-4xl mx-auto p-6">
+      <main class="w-full h-[calc(100%-64px)] max-w-4xl mx-auto p-6">
         <slot />
       </main>
     </div>

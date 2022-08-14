@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-nowrap gap-2">
+  <div class="flex flex-nowrap gap-2 min-h-12">
     <UserAvatar v-if="user" :src="user.profile.image_48" />
     <div class="flex flex-col gap-2">
       <div>

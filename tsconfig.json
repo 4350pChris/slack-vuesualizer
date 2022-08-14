@@ -2,6 +2,7 @@
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "types": ["unplugin-icons/types/vue", "node"]
+    "types": ["unplugin-icons/types/vue", "node"],
+    "jsx": "preserve"
   }
 }
