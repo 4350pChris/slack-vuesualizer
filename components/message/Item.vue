@@ -17,7 +17,13 @@
           <div class="font-bold mb-2">Files</div>
           <ul v-for="file in message.files" :key="file.id">
             <li>
-              <a v-if="file.url_private" class="link" :href="file.url_private">
+              <a
+                v-if="file.url_private"
+                class="link"
+                :href="file.url_private"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <span>{{ file.name }}</span>
               </a>
               <span v-else>{{ file.mode }}</span>

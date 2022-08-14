@@ -16,6 +16,7 @@
         <a
           class="btn btn-ghost btn-circle"
           href="https://github.com/4350pChris/slack-export-vuer"
+          target="_blank"
           rel="noopener noreferrer"
         >
           <GithubIcon class="w-6 h-6" />

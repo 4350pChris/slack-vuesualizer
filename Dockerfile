@@ -4,8 +4,6 @@ ARG MODE=production
 
 WORKDIR /app
 
-ENV NODE_ENV=${MODE}
-
 RUN rm -rf /var/cache/apk/*
 COPY package*.json ./
 RUN npm install
