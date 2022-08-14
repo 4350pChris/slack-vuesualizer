@@ -17,9 +17,9 @@
 <script lang="ts" setup>
 const { data } = await useFetch("/api/channels");
 
-if (!data.value) {
-  await navigateTo("/upload");
-}
+// if (!data.value) {
+// await navigateTo("/upload");
+// }
 
 const sortedChannels = computed(() =>
   data.value.sort((a, b) => a.name.localeCompare(b.name))
