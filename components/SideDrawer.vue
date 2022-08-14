@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 const { data } = await useFetch("/api/channels");
 
-if (!data.value) {
+if (data.value.length === 0) {
   await navigateTo("/upload");
 }
 
