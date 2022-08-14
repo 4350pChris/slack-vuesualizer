@@ -1,13 +1,13 @@
 <template>
   <div class="h-16 w-full sticky top-0 z-30 bg-base-300 flex justify-center">
     <nav class="navbar w-full px-2">
-      <div class="flex-none lg:hidden">
+      <div class="flex-none lg:hidden" v-if="!simple">
         <label for="drawer" class="btn btn-ghost btn-circle" tabindex="0">
           <MenuIcon class="w-6 h-6" />
         </label>
       </div>
       <div class="grow mx-4">
-        <MessageSearch />
+        <MessageSearch v-if="!simple" />
       </div>
       <div class="flex-none">
         <span class="hidden md:inline-block text-xl mr-4"
@@ -29,4 +29,10 @@
 <script lang="ts" setup>
 import MenuIcon from "~icons/line-md/menu";
 import GithubIcon from "~icons/line-md/github-loop";
+
+interface Props {
+  simple?: boolean;
+}
+
+defineProps<Props>();
 </script>
