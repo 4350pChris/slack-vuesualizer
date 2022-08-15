@@ -13,10 +13,7 @@
         :size-dependencies="[item.replies, item.files, item.text]"
         :data-index="index"
       >
-        <MessageItem
-          :class="{ 'animate-blink': messageId === item._id }"
-          :message="item"
-        />
+        <MessageItem :message="item" :searched="messageId === item._id" />
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>

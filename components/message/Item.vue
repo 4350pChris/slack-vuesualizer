@@ -1,7 +1,10 @@
 <template>
-  <div class="flex flex-nowrap gap-2 min-h-12 py-2">
+  <div
+    class="flex flex-nowrap gap-2 min-h-12 p-2 w-full"
+    :class="{ 'animate-blink': searched }"
+  >
     <UserAvatar v-if="user" :src="user.profile.image_48" />
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 flex-1">
       <div>
         <span class="font-bold mr-2" v-if="user">{{
           user.profile.display_name || user.name
@@ -42,15 +45,18 @@
         </div>
       </div>
     </div>
+    <SearchIcon v-if="searched" class="w-12 h-12r" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import FileIcon from "~icons/mdi/file";
+import SearchIcon from "~icons/line-md/search";
 import type { Message } from "~/types/Message";
 
 interface Props {
   message: Message;
+  searched: boolean;
 }
 
 const props = defineProps<Props>();
