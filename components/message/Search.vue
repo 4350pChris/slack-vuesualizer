@@ -9,9 +9,9 @@
       />
       <div class="form-control">
         <label class="label cursor-pointer">
-          <span class="label-text whitespace-nowrap mr-4"
-            >Search in all channels</span
-          >
+          <span class="label-text whitespace-nowrap mr-2 md:mr-4">
+            Everywhere
+          </span>
           <input type="checkbox" v-model="allChannels" class="checkbox" />
         </label>
       </div>
@@ -22,7 +22,7 @@
       </div>
       <MessageResults
         v-else
-        class="absolute top-0 inset-x-0 w-full overflow-y-auto max-h-[80vh]"
+        class="absolute top-0 inset-x-0 overflow-x-hidden overflow-y-auto max-h-[80vh]"
         :results="results"
       />
     </div>

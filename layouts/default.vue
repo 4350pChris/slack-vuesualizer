@@ -7,7 +7,7 @@
         <slot />
       </main>
     </div>
-    <SideDrawer />
+    <NavSideDrawer />
   </div>
 </template>
 
