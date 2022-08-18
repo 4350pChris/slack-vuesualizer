@@ -1,17 +1,19 @@
 <template>
-  <aside class="drawer-side">
+  <div class="drawer-side shadow">
     <label for="drawer" class="drawer-overlay"></label>
-    <ul class="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
-      <li class="menu-title">
-        <span>Channels</span>
-      </li>
-      <li v-for="channel in sortedChannels" :key="channel.id">
-        <NuxtLink :to="`/channels/${channel.name}`">
-          {{ channel.name }}
-        </NuxtLink>
-      </li>
-    </ul>
-  </aside>
+    <aside class="drawer-side bg-base-100 text-base-content w-80">
+      <ul class="menu menu-compact py-2 px-4">
+        <li class="menu-title">
+          <span>Channels</span>
+        </li>
+        <li v-for="channel in sortedChannels" :key="channel.id">
+          <NuxtLink :to="`/channels/${channel.name}`">
+            {{ channel.name }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </aside>
+  </div>
 </template>
 
 <script lang="ts" setup>

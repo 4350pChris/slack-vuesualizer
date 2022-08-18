@@ -1,5 +1,7 @@
 <template>
-  <div class="h-16 w-full sticky top-0 z-30 bg-base-300 flex justify-center">
+  <div
+    class="h-16 w-full sticky top-0 z-30 shadow-sm text-base-content bg-base-100 flex justify-center"
+  >
     <nav class="navbar w-full px-2">
       <div class="flex-none lg:hidden" v-if="!simple">
         <label for="drawer" class="btn btn-ghost btn-circle" tabindex="0">

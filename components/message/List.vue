@@ -41,8 +41,6 @@ onMounted(() => {
       ({ _id }) => _id === messageId.value
     );
     setTimeout(() => scroller.value.scrollToItem(index), 0);
-  } else {
-    scroller.value.scrollToBottom();
   }
 });
 </script>
