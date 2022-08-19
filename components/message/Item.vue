@@ -45,7 +45,7 @@
         </div>
       </div>
     </div>
-    <SearchIcon v-if="searched" class="w-12 h-12r" />
+    <SearchIcon v-if="searched" class="w-8 h-8" />
   </div>
 </template>
 

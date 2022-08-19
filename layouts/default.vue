@@ -3,7 +3,7 @@
     <input id="drawer" class="drawer-toggle" type="checkbox" />
     <div class="overflow-x-hidden drawer-content">
       <NavHeader />
-      <main class="w-full h-[calc(100%-64px)] max-w-4xl mx-auto p-6">
+      <main class="container h-[calc(100%-64px)] p-4 md:p-6 lg:p-8">
         <slot />
       </main>
     </div>
