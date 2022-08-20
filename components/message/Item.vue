@@ -14,7 +14,7 @@
         }}</span>
       </div>
       <p>{{ message.text }}</p>
-      <div v-if="message.files" class="p-2 flex gap-2">
+      <div v-if="!simple && message.files" class="p-2 flex gap-2">
         <div>
           <FileIcon class="w-8 h-8" />
         </div>
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div
-        v-if="message.replies"
+        v-if="!simple && message.replies"
         class="collapse collapse-arrow bg-base-300 rounded-box"
       >
         <input type="checkbox" />
@@ -58,7 +58,8 @@ import type { Message } from "~/types/Message";
 
 interface Props {
   message: Message;
-  searched: boolean;
+  searched?: boolean;
+  simple?: boolean;
 }
 
 const props = defineProps<Props>();

@@ -1,14 +1,14 @@
 <template>
   <div
-    class="h-16 w-full sticky top-0 z-30 shadow-sm text-base-content bg-base-100 flex justify-center"
+    class="h-16 w-full fixed top-0 z-30 lg:border-b border-b-slate-800/15 text-base-content bg-base-100 flex justify-center"
   >
-    <nav class="navbar w-full px-4">
+    <nav class="navbar w-full container mx-auto">
       <div class="flex-none lg:hidden" v-if="!simple">
         <label for="drawer" class="btn btn-ghost btn-circle" tabindex="0">
           <MenuIcon class="w-6 h-6" />
         </label>
       </div>
-      <div class="grow ml-2 mr-4">
+      <div class="flex justify-center grow ml-2 mr-4">
         <MessageSearch v-if="!simple" />
       </div>
       <div class="flex-none">

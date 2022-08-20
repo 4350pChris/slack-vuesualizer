@@ -1,10 +1,11 @@
 <template>
   <div class="w-full max-w-xl">
     <div class="w-full flex items-center gap-4">
+      <TextSearch class="w-8 h-8" />
       <input
         type="text"
         placeholder="Search messages"
-        class="input input-bordered w-full"
+        class="input w-full"
         v-model="query"
       />
       <div class="form-control">
@@ -34,6 +35,7 @@
 
 <script lang="ts" setup>
 import LoadingSpinner from "~icons/line-md/loading-alt-loop";
+import TextSearch from "~icons/mdi/text-search";
 import type { Message } from "~/types/Message";
 
 const route = useRoute();

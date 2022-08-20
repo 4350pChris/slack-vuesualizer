@@ -7,8 +7,9 @@ module.exports = {
     "./layouts/**/*.vue",
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
-    "nuxt.config.ts",
+    "app.vue",
   ],
+  safelist: ["active"],
   theme: {
     extend: {
       fontFamily: {

@@ -4,7 +4,7 @@
     <aside class="drawer-side bg-base-100 text-base-content w-80">
       <a
         href="/"
-        class="block text-xl py-4 px-6 text-gray-600 hover:text-base-content hover:bg-base-200 transition"
+        class="block text-xl p-2 my-2 mx-6 rounded text-gray-600 hover:text-base-content hover:bg-base-200 transition"
       >
         Slack Vuesualizer
       </a>
