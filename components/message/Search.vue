@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full max-w-xl">
-    <div class="w-full flex items-center gap-4">
-      <TextSearch class="w-8 h-8" />
+  <div class="w-full max-w-xl" ref="wrapper">
+    <div class="w-full flex items-center gap-2 md:gap-4">
+      <TextSearch class="hidden md:block w-8 h-8" />
       <input
         type="text"
         placeholder="Search messages"
@@ -17,13 +17,13 @@
         </label>
       </div>
     </div>
-    <div v-if="query" class="relative z-20">
+    <div v-if="visible" class="relative z-20">
       <div
-        class="absolute top-0 inset-x-0 overflow-x-hidden overflow-y-auto max-h-[80vh]"
+        class="shadow absolute top-2 inset-x-0 overflow-x-hidden overflow-y-auto max-h-[80vh]"
       >
         <div
           v-if="searching"
-          class="p-2 bg-base-200 w-full inline-flex justify-center"
+          class="p-2 bg-base-100 w-full inline-flex justify-center"
         >
           <LoadingSpinner class="w-8 h-8" />
         </div>
@@ -68,4 +68,11 @@ const search = useDebounceFn(async () => {
 }, 500);
 
 watch([query, allChannels], search);
+
+const wrapper = ref<HTMLElement>(null);
+const visible = ref(false);
+
+watchEffect(() => (visible.value = query.value.length > 0));
+
+onClickOutside(wrapper, () => (visible.value = false));
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="text-xl font-bold mb-2">{{ channel?.name }}</h1>
-    <p class="font-mono text-sm">
+    <p class="font-mono text-sm leading-relaxed">
       Created on {{ created.toLocaleDateString() }} by {{ creator?.real_name }}
     </p>
     <p class="italic" v-if="channel?.purpose?.value">
