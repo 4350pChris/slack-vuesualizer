@@ -23,4 +23,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: chris5896/projects:slack-vuesualizer
+          tags: chris5896/slack-vuesualizer:latest
