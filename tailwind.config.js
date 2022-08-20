@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,6 +11,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Mulish", ...defaultTheme.fontFamily.sans],
+        mono: ["Overpass", ...defaultTheme.fontFamily.mono],
+      },
       animation: {
         blink: "blink 2s cubic-bezier(0.4, 0, 0.6, 1)",
       },

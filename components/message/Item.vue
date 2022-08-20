@@ -9,7 +9,9 @@
         <span class="font-bold mr-2" v-if="user">{{
           user.profile.display_name || user.name
         }}</span>
-        <span class="font-light">{{ toTs(message.ts).toLocaleString() }}</span>
+        <span class="font-mono text-sm">{{
+          toTs(message.ts).toLocaleString()
+        }}</span>
       </div>
       <p>{{ message.text }}</p>
       <div v-if="message.files" class="p-2 flex gap-2">
