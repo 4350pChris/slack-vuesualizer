@@ -2,6 +2,12 @@
   <div class="drawer-side shadow">
     <label for="drawer" class="drawer-overlay"></label>
     <aside class="drawer-side bg-base-100 text-base-content w-80">
+      <a
+        href="/"
+        class="block text-xl py-4 px-6 text-gray-600 hover:text-base-content hover:bg-base-200 transition"
+      >
+        Slack Vuesualizer
+      </a>
       <ul class="menu menu-compact py-2 px-4">
         <li class="menu-title">
           <span>Channels</span>

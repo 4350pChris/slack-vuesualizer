@@ -1,6 +1,6 @@
 <template>
-  <div class="prose">
-    <h1>{{ channel?.name }}</h1>
+  <div class="w-full max-w-lg">
+    <h1 class="text-xl font-bold mb-2">{{ channel?.name }}</h1>
     <p class="font-mono text-sm">
       Created on {{ created.toLocaleDateString() }} by {{ creator?.real_name }}
     </p>
