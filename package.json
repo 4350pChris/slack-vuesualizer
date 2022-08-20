@@ -19,6 +19,7 @@
     "unplugin-icons": "^0.14.8"
   },
   "dependencies": {
+    "@headlessui/vue": "^1.6.7",
     "@vueuse/core": "^9.1.0",
     "@vueuse/nuxt": "^9.1.0",
     "adm-zip": "^0.5.9",

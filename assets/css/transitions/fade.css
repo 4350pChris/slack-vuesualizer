@@ -1,8 +1,16 @@
-.fade-enter-active,
-.fade-leave-active {
-  @apply transition-opacity ease-in-out;
+.fade-enter-to,
+.fade-leave-from {
+  @apply opacity-100;
 }
-.fade-enter,
-.fade-leave-active {
+.fade-enter-from,
+.fade-leave-to {
   @apply opacity-0;
+}
+
+.fade-enter-active {
+  @apply transition-opacity ease-out;
+}
+
+.fade-leave-active {
+  @apply transition-opacity ease-in;
 }

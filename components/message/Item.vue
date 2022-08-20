@@ -36,16 +36,10 @@
           </ul>
         </div>
       </div>
-      <div
+      <MessageReplies
         v-if="!simple && message.replies"
-        class="collapse collapse-arrow bg-base-300 rounded-box"
-      >
-        <input type="checkbox" />
-        <div class="collapse-title font-bold">Replies</div>
-        <div class="collapse-content">
-          <MessageList :messages="message.replies" />
-        </div>
-      </div>
+        :replies="message.replies"
+      />
     </div>
     <SearchIcon v-if="searched" class="w-8 h-8" />
   </div>

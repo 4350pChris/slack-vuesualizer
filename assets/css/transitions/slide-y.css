@@ -1,0 +1,12 @@
+.slide-y-enter-from,
+.slide-y-leave-to {
+  @apply transition-opacity ease-in-out opacity-0 -translate-y-2;
+}
+
+.slide-y-enter-active {
+  @apply transition ease-out;
+}
+
+.slide-y-leave-active {
+  @apply transition ease-in;
+}
