@@ -17,14 +17,17 @@
       </div>
     </div>
     <div v-if="query" class="relative z-20">
-      <div v-if="searching" class="p-4 bg-base-200">
-        <LoadingSpinner class="w-8 h-8" />
-      </div>
-      <MessageResults
-        v-else
+      <div
         class="absolute top-0 inset-x-0 overflow-x-hidden overflow-y-auto max-h-[80vh]"
-        :results="results"
-      />
+      >
+        <div
+          v-if="searching"
+          class="p-2 bg-base-200 w-full inline-flex justify-center"
+        >
+          <LoadingSpinner class="w-8 h-8" />
+        </div>
+        <MessageResults v-else :results="results" />
+      </div>
     </div>
   </div>
 </template>
@@ -62,5 +65,5 @@ const search = useDebounceFn(async () => {
   _searching.value = false;
 }, 500);
 
-watch(query, search);
+watch([query, allChannels], search);
 </script>

@@ -1,7 +1,6 @@
 <template>
   <section class="flex flex-col h-full">
-    <ChannelHeader class="mb-8" :channel="channel" />
-    <h2 class="text-lg font-bold mb-4">Messages ({{ messages.length }})</h2>
+    <ChannelHeader class="mb-4 lg:mb-8" :channel="channel" />
     <div v-if="pending" class="h-full w-full flex justify-center">
       <LoadingSpinner class="w-12 h-12" />
     </div>

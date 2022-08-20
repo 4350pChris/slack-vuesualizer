@@ -4,12 +4,14 @@
     <p class="font-mono text-sm">
       Created on {{ created.toLocaleDateString() }} by {{ creator?.real_name }}
     </p>
-    <p class="italic">{{ channel?.purpose?.value }}</p>
+    <p class="italic" v-if="channel?.purpose?.value">
+      {{ channel.purpose.value }}
+    </p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Channel } from "~/types/Channel";
+import type { Channel } from "~/types/Channel";
 
 interface Props {
   channel: Channel | null;
