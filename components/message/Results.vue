@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 rounded bg-base-100">
+  <div>
     <ul class="list-none flex flex-col gap-4" v-if="results.length > 0">
       <li v-for="result in results" :key="result._id">
         <a :href="`/channels/${result.channel}?message=${result._id}`">
@@ -11,7 +11,7 @@
         </a>
       </li>
     </ul>
-    <p v-else>No results found.</p>
+    <p class="font-medium" v-else>No results found.</p>
   </div>
 </template>
 

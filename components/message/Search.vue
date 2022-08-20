@@ -1,35 +1,55 @@
 <template>
-  <div class="w-full max-w-xl" ref="wrapper">
-    <div class="w-full flex items-center gap-2 md:gap-4">
+  <div class="w-full max-w-xl">
+    <div class="w-full flex items-center gap-2 md:gap-4" ref="inputWrapper">
       <TextSearch class="hidden md:block w-8 h-8" />
       <input
         type="text"
         placeholder="Search messages"
-        class="input w-full"
+        class="input w-full font-mono"
         v-model="query"
+        @focus="visible = query.length > 0"
       />
-      <div class="form-control">
-        <label class="label cursor-pointer">
-          <span class="label-text whitespace-nowrap mr-2 md:mr-4">
-            Everywhere
-          </span>
-          <input type="checkbox" v-model="allChannels" class="checkbox" />
-        </label>
-      </div>
     </div>
-    <div v-if="visible" class="relative z-20">
+    <Transition name="slide-y">
       <div
-        class="shadow absolute top-2 inset-x-0 overflow-x-hidden overflow-y-auto max-h-[80vh]"
+        v-if="visible"
+        class="p-4 bg-base-100 shadow absolute top-16 h-[calc(100vh-4rem)] inset-x-0"
       >
-        <div
-          v-if="searching"
-          class="p-2 bg-base-100 w-full inline-flex justify-center"
-        >
-          <LoadingSpinner class="w-8 h-8" />
+        <div class="max-w-xl mx-auto h-full flex flex-col" ref="wrapper">
+          <div class="my-2">
+            <h3 class="font-medium text-lg mb-2">
+              Search Results for
+              <span class="font-bold">"{{ query }}"</span>
+              in
+              <span class="font-bold">{{
+                allChannels ? "all channels" : route.params.channel
+              }}</span>
+            </h3>
+            <div class="form-control">
+              <label class="max-w-max label cursor-pointer">
+                <input type="checkbox" v-model="allChannels" class="checkbox" />
+                <span class="font-mono label-text whitespace-nowrap ml-4">
+                  Search Everywhere
+                </span>
+              </label>
+            </div>
+          </div>
+          <Transition name="fade" mode="out-in">
+            <div
+              v-if="searching"
+              class="p-2 bg-base-100 w-full h-full flex justify-center mt-8"
+            >
+              <LoadingSpinner class="w-12 h-12" />
+            </div>
+            <MessageResults
+              class="min-h-0 overflow-auto"
+              v-else
+              :results="results"
+            />
+          </Transition>
         </div>
-        <MessageResults v-else :results="results" />
       </div>
-    </div>
+    </Transition>
   </div>
 </template>
 
@@ -56,7 +76,6 @@ const search = useDebounceFn(async () => {
   if (!allChannels.value && route.params.channel) {
     params.channel = route.params.channel;
   }
-  _searching.value = true;
   try {
     results.value = await $fetch("/api/messages/search", {
       params,
@@ -67,12 +86,18 @@ const search = useDebounceFn(async () => {
   _searching.value = false;
 }, 500);
 
-watch([query, allChannels], search);
+watch([query, allChannels], () => {
+  _searching.value = true;
+  return search();
+});
 
 const wrapper = ref<HTMLElement>(null);
+const inputWrapper = ref<HTMLElement>(null);
 const visible = ref(false);
 
 watchEffect(() => (visible.value = query.value.length > 0));
 
-onClickOutside(wrapper, () => (visible.value = false));
+onClickOutside(wrapper, () => (visible.value = false), {
+  ignore: [inputWrapper],
+});
 </script>
