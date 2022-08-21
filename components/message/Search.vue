@@ -1,15 +1,26 @@
 <template>
   <div class="w-full max-w-xl">
-    <div class="w-full flex items-center gap-2 md:gap-4" ref="inputWrapper">
-      <TextSearch class="hidden md:block w-8 h-8" />
+    <div class="w-full flex items-center gap-2 md:gap-4">
       <input
+        v-if="visible"
         type="text"
         placeholder="Search messages"
         class="input w-full font-mono"
         v-model="query"
-        @focus="visible = query.length > 0"
-        @keydown="$event.key === 'Enter' && ($event.target as HTMLInputElement).blur()"
+        @keydown="
+          $event.key === 'Enter' && ($event.target as HTMLInputElement).blur()
+        "
+        ref="input"
       />
+      <button v-else class="btn btn-outline gap-4" @click="visible = true">
+        <TextSearch class="hidden md:block w-6 h-6" />
+        <span class="font-mono">search messages</span>
+        <div class="hidden md:inline-block text-base-content">
+          <kbd class="kbd">Ctrl</kbd>
+          +
+          <kbd class="kbd">K</kbd>
+        </div>
+      </button>
     </div>
     <Transition name="slide-y">
       <div
@@ -72,7 +83,9 @@
 import LoadingSpinner from "~icons/line-md/loading-alt-loop";
 import CloseIcon from "~icons/line-md/close";
 import TextSearch from "~icons/mdi/text-search";
+import { FocusTrap } from "@headlessui/vue";
 import type { Message } from "~/types/Message";
+import { onKeyDown } from "@vueuse/core";
 
 const route = useRoute();
 const query = ref("");
@@ -82,10 +95,6 @@ const _searching = ref(false);
 const searching = refDebounced(_searching, 150);
 
 const search = useDebounceFn(async () => {
-  if (!query.value) {
-    results.value = [];
-    return;
-  }
   const params: { query: string; channel?: string | string[] } = {
     query: query.value,
   };
@@ -103,6 +112,10 @@ const search = useDebounceFn(async () => {
 }, 500);
 
 watch([query, allChannels], () => {
+  if (!query.value) {
+    results.value = [];
+    return;
+  }
   _searching.value = true;
   return search();
 });
@@ -116,14 +129,31 @@ whenever(
 );
 
 const wrapper = ref<HTMLElement>(null);
-const inputWrapper = ref<HTMLElement>(null);
+const input = ref<HTMLInputElement>(null);
 const visible = ref(false);
 
 watchEffect(() => {
   visible.value = query.value.length > 0;
 });
 
+whenever(
+  () => visible.value && input.value,
+  () => {
+    unrefElement(input).focus();
+  }
+);
+
 onClickOutside(wrapper, () => (visible.value = false), {
-  ignore: [inputWrapper],
+  ignore: [input],
+});
+
+onKeyDown(["Ctrl", "k"], (e) => {
+  e.preventDefault();
+  visible.value = true;
+});
+
+onKeyDown(["Escape"], (e) => {
+  e.preventDefault();
+  visible.value = false;
 });
 </script>

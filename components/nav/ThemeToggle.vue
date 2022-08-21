@@ -1,5 +1,5 @@
 <template>
-  <button @click="dark = !dark">
+  <button class="btn btn-ghost btn-circle" @click="dark = !dark">
     <span class="sr-only">Switch theme</span>
     <MoonIcon v-if="dark" class="h-8 w-8 text-sky-100" />
     <SunIcon v-else class="h-8 w-8 text-amber-300" />
