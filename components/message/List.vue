@@ -10,7 +10,13 @@
       <DynamicScrollerItem
         :item="item"
         :active="active"
-        :size-dependencies="[item.replies, item.files, item.text]"
+        :size-dependencies="[
+          item.replies,
+          item.files,
+          item.text,
+          item.blocks,
+          item.reactions,
+        ]"
         :data-index="index"
       >
         <MessageItem :message="item" :searched="messageId === item._id" />

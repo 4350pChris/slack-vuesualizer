@@ -3,16 +3,14 @@
 </template>
 
 <script lang="ts" setup>
+import EmojiConvertor from "emoji-js";
 import type { EmojiLeaf } from "~/types/Message";
 
+const emoji = new EmojiConvertor();
+emoji.replace_mode = "unified";
 const props = defineProps<{ node: EmojiLeaf }>();
 
 const decoded = computed(() => {
-  const hexPart = props.node.unicode?.split("-")[0];
-  if (!hexPart) {
-    return props.node.name;
-  } else {
-    return `&#x${hexPart}`;
-  }
+  return emoji.replace_colons(`:${props.node.name}:`);
 });
 </script>

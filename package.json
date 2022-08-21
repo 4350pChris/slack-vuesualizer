@@ -13,6 +13,7 @@
     "@nuxtjs/tailwindcss": "^5.3.2",
     "@tailwindcss/typography": "^0.5.4",
     "@types/adm-zip": "^0.5.0",
+    "@types/emoji-js": "^3.5.0",
     "@types/formidable": "^2.0.5",
     "autoprefixer": "^10.4.7",
     "daisyui": "^2.20.0",
@@ -24,6 +25,7 @@
     "@vueuse/core": "^9.1.0",
     "@vueuse/nuxt": "^9.1.0",
     "adm-zip": "^0.5.9",
+    "emoji-js": "^3.7.0",
     "formidable": "^2.0.1",
     "mongodb": "^4.8.1",
     "vue-virtual-scroller": "^2.0.0-alpha.1"
