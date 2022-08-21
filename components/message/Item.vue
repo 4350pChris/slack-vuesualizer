@@ -3,7 +3,11 @@
     class="flex flex-nowrap gap-2 min-h-12 p-2 w-full"
     :class="{ 'animate-blink': searched }"
   >
-    <UserAvatar v-if="user" :src="user.profile.image_48" />
+    <UserAvatar
+      v-if="user"
+      class="w-12 h-12 rounded-full"
+      :src="user.profile.image_48"
+    />
     <div class="flex flex-col gap-2 flex-1">
       <div>
         <span class="font-bold mr-2" v-if="user">{{
@@ -39,6 +43,7 @@
       <MessageReplies
         v-if="!simple && message.replies"
         :replies="message.replies"
+        :users="message.reply_users"
       />
     </div>
     <SearchIcon v-if="searched" class="w-8 h-8" />

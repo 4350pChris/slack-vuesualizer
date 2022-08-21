@@ -33,7 +33,7 @@ export type ApiMessage = {
   user_profile?: Pick<
     Profile,
     "image_72" | "first_name" | "real_name" | "display_name"
-  >;
+  > & { avatar_hash: string };
   reactions?: Reaction[];
   replies?: Reply[];
   reply_users?: string[];

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="list-none flex flex-col gap-4" v-if="results.length > 0">
+    <ul class="list-none flex flex-col gap-4 p-1" v-if="results.length > 0">
       <li v-for="result in results" :key="result._id">
         <a :href="`/channels/${result.channel}?message=${result._id}`">
           <MessageItem
