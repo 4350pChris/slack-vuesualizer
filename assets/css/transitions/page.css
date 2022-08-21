@@ -1,0 +1,21 @@
+.page-enter-active {
+  @apply transition-all duration-100 ease-out;
+}
+.page-leave-active {
+  @apply transition-all duration-200 ease-in;
+}
+.page-enter-from,
+.page-leave-to {
+  @apply translate-y-2 opacity-0;
+}
+
+.layout-enter-active {
+  @apply transition-all duration-100 ease-out;
+}
+.layout-leave-active {
+  @apply transition-all duration-200 ease-in;
+}
+.layout-enter-from,
+.layout-leave-to {
+  @apply translate-y-4 opacity-0;
+}
