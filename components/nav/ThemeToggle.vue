@@ -12,14 +12,14 @@ import SunIcon from "~icons/line-md/sunny-outline";
 
 const colorMode = useColorMode();
 
-console.log(colorMode.value);
-console.log(colorMode.preference);
-
 const dark = ref<boolean>();
 
 onMounted(() => {
   dark.value =
-    colorMode.preference === "business" || colorMode.value === "dark";
+    colorMode.preference === "business" ||
+    colorMode.value === "dark" ||
+    (colorMode.value === "system" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
 });
 
 watch(dark, (d) => {
