@@ -23,7 +23,7 @@
       />
     </DisclosureButton>
     <Transition name="slide-y">
-      <DisclosurePanel>
+      <DisclosurePanel class="mb-4">
         <MessageList :messages="replies" />
       </DisclosurePanel>
     </Transition>

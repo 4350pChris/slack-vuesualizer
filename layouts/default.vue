@@ -18,5 +18,15 @@ const users = useUsers();
 
 const { data: fetchedUsers } = await useFetch("/api/users");
 
-users.value = fetchedUsers.value;
+watchEffect(() => (users.value = fetchedUsers.value));
+
+const { data } = await useFetch("/api/channels");
+
+if (data.value.length === 0) {
+  await navigateTo("/upload");
+}
+
+const channels = useChannels();
+
+watchEffect(() => (channels.value = data.value));
 </script>

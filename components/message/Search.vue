@@ -19,10 +19,10 @@
       >
         <TextSearch class="w-6 h-6" />
         <span class="font-mono">search messages</span>
-        <div class="hidden md:inline-block text-base-content">
-          <kbd class="kbd">Ctrl</kbd>
+        <div class="hidden md:inline-block">
+          <kbd class="kbd text-base-content">Ctrl</kbd>
           +
-          <kbd class="kbd">K</kbd>
+          <kbd class="kbd text-base-content">K</kbd>
         </div>
       </button>
     </div>

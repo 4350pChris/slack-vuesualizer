@@ -48,15 +48,11 @@
 <script lang="ts" setup>
 import GithubIcon from "~icons/line-md/github-loop";
 
-const { data } = await useFetch("/api/channels");
+const toggle = ref<HTMLElement>(null);
 
-if (data.value.length === 0) {
-  await navigateTo("/upload");
-}
+const channels = useChannels();
 
 const sortedChannels = computed(() =>
-  data.value.sort((a, b) => a.name.localeCompare(b.name))
+  channels.value.sort((a, b) => a.name.localeCompare(b.name))
 );
-
-const toggle = ref<HTMLElement>(null);
 </script>
