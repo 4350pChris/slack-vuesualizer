@@ -1,10 +1,12 @@
 <template>
-  <div class="drawer-side lg:border-r border-slate-800/15 pt-16">
+  <div
+    class="drawer-side lg:border-r border-slate-800/10 dark:border-slate-100/25 pt-16"
+  >
     <label for="drawer" class="drawer-overlay" ref="toggle"></label>
     <aside class="bg-base-100 text-base-content w-80" @click="toggle.click()">
       <NuxtLink
         to="/"
-        class="block text-xl p-2 my-2 mx-6 rounded text-gray-600 hover:text-base-content hover:bg-base-200 transition"
+        class="block text-xl p-2 my-2 mx-6 rounded text-gray-600 dark:text-base-content hover:text-base-content dark:hover:text-gray-100 hover:bg-base-200 transition"
       >
         Workspace
       </NuxtLink>

@@ -17,12 +17,13 @@ export default defineNuxtConfig({
       },
     ],
     "@vueuse/nuxt",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
   ],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
+  colorMode: {
+    preference: "system",
+    dataValue: "theme",
+    classSuffix: "",
   },
   router: {
     options: {

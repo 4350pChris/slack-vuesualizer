@@ -4,7 +4,7 @@
       <li v-for="result in results" :key="result._id">
         <a :href="`/channels/${result.channel}?message=${result._id}`">
           <MessageItem
-            class="transition rounded hover:bg-base-200/50"
+            class="transition rounded hover:bg-base-200/50 dark:hover:bg-slate-200/10"
             :message="result"
             :simple="true"
           />

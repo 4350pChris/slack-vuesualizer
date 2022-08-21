@@ -1,0 +1,28 @@
+<template>
+  <button @click="dark = !dark">
+    <span class="sr-only">Switch theme</span>
+    <MoonIcon v-if="dark" class="h-8 w-8 text-sky-100" />
+    <SunIcon v-else class="h-8 w-8 text-amber-300" />
+  </button>
+</template>
+
+<script lang="ts" setup>
+import MoonIcon from "~icons/line-md/moon";
+import SunIcon from "~icons/line-md/sunny-outline";
+
+const colorMode = useColorMode();
+
+console.log(colorMode.value);
+console.log(colorMode.preference);
+
+const dark = ref<boolean>();
+
+onMounted(() => {
+  dark.value =
+    colorMode.preference === "business" || colorMode.value === "dark";
+});
+
+watch(dark, (d) => {
+  colorMode.preference = d ? "business" : "fantasy";
+});
+</script>

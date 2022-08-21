@@ -1,7 +1,7 @@
 <template>
   <Disclosure as="div" v-slot="{ open }">
     <DisclosureButton
-      class="flex w-full justify-between items-center px-4 py-2 text-left hover:bg-base-200 transition rounded-box"
+      class="flex w-full justify-between items-center px-4 py-2 text-left hover:bg-base-200/50 dark:hover:bg-slate-200/10 transition rounded-box"
     >
       <span class="font-bold"> Replies </span>
       <ChevronDownIcon

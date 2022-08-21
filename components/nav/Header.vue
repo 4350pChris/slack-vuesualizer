@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-16 w-full fixed top-0 z-40 lg:border-b border-slate-800/15 text-base-content bg-base-100 flex justify-center"
+    class="h-16 w-full fixed top-0 z-40 lg:border-b border-slate-800/10 dark:border-slate-100/25 text-base-content bg-base-100 flex justify-center"
   >
     <nav class="navbar w-full container mx-auto relative">
       <div class="flex-none lg:hidden" v-if="!simple">
@@ -12,6 +12,7 @@
         <MessageSearch v-if="!simple" />
       </div>
       <div class="flex-none">
+        <NavThemeToggle />
         <a
           class="btn btn-ghost btn-circle"
           href="https://github.com/4350pChris/slack-export-vuer"
