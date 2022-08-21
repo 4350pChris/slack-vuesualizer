@@ -11,26 +11,12 @@
       <div class="flex justify-center grow">
         <MessageSearch v-if="!simple" />
       </div>
-      <div class="flex-0">
-        <NavThemeToggle />
-      </div>
-      <div class="flex-0">
-        <a
-          class="btn btn-ghost btn-circle"
-          href="https://github.com/4350pChris/slack-export-vuer"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <GithubIcon class="w-6 h-6" />
-        </a>
-      </div>
     </nav>
   </div>
 </template>
 
 <script lang="ts" setup>
 import MenuIcon from "~icons/line-md/menu";
-import GithubIcon from "~icons/line-md/github-loop";
 
 interface Props {
   simple?: boolean;

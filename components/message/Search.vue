@@ -12,8 +12,12 @@
         "
         ref="input"
       />
-      <button v-else class="btn btn-outline gap-4" @click="visible = true">
-        <TextSearch class="hidden md:block w-6 h-6" />
+      <button
+        v-else
+        class="btn btn-outline btn-block gap-4"
+        @click="visible = true"
+      >
+        <TextSearch class="w-6 h-6" />
         <span class="font-mono">search messages</span>
         <div class="hidden md:inline-block text-base-content">
           <kbd class="kbd">Ctrl</kbd>
