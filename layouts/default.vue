@@ -1,10 +1,10 @@
 <template>
   <div>
     <NavHeader />
-    <div class="pt-16 container mx-auto bg-base-100 drawer drawer-mobile">
+    <div class="container mx-auto bg-base-100 drawer drawer-mobile">
       <input id="drawer" class="drawer-toggle" type="checkbox" />
       <div class="overflow-x-hidden drawer-content">
-        <main class="h-full p-4 md:p-6 lg:p-8">
+        <main class="h-full px-4 md:px-6 lg:px-8 pb-2 pt-16 lg:pt-20">
           <slot />
         </main>
       </div>
