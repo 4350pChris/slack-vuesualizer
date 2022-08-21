@@ -8,26 +8,41 @@
         class="input w-full font-mono"
         v-model="query"
         @focus="visible = query.length > 0"
+        @keydown="$event.key === 'Enter' && ($event.target as HTMLInputElement).blur()"
       />
     </div>
     <Transition name="slide-y">
       <div
         v-if="visible"
-        class="p-4 bg-base-100 shadow absolute top-16 h-[calc(100vh-4rem)] inset-x-0"
+        class="px-2 pb-2 bg-base-100 shadow absolute top-16 h-[calc(100vh-4rem)] inset-x-0"
       >
         <div class="max-w-xl mx-auto h-full flex flex-col" ref="wrapper">
-          <div class="my-2">
-            <h3 class="font-medium text-lg mb-2">
-              Search Results for
-              <span class="font-bold">"{{ query }}"</span>
-              in
-              <span class="font-bold">{{
-                allChannels ? "all channels" : route.params.channel
-              }}</span>
-            </h3>
+          <div class="mb-2">
+            <div class="flex items-center">
+              <h3 class="font-medium text-lg flex-1">
+                Search Results for
+                <span class="font-bold">"{{ query }}"</span>
+                in
+                <span class="font-bold">{{
+                  allChannels ? "all channels" : route.params.channel
+                }}</span>
+              </h3>
+              <button
+                class="btn btn-circle btn-ghost flex-none"
+                @click="visible = false"
+                title="close"
+              >
+                <CloseIcon class="w-6 h-6" />
+              </button>
+            </div>
             <div class="form-control">
               <label class="max-w-max label cursor-pointer">
-                <input type="checkbox" v-model="allChannels" class="checkbox" />
+                <input
+                  type="checkbox"
+                  v-model="allChannels"
+                  class="checkbox"
+                  :disabled="!route.params.channel"
+                />
                 <span class="font-mono label-text whitespace-nowrap ml-4">
                   Search Everywhere
                 </span>
@@ -55,6 +70,7 @@
 
 <script lang="ts" setup>
 import LoadingSpinner from "~icons/line-md/loading-alt-loop";
+import CloseIcon from "~icons/line-md/close";
 import TextSearch from "~icons/mdi/text-search";
 import type { Message } from "~/types/Message";
 
@@ -91,11 +107,21 @@ watch([query, allChannels], () => {
   return search();
 });
 
+whenever(
+  () => !route.params.channel,
+  () => {
+    allChannels.value = true;
+  },
+  { immediate: true }
+);
+
 const wrapper = ref<HTMLElement>(null);
 const inputWrapper = ref<HTMLElement>(null);
 const visible = ref(false);
 
-watchEffect(() => (visible.value = query.value.length > 0));
+watchEffect(() => {
+  visible.value = query.value.length > 0;
+});
 
 onClickOutside(wrapper, () => (visible.value = false), {
   ignore: [inputWrapper],
