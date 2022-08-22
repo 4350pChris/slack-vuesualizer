@@ -9,7 +9,7 @@
         class="w-12 h-12 rounded-xl"
         :src="user.profile.image_48"
       />
-      <div class="flex flex-col flex-1">
+      <div class="flex flex-col flex-1 overflow-hidden">
         <p class="font-bold mr-2" v-if="user">
           {{ user.profile.display_name || user.real_name }}
         </p>
