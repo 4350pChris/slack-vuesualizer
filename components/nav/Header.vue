@@ -8,9 +8,10 @@
           <MenuIcon class="w-6 h-6" />
         </label>
       </div>
-      <div class="flex justify-center grow">
-        <MessageSearch v-if="!simple" />
-      </div>
+      <MessageSearch
+        v-if="!simple"
+        class="flex justify-center flex-1 max-w-xl w-full"
+      />
     </nav>
   </div>
 </template>
