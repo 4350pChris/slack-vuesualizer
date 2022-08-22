@@ -26,28 +26,7 @@
         <p v-else class="text-sm font-mono whitespace-pre-wrap">
           {{ message.text }}
         </p>
-        <div v-if="!simple && message.files" class="p-2 flex gap-2">
-          <div>
-            <FileIcon class="w-8 h-8" />
-          </div>
-          <div>
-            <div class="font-bold mb-2">Files</div>
-            <ul v-for="file in message.files" :key="file.id">
-              <li>
-                <a
-                  v-if="file.url_private"
-                  class="link"
-                  :href="file.url_private"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>{{ file.name }}</span>
-                </a>
-                <span v-else>{{ file.mode }}</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <MessageFiles v-if="!simple && message.files" :files="message.files" />
       </div>
       <SearchIcon v-if="searched" class="w-8 h-8" />
     </div>
@@ -60,7 +39,6 @@
 </template>
 
 <script lang="ts" setup>
-import FileIcon from "~icons/mdi/file";
 import SearchIcon from "~icons/line-md/search";
 import type { Message } from "~/types/Message";
 
