@@ -7,9 +7,6 @@
         placeholder="Search messages"
         class="input w-full font-mono"
         v-model="query"
-        @keydown="
-          $event.key === 'Enter' && ($event.target as HTMLInputElement).blur()
-        "
         ref="input"
       />
       <button
