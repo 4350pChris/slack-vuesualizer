@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 min-h-12 w-full">
+  <div class="flex flex-col gap-2 p-2 min-h-12 w-full">
     <div
       class="flex flex-nowrap gap-2 w-full"
       :class="{ 'animate-blink': searched }"
@@ -26,10 +26,17 @@
         <p v-else class="text-sm font-mono whitespace-pre-wrap">
           {{ message.text }}
         </p>
-        <MessageFiles v-if="!simple && message.files" :files="message.files" />
+        <div class="flex gap-2">
+          <MessageReaction
+            v-for="(reaction, i) in message.reactions"
+            :key="i"
+            :reaction="reaction"
+          />
+        </div>
       </div>
       <SearchIcon v-if="searched" class="w-8 h-8" />
     </div>
+    <MessageFiles v-if="!simple && message.files" :files="message.files" />
     <MessageReplies
       v-if="!simple && message.replies"
       :replies="message.replies"
