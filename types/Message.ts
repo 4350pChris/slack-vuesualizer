@@ -115,4 +115,5 @@ export type ApiMessage = {
 
 export type Message = Omit<ApiMessage, "replies"> & {
   reply?: boolean;
+  last_reply?: boolean;
 };

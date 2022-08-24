@@ -1,11 +1,16 @@
 <template>
   <div
-    class="flex flex-col gap-2 p-2 min-h-12"
-    :class="{
-      'ml-6 border-l-2 border-slate-800/25 dark:border-slate/100':
-        message.reply,
-    }"
+    class="flex flex-col gap-2 p-2 py-4 min-h-12 relative"
+    :class="{ 'mb-2': message.last_reply }"
   >
+    <span
+      class="h-full absolute left-8"
+      :class="{
+        'border-l-2 border-slate-800/25 dark:border-slate-400/50':
+          !message.last_reply && (message.reply || message.reply_count > 0),
+      }"
+    >
+    </span>
     <div
       class="flex flex-nowrap gap-2 w-full"
       :class="{ 'animate-blink': searched }"

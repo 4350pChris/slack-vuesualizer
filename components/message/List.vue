@@ -2,7 +2,7 @@
   <DynamicScroller
     class="h-full"
     :items="messages"
-    :min-item-size="56"
+    :min-item-size="64"
     keyField="_id"
     ref="scroller"
   >
@@ -15,6 +15,7 @@
           item.text,
           item.blocks,
           item.reactions,
+          item.last_reply,
         ]"
         :data-index="index"
       >

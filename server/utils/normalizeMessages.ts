@@ -20,7 +20,12 @@ export default function (messages: ApiMessage[]): Message[] {
       // first remove from cpy
       const spliced = cpy.splice(index, 1);
       const withReplyProp = spliced.map(
-        (s) => ({ ...s, reply: true } as Message)
+        (s) =>
+          ({
+            ...s,
+            reply: true,
+            last_reply: i === m.replies.length - 1,
+          } as Message)
       );
       const parentMessageIndex = cpy.findIndex(({ _id }) => _id === m._id);
       // then insert again at correct position, taking into account previously moved messages
