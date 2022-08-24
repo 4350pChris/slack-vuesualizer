@@ -45,7 +45,7 @@
           />
         </div>
       </div>
-      <SearchIcon v-if="searched" class="w-8 h-8" />
+      <SearchIcon v-if="searched" class="w-8 h-8 self-center mr-2" />
     </div>
     <MessageReplies
       v-if="!simple && message.reply_count > 0"
