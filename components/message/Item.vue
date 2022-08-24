@@ -1,20 +1,26 @@
 <template>
-  <div class="flex flex-col gap-2 p-2 min-h-12 w-full">
+  <div
+    class="flex flex-col gap-2 p-2 min-h-12"
+    :class="{
+      'ml-6 border-l-2 border-slate-800/25 dark:border-slate/100':
+        message.reply,
+    }"
+  >
     <div
       class="flex flex-nowrap gap-2 w-full"
       :class="{ 'animate-blink': searched }"
     >
       <UserAvatar
         v-if="user"
-        class="w-12 h-12 rounded-xl"
+        class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl"
         :src="user.profile.image_48"
       />
       <div class="flex flex-col flex-1 overflow-hidden">
-        <p class="font-bold mr-2" v-if="user">
-          {{ user.profile.display_name || user.real_name }}
-        </p>
-        <p class="font-mono text-sm mb-2">
+        <p class="font-mono text-sm">
           {{ toTs(message.ts).toLocaleString() }}
+        </p>
+        <p class="font-bold mb-2" v-if="user">
+          {{ user.profile.display_name || user.real_name }}
         </p>
         <template v-if="message.blocks?.length">
           <MessageBlock
@@ -37,11 +43,6 @@
       <SearchIcon v-if="searched" class="w-8 h-8" />
     </div>
     <MessageFiles v-if="!simple && message.files" :files="message.files" />
-    <MessageReplies
-      v-if="!simple && message.replies"
-      :replies="message.replies"
-      :users="message.reply_users"
-    />
   </div>
 </template>
 

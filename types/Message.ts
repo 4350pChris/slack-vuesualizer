@@ -113,6 +113,6 @@ export type ApiMessage = {
   blocks?: Block[];
 };
 
-export type Message = ApiMessage & {
-  replies?: Message[];
+export type Message = Omit<ApiMessage, "replies"> & {
+  reply?: boolean;
 };

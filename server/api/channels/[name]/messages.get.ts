@@ -7,7 +7,6 @@ export default defineEventHandler(async (event) => {
   const messages = await db
     .collection<Message>("messages")
     .find({ channel })
-    .sort({ ts: -1 })
     .toArray();
 
   return normalizeMessages(messages);

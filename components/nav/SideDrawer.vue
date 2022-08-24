@@ -23,7 +23,7 @@
         <li class="menu-title">
           <span>Channels</span>
         </li>
-        <li v-for="channel in sortedChannels" :key="channel.id">
+        <li v-for="channel in channels" :key="channel.id">
           <NuxtLink :to="`/channels/${channel.name}`">
             {{ channel.name }}
           </NuxtLink>
@@ -51,8 +51,4 @@ import GithubIcon from "~icons/line-md/github-loop";
 const toggle = ref<HTMLElement>(null);
 
 const channels = useChannels();
-
-const sortedChannels = computed(() =>
-  channels.value.sort((a, b) => a.name.localeCompare(b.name))
-);
 </script>

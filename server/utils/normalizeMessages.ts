@@ -1,24 +1,31 @@
+import { assert } from "@vueuse/core";
 import type { ApiMessage, Message } from "~/types/Message";
-import mongo from "~/server/utils/mongo";
 
-export default async function (messages: ApiMessage[]): Promise<Message[]> {
-  const db = await mongo();
+export default function (messages: ApiMessage[]): Message[] {
   const cpy = [...messages];
-  return messages.map((m) => {
+
+  messages.forEach((m) => {
+    // replies isa empty or undefined - we can just leave it as is, replies will be cleaned up later
     if (!m.replies) {
-      return m as Message;
+      return;
     }
-    const replies = [];
-    m.replies.forEach((reply) => {
-      const i = cpy.findIndex(
-        (inner) => reply.ts === inner.ts && reply.user === inner.user
+
+    // for each reply, move it to the correct position in cpy
+    m.replies.forEach((reply, i) => {
+      const index = cpy.findIndex(
+        (m) => m.ts === reply.ts && m.user === reply.user
       );
-      if (i === -1) {
-        return;
-      }
-      const found = cpy.splice(i, 1)[0];
-      replies.push(found);
+      // should not happen...
+      assert(index > 0);
+      // first remove from cpy
+      const spliced = cpy.splice(index, 1);
+      const withReplyProp = spliced.map(
+        (s) => ({ ...s, reply: true } as Message)
+      );
+      const parentMessageIndex = cpy.findIndex(({ _id }) => _id === m._id);
+      // then insert again at correct position, taking into account previously moved messages
+      cpy.splice(parentMessageIndex + i + 1, 0, ...withReplyProp);
     });
-    return { ...m, replies } as Message;
   });
+  return cpy;
 }

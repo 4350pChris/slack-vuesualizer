@@ -11,7 +11,6 @@
         :item="item"
         :active="active"
         :size-dependencies="[
-          item.replies,
           item.files,
           item.text,
           item.blocks,
