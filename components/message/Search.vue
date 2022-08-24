@@ -2,14 +2,22 @@
   <div class="w-full max-w-xl">
     <div>
       <div class="w-full flex items-center gap-2 md:gap-4">
-        <input
-          v-if="visible"
-          type="text"
-          placeholder="Search messages"
-          class="input w-full font-mono"
-          v-model="query"
-          ref="input"
-        />
+        <div v-if="visible" class="relative w-full">
+          <input
+            type="text"
+            placeholder="Search messages"
+            class="w-full input font-mono pr-14"
+            v-model="query"
+            ref="input"
+          />
+          <button
+            class="btn btn-circle btn-ghost absolute right-0"
+            @click="visible = false"
+            title="close"
+          >
+            <CloseIcon class="w-6 h-6" />
+          </button>
+        </div>
         <button
           v-else
           class="btn btn-outline btn-block gap-4"
@@ -27,27 +35,18 @@
       <Transition name="slide-y">
         <div
           v-if="visible"
-          class="px-2 pb-2 bg-base-100 shadow absolute top-16 h-[calc(100vh-4rem)] inset-x-0"
+          class="px-2 pb-2 bg-base-100 lg:border-x absolute top-16 h-[calc(100vh-4rem)] inset-x-0"
         >
           <div class="max-w-xl mx-auto h-full flex flex-col" ref="wrapper">
             <div class="mb-2">
-              <div class="flex items-center">
-                <h3 class="font-medium text-lg flex-1">
-                  Search Results for
-                  <span class="font-bold">"{{ query }}"</span>
-                  in
-                  <span class="font-bold">{{
-                    allChannels ? "all channels" : route.params.channel
-                  }}</span>
-                </h3>
-                <button
-                  class="btn btn-circle btn-ghost flex-none"
-                  @click="visible = false"
-                  title="close"
-                >
-                  <CloseIcon class="w-6 h-6" />
-                </button>
-              </div>
+              <h3 class="font-medium text-lg flex-1">
+                Search Results for
+                <span class="font-bold">"{{ query }}"</span>
+                in
+                <span class="font-bold">{{
+                  allChannels ? "all channels" : route.params.channel
+                }}</span>
+              </h3>
               <div class="form-control">
                 <label class="max-w-max label cursor-pointer">
                   <input
@@ -133,10 +132,6 @@ whenever(
 const wrapper = ref<HTMLElement>(null);
 const input = ref<HTMLInputElement>(null);
 const visible = ref(false);
-
-watchEffect(() => {
-  visible.value = query.value.length > 0;
-});
 
 whenever(
   () => visible.value && input.value,
