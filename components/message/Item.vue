@@ -4,7 +4,7 @@
     :class="{ 'mb-2': message.last_reply }"
   >
     <span
-      class="h-full absolute left-8"
+      class="h-full absolute left-9"
       :class="{
         'border-l-2 border-slate-800/25 dark:border-slate-400/50':
           !message.last_reply && (message.reply || message.reply_count > 0),
@@ -47,6 +47,11 @@
       </div>
       <SearchIcon v-if="searched" class="w-8 h-8" />
     </div>
+    <MessageReplies
+      v-if="!simple && message.reply_count > 0"
+      :replyCount="message.reply_count"
+      :users="message.reply_users"
+    />
     <MessageFiles v-if="!simple && message.files" :files="message.files" />
   </div>
 </template>
