@@ -1,6 +1,6 @@
 <template>
   <div class="w-full max-w-xl">
-    <component :is="visible ? FocusTrap : 'div'">
+    <div>
       <div class="w-full flex items-center gap-2 md:gap-4">
         <input
           v-if="visible"
@@ -78,7 +78,7 @@
           </div>
         </div>
       </Transition>
-    </component>
+    </div>
   </div>
 </template>
 
@@ -86,7 +86,6 @@
 import LoadingSpinner from "~icons/line-md/loading-alt-loop";
 import CloseIcon from "~icons/line-md/close";
 import TextSearch from "~icons/mdi/text-search";
-import { FocusTrap } from "@headlessui/vue";
 import type { Message } from "~/types/Message";
 import { onKeyDown } from "@vueuse/core";
 
