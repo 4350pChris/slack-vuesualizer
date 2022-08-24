@@ -37,7 +37,7 @@
       <Transition name="slide-y">
         <div
           v-if="visible"
-          class="px-2 pb-2 bg-base-100 lg:border-x absolute top-16 h-[calc(100vh-4rem)] inset-x-0"
+          class="px-2 pb-2 bg-base-100 lg:border-x border-slate-800/10 dark:border-slate-100/25 absolute top-16 h-[calc(100vh-4rem)] inset-x-0"
         >
           <div class="max-w-xl mx-auto h-full flex flex-col" ref="wrapper">
             <div class="mb-2">

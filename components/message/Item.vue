@@ -4,6 +4,7 @@
     :class="{ 'mb-2': message.last_reply }"
   >
     <span
+      v-if="!disableReplyBar"
       class="h-full absolute left-9"
       :class="{
         'border-l-2 border-slate-800/25 dark:border-slate-400/50':
@@ -64,6 +65,7 @@ interface Props {
   message: Message;
   searched?: boolean;
   simple?: boolean;
+  disableReplyBar?: boolean;
 }
 
 const props = defineProps<Props>();

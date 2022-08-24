@@ -5,6 +5,7 @@
         <a :href="`/channels/${result.channel}?message=${result._id}`">
           <MessageItem
             class="transition rounded hover:bg-base-200/50 dark:hover:bg-slate-200/10"
+            :disableReplyBar="true"
             :message="result"
             :simple="true"
           />
