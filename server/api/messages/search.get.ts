@@ -18,7 +18,9 @@ export default defineEventHandler(async (event) => {
   const messages = await db
     .collection<Message>("messages")
     .find(filter)
+    .project({ score: { $meta: "textScore" } })
     .limit(30)
+    .sort({ score: { $meta: "textScore" } })
     .toArray();
 
   return messages;
