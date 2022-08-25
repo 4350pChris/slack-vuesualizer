@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.1.13",
+    "@iconify-json/logos": "^1.1.14",
     "@iconify-json/mdi": "^1.1.29",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/tailwindcss": "^5.3.2",

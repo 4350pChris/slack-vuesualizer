@@ -3,6 +3,7 @@
     <ul class="list-none flex flex-col gap-4 p-1" v-if="results.length > 0">
       <li v-for="result in results" :key="result._id">
         <a :href="`/channels/${result.channel}?message=${result._id}`">
+          <span class="font-bold">In Channel {{ result.channel }}</span>
           <MessageItem
             class="transition rounded hover:bg-base-200/50 dark:hover:bg-slate-200/10"
             :disableReplyBar="true"

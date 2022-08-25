@@ -32,17 +32,23 @@
       <div
         class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"
       ></div>
-      <footer>
-        <a
-          class="btn btn-ghost btn-block gap-4 my-2"
-          href="https://github.com/4350pChris/slack-vuesualizer"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="GitHub"
-        >
-          <span class="font-medium text-lg">Slack Vuesualizer</span>
-          <GithubIcon class="w-6 h-6" />
-        </a>
+      <footer class="flex flex-col items-center gap-2 p-2">
+        <p class="flex items-center gap-2">
+          <SlackIcon class="w-8 h-8" />
+          <span class="font-medium text-2xl">Vuesualizer</span>
+        </p>
+        <div>
+          <a
+            class="btn btn-ghost btn-block gap-4 my-2"
+            href="https://github.com/4350pChris/slack-vuesualizer"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+          >
+            <GithubIcon class="w-6 h-6" />
+            <span>view on GitHub</span>
+          </a>
+        </div>
       </footer>
     </aside>
   </div>
@@ -51,6 +57,7 @@
 <script lang="ts" setup>
 import GithubIcon from "~icons/line-md/github-loop";
 import AccountIcon from "~icons/mdi/account";
+import SlackIcon from "~icons/logos/slack-icon";
 
 const toggle = ref<HTMLElement>(null);
 
