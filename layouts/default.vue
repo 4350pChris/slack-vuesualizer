@@ -3,11 +3,11 @@
     <NavHeader />
     <div class="container mx-auto bg-base-100 drawer drawer-mobile">
       <input id="drawer" class="drawer-toggle" type="checkbox" />
-      <div class="overflow-x-hidden drawer-content">
-        <main class="h-full px-4 md:px-6 lg:px-8 pb-2 pt-16 lg:pt-20">
-          <slot />
-        </main>
-      </div>
+      <main
+        class="h-[calc(100vh-4rem)] overflow-x-hidden drawer-content px-4 md:px-6 lg:px-8 mb-2 mt-16"
+      >
+        <slot />
+      </main>
       <NavSideDrawer />
     </div>
   </div>

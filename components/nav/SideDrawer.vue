@@ -7,28 +7,31 @@
       class="bg-base-100 text-base-content w-80 p-2"
       @click="toggle.click()"
     >
-      <NuxtLink
-        to="/"
-        class="block text-xl py-2 px-4 mb-2 rounded text-gray-600 dark:text-base-content hover:text-base-content dark:hover:text-gray-100 hover:bg-base-200 transition"
-      >
-        Workspace
-      </NuxtLink>
+      <NavThemeToggle class="w-full" />
+
       <ul class="menu menu-compact">
-        <li class="menu-title">
-          <span>Theme</span>
+        <li>
+          <NuxtLink to="/"> Workspace </NuxtLink>
         </li>
-        <li @click.stop>
-          <NavThemeToggle class="w-full" />
+        <li>
+          <NuxtLink to="/users">
+            <AccountIcon />
+            Users
+          </NuxtLink>
         </li>
+        <li></li>
         <li class="menu-title">
           <span>Channels</span>
         </li>
-        <li v-for="channel in channels" :key="channel.id">
+        <li v-for="channel in channels" :key="channel.id" class="rounded-box">
           <NuxtLink :to="`/channels/${channel.name}`">
             {{ channel.name }}
           </NuxtLink>
         </li>
       </ul>
+      <div
+        class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"
+      ></div>
       <footer>
         <a
           class="btn btn-ghost btn-block gap-4 my-2"
@@ -47,6 +50,7 @@
 
 <script lang="ts" setup>
 import GithubIcon from "~icons/line-md/github-loop";
+import AccountIcon from "~icons/mdi/account";
 
 const toggle = ref<HTMLElement>(null);
 

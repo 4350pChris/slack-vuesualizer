@@ -6,6 +6,7 @@ export type Profile = {
   status_emoji: string;
   iamge_original: string;
   email: string;
+  phone: string;
   first_name: string;
   last_name: string;
   image_48: string;
@@ -22,4 +23,6 @@ export type User = {
   profile: Profile;
   is_admin: boolean;
   is_owner: boolean;
+  deleted: boolean;
+  is_bot: boolean;
 };
