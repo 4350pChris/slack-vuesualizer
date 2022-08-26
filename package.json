@@ -28,7 +28,7 @@
     "adm-zip": "^0.5.9",
     "emoji-js": "^3.7.0",
     "formidable": "^2.0.1",
-    "mongodb": "^4.8.1",
+    "mongodb": "^4.9.0",
     "vue-virtual-scroller": "^2.0.0-alpha.1"
   }
 }
