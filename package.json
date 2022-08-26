@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.7",
-    "@vueuse/core": "^9.1.0",
+    "@vueuse/core": "^9.1.1",
     "@vueuse/nuxt": "^9.1.0",
     "adm-zip": "^0.5.9",
     "emoji-js": "^3.7.0",
