@@ -25,12 +25,11 @@
         </template>
         <template v-if="user.profile.phone">
           <PhoneIcon class="w-5 h-5" />
-          <span class="font-mono text-sm">{{ user.profile.phone }}</span>
+          <a class="font-mono text-sm" :href="`tel:${user.profile.phone}`">{{
+            user.profile.phone
+          }}</a>
         </template>
       </div>
-      <!-- <div class="card-actions justify-end">
-        <button class="btn btn-ghost">Show Info</button>
-      </div> -->
     </div>
   </div>
 </template>
