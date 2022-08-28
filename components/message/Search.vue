@@ -146,8 +146,11 @@ onClickOutside(wrapper, () => (visible.value = false), {
   ignore: [input],
 });
 
-onKeyDown(["Ctrl", "k"], (e) => {
-  e.preventDefault();
+const keys = useMagicKeys();
+
+const ctrlK = keys["Ctrl+K"];
+
+whenever(ctrlK, () => {
   visible.value = true;
 });
 
