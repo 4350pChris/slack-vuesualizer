@@ -1,0 +1,10 @@
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  @apply transition-all ease-in-out;
+}
+
+.list-enter-from,
+.list-leave-to {
+  @apply opacity-0 translate-x-20;
+}
