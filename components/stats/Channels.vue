@@ -1,8 +1,8 @@
 <template>
-  <div class="stat">
-    <div class="stat-title">{{ $t("channel.word", 2) }}</div>
-    <div class="stat-value">{{ data.length }}</div>
-  </div>
+  <StatsBase>
+    <template #content>{{ $t("channel.word", 2) }}</template>
+    <template #title>{{ data.length }}</template>
+  </StatsBase>
 </template>
 
 <script lang="ts" setup>
