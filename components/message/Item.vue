@@ -7,10 +7,10 @@
       v-if="!disableReplyBar"
       class="absolute left-9"
       :class="{
-        'border-l-2 border-slate-800/25 dark:border-slate-400/50':
+        'border-l-2 border-slate-800/25 dark:border-slate-400/50 h-full':
           message.reply || message.reply_count > 0,
-        'h-6': message.last_reply,
-        'h-full': !message.last_reply,
+        '!h-6': message.last_reply,
+        'top-4 !h-[calc(100%-1rem)]': message.reply_count > 0,
       }"
     >
     </span>
