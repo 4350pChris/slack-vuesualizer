@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center pl-8 pr-4 gap-4 text-left">
+  <div class="flex items-center gap-4 text-left">
     <div class="avatar-group -space-x-4">
       <UserAvatar
         v-for="user in users.slice(0, 3)"
