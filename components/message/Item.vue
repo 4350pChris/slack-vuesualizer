@@ -24,7 +24,7 @@
           {{ user.profile.display_name || user.real_name }}
         </span>
         <span class="font-mono text-sm">
-          {{ $d(toTs(message.ts), "timeOfDay") }}
+          {{ $d(toTs(message.ts), "long") }}
         </span>
       </p>
       <template v-if="message.blocks?.length">
@@ -48,7 +48,7 @@
     </div>
     <MessageReplies
       v-if="!simple && message.reply_count > 0"
-      class="-ml-6 col-start-2"
+      class="col-start-2"
       :replyCount="message.reply_count"
       :users="message.reply_users"
     />

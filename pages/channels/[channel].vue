@@ -56,18 +56,17 @@ const withSeparators = computed(() =>
         separator = true;
       } else {
         const diff = dateDiffInDays(date, messageDate);
-        console.log(diff);
-        if (diff > 0) {
+        if (diff !== 0) {
           separator = true;
         }
       }
-      if (separator) {
+      if (separator && !message.reply) {
         messages.push({ date: messageDate, _id: messageDate.getTime() });
       }
       messages.push(message);
       return {
         messages,
-        date: messageDate,
+        date: message.reply ? date : messageDate,
       };
     },
     {
