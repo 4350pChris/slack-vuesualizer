@@ -18,11 +18,12 @@ ENV NODE_ENV=${MODE}
 WORKDIR /app
 
 COPY package*.json ./
-COPY --from=build /app/.output ./.output
-COPY --from=build /app/.nuxt ./.nuxt
 
 ENV NODE_ENV production
 RUN npm install
+
+COPY --from=build /app/.output ./.output
+COPY --from=build /app/.nuxt ./.nuxt
 
 EXPOSE 3000
 
