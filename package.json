@@ -7,9 +7,11 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
+    "@iconify-json/ion": "^1.1.3",
     "@iconify-json/line-md": "^1.1.13",
     "@iconify-json/logos": "^1.1.14",
     "@iconify-json/mdi": "^1.1.29",
+    "@iconify-json/twemoji": "^1.1.5",
     "@intlify/nuxt3": "^0.2.3",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/tailwindcss": "^5.3.2",

@@ -4,24 +4,26 @@
   >
     <label for="drawer" class="drawer-overlay" ref="toggle"></label>
     <aside
-      class="bg-base-100 text-base-content w-80 p-2"
+      class="bg-base-100 text-base-content w-80 px-2 py-4"
       @click="toggle.click()"
     >
-      <NavThemeToggle class="w-full" />
-
+      <div class="md:hidden mb-4 flex justify-evenly gap-4" @click.stop>
+        <NavLocaleChanger />
+        <NavThemeToggle />
+      </div>
       <ul class="menu menu-compact">
         <li>
-          <NuxtLink to="/"> Workspace </NuxtLink>
+          <NuxtLink class="capitalize" to="/"> {{ $t("workspace") }} </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/users">
+          <NuxtLink class="capitalize" to="/users">
             <AccountIcon />
-            Users
+            {{ $t("user", 2) }}
           </NuxtLink>
         </li>
         <li></li>
-        <li class="menu-title">
-          <span>Channels</span>
+        <li class="menu-title capitalize">
+          <span>{{ $t("channel.word", 2) }}</span>
         </li>
         <li v-for="channel in channels" :key="channel.id" class="rounded-box">
           <NuxtLink :to="`/channels/${channel.name}`">
@@ -46,7 +48,7 @@
             title="GitHub"
           >
             <GithubIcon class="w-6 h-6" />
-            <span>view on GitHub</span>
+            <span>{{ $t("github") }}</span>
           </a>
         </div>
       </footer>

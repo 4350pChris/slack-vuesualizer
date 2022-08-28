@@ -23,7 +23,7 @@
       />
       <div class="flex flex-col flex-1 overflow-hidden">
         <p class="font-mono text-sm">
-          {{ toTs(message.ts).toLocaleString() }}
+          {{ $d(toTs(message.ts), "long") }}
         </p>
         <p class="font-bold mb-2" v-if="user">
           {{ user.profile.display_name || user.real_name }}

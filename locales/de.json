@@ -1,1 +1,22 @@
-{}
+{
+  "workspace": "workspace",
+  "message": "Nachricht | Nachrichten",
+  "user": "Benutzer | Benutzer",
+  "search": {
+    "channels": "@:channel.word {0} | allen @:channel.word",
+    "messages": "@:message suchem",
+    "results": "Suchergebnisse für {0} in {1}",
+    "everywhere": "überall suchen",
+    "users": "@:users suchen"
+  },
+  "channel": {
+    "word": "Channel | Channels",
+    "created": "Erstellt am {when} von {who}"
+  },
+  "github": "zu Github",
+  "noresults": "keine Ergebnisse",
+  "close": "schließen",
+  "language": "Sprache",
+  "thisLanguage": "deutsch",
+  "switchTheme": "Theme ändern"
+}

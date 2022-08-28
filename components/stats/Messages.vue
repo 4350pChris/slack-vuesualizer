@@ -1,6 +1,6 @@
 <template>
   <div class="stat">
-    <div class="stat-title">Messages</div>
+    <div class="stat-title">{{ $t("message", 2) }}</div>
     <div class="stat-value">{{ count }}</div>
   </div>
 </template>
