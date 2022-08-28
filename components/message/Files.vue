@@ -9,7 +9,7 @@
         <li>
           <a
             v-if="file.url_private"
-            class="link"
+            class="fancy-link"
             :href="file.url_private"
             target="_blank"
             rel="noopener noreferrer"

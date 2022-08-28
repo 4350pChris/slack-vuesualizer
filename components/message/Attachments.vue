@@ -10,7 +10,7 @@
         <p>{{ attachment.fallback }}</p>
         <a
           v-if="attachment.title_link"
-          class="link"
+          class="fancy-link"
           :href="attachment.title_link"
           target="_blank"
           rel="noopener noreferrer"
