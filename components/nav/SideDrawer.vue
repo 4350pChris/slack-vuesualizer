@@ -13,10 +13,12 @@
       </div>
       <ul class="menu menu-compact">
         <li>
-          <NuxtLink class="capitalize" to="/"> {{ $t("workspace") }} </NuxtLink>
+          <NuxtLink class="capitalize rounded-box" to="/">
+            {{ $t("workspace") }}
+          </NuxtLink>
         </li>
         <li>
-          <NuxtLink class="capitalize" to="/users">
+          <NuxtLink class="capitalize rounded-box" to="/users">
             <AccountIcon />
             {{ $t("user", 2) }}
           </NuxtLink>
@@ -26,7 +28,7 @@
           <span>{{ $t("channel.word", 2) }}</span>
         </li>
         <li v-for="channel in channels" :key="channel.id" class="rounded-box">
-          <NuxtLink :to="`/channels/${channel.name}`">
+          <NuxtLink class="rounded-box" :to="`/channels/${channel.name}`">
             {{ channel.name }}
           </NuxtLink>
         </li>
