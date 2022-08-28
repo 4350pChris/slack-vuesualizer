@@ -25,7 +25,7 @@
             @click="visible = true"
           >
             <TextSearch class="w-6 h-6" />
-            <span class="font-mono">search messages</span>
+            <span class="font-mono">{{ $t("search.messages") }}</span>
             <div class="hidden md:inline-block">
               <kbd class="kbd text-base-content">Ctrl</kbd>
               +
@@ -41,14 +41,16 @@
         >
           <div class="max-w-xl mx-auto h-full flex flex-col" ref="wrapper">
             <div class="mb-2">
-              <h3 class="font-medium text-lg flex-1">
-                Search Results for
+              <i18n-t
+                keypath="search.results"
+                tag="h3"
+                class="capitalize font-medium text-lg flex-1"
+              >
                 <span class="font-bold">"{{ query }}"</span>
-                in
                 <span class="font-bold">{{
-                  allChannels ? "all channels" : route.params.channel
+                  $t("search.channels", allChannels ? 2 : 1)
                 }}</span>
-              </h3>
+              </i18n-t>
               <div class="form-control">
                 <label class="max-w-max label cursor-pointer">
                   <input
@@ -57,8 +59,10 @@
                     class="checkbox"
                     :disabled="!route.params.channel"
                   />
-                  <span class="font-mono label-text whitespace-nowrap ml-4">
-                    Search Everywhere
+                  <span
+                    class="capitalize font-mono label-text whitespace-nowrap ml-4"
+                  >
+                    {{ $t("search.everywhere") }}
                   </span>
                 </label>
               </div>

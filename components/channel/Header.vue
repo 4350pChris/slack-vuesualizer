@@ -14,11 +14,20 @@
         <p class="italic" v-if="channel?.purpose?.value">
           {{ channel.purpose.value }}
         </p>
-        <p class="text-sm leading-relaxed">
-          Created on {{ created.toLocaleDateString() }} by
-          {{ creator?.real_name }}
+        <p class="text-sm leading-relaxed capitalize">
+          {{
+            $t("channel.created", {
+              when: created.toLocaleDateString(),
+              who: creator?.real_name,
+            })
+          }}
         </p>
-        <p class="text-sm">{{ messages }} Messages</p>
+        <p class="text-sm">
+          {{ messages }}
+          <span class="capitalize">
+            {{ $t("messages") }}
+          </span>
+        </p>
       </DisclosurePanel>
     </Transition>
   </Disclosure>
