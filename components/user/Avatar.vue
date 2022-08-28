@@ -1,7 +1,8 @@
 <template>
   <div class="avatar">
     <div v-bind="$attrs">
-      <img :src="src" decoding="async" />
+      <img v-if="src" :src="src" decoding="async" class="w-full h-full" />
+      <PlaceholderIcon v-else class="w-full h-full" />
     </div>
   </div>
 </template>
@@ -13,6 +14,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import PlaceholderIcon from "~icons/mdi/account-question-outline";
+
 interface Props {
   src: string;
 }

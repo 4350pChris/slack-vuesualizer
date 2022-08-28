@@ -15,9 +15,8 @@
     >
     </span>
     <UserAvatar
-      v-if="user"
       class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl"
-      :src="user.profile.image_48"
+      :src="user?.profile?.image_48"
     />
     <div class="flex flex-col flex-1 overflow-hidden col-start-2">
       <p class="font-mono text-sm">
@@ -56,6 +55,11 @@
       class="col-start-2"
       :files="message.files"
     />
+    <MessageAttachments
+      v-if="!simple && message.attachments"
+      class="col-start-2"
+      :attachments="message.attachments"
+    />
   </div>
 </template>
 
@@ -76,6 +80,8 @@ const toTs = useTsToDate();
 const users = useUsers();
 
 const user = computed(() =>
-  users.value.find((u) => u.id === props.message.user)
+  users.value.find(
+    (u) => u.id === props.message.user || u.id === props.message.bot_id
+  )
 );
 </script>

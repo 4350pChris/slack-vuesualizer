@@ -22,6 +22,13 @@ export type File = {
   mode?: string;
 };
 
+export type Attachment = {
+  id: number;
+  color: string;
+  fallback: string;
+  title_link: string;
+};
+
 export type TextLeaf = {
   style?: {
     bold?: boolean;
@@ -98,7 +105,8 @@ export type ApiMessage = {
   channel: string;
   subtype?: string;
   ts: string;
-  user: string;
+  user?: string;
+  bot_id?: string;
   text: string;
   user_profile?: Pick<
     Profile,
@@ -111,6 +119,7 @@ export type ApiMessage = {
   reply_count?: number;
   files?: File[];
   blocks?: Block[];
+  attachments?: Attachment[];
 };
 
 export type Message = Omit<ApiMessage, "replies"> & {
