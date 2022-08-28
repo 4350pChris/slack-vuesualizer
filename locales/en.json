@@ -1,0 +1,14 @@
+{
+  "message": "message | messages",
+  "users": "user | users",
+  "search": {
+    "channels": "@:channel.word {channel} | all @:channel.word",
+    "messages": "search messages",
+    "results": "search results for {0} in {1}",
+    "everywhere": "search everywhere"
+  },
+  "channel": {
+    "word": "channel | channels",
+    "created": "created on {when} by {who}"
+  }
+}

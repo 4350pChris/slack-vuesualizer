@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
+    "@intlify/nuxt3",
   ],
   colorMode: {
     preference: "system",
@@ -29,5 +30,20 @@ export default defineNuxtConfig({
     options: {
       linkExactActiveClass: "active",
     },
+  },
+  i18n: {
+    locales: [
+      {
+        code: "en",
+        iso: "en-US",
+        file: "en.ts",
+      },
+      {
+        code: "de",
+        iso: "de-DE",
+        file: "de.ts",
+      },
+    ],
+    defaultLocale: "en",
   },
 });
