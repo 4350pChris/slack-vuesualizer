@@ -19,7 +19,14 @@
         ]"
         :data-index="index"
       >
-        <MessageItem :message="item" :searched="messageId === item._id" />
+        <div v-if="item.date" class="divider font-mono text-sm px-4">
+          {{ $d(item.date, "short") }}
+        </div>
+        <MessageItem
+          v-else
+          :message="item"
+          :searched="messageId === item._id"
+        />
       </DynamicScrollerItem>
     </template>
   </DynamicScroller>
@@ -31,7 +38,7 @@ import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
 import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
 
 interface Props {
-  messages: Message[];
+  messages: Array<Message | { date: Date }>;
 }
 
 const props = defineProps<Props>();
@@ -44,7 +51,7 @@ const messageId = computed(() => route.query.message);
 onMounted(() => {
   if (messageId.value) {
     const index = props.messages.findIndex(
-      ({ _id }) => _id === messageId.value
+      (message) => "_id" in message && message._id === messageId.value
     );
     setTimeout(() => scroller.value.scrollToItem(index), 0);
   }

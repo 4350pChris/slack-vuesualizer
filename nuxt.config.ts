@@ -35,6 +35,48 @@ export default defineNuxtConfig({
     vueI18n: {
       locale: "en",
       fallbackLocale: "de",
+      datetimeFormats: {
+        de: {
+          short: {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          },
+          long: {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            weekday: "short",
+            hour: "numeric",
+            minute: "numeric",
+          },
+          timeOfDay: {
+            hour: "numeric",
+            minute: "numeric",
+          },
+        },
+        en: {
+          short: {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          },
+          long: {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            weekday: "short",
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          },
+          timeOfDay: {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          },
+        },
+      },
     },
   },
 });

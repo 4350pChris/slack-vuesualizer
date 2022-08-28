@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid row-auto grid-cols-[3rem,minmax(0,1fr),auto] lg:grid-cols-[4rem,minmax(0,1fr),auto] auto-cols-max gap-2 p-2 py-4 min-h-12 relative"
+    class="grid row-auto grid-cols-[3rem,minmax(0,1fr),auto] lg:grid-cols-[4rem,minmax(0,1fr),auto] auto-cols-max gap-2 px-2 py-4 min-h-12 relative"
     :class="{ 'mb-2': message.last_reply, 'animate-blink': searched }"
   >
     <span
@@ -19,11 +19,13 @@
       :src="user?.profile?.image_48"
     />
     <div class="flex flex-col flex-1 overflow-hidden col-start-2">
-      <p class="font-mono text-sm">
-        {{ $d(toTs(message.ts), "long") }}
-      </p>
-      <p class="font-bold mb-2" v-if="user">
-        {{ user.profile.display_name || user.real_name }}
+      <p class="mb-2">
+        <span class="font-bold mr-4" v-if="user">
+          {{ user.profile.display_name || user.real_name }}
+        </span>
+        <span class="font-mono text-sm">
+          {{ $d(toTs(message.ts), "timeOfDay") }}
+        </span>
       </p>
       <template v-if="message.blocks?.length">
         <MessageBlock
