@@ -31,19 +31,10 @@ export default defineNuxtConfig({
       linkExactActiveClass: "active",
     },
   },
-  i18n: {
-    locales: [
-      {
-        code: "en",
-        iso: "en-US",
-        file: "en.ts",
-      },
-      {
-        code: "de",
-        iso: "de-DE",
-        file: "de.ts",
-      },
-    ],
-    defaultLocale: "en",
+  intlify: {
+    vueI18n: {
+      locale: "en",
+      fallbackLocale: "de",
+    },
   },
 });

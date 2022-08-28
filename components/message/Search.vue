@@ -6,7 +6,7 @@
           <div v-if="visible" class="relative w-full">
             <input
               type="text"
-              placeholder="Search messages"
+              :placeholder="$t('search.messages')"
               class="w-full input font-mono pr-14"
               v-model="query"
               ref="input"
@@ -14,7 +14,7 @@
             <button
               class="btn btn-circle btn-ghost absolute right-0"
               @click="visible = false"
-              title="close"
+              :title="$t('close')"
             >
               <CloseIcon class="w-6 h-6" />
             </button>
@@ -47,8 +47,12 @@
                 class="capitalize font-medium text-lg flex-1"
               >
                 <span class="font-bold">"{{ query }}"</span>
-                <span class="font-bold">{{
-                  $t("search.channels", allChannels ? 2 : 1)
+                <span>{{
+                  $t(
+                    "search.channels",
+                    [route.params.channel],
+                    allChannels ? 2 : 1
+                  )
                 }}</span>
               </i18n-t>
               <div class="form-control">

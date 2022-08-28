@@ -1,9 +1,9 @@
 <template>
   <section class="flex flex-col gap-4 pt-4 h-full">
-    <h1 class="text-xl font-bold">Users</h1>
+    <h1 class="text-xl font-bold">{{ $t("user", 2) }}</h1>
     <input
       type="text"
-      placeholder="Search users"
+      :placeholder="$t('search.users')"
       class="flex-none w-full max-w-lg input input-bordered"
       v-model="query"
     />

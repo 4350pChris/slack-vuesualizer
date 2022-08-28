@@ -11,6 +11,10 @@
       <div class="flex justify-center grow">
         <MessageSearch v-if="!simple" />
       </div>
+      <div class="hidden md:flex gap-4">
+        <NavLocaleChanger />
+        <NavThemeToggle />
+      </div>
     </nav>
   </div>
 </template>

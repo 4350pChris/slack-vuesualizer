@@ -13,7 +13,7 @@
         </a>
       </li>
     </ul>
-    <p class="font-medium" v-else>No results found.</p>
+    <p class="capitalize font-medium" v-else>{{ $t("noresults") }}</p>
   </div>
 </template>
 
