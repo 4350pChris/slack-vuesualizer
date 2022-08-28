@@ -1,6 +1,10 @@
 <template>
   <section class="flex flex-col h-full w-full max-w-xl">
-    <ChannelHeader class="my-2 md:my-4" :channel="channel" />
+    <ChannelHeader
+      class="my-2 md:my-4"
+      :channel="channel"
+      :messages="messages.length"
+    />
     <div v-if="pending" class="h-full w-full flex justify-center">
       <LoadingSpinner class="w-12 h-12" />
     </div>

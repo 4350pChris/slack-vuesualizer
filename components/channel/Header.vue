@@ -18,6 +18,7 @@
           Created on {{ created.toLocaleDateString() }} by
           {{ creator?.real_name }}
         </p>
+        <p class="text-sm">{{ messages }} Messages</p>
       </DisclosurePanel>
     </Transition>
   </Disclosure>
@@ -30,6 +31,7 @@ import type { Channel } from "~/types/Channel";
 
 interface Props {
   channel: Channel | null;
+  messages: number;
 }
 
 const users = useUsers();
