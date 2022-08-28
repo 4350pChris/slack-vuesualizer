@@ -10,5 +10,11 @@
 <script lang="ts" setup>
 useHead({
   title: "Slack Vuesualizer",
+  meta: [
+    {
+      name: "format-detection",
+      content: "telephone=no",
+    },
+  ],
 });
 </script>

@@ -25,7 +25,7 @@
         <p class="text-sm">
           {{ messages }}
           <span class="capitalize">
-            {{ $t("messages") }}
+            {{ $t("message", 2) }}
           </span>
         </p>
       </DisclosurePanel>
