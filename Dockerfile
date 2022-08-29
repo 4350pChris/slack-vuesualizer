@@ -1,30 +1,25 @@
-FROM node:current-alpine as build
+FROM node:16-alpine
 
 ARG MODE=production
+ARG PORT=3000
+
+ENV NUXT_HOST=0.0.0.0
+ENV NUXT_PORT=${PORT}
 
 WORKDIR /app
 
 RUN rm -rf /var/cache/apk/*
+
 COPY package*.json ./
-RUN npm install
+
+RUN npm ci && npm cache clean --force
+
 COPY . .
-RUN npm run build
 
-FROM node:current-alpine as serve
-
-ARG MODE=staging
 ENV NODE_ENV=${MODE}
 
-WORKDIR /app
+RUN npm run build
 
-COPY package*.json ./
+EXPOSE ${PORT}
 
-ENV NODE_ENV production
-RUN npm install
-
-COPY --from=build /app/.output ./.output
-COPY --from=build /app/.nuxt ./.nuxt
-
-EXPOSE 3000
-
-CMD ["node", "./.output/server/index.mjs"]
+CMD ["npm", "run", "preview"]
