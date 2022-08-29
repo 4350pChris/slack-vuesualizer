@@ -19,7 +19,7 @@
         ]"
         :data-index="index"
       >
-        <div v-if="item.date" class="divider font-mono text-sm px-4">
+        <div v-if="item.date" class="divider font-mono text-sm my-2 px-4">
           {{ $d(item.date, "short") }}
         </div>
         <MessageItem
