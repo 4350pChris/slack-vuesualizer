@@ -22,7 +22,7 @@
     "autoprefixer": "^10.4.7",
     "daisyui": "^2.20.0",
     "nuxt": "^3.0.0-rc.8",
-    "unplugin-icons": "^0.14.8"
+    "unplugin-icons": "^0.14.9"
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.7",
