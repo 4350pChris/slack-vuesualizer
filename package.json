@@ -12,7 +12,7 @@
     "@iconify-json/logos": "^1.1.14",
     "@iconify-json/mdi": "^1.1.31",
     "@iconify-json/twemoji": "^1.1.5",
-    "@intlify/nuxt3": "^0.2.3",
+    "@intlify/nuxt3": "^0.2.4",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/tailwindcss": "^5.3.2",
     "@tailwindcss/typography": "^0.5.4",
@@ -20,7 +20,7 @@
     "@types/emoji-js": "^3.5.0",
     "@types/formidable": "^2.0.5",
     "autoprefixer": "^10.4.7",
-    "daisyui": "^2.20.0",
+    "daisyui": "^2.28.0",
     "nuxt": "^3.0.0-rc.8",
     "unplugin-icons": "^0.14.8"
   },
