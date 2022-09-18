@@ -15,7 +15,7 @@
     "@intlify/nuxt3": "^0.2.4",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/tailwindcss": "^5.3.2",
-    "@tailwindcss/typography": "^0.5.4",
+    "@tailwindcss/typography": "^0.5.7",
     "@types/adm-zip": "^0.5.0",
     "@types/emoji-js": "^3.5.0",
     "@types/formidable": "^2.0.5",
@@ -26,12 +26,12 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.7",
-    "@vueuse/core": "^9.1.1",
+    "@vueuse/core": "^9.2.0",
     "@vueuse/nuxt": "^9.1.1",
     "adm-zip": "^0.5.9",
     "emoji-js": "^3.7.0",
     "formidable": "^2.0.1",
-    "mongodb": "^4.9.0",
+    "mongodb": "^4.9.1",
     "vue-virtual-scroller": "^2.0.0-alpha.1"
   }
 }
