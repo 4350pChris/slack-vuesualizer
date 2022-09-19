@@ -7,9 +7,14 @@
       class="bg-base-100 text-base-content w-80 px-2 py-4"
       @click="toggle.click()"
     >
-      <div class="md:hidden mb-4 flex justify-evenly gap-4" @click.stop>
-        <NavLocaleChanger />
-        <NavThemeToggle />
+      <div class="md:hidden mb-4 gap-2" @click.stop>
+        <div class="flex justify-center">
+          <NavToken />
+        </div>
+        <div class="flex justify-evenly gap-4">
+          <NavLocaleChanger />
+          <NavThemeToggle />
+        </div>
       </div>
       <ul class="menu menu-compact">
         <li>

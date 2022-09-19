@@ -12,6 +12,7 @@
         <MessageSearch v-if="!simple" />
       </div>
       <div class="hidden md:flex gap-4">
+        <NavToken />
         <NavLocaleChanger />
         <NavThemeToggle />
       </div>

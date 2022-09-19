@@ -23,8 +23,12 @@
     "done": "Dein Code ist {0}. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
     "button": "Export hochladen (.zip)"
   },
-  "token": "dein geheimer Code",
-  "invalidToken": "ungültiger Code",
+  "token": {
+    "yours": "dein geheimer Code",
+    "invalid": "ungültiger Code",
+    "copy": "Code kopieren",
+    "copied": "Code wurde kopiert!"
+  },
   "workspace": {
     "text": "Workspace",
     "open": "Workspace öffnen",

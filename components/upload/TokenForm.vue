@@ -2,7 +2,7 @@
   <form class="form-control" @submit.prevent="handleTokenSubmit">
     <label for="token" class="label">
       <span class="label-text uppercase">
-        {{ $t("token") }}
+        {{ $t("token.yours") }}
       </span>
     </label>
     <input
@@ -14,7 +14,7 @@
     />
     <label class="label">
       <span class="label-text text-error" v-if="tokenError">{{
-        $t("invalidToken")
+        $t("token.invalid")
       }}</span>
     </label>
     <button type="submit" class="btn btn-primary" :disabled="!tokenInput">

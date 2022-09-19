@@ -23,8 +23,12 @@
     "done": "Your token is {0}. You may share it with others to give them access to your Slack archive.",
     "button": "upload export (.zip)"
   },
-  "token": "your secret token",
-  "invalidToken": "invalid token",
+  "token": {
+    "yours": "your secret token",
+    "invalid": "invalid token",
+    "copy": "copy token",
+    "copied": "token copied to clipboard!"
+  },
   "workspace": {
     "word": "workspace",
     "open": "open workspace",
