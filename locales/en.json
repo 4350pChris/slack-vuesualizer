@@ -1,5 +1,4 @@
 {
-  "workspace": "workspace",
   "message": "message | messages",
   "user": "user | users",
   "search": {
@@ -26,5 +25,9 @@
   },
   "token": "your secret token",
   "invalidToken": "invalid token",
-  "openWorkspace": "open workspace"
+  "workspace": {
+    "word": "workspace",
+    "open": "open workspace",
+    "yours": "your workspace contains"
+  }
 }

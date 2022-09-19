@@ -18,7 +18,7 @@
       }}</span>
     </label>
     <button type="submit" class="btn btn-primary" :disabled="!tokenInput">
-      {{ $t("openWorkspace") }}
+      {{ $t("workspace.open") }}
     </button>
   </form>
 </template>

@@ -14,7 +14,7 @@
       <ul class="menu menu-compact">
         <li>
           <NuxtLink class="capitalize rounded-box" to="/">
-            {{ $t("workspace") }}
+            {{ $t("workspace.word") }}
           </NuxtLink>
         </li>
         <li>
