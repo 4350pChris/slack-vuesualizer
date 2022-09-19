@@ -3,7 +3,7 @@
     <ChannelHeader
       class="my-2 md:my-4"
       :channel="channel"
-      :messages="messages.length"
+      :messages="messages?.length"
     />
     <div v-if="pending" class="h-full w-full flex justify-center">
       <LoadingSpinner class="w-12 h-12" />
@@ -23,6 +23,7 @@ const { data: channel } = await useFetch<Channel>(
   "/api/channels/" + route.params.channel,
   {
     pick: ["name", "purpose", "creator", "created"],
+    headers: useRequestHeaders(["cookie"]),
     initialCache: false,
   }
 );
@@ -30,6 +31,7 @@ const { data: channel } = await useFetch<Channel>(
 const { data: messages, pending } = await useLazyFetch<Message[]>(
   `/api/channels/${route.params.channel}/messages`,
   {
+    headers: useRequestHeaders(["cookie"]),
     initialCache: false,
   }
 );

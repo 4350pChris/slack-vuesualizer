@@ -18,5 +18,13 @@
   "close": "close",
   "language": "language",
   "thisLanguage": "english",
-  "switchTheme": "switch theme"
+  "switchTheme": "switch theme",
+  "upload": {
+    "inProgress": "File is uploading. Do not worry, this may take a couple of seconds.",
+    "done": "Your token is {0}. You may share it with others to give them access to your Slack archive.",
+    "button": "upload export (.zip)"
+  },
+  "token": "your secret token",
+  "invalidToken": "invalid token",
+  "openWorkspace": "open workspace"
 }

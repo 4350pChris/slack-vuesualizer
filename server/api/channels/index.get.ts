@@ -1,8 +1,8 @@
 import mongo from "~/server/utils/mongo";
 import { Channel } from "~~/types/Channel";
 
-export default defineEventHandler(async () => {
-  const db = await mongo();
+export default defineEventHandler(async (event) => {
+  const db = await mongo(event.context.mongouuid);
   const channels = await db
     .collection<Channel>("channels")
     .find()

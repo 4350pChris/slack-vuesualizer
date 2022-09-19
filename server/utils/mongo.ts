@@ -1,17 +1,16 @@
 import { type Db, MongoClient } from "mongodb";
 
-let db: Db | null = null;
+let client: MongoClient | null = null;
 
-export default async function () {
-  if (db === null) {
+export default async function (dbUuid: string): Promise<Db> {
+  if (client === null) {
     const uri = useRuntimeConfig().mongodbUri;
     try {
-      const client = await MongoClient.connect(uri);
-      db = client.db("slack");
+      client = await MongoClient.connect(uri);
     } catch (e) {
       console.error("Failed to connect to mongo", e);
       throw e;
     }
   }
-  return db;
+  return client.db(dbUuid);
 }

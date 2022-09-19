@@ -14,19 +14,23 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+  middleware: ["auth"],
+});
+
 const users = useUsers();
 
-const { data: fetchedUsers } = await useFetch("/api/users");
+const { data: fetchedUsers } = await useFetch("/api/users", {
+  headers: useRequestHeaders(["cookie"]),
+});
 
 watchEffect(() => (users.value = fetchedUsers.value));
 
-const { data } = await useFetch("/api/channels");
-
-if (data.value.length === 0) {
-  await navigateTo("/upload");
-}
+const { data: fetchedChannels } = await useFetch("/api/channels", {
+  headers: useRequestHeaders(["cookie"]),
+});
 
 const channels = useChannels();
 
-watchEffect(() => (channels.value = data.value));
+watchEffect(() => (channels.value = fetchedChannels.value));
 </script>

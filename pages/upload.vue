@@ -3,26 +3,32 @@
     <div class="hero-content text-center flex-col">
       <template v-if="uploading">
         <LoadingSpinner class="h-20 w-20" />
-        <p>
-          File is uploading. Do not worry, this may take a couple of seconds.
-          <br />
-          You will be redirected when it's finished.
-        </p>
+        <p>{{ $t("upload.inProgress") }}</p>
+      </template>
+      <template v-else-if="dbToken">
+        <i18n-t keypath="upload.done" tag="p">
+          <code class="block text-lg">{{ dbToken }}</code>
+        </i18n-t>
       </template>
       <template v-else>
-        <CloudUpload class="h-40 w-40" />
-        <div class="text-lg font-bold font-mono">
-          <span>upload export (.zip)</span>
-          <br />
-          <span>warning: this will clear any old data that was imported</span>
-        </div>
-        <input
-          type="file"
-          class="hidden"
-          id="upload"
-          accept="application/zip"
-          @change="file = ($event.target as unknown as { 'files': FileList }).files[0]"
-        />
+        <UploadTokenForm />
+        <div class="divider">OR</div>
+        <form class="form-control">
+          <label for="file" class="cursor-pointer">
+            <CloudUpload class="h-40 w-40 mx-auto" />
+            <span class="text-lg font-bold font-mono">
+              {{ $t("upload.button") }}
+            </span>
+          </label>
+          <input
+            type="file"
+            class="hidden"
+            id="file"
+            name="file"
+            accept="application/zip"
+            @change="handleUpload"
+          />
+        </form>
       </template>
     </div>
   </label>
@@ -39,18 +45,22 @@ definePageMeta({
 const uploading = ref(false);
 
 const file = ref<File>();
+const dbToken = ref<string>();
+
+const handleUpload = (event: Event) => {
+  file.value = (event.target as unknown as { files: FileList }).files[0];
+};
 
 watch(file, async (f) => {
   uploading.value = true;
   try {
     const fd = new FormData();
     fd.append("file", f);
-    await $fetch("/api/import", {
+    const { uuid } = await $fetch("/api/import", {
       method: "POST",
       body: fd,
     });
-
-    await navigateTo("/");
+    dbToken.value = uuid;
   } catch (e) {
     throw createError({ cause: e, message: "Error during file upload." });
   } finally {

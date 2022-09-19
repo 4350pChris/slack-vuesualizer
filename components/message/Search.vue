@@ -115,6 +115,7 @@ const search = useDebounceFn(async () => {
   try {
     results.value = await $fetch("/api/messages/search", {
       params,
+      headers: useRequestHeaders(["cookie"]),
     });
   } catch (e) {
     console.error(e);

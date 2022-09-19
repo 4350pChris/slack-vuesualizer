@@ -6,5 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-const { data: count } = await useFetch("/api/messages/count");
+const { data: count } = await useFetch("/api/messages/count", {
+  headers: useRequestHeaders(["cookie"]),
+});
 </script>
