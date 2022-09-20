@@ -1,4 +1,4 @@
-import mongo from "~/server/utils/mongo";
+import { mongo } from "~/server/utils/mongo";
 import { Channel } from "~~/types/Channel";
 
 export default defineEventHandler(async (event) => {

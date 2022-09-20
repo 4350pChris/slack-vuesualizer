@@ -1,4 +1,4 @@
-import mongo from "~/server/utils/mongo";
+import { mongo } from "~/server/utils/mongo";
 import type { Filter } from "mongodb";
 import type { Message } from "~/types/Message";
 

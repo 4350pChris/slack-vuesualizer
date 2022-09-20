@@ -1,4 +1,4 @@
-import mongo from "~/server/utils/mongo";
+import { mongo } from "~/server/utils/mongo";
 import normalizeMessages from "~/server/utils/normalizeMessages";
 import type { Message } from "~/types/Message";
 
