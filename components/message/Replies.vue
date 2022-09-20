@@ -1,6 +1,8 @@
 <template>
   <div class="flex items-center gap-4 text-left divider !h-10 !m-0">
-    <span class="font-bold">Replies ({{ replyCount }})</span>
+    <span class="font-bold"
+      >{{ $t("reply", replyCount) }} ({{ replyCount }})</span
+    >
     <div class="flex-shrink-0 avatar-group -space-x-4">
       <UserAvatar
         v-for="user in users.slice(0, 3)"

@@ -1,5 +1,6 @@
 {
   "message": "message | messages",
+  "reply": "reply | replies",
   "user": "user | users",
   "search": {
     "channels": "@:channel.word {0} | all @:channel.word",
@@ -33,5 +34,6 @@
     "word": "workspace",
     "open": "open workspace",
     "yours": "your workspace contains"
-  }
+  },
+  "or": "or"
 }

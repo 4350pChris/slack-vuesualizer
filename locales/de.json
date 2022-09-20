@@ -1,5 +1,6 @@
 {
   "message": "Nachricht | Nachrichten",
+  "reply": "Antwort | Antworten",
   "user": "Benutzer | Benutzer",
   "search": {
     "channels": "@:channel.word {0} | allen @:channel.word",
@@ -33,5 +34,6 @@
     "text": "Workspace",
     "open": "Workspace öffnen",
     "yours": "dein Workspace hat"
-  }
+  },
+  "or": "oder"
 }
