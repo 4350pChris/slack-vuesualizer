@@ -1,6 +1,5 @@
 <template>
   <section class="flex flex-col gap-4 pt-4 h-full">
-    <h1 class="text-xl font-bold">{{ $t("user", 2) }}</h1>
     <input
       type="text"
       :placeholder="$t('search.users')"
@@ -14,6 +13,9 @@
     >
       <li v-for="user in results" :key="user.id">
         <UserInfo :user="user" />
+      </li>
+      <li v-if="!results.length" key="empty">
+        {{ $t("noresults") }}
       </li>
     </TransitionGroup>
   </section>
