@@ -20,6 +20,7 @@
   "thisLanguage": "deutsch",
   "switchTheme": "Theme ändern",
   "upload": {
+    "word": "Import",
     "inProgress": "Datei wird hochgeladen. Das könnte eine Minute dauern....",
     "done": "Dein Code ist {0}. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
     "button": "Export hochladen (.zip)"
@@ -31,9 +32,9 @@
     "copied": "Code wurde kopiert!"
   },
   "workspace": {
-    "text": "Workspace",
+    "word": "Workspace",
     "open": "Workspace öffnen",
-    "yours": "dein Workspace hat",
+    "yours": "dein Workspace enthält",
     "leave": "Workspace verlassen"
   },
   "or": "oder"

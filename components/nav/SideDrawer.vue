@@ -16,51 +16,8 @@
           <NavThemeToggle />
         </div>
       </div>
-      <ul class="menu menu-compact">
-        <li>
-          <NuxtLink class="capitalize rounded-box" to="/">
-            {{ $t("workspace.word") }}
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink class="capitalize rounded-box" to="/users">
-            <AccountIcon />
-            {{ $t("user", 2) }}
-          </NuxtLink>
-        </li>
-        <li></li>
-        <li class="menu-title capitalize">
-          <span>{{ $t("channel.word", 2) }}</span>
-        </li>
-        <li v-for="channel in channels" :key="channel.id" class="rounded-box">
-          <NuxtLink class="rounded-box" :to="`/channels/${channel.name}`">
-            {{ channel.name }}
-          </NuxtLink>
-        </li>
-      </ul>
-      <footer class="flex flex-col items-center gap-4 p-2 mt-4">
-        <div>
-          <button @click="leave" class="btn btn-outline btn-error">
-            {{ $t("workspace.leave") }}
-          </button>
-        </div>
-        <p class="flex items-center gap-2">
-          <SlackIcon class="w-8 h-8" />
-          <span class="font-medium text-2xl">Vuesualizer</span>
-        </p>
-        <div>
-          <a
-            class="btn btn-ghost btn-block gap-4"
-            href="https://github.com/4350pChris/slack-vuesualizer"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="GitHub"
-          >
-            <GithubIcon class="w-6 h-6" />
-            <span>{{ $t("github") }}</span>
-          </a>
-        </div>
-      </footer>
+      <NavMenu :channels="channels" />
+      <NavFooter class="mt-8" />
       <div
         class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"
       ></div>
@@ -69,18 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import GithubIcon from "~icons/line-md/github-loop";
-import AccountIcon from "~icons/mdi/account";
-import SlackIcon from "~icons/logos/slack-icon";
-
 const toggle = ref<HTMLElement>(null);
 
 const channels = useChannels();
-
-const token = useCookie("mongouuid");
-
-const leave = async () => {
-  token.value = undefined;
-  await navigateTo("/");
-};
 </script>
