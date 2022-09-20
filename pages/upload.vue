@@ -8,7 +8,7 @@
       <div class="card flex-shrink-0 w-full max-w-sm md:shadow-xl bg-base-100">
         <div class="card-body">
           <template v-if="uploading">
-            <LoadingSpinner class="h-20 w-20" />
+            <LoadingSpinner class="h-20 w-20 mx-auto" />
             <p>{{ $t("upload.inProgress") }}</p>
           </template>
           <template v-else-if="dbToken">
