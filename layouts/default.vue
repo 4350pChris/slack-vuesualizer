@@ -14,10 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-definePageMeta({
-  middleware: ["auth"],
-});
-
 const users = useUsers();
 
 const { data: fetchedUsers } = await useFetch("/api/users", {
