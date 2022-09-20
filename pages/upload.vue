@@ -1,11 +1,11 @@
 <template>
-  <div class="hero min-h-screen">
+  <div class="hero h-full">
     <div class="hero-content text-center flex-col lg:flex-row-reverse">
-      <h1 class="flex flex-col justify-center items-center gap-2">
+      <h1 class="flex flex-col justify-center items-center gap-2 lg:ml-4">
         <SlackIcon class="w-32 h-32" />
         <span class="font-medium text-5xl">Vuesualizer</span>
       </h1>
-      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div class="card flex-shrink-0 w-full max-w-sm md:shadow-2xl bg-base-100">
         <div class="card-body">
           <template v-if="uploading">
             <LoadingSpinner class="h-20 w-20" />
@@ -21,7 +21,7 @@
             <div class="divider uppercase">{{ $t("or") }}</div>
             <div class="form-control">
               <label for="file" class="cursor-pointer">
-                <CloudUpload class="h-40 w-40 mx-auto" />
+                <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
                 <span class="text-lg font-bold font-mono">
                   {{ $t("upload.button") }}
                 </span>
