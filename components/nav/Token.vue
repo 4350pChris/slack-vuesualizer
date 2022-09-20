@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-ghost" @click="copy()">
+  <button v-if="token" class="btn btn-ghost" @click="copy()">
     <Transition name="fade" mode="out-in">
       <span v-if="copied">
         {{ $t("token.copied") }}
