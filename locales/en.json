@@ -33,7 +33,8 @@
   "workspace": {
     "word": "workspace",
     "open": "open workspace",
-    "yours": "your workspace contains"
+    "yours": "your workspace contains",
+    "leave": "leave workspace"
   },
   "or": "or"
 }

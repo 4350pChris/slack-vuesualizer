@@ -33,7 +33,8 @@
   "workspace": {
     "text": "Workspace",
     "open": "Workspace öffnen",
-    "yours": "dein Workspace hat"
+    "yours": "dein Workspace hat",
+    "leave": "Workspace verlassen"
   },
   "or": "oder"
 }

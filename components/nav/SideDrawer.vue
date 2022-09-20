@@ -38,17 +38,19 @@
           </NuxtLink>
         </li>
       </ul>
-      <div
-        class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"
-      ></div>
-      <footer class="flex flex-col items-center gap-2 p-2">
+      <footer class="flex flex-col items-center gap-4 p-2 mt-4">
+        <div>
+          <button @click="leave" class="btn btn-outline btn-error">
+            {{ $t("workspace.leave") }}
+          </button>
+        </div>
         <p class="flex items-center gap-2">
           <SlackIcon class="w-8 h-8" />
           <span class="font-medium text-2xl">Vuesualizer</span>
         </p>
         <div>
           <a
-            class="btn btn-ghost btn-block gap-4 my-2"
+            class="btn btn-ghost btn-block gap-4"
             href="https://github.com/4350pChris/slack-vuesualizer"
             target="_blank"
             rel="noopener noreferrer"
@@ -59,6 +61,9 @@
           </a>
         </div>
       </footer>
+      <div
+        class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"
+      ></div>
     </aside>
   </div>
 </template>
@@ -71,4 +76,11 @@ import SlackIcon from "~icons/logos/slack-icon";
 const toggle = ref<HTMLElement>(null);
 
 const channels = useChannels();
+
+const token = useCookie("mongouuid");
+
+const leave = async () => {
+  token.value = undefined;
+  await navigateTo("/");
+};
 </script>
