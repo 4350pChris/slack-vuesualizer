@@ -1,31 +1,24 @@
 <template>
   <div class="hero">
     <div class="hero-content text-center flex-col lg:flex-row-reverse">
-      <h1 class="flex flex-col justify-center items-center gap-2 lg:ml-4">
+      <h1
+        class="flex flex-col justify-center items-center gap-2 lg:ml-4"
+        v-if="!stepper"
+      >
         <SlackIcon class="w-32 h-32" />
         <span class="font-medium text-5xl">Vuesualizer</span>
       </h1>
-      <div class="card flex-shrink-0 w-full max-w-sm md:shadow-xl bg-base-100">
+      <div class="card flex-shrink-0 w-full max-w-xl md:shadow-xl bg-base-100">
         <div class="card-body">
-          <template v-if="token">
-            <p class="text-lg font-bold">{{ $t("upload.success") }}</p>
-            <i18n-t keypath="upload.done" tag="p">
-              <code class="block font-medium">{{ token }}</code>
-            </i18n-t>
-            <NuxtLink class="btn btn-primary btn-outline" to="/">
-              {{ $t("workspace.open") }}
-            </NuxtLink>
+          <template v-if="!stepper">
+            <UploadTokenForm />
+            <div class="divider uppercase">{{ $t("or") }}</div>
+            <button class="btn btn-outline gap-2" @click="stepper = true">
+              <UploadIcon class="w-6 h-6" />
+              {{ $t("upload.button") }}
+            </button>
           </template>
-          <template v-else>
-            <template v-if="!uploading">
-              <UploadTokenForm />
-              <div class="divider uppercase">{{ $t("or") }}</div>
-            </template>
-            <FileForm
-              v-model:uploading="uploading"
-              @uploaded="token = $event"
-            />
-          </template>
+          <UploadStepper v-else @abort="stepper = false" />
         </div>
       </div>
     </div>
@@ -34,13 +27,11 @@
 
 <script lang="ts" setup>
 import SlackIcon from "~icons/logos/slack-icon";
-import FileForm from "~~/components/upload/FileForm.vue";
+import UploadIcon from "~icons/mdi/upload";
 
 definePageMeta({
   layout: "upload",
 });
 
-const token = ref<string>("");
-
-const uploading = ref(false);
+const stepper = ref(false);
 </script>

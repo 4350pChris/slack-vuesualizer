@@ -38,5 +38,12 @@
     "yours": "dein Workspace enthält",
     "leave": "Workspace verlassen"
   },
-  "or": "oder"
+  "or": "oder",
+  "abort": "abbrechen",
+  "next": "weiter",
+  "back": "zurück",
+  "stepper": {
+    "choose": "Dateiauswahl",
+    "channels": "Channelauswahl"
+  }
 }

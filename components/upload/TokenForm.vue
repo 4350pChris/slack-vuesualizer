@@ -5,21 +5,20 @@
         <span class="label-text text-lg font-semibold capitalize">
           {{ $t("token.yours") }}
         </span>
+        <span class="label-text text-error" v-if="tokenError">
+          {{ $t("token.invalid") }}
+        </span>
       </label>
       <input
         type="text"
         id="token"
         name="token"
         class="input input-bordered"
+        :class="{ 'input-error': tokenError }"
         v-model="tokenInput"
       />
-      <label class="label">
-        <span class="label-text text-error" v-if="tokenError">
-          {{ $t("token.invalid") }}
-        </span>
-      </label>
     </div>
-    <div class="form-control mt-2">
+    <div class="form-control mt-4">
       <button
         type="submit"
         class="btn btn-primary btn-outline"
@@ -44,4 +43,6 @@ const handleTokenSubmit = async () => {
     tokenError.value = true;
   }
 };
+
+watch(tokenInput, () => (tokenError.value = false));
 </script>

@@ -38,5 +38,12 @@
     "yours": "your workspace contains",
     "leave": "leave workspace"
   },
-  "or": "or"
+  "or": "or",
+  "abort": "abort",
+  "next": "next",
+  "back": "back",
+  "stepper": {
+    "choose": "choose file",
+    "channels": "select channels"
+  }
 }

@@ -1,23 +1,26 @@
 <template>
-  <template v-if="uploading">
-    <LoadingSpinner class="h-20 w-20 mx-auto" />
-    <p>{{ $t("upload.inProgress") }}</p>
-  </template>
-  <div class="form-control" v-else>
-    <label for="file" class="cursor-pointer">
-      <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
-      <span class="text-lg font-bold font-mono">
-        {{ $t("upload.button") }}
-      </span>
-    </label>
-    <input
-      type="file"
-      class="hidden"
-      id="file"
-      name="file"
-      accept="application/zip"
-      @change="handleUpload"
-    />
+  <div>
+    <template v-if="uploading">
+      <LoadingSpinner class="h-20 w-20 mx-auto my-2" />
+      <p>{{ $t("upload.inProgress") }}</p>
+    </template>
+    <div class="form-control" v-else>
+      <label for="file" class="cursor-pointer">
+        <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
+        <span class="text-lg font-bold font-mono">
+          {{ $t("upload.button") }}
+        </span>
+      </label>
+      <input
+        type="file"
+        class="hidden"
+        id="file"
+        name="file"
+        accept="application/zip"
+        @change="handleUpload"
+      />
+    </div>
+    <code v-if="file" class="my-2">{{ file.name }}</code>
   </div>
 </template>
 
@@ -25,20 +28,13 @@
 import LoadingSpinner from "~icons/line-md/loading-alt-loop";
 import CloudUpload from "~icons/mdi/cloud-upload-outline";
 
-interface Props {
-  uploading: boolean;
-}
-
 interface Emits {
-  (event: "uploaded", payload: string): void;
-  (event: "update:uploading", payload: boolean): void;
+  (event: "uploaded", channels: string[]): void;
 }
 
 const emit = defineEmits<Emits>();
-const props = defineProps<Props>();
 
-const uploading = useVModel(props, "uploading", emit);
-
+const uploading = ref(false);
 const file = ref<File>();
 
 const handleUpload = (event: Event) => {
@@ -48,15 +44,13 @@ const handleUpload = (event: Event) => {
 watch(file, async (f) => {
   uploading.value = true;
   try {
-    const presignedUrl = await $fetch(`/api/import/presign/${f.name}`);
+    const presignedUrl = await $fetch(`/api/import/${f.name}/presign`);
     await $fetch(presignedUrl, {
       method: "PUT",
       body: f,
     });
-    const { uuid } = await $fetch(`/api/import/${f.name}`, {
-      method: "POST",
-    });
-    emit("uploaded", uuid);
+    const { channels } = await $fetch(`/api/import/${f.name}/read`);
+    emit("uploaded", channels);
   } catch (e) {
     throw createError({ cause: e, message: "Error during file upload." });
   } finally {
