@@ -63,8 +63,11 @@ onMounted(async () => {
     acc[bucket].push(channel);
     return acc;
   }, [] as string[][]);
-  for (const chunk of chunks) {
-    await Promise.all(chunk.map(uploadChannel));
+  // for (const chunk of chunks) {
+  //   await Promise.all(chunk.map(uploadChannel));
+  // }
+  for (const channel of props.channels) {
+    await uploadChannel(channel);
   }
 });
 
