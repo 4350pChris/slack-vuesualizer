@@ -6,7 +6,10 @@ export default defineNuxtConfig({
   css: ["assets/css/index.css"],
   runtimeConfig: {
     mongodbUri: "",
-    s3Uri: "",
+    s3Url: "",
+    s3Port: "",
+    s3Region: "",
+    s3UseSsl: "",
     s3AccessKey: "",
     s3SecretKey: "",
     s3BucketName: "",
