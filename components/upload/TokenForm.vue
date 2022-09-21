@@ -20,7 +20,11 @@
       </label>
     </div>
     <div class="form-control mt-2">
-      <button type="submit" class="btn btn-primary" :disabled="!tokenInput">
+      <button
+        type="submit"
+        class="btn btn-primary btn-outline"
+        :disabled="!tokenInput"
+      >
         {{ $t("workspace.open") }}
       </button>
     </div>

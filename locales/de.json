@@ -22,6 +22,7 @@
   "upload": {
     "word": "Import",
     "inProgress": "Datei wird hochgeladen. Das könnte eine Minute dauern....",
+    "success": "Import erfolgreich!",
     "done": "Dein Code ist {0}. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
     "button": "Export hochladen (.zip)"
   },
