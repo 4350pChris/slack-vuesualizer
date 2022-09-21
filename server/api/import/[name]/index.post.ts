@@ -6,17 +6,18 @@ import { processZip, type Processor } from "~~/server/utils/zip";
 
 const makeFileProcessor =
   (db: Db): Processor =>
-  async (name, type, content) => {
+  async (entry) => {
     if (
       !(
-        type === "File" &&
-        name.endsWith(".json") &&
-        name.split("/").length === 1
+        entry.type === "File" &&
+        entry.path.endsWith(".json") &&
+        entry.path.split("/").length === 1
       )
     ) {
       return;
     }
-    const collection = name.split(".json")[0];
+    const collection = entry.path.split(".json")[0];
+    const content = await entry.buffer();
     const doc = JSON.parse(content.toString());
     await db.collection(collection).insertMany(doc);
   };

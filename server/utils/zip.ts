@@ -1,11 +1,7 @@
 import { Parse, type Entry } from "unzipper";
 import { storage } from "~~/server/utils/storage";
 
-export type Processor = (
-  name: string,
-  type: "Directory" | "File",
-  content: Buffer
-) => void | Promise<void>;
+export type Processor = (entry: Entry) => void | Promise<void>;
 
 export const processZip = async (name: string, cb: Processor) => {
   const { s3BucketName } = useRuntimeConfig();
@@ -16,10 +12,7 @@ export const processZip = async (name: string, cb: Processor) => {
 
   for await (const e of zip) {
     const entry = e as Entry;
-    const fileName = entry.path;
-    const fileType = entry.type as "Directory" | "File";
-    const content = await entry.buffer();
-    await cb(fileName, fileType, content);
+    await cb(entry);
     entry.autodrain();
   }
 

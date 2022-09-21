@@ -5,11 +5,11 @@ export default defineEventHandler(async (event) => {
 
   const channels: string[] = [];
 
-  await processZip(name, (name, type) => {
-    if (type !== "Directory") {
+  await processZip(name, (entry) => {
+    if (entry.type !== "Directory") {
       return;
     }
-    channels.push(name.slice(0, -1));
+    channels.push(entry.path.slice(0, -1));
   });
 
   return {

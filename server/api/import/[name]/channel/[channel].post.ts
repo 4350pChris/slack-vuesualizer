@@ -4,14 +4,15 @@ import { processZip, type Processor } from "~~/server/utils/zip";
 
 const makeFileProcessor =
   (db: Db, channel: string): Processor =>
-  async (name, type, content) => {
-    if (!(type === "File" && name.endsWith(".json"))) {
+  async (entry) => {
+    if (!(entry.type === "File" && entry.path.endsWith(".json"))) {
       return;
     }
 
-    const nameParts = name.split("/");
+    const nameParts = entry.path.split("/");
 
     if (channel === nameParts.at(-2)) {
+      const content = await entry.buffer();
       const doc = JSON.parse(content.toString());
       await db
         .collection("messages")
