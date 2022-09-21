@@ -13,6 +13,6 @@ export default defineEventHandler(async (event) => {
   });
 
   return {
-    channels,
+    channels: channels.sort(),
   };
 });

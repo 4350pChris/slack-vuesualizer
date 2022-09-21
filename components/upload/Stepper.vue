@@ -18,12 +18,18 @@
     </ul>
     <Transition name="slide-x" mode="out-in">
       <UploadFileForm v-if="step === 0" @uploaded="handleFileUpload" />
-      <UploadChannelSelect
+      <LazyUploadChannelSelect
         v-else-if="step === 1"
         :channels="channels"
         v-model="selectedChannels"
       />
-      <UploadSuccess v-else-if="step === 3" :token="token" />
+      <LazyUploadWorker
+        v-else-if="step === 2"
+        :channels="selectedChannels"
+        :fileName="fileName"
+        @done="token = $event"
+      />
+      <LazyUploadSuccess v-else-if="step === 3" :token="token" />
     </Transition>
   </div>
   <div v-if="step < 2" class="card-actions justify-between">
@@ -53,12 +59,17 @@ interface Emits {
 defineEmits<Emits>();
 
 const step = ref(0);
+const fileName = ref("");
 const channels = ref<string[]>([]);
 const selectedChannels = ref<string[]>([]);
 const token = ref("");
 
-const handleFileUpload = (c: string[]) => {
-  channels.value = c;
-  selectedChannels.value = c;
+const handleFileUpload = (payload: {
+  channels: string[];
+  fileName: string;
+}) => {
+  channels.value = payload.channels;
+  selectedChannels.value = payload.channels;
+  fileName.value = payload.fileName;
 };
 </script>

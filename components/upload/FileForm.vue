@@ -29,7 +29,7 @@ import LoadingSpinner from "~icons/line-md/loading-alt-loop";
 import CloudUpload from "~icons/mdi/cloud-upload-outline";
 
 interface Emits {
-  (event: "uploaded", channels: string[]): void;
+  (event: "uploaded", payload: { channels: string[]; fileName: string }): void;
 }
 
 const emit = defineEmits<Emits>();
@@ -50,7 +50,7 @@ watch(file, async (f) => {
       body: f,
     });
     const { channels } = await $fetch(`/api/import/${f.name}/read`);
-    emit("uploaded", channels);
+    emit("uploaded", { channels, fileName: f.name });
   } catch (e) {
     throw createError({ cause: e, message: "Error during file upload." });
   } finally {

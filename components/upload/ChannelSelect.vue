@@ -1,10 +1,6 @@
 <template>
   <ul class="list-none w-max">
-    <li
-      v-for="channel in [...channels].sort()"
-      :key="channel"
-      class="form-control"
-    >
+    <li v-for="channel in channels" :key="channel" class="form-control">
       <label class="label cursor-pointer">
         <input
           type="checkbox"
