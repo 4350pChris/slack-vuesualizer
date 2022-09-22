@@ -1,24 +1,23 @@
 <template>
   <ul class="list-none space-y-2">
     <li
-      v-for="channel in channels"
+      v-for="channel in ['workspace', ...channels]"
       :key="channel"
       class="flex gap-2 justify-center items-center w-max"
     >
-      <div
-        class="swap cursor-auto"
-        :class="{ 'swap-active': done.has(channel) }"
-      >
-        <ConfirmIcon class="w-5 h-5 swap-on" />
-        <UploadingLoopIcon class="w-5 h-5 swap-off" />
-      </div>
-      <span>{{ channel }}</span>
+      <ConfirmIcon v-if="done.has(channel)" class="w-5 h-5 text-success" />
+      <AlertIcon v-else-if="errors.has(channel)" class="w-5 h-5 text-error" />
+      <UploadingLoopIcon v-else class="w-5 h-5" />
+      <span>{{
+        channel === "workspace" ? $t("workspace.word") : channel
+      }}</span>
     </li>
   </ul>
 </template>
 
 <script lang="ts" setup>
-import ConfirmIcon from "~icons/line-md/confirm";
+import ConfirmIcon from "~icons/line-md/confirm-circle";
+import AlertIcon from "~icons/line-md/alert-circle";
 import UploadingLoopIcon from "~icons/line-md/uploading-loop";
 
 interface Props {
@@ -36,43 +35,50 @@ const emit = defineEmits<Emits>();
 const queue = ref(new Set<string>());
 const done = ref(new Set<string>());
 const token = ref("");
+const errors = ref(new Set<string>());
 
 const uploadChannel = async (channel: string) => {
-  queue.value.add(channel);
-  await $fetch(`/api/import/${props.fileName}/channel/${channel}`, {
-    method: "POST",
-  });
-  queue.value.delete(channel);
-  done.value.add(channel);
+  try {
+    queue.value.add(channel);
+    await $fetch(`/api/import/${props.fileName}/channel/${channel}`, {
+      method: "POST",
+    });
+    done.value.add(channel);
+  } catch (e) {
+    errors.value.add(channel);
+  } finally {
+    queue.value.delete(channel);
+  }
 };
 
 const uploadOtherFiles = async () => {
-  await $fetch(`/api/import/${props.fileName}`, {
-    method: "POST",
-  });
+  try {
+    queue.value.add("workspace");
+    await $fetch(`/api/import/${props.fileName}`, {
+      method: "POST",
+    });
+    done.value.add("workspace");
+  } catch (e) {
+    errors.value.add("workspace");
+  } finally {
+    queue.value.delete("workspace");
+  }
 };
 
-onMounted(async () => {
-  await uploadOtherFiles();
-  const chunkSize = 5;
-  const chunks = props.channels.reduce((acc, channel, i) => {
-    const bucket = Math.floor(i / chunkSize);
-    if (acc[bucket] === undefined) {
-      acc.push([]);
-    }
-    acc[bucket].push(channel);
-    return acc;
-  }, [] as string[][]);
-  // for (const chunk of chunks) {
-  //   await Promise.all(chunk.map(uploadChannel));
-  // }
-  for (const channel of props.channels) {
-    await uploadChannel(channel);
+const doUpload = async () => {
+  if (!token.value) {
+    await uploadOtherFiles();
   }
-});
 
-whenever(
-  () => done.value.size === props.channels.length,
-  () => emit("done", token.value)
-);
+  for (const channel of props.channels.filter((c) => !done.value.has(c))) {
+    try {
+      await uploadChannel(channel);
+      emit("done", token.value);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+};
+
+onMounted(doUpload);
 </script>

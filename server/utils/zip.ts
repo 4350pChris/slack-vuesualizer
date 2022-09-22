@@ -1,24 +1,17 @@
-import { Parse, type Entry } from "unzipper";
+import { Open, type File } from "unzipper";
 import { storage } from "~~/server/utils/storage";
+import request from "request";
 
-export type Processor = (entry: Entry) => void | Promise<void>;
+export type Processor = (entry: File) => void | Promise<void>;
 
 export const processZip = async (name: string, cb: Processor) => {
-  const { s3BucketName } = useRuntimeConfig();
+  const { s3BucketName, s3UseSsl } = useRuntimeConfig();
+  const url = await storage().presignedGetObject(s3BucketName, name);
 
-  console.time("S3 download");
-  // unzip file from bucket on the fly
-  const zipStream = await storage().getObject(s3BucketName, name);
-  const zip = zipStream.pipe(Parse({ forceStream: true }));
-  console.timeEnd("S3 download");
+  // typings are incorrect here - ClientRequest is expected according to the typings, but the right type would be () => ClientRequest
+  const dir = await Open.url(request as any, url);
 
-  console.time("processing");
-  for await (const e of zip) {
-    const entry = e as Entry;
-    await cb(entry);
-    entry.autodrain();
+  for (const file of dir.files) {
+    await cb(file);
   }
-  console.timeEnd("processing");
-
-  // await storage().removeObject(s3BucketName, name);
 };

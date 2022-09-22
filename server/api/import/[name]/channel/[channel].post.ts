@@ -2,12 +2,10 @@ import { mongo } from "~/server/utils/mongo";
 import { processZip } from "~~/server/utils/zip";
 
 export default defineEventHandler(async (event) => {
-  const {
-    mongouuid,
-    params: { channel, name },
-  } = event.context;
+  const name = event.context.params.name;
+  const channel = decodeURIComponent(event.context.params.channel);
 
-  const db = await mongo(mongouuid);
+  const db = await mongo(event.context.mongouuid);
   const docs = [];
 
   await processZip(name, async (entry) => {

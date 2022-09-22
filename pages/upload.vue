@@ -18,7 +18,7 @@
               {{ $t("upload.button") }}
             </button>
           </template>
-          <UploadStepper v-else @abort="stepper = false" />
+          <LazyUploadStepper v-else @abort="stepper = false" />
         </div>
       </div>
     </div>

@@ -18,25 +18,25 @@
     </ul>
     <Transition name="slide-x" mode="out-in">
       <UploadFileForm v-if="step === 0" @uploaded="handleFileUpload" />
-      <LazyUploadChannelSelect
+      <UploadChannelSelect
         v-else-if="step === 1"
         :channels="channels"
         v-model="selectedChannels"
       />
-      <LazyUploadWorker
+      <UploadWorker
         v-else-if="step === 2"
         :channels="selectedChannels"
         :fileName="fileName"
         @done="token = $event"
       />
-      <LazyUploadSuccess v-else-if="step === 3" :token="token" />
+      <UploadSuccess v-else-if="step === 3" :token="token" />
     </Transition>
   </div>
   <div v-if="step < 2" class="card-actions justify-between">
     <button class="btn btn-ghost" @click="$emit('abort')">
       {{ $t("abort") }}
     </button>
-    <div class="flex">
+    <div class="flex gap-2">
       <button v-if="step > 0" class="btn btn-ghost" @click="step--">
         {{ $t("back") }}
       </button>
