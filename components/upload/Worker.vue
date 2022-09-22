@@ -100,8 +100,7 @@ const doUpload = async () => {
 
   await Promise.all(channelsToUpload.map(uploadChannel));
 
-  console.log(done.value.size, props.channels.length);
-  if (done.value.size === props.channels.length) {
+  if (done.value.size === props.channels.length + 1) {
     emit("done", token.value);
   } else {
     retriable.value = true;

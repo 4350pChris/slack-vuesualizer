@@ -27,7 +27,7 @@
         v-else-if="step === 2"
         :channels="selectedChannels"
         :fileName="fileName"
-        @done="token = $event"
+        @done="handleWorkerDone"
       />
       <UploadSuccess v-else-if="step === 3" :token="token" />
     </Transition>
@@ -71,5 +71,10 @@ const handleFileUpload = (payload: {
   channels.value = payload.channels;
   selectedChannels.value = payload.channels;
   fileName.value = payload.fileName;
+};
+
+const handleWorkerDone = (uuid: string) => {
+  token.value = uuid;
+  step.value++;
 };
 </script>
