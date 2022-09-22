@@ -8,6 +8,8 @@ export default defineEventHandler(async (event) => {
   const db = await mongo(event.context.mongouuid);
   const docs = [];
 
+  console.time("processing zip");
+
   await processZip(name, async (entry) => {
     if (!(entry.type === "File" && entry.path.endsWith(".json"))) {
       return;
@@ -21,10 +23,13 @@ export default defineEventHandler(async (event) => {
       docs.push(...data);
     }
   });
+  console.timeEnd("processing zip");
 
+  console.time("inserting");
   await db
     .collection("messages")
     .insertMany(docs.map((d) => ({ ...d, channel })));
+  console.timeEnd("inserting");
 
   event.res.statusCode = 201;
   return "ok";

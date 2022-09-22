@@ -32,6 +32,7 @@
     "@vueuse/core": "^9.2.0",
     "@vueuse/nuxt": "^9.1.1",
     "adm-zip": "^0.5.9",
+    "async-sema": "^3.1.1",
     "emoji-js": "^3.7.0",
     "formidable": "^2.0.1",
     "minio": "^7.0.32",

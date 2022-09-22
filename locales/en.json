@@ -45,5 +45,6 @@
   "stepper": {
     "choose": "choose file",
     "channels": "select channels"
-  }
+  },
+  "retry": "retry"
 }
