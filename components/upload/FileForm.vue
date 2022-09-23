@@ -4,7 +4,7 @@
       <LoadingSpinner class="h-20 w-20 mx-auto my-2" />
       <p>{{ $t("upload.inProgress") }}</p>
     </template>
-    <div class="form-control" v-else>
+    <div class="form-control text-center" v-else>
       <label for="file" class="cursor-pointer">
         <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
         <span class="text-lg font-bold font-mono">
