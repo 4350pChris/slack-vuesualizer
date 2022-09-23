@@ -10,8 +10,6 @@ export default defineEventHandler(async (event) => {
     .map((entry) => entry.path.slice(0, -1))
     .sort();
 
-  console.log(channels.length);
-
   return {
     channels,
   };

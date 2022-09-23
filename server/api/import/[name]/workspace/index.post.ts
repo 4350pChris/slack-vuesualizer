@@ -3,7 +3,6 @@ import { randomUUID } from "crypto";
 import type { Db } from "mongodb";
 import type { ApiMessage } from "~~/types/Message";
 import { getZipFiles } from "~~/server/utils/zip";
-import { storage } from "../../../../utils/storage";
 
 const createDb = async (db: Db) => {
   const msgCol = db.collection<ApiMessage>("messages");
