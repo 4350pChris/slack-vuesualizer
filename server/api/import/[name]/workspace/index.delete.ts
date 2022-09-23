@@ -1,7 +1,9 @@
 import { storage } from "~/server/utils/storage";
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   const name = decodeURIComponent(event.context.params.name);
   const { s3BucketName } = useRuntimeConfig();
-  return storage().presignedPutObject(s3BucketName, name, 60);
+
+  await storage().removeObject(s3BucketName, name);
+  return "ok";
 });

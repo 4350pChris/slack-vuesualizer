@@ -1,18 +1,18 @@
-import { processZip } from "~~/server/utils/zip";
+import { getZipFiles } from "~~/server/utils/zip";
 
 export default defineEventHandler(async (event) => {
-  const { name } = event.context.params;
+  const name = decodeURIComponent(event.context.params.name);
 
-  const channels: string[] = [];
+  const files = await getZipFiles(name);
 
-  await processZip(name, (entry) => {
-    if (entry.type !== "Directory") {
-      return;
-    }
-    channels.push(entry.path.slice(0, -1));
-  });
+  const channels = files
+    .filter((entry) => entry.type === "Directory")
+    .map((entry) => entry.path.slice(0, -1))
+    .sort();
+
+  console.log(channels.length);
 
   return {
-    channels: channels.sort(),
+    channels,
   };
 });

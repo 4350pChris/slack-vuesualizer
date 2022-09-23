@@ -11,7 +11,8 @@
   },
   "channel": {
     "word": "Channel | Channels",
-    "created": "Erstellt am {when} von {who}"
+    "created": "Erstellt am {when} von {who}",
+    "all": "Alle @:channel.word"
   },
   "github": "zu Github",
   "noresults": "keine Ergebnisse",
@@ -24,7 +25,8 @@
     "inProgress": "Datei wird hochgeladen. Das könnte eine Minute dauern....",
     "success": "Import erfolgreich!",
     "done": "Dein Code ist {0}. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
-    "button": "Export hochladen (.zip)"
+    "button": "Export hochladen (.zip)",
+    "delete": "Lösche hochgeladene Datei"
   },
   "token": {
     "yours": "dein geheimer Code",

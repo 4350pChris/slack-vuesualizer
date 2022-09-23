@@ -11,7 +11,8 @@
   },
   "channel": {
     "word": "channel | channels",
-    "created": "created on {when} by {who}"
+    "created": "created on {when} by {who}",
+    "all": "all channels"
   },
   "github": "view on github",
   "noresults": "no results found",
@@ -24,7 +25,8 @@
     "inProgress": "File is uploading. Do not worry, this may take a couple of seconds.",
     "success": "Upload successful!",
     "done": "Your token is {0}. You may share it with others to give them access to your Slack archive.",
-    "button": "upload export (.zip)"
+    "button": "upload export (.zip)",
+    "delete": "delete uploaded export"
   },
   "token": {
     "yours": "your secret token",

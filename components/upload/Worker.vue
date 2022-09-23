@@ -14,17 +14,25 @@
     </button>
     <ul class="list-none space-y-2">
       <li
-        v-for="channel in ['workspace', ...channels]"
+        v-for="channel in [
+          'vuesualizer-workspace',
+          ...channels,
+          'vuesualizer-delete',
+        ]"
         :key="channel"
-        class="flex gap-2 justify-center items-center w-max"
+        class="flex gap-2 justify-start items-center"
       >
         <ConfirmIcon v-if="done.has(channel)" class="w-5 h-5 text-success" />
         <AlertIcon v-else-if="errors.has(channel)" class="w-5 h-5 text-error" />
         <UploadingLoopIcon v-else-if="queue.has(channel)" class="w-5 h-5" />
         <CircleIcon v-else class="w-5 h-5" />
-        <span>{{
-          channel === "workspace" ? $t("workspace.word") : channel
-        }}</span>
+        <span v-if="channel === 'vuesualizer-workspace'">
+          {{ $t("workspace.word") }}
+        </span>
+        <span v-else-if="channel === 'vuesualizer-delete'">
+          {{ $t("upload.delete") }}
+        </span>
+        <span v-else>{{ channel }}</span>
       </li>
     </ul>
   </div>
@@ -73,25 +81,41 @@ const uploadChannel = async (channel: string) => {
   }
 };
 
-const uploadOtherFiles = async () => {
+const uploadWorkspaceData = async () => {
   try {
-    queue.value.add("workspace");
-    await $fetch(`/api/import/${props.fileName}`, {
+    queue.value.add("vuesualizer-workspace");
+    const { uuid } = (await $fetch(`/api/import/${props.fileName}/workspace`, {
       method: "POST",
-    });
-    done.value.add("workspace");
+    })) as { uuid: string };
+    token.value = uuid;
+    done.value.add("vuesualizer-workspace");
   } catch (e) {
-    errors.value.add("workspace");
+    errors.value.add("vuesualizer-workspace");
   } finally {
-    queue.value.delete("workspace");
+    queue.value.delete("vuesualizer-workspace");
+  }
+};
+
+const deleteZip = async () => {
+  try {
+    queue.value.add("vuesualizer-delete");
+    const baseUrl = `/api/import/${props.fileName}/workspace`;
+    await $fetch(baseUrl, {
+      method: "DELETE",
+    });
+    done.value.add("vuesualizer-delete");
+  } catch (e) {
+    errors.value.add("vuesualizer-delete");
+  } finally {
+    queue.value.delete("vuesualizer-delete");
   }
 };
 
 const doUpload = async () => {
   retriable.value = false;
 
-  if (!token.value) {
-    await uploadOtherFiles();
+  if (!done.value.has("vuesualizer-workspace")) {
+    await uploadWorkspaceData();
   }
 
   const channelsToUpload = props.channels.filter(
@@ -100,7 +124,9 @@ const doUpload = async () => {
 
   await Promise.all(channelsToUpload.map(uploadChannel));
 
-  if (done.value.size === props.channels.length + 1) {
+  await deleteZip();
+
+  if (done.value.size === props.channels.length + 2) {
     emit("done", token.value);
   } else {
     retriable.value = true;

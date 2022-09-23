@@ -2,25 +2,8 @@ import { mongo } from "~/server/utils/mongo";
 import { randomUUID } from "crypto";
 import type { Db } from "mongodb";
 import type { ApiMessage } from "~~/types/Message";
-import { processZip, type Processor } from "~~/server/utils/zip";
-
-const makeFileProcessor =
-  (db: Db): Processor =>
-  async (entry) => {
-    if (
-      !(
-        entry.type === "File" &&
-        entry.path.endsWith(".json") &&
-        entry.path.split("/").length === 1
-      )
-    ) {
-      return;
-    }
-    const collection = entry.path.split(".json")[0];
-    const content = await entry.buffer();
-    const doc = JSON.parse(content.toString());
-    await db.collection(collection).insertMany(doc);
-  };
+import { getZipFiles } from "~~/server/utils/zip";
+import { storage } from "../../../../utils/storage";
 
 const createDb = async (db: Db) => {
   const msgCol = db.collection<ApiMessage>("messages");
@@ -30,7 +13,7 @@ const createDb = async (db: Db) => {
 };
 
 export default defineEventHandler(async (event) => {
-  const { name } = event.context.params;
+  const name = decodeURIComponent(event.context.params.name);
 
   // prepare by creating db and indices
   const uuid = randomUUID();
@@ -38,7 +21,21 @@ export default defineEventHandler(async (event) => {
 
   await createDb(db);
 
-  await processZip(name, makeFileProcessor(db));
+  const files = await getZipFiles(name);
+
+  const fits = files.filter(
+    (entry) =>
+      entry.path.endsWith(".json") && entry.path.split("/").length === 1
+  );
+
+  await Promise.all(
+    fits.map(async (entry) => {
+      const collection = entry.path.split(".json")[0];
+      const content = await entry.buffer();
+      const doc = JSON.parse(content.toString());
+      await db.collection(collection).insertMany(doc);
+    })
+  );
 
   setCookie(event, "mongouuid", uuid);
 
