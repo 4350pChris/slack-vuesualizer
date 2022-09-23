@@ -48,5 +48,7 @@
     "choose": "Dateiauswahl",
     "channels": "Channelauswahl"
   },
-  "retry": "wiederholen"
+  "retry": "wiederholen",
+  "description": "Sieh und durchsuche dein Slack Archiv. Keine Registrierung nötig - einfach den Export hochladen und einen Code mit anderen teilen. Ganz einfach.",
+  "exporthelp": "Wie du deinen Slack Export bekommst"
 }

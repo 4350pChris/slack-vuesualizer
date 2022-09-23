@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center">
-    <ul class="steps mb-4 flex-1">
+    <ul class="steps mb-4">
       <li class="step capitalize" :class="{ 'step-info': step >= 0 }">
         {{ $t("stepper.choose") }}
       </li>

@@ -2,7 +2,7 @@
   <div class="w-full">
     <progress
       class="mb-4 progress w-full animate-blink"
-      :value="(errors.size + done.size / channels.length) * 100"
+      :value="((errors.size + done.size) / (channels.length + 2)) * 100"
       max="100"
     />
     <button

@@ -31,14 +31,15 @@
 </template>
 
 <script lang="ts" setup>
-const tokenInput = ref<string>();
+const tokenCookie = useCookie("mongouuid");
+const tokenInput = ref<string>(tokenCookie.value);
 const tokenError = ref(false);
 
 const handleTokenSubmit = async () => {
   tokenError.value = false;
   try {
     await $fetch("/api/check/" + tokenInput.value);
-    await navigateTo("/");
+    await navigateTo("/workspace");
   } catch (e) {
     tokenError.value = true;
   }
