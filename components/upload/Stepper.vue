@@ -1,20 +1,34 @@
 <template>
   <div class="flex flex-col items-center">
     <ul class="steps mb-4">
-      <li class="step capitalize" :class="{ 'step-info': step >= 0 }">
+      <li
+        data-content="📁"
+        class="step capitalize"
+        :class="{ 'step-info': step >= 0 }"
+      >
         {{ $t("stepper.choose") }}
       </li>
-      <li class="step capitalize" :class="{ 'step-info': step >= 1 }">
+      <li
+        data-content="💬"
+        class="step capitalize"
+        :class="{ 'step-info': step >= 1 }"
+      >
         {{ $t("stepper.channels") }}
       </li>
-      <li class="step capitalize" :class="{ 'step-info': step >= 2 }">
+      <li
+        data-content="↑"
+        class="step capitalize"
+        :class="{ 'step-info': step >= 2 }"
+      >
         {{ $t("upload.word") }}
       </li>
       <li
         data-content="✓"
         class="step capitalize"
         :class="{ 'step-info': step >= 3 }"
-      ></li>
+      >
+        {{ $t("stepper.profit") }}
+      </li>
     </ul>
     <Transition name="slide-x" mode="out-in">
       <UploadFileForm v-if="step === 0" @uploaded="handleFileUpload" />

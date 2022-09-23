@@ -25,11 +25,11 @@
     "inProgress": "File is uploading. Do not worry, this may take a couple of seconds.",
     "success": "Upload successful!",
     "done": "Your token is {0}. You may share it with others to give them access to your Slack archive.",
-    "button": "upload export (.zip)",
+    "button": "choose file (.zip)",
     "delete": "delete uploaded export"
   },
   "token": {
-    "yours": "your secret token",
+    "yours": "already have a token?",
     "invalid": "invalid token",
     "copy": "copy token",
     "copied": "token copied to clipboard!"
@@ -46,9 +46,10 @@
   "back": "back",
   "stepper": {
     "choose": "choose file",
-    "channels": "select channels"
+    "channels": "select channels",
+    "profit": "profit"
   },
   "retry": "retry",
   "description": "Show your Slack archive in a searchable way.\nNo registration required - just upload your export and share the code.\nIt's that easy.",
-  "exporthelp": "How to export your Slack data"
+  "exporthelp": "How to export my Slack data"
 }

@@ -25,11 +25,11 @@
     "inProgress": "Datei wird hochgeladen. Das könnte eine Minute dauern....",
     "success": "Import erfolgreich!",
     "done": "Dein Code ist {0}. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
-    "button": "Export hochladen (.zip)",
+    "button": "Datei auswählen (.zip)",
     "delete": "Lösche hochgeladene Datei"
   },
   "token": {
-    "yours": "dein geheimer Code",
+    "yours": "du hast schon einen Code?",
     "invalid": "ungültiger Code",
     "copy": "Code kopieren",
     "copied": "Code wurde kopiert!"
@@ -46,9 +46,10 @@
   "back": "zurück",
   "stepper": {
     "choose": "Dateiauswahl",
-    "channels": "Channelauswahl"
+    "channels": "Channelauswahl",
+    "profit": "Profit"
   },
   "retry": "wiederholen",
-  "description": "Sieh und durchsuche dein Slack Archiv. Keine Registrierung nötig - einfach den Export hochladen und einen Code mit anderen teilen. Ganz einfach.",
-  "exporthelp": "Wie du deinen Slack Export bekommst"
+  "description": "Sieh und durchsuche dein Slack Archiv.\nKeine Registrierung nötig - nur den Export hochladen und den Code mit anderen teilen.\nGanz einfach.",
+  "exporthelp": "Wie erstelle ich einen Slack Export"
 }

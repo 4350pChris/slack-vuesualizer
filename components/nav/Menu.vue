@@ -1,7 +1,7 @@
 <template>
   <ul class="menu menu-compact">
     <li>
-      <NuxtLink class="capitalize rounded-box" to="/">
+      <NuxtLink class="capitalize rounded-box" to="/workspace">
         <HomeIcon />
         {{ $t("workspace.word") }}
       </NuxtLink>
