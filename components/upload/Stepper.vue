@@ -31,7 +31,7 @@
       </li>
     </ul>
     <Transition name="slide-x" mode="out-in">
-      <UploadFileForm v-if="step === 0" @uploaded="handleFileUpload" />
+      <UploadFileForm v-if="step === 0" v-model="file" />
       <UploadChannelSelect
         v-else-if="step === 1"
         :channels="channels"
@@ -40,7 +40,7 @@
       <UploadWorker
         v-else-if="step === 2"
         :channels="selectedChannels"
-        :fileName="fileName"
+        :entries="entries"
         @done="handleWorkerDone"
       />
       <UploadSuccess v-else-if="step === 3" :token="token" />
@@ -66,6 +66,8 @@
 </template>
 
 <script lang="ts" setup>
+import type { Entry } from "@zip.js/zip.js";
+
 interface Emits {
   (event: "abort"): void;
 }
@@ -73,19 +75,29 @@ interface Emits {
 defineEmits<Emits>();
 
 const step = ref(0);
-const fileName = ref("");
-const channels = ref<string[]>([]);
+const file = ref<File>(null);
+
+const entries = ref<Entry[]>([]);
+
+const channels = computed(() =>
+  entries.value
+    .filter((entry) => entry.directory)
+    .map((dir) => dir.filename.slice(0, -1))
+    .sort()
+);
 const selectedChannels = ref<string[]>([]);
+
 const token = ref("");
 
-const handleFileUpload = (payload: {
-  channels: string[];
-  fileName: string;
-}) => {
-  channels.value = payload.channels;
-  selectedChannels.value = payload.channels;
-  fileName.value = payload.fileName;
-};
+const { readZip } = useZip();
+
+watch(channels, (c) => (selectedChannels.value = c));
+
+watch(file, async () => {
+  if (file.value) {
+    entries.value = await readZip(file.value);
+  }
+});
 
 const handleWorkerDone = (uuid: string) => {
   token.value = uuid;

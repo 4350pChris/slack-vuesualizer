@@ -5,13 +5,6 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     mongodbUri: "",
-    s3Url: "",
-    s3Port: "",
-    s3Region: "",
-    s3UseSsl: "",
-    s3AccessKey: "",
-    s3SecretKey: "",
-    s3BucketName: "",
   },
   modules: [
     [

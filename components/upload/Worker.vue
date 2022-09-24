@@ -2,7 +2,7 @@
   <div class="w-full">
     <progress
       class="mb-4 progress w-full animate-blink"
-      :value="((errors.size + done.size) / (channels.length + 2)) * 100"
+      :value="((errors.size + done.size) / (channels.length + 1)) * 100"
       max="100"
     />
     <button
@@ -14,11 +14,7 @@
     </button>
     <ul class="list-none space-y-2">
       <li
-        v-for="channel in [
-          'vuesualizer-workspace',
-          ...channels,
-          'vuesualizer-delete',
-        ]"
+        v-for="channel in ['vuesualizer-workspace', ...channels]"
         :key="channel"
         class="flex gap-2 justify-start items-center"
       >
@@ -28,9 +24,6 @@
         <CircleIcon v-else class="w-5 h-5" />
         <span v-if="channel === 'vuesualizer-workspace'">
           {{ $t("workspace.word") }}
-        </span>
-        <span v-else-if="channel === 'vuesualizer-delete'">
-          {{ $t("upload.delete") }}
         </span>
         <span v-else>{{ channel }}</span>
       </li>
@@ -44,10 +37,11 @@ import AlertIcon from "~icons/line-md/alert-circle";
 import CircleIcon from "~icons/line-md/circle";
 import UploadingLoopIcon from "~icons/line-md/uploading-loop";
 import { Sema } from "async-sema";
+import type { Entry } from "@zip.js/zip.js";
 
 interface Props {
+  entries: Entry[];
   channels: string[];
-  fileName: string;
 }
 
 interface Emits {
@@ -63,15 +57,25 @@ const token = ref("");
 const errors = ref(new Set<string>());
 const retriable = ref(false);
 
+const { parseData } = useZip();
+
 const sema = new Sema(3);
 
 const uploadChannel = async (channel: string) => {
   try {
     await sema.acquire();
     queue.value.add(channel);
-    await $fetch(`/api/import/${props.fileName}/channel/${channel}`, {
+    const channelEntries = props.entries.filter(
+      (e) => !e.directory && e.filename.startsWith(`${channel}/`)
+    );
+
+    const data = await parseData(channelEntries);
+
+    await $fetch(`/api/import/channel/${channel}`, {
       method: "POST",
+      body: { data },
     });
+
     done.value.add(channel);
   } catch (e) {
     errors.value.add(channel);
@@ -84,30 +88,25 @@ const uploadChannel = async (channel: string) => {
 const uploadWorkspaceData = async () => {
   try {
     queue.value.add("vuesualizer-workspace");
-    const { uuid } = (await $fetch(`/api/import/${props.fileName}/workspace`, {
+    const workspaceEntries = props.entries.filter(
+      (e) => !e.filename.includes("/") && !e.directory
+    );
+    const data = await Promise.all(
+      workspaceEntries.map(async (e) => ({
+        name: e.filename.split(".json")[0],
+        data: await parseData([e]),
+      }))
+    );
+    const { uuid } = await $fetch(`/api/import/workspace`, {
       method: "POST",
-    })) as { uuid: string };
+      body: { data },
+    });
     token.value = uuid;
     done.value.add("vuesualizer-workspace");
   } catch (e) {
     errors.value.add("vuesualizer-workspace");
   } finally {
     queue.value.delete("vuesualizer-workspace");
-  }
-};
-
-const deleteZip = async () => {
-  try {
-    queue.value.add("vuesualizer-delete");
-    const baseUrl = `/api/import/${props.fileName}/workspace`;
-    await $fetch(baseUrl, {
-      method: "DELETE",
-    });
-    done.value.add("vuesualizer-delete");
-  } catch (e) {
-    errors.value.add("vuesualizer-delete");
-  } finally {
-    queue.value.delete("vuesualizer-delete");
   }
 };
 
@@ -124,9 +123,7 @@ const doUpload = async () => {
 
   await Promise.all(channelsToUpload.map(uploadChannel));
 
-  await deleteZip();
-
-  if (done.value.size === props.channels.length + 2) {
+  if (done.value.size === props.channels.length + 1) {
     emit("done", token.value);
   } else {
     retriable.value = true;
