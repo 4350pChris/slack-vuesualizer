@@ -53,7 +53,7 @@ watchEffect(() => {
     const index = props.messages.findIndex(
       (message) => "_id" in message && message._id === messageId.value
     );
-    setTimeout(() => scroller.value.scrollToItem(index), 0);
+    setTimeout(() => scroller.value?.scrollToItem(index), 0);
   }
 });
 </script>
