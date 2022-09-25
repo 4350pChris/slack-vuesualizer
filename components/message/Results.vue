@@ -2,7 +2,10 @@
   <div>
     <ul class="list-none flex flex-col gap-4 p-1" v-if="results.length > 0">
       <li v-for="result in results" :key="result._id">
-        <a :href="`/channels/${result.channel}?message=${result._id}`">
+        <NuxtLink
+          :to="`/channels/${result.channel}?message=${result._id}`"
+          @click="$emit('close')"
+        >
           <span class="font-bold">In Channel {{ result.channel }}</span>
           <MessageItem
             class="transition rounded hover:bg-base-200/50 dark:hover:bg-slate-200/10"
@@ -10,7 +13,7 @@
             :message="result"
             :simple="true"
           />
-        </a>
+        </NuxtLink>
       </li>
     </ul>
     <p class="capitalize font-medium" v-else>{{ $t("noresults") }}</p>
@@ -24,5 +27,11 @@ interface Props {
   results: Message[];
 }
 
+interface Emits {
+  (event: "close"): void;
+}
+
 defineProps<Props>();
+
+defineEmits<Emits>();
 </script>
