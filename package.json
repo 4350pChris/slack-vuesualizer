@@ -13,7 +13,7 @@
     "@iconify-json/mdi": "^1.1.33",
     "@iconify-json/twemoji": "^1.1.5",
     "@intlify/nuxt3": "^0.2.4",
-    "@nuxtjs/color-mode": "^3.1.5",
+    "@nuxtjs/color-mode": "^3.1.6",
     "@nuxtjs/tailwindcss": "^5.3.3",
     "@tailwindcss/typography": "^0.5.7",
     "@types/adm-zip": "^0.5.0",
@@ -34,7 +34,7 @@
     "async-sema": "^3.1.1",
     "emoji-js": "^3.7.0",
     "formidable": "^2.0.1",
-    "mongodb": "^4.9.1",
+    "mongodb": "^4.10.0",
     "request": "^2.88.2",
     "vue-virtual-scroller": "^2.0.0-alpha.1"
   },
