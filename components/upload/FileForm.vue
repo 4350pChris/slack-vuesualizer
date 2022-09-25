@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <div class="form-contro">
+    <div class="form-control" ref="dropZoneRef">
       <label for="file" class="cursor-pointer">
         <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
         <span class="text-lg font-bold font-mono">
@@ -13,7 +13,8 @@
         id="file"
         name="file"
         accept="application/zip"
-        @change="handleUpload"
+        ref="fileInputRef"
+        @change="handleUpload([...fileInputRef.files])"
       />
     </div>
     <p v-if="invalid" class="text-error">{{ $t("stepper.wrongfile") }}</p>
@@ -42,7 +43,12 @@ const props = defineProps<Props>();
 
 const model = useVModel(props, "modelValue", emit);
 
-const handleUpload = (event: Event) => {
-  model.value = (event.target as unknown as { files: FileList }).files[0];
+const dropZoneRef = ref<HTMLDivElement>();
+const fileInputRef = ref<HTMLInputElement>();
+
+const handleUpload = (files: File[] | null) => {
+  model.value = files[0];
 };
+
+useDropZone(dropZoneRef, handleUpload);
 </script>
