@@ -103,7 +103,8 @@ const withSeparators = computed(() =>
 
 const jumpToDate = (e: Event) => {
   const date = new Date((e.target as HTMLInputElement).value);
-  const message = messages.value.find((m) => date < toTs(m.ts));
+  const message =
+    messages.value.find((m) => date < toTs(m.ts)) ?? messages.value.at(-1);
   if (message) {
     navigateTo({
       path: route.path,
