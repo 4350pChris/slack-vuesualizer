@@ -82,6 +82,7 @@
                 class="min-h-0 overflow-auto"
                 v-else
                 :results="results"
+                @close="visible = false"
               />
             </Transition>
           </div>
