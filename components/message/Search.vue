@@ -1,39 +1,37 @@
 <template>
   <div class="w-full max-w-xl">
     <div>
-      <div class="w-full flex items-center gap-2 md:gap-4">
-        <Transition name="fade" mode="out-in">
-          <div v-if="visible" class="relative w-full">
-            <input
-              type="text"
-              :placeholder="$t('search.messages')"
-              class="w-full input font-mono pr-14"
-              v-model="query"
-              ref="input"
-            />
-            <button
-              class="btn btn-circle btn-ghost absolute right-0"
-              @click="visible = false"
-              :title="$t('close')"
-            >
-              <CloseIcon class="w-6 h-6" />
-            </button>
-          </div>
+      <Transition name="fade" mode="out-in">
+        <div v-if="visible" class="relative w-full">
+          <input
+            type="text"
+            :placeholder="$t('search.messages')"
+            class="w-full input font-mono pr-14"
+            v-model="query"
+            ref="input"
+          />
           <button
-            v-else
-            class="btn btn-outline btn-block gap-4"
-            @click="visible = true"
+            class="btn btn-circle btn-ghost absolute right-0"
+            @click="visible = false"
+            :title="$t('close')"
           >
-            <TextSearch class="w-6 h-6" />
-            <span class="font-mono">{{ $t("search.messages") }}</span>
-            <div class="hidden md:inline-block">
-              <kbd class="kbd text-base-content">Ctrl</kbd>
-              +
-              <kbd class="kbd text-base-content">K</kbd>
-            </div>
+            <CloseIcon class="w-6 h-6" />
           </button>
-        </Transition>
-      </div>
+        </div>
+        <button
+          v-else
+          class="btn btn-outline btn-block gap-4"
+          @click="visible = true"
+        >
+          <TextSearch class="w-6 h-6" />
+          <span class="font-mono">{{ $t("search.messages") }}</span>
+          <div class="hidden md:inline-block">
+            <kbd class="kbd text-base-content">Ctrl</kbd>
+            +
+            <kbd class="kbd text-base-content">K</kbd>
+          </div>
+        </button>
+      </Transition>
       <Transition name="slide-y">
         <div
           v-if="visible"
