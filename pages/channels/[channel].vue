@@ -24,8 +24,12 @@
         />
       </div>
     </div>
-    <div v-if="pending" class="h-full w-full flex justify-center">
-      <LoadingSpinner class="w-12 h-12" />
+    <div v-if="pending" class="flex flex-col gap-4 overflow-y-hidden">
+      <MessageSkeleton
+        class="shrink-0"
+        v-for="i in [1, 2, 3, 4, 5, 6, 7]"
+        :key="i"
+      />
     </div>
     <MessageList v-else :messages="withSeparators.messages" />
   </section>
