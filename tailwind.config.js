@@ -15,7 +15,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Mulish", ...defaultTheme.fontFamily.sans],
-        mono: ["Overpass", ...defaultTheme.fontFamily.mono],
+        mono: ["'Red Hat Mono'", ...defaultTheme.fontFamily.mono],
       },
       animation: {
         blink: "blink 2s cubic-bezier(0.4, 0, 0.6, 1)",

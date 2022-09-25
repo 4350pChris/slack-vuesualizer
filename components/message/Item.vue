@@ -34,7 +34,7 @@
           :node="section"
         />
       </template>
-      <p v-else class="text-sm whitespace-pre-wrap">
+      <p v-else class="text-gray-500 dark:text-gray-400 whitespace-pre-wrap">
         {{ message.text }}
       </p>
     </div>

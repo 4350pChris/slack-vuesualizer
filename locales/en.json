@@ -1,6 +1,6 @@
 {
-  "workspace": "workspace",
   "message": "message | messages",
+  "reply": "reply | replies",
   "user": "user | users",
   "search": {
     "channels": "@:channel.word {0} | all @:channel.word",
@@ -11,12 +11,46 @@
   },
   "channel": {
     "word": "channel | channels",
-    "created": "created on {when} by {who}"
+    "created": "created on {when} by {who}",
+    "all": "all channels"
   },
   "github": "view on github",
   "noresults": "no results found",
   "close": "close",
   "language": "language",
   "thisLanguage": "english",
-  "switchTheme": "switch theme"
+  "switchTheme": "switch theme",
+  "upload": {
+    "word": "upload",
+    "inProgress": "File is uploading. Do not worry, this may take a couple of seconds.",
+    "success": "Upload successful!",
+    "done": "Your token is {0}. You may share it with others to give them access to your Slack archive.",
+    "button": "choose file (.zip)",
+    "delete": "delete uploaded export"
+  },
+  "token": {
+    "yours": "already have a token?",
+    "invalid": "invalid token",
+    "copy": "copy token",
+    "copied": "token copied to clipboard!"
+  },
+  "workspace": {
+    "word": "workspace",
+    "open": "open workspace",
+    "yours": "your workspace contains",
+    "leave": "leave workspace"
+  },
+  "or": "or",
+  "abort": "abort",
+  "next": "next",
+  "back": "back",
+  "stepper": {
+    "choose": "choose file",
+    "channels": "select channels",
+    "profit": "profit",
+    "wrongfile": "That is not a Slack export file. Please try again."
+  },
+  "retry": "retry",
+  "description": "Show your Slack archive in a searchable way.\nNo registration required - just upload your export and share the code.\nIt's that easy.",
+  "exporthelp": "How to export my Slack data"
 }

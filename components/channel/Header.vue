@@ -22,7 +22,7 @@
             })
           }}
         </p>
-        <p class="text-sm">
+        <p v-if="messages" class="text-sm">
           {{ messages }}
           <span class="capitalize">
             {{ $t("message", 2) }}
@@ -40,7 +40,7 @@ import type { Channel } from "~/types/Channel";
 
 interface Props {
   channel: Channel | null;
-  messages: number;
+  messages?: number;
 }
 
 const users = useUsers();

@@ -1,7 +1,9 @@
 <template>
-  <div class="flex flex-col h-screen bg-base-100">
+  <div>
     <NavHeader :simple="true" />
-    <main class="p-6 flex-1 flex flex-col items-center">
+    <main
+      class="flex justify-center min-h-screen container mx-auto bg-base-100 px-2 md:px-4 pb-2 pt-16"
+    >
       <slot />
     </main>
   </div>

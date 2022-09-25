@@ -1,17 +1,20 @@
-import { type Db, MongoClient } from "mongodb";
+import { MongoClient } from "mongodb";
 
-let db: Db | null = null;
+let _fullClient: MongoClient | null = null;
 
-export default async function () {
-  if (db === null) {
+export const fullClient = async () => {
+  if (_fullClient === null) {
     const uri = useRuntimeConfig().mongodbUri;
     try {
-      const client = await MongoClient.connect(uri);
-      db = client.db("slack");
+      _fullClient = await MongoClient.connect(uri);
     } catch (e) {
       console.error("Failed to connect to mongo", e);
       throw e;
     }
   }
-  return db;
-}
+  return _fullClient;
+};
+
+export const mongo = async (dbUuid: string) => {
+  return fullClient().then((c) => c.db(dbUuid));
+};

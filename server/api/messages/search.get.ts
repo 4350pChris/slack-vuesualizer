@@ -1,11 +1,11 @@
-import mongo from "~/server/utils/mongo";
+import { mongo } from "~/server/utils/mongo";
 import type { Filter } from "mongodb";
 import type { Message } from "~/types/Message";
 
 export default defineEventHandler(async (event) => {
   const { query, channel } = useQuery(event);
 
-  const db = await mongo();
+  const db = await mongo(event.context.mongouuid);
 
   const filter: Filter<Message> = {
     $and: [{ $text: { $search: query.toString() } }],
