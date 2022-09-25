@@ -52,5 +52,6 @@
   },
   "retry": "wiederholen",
   "description": "Sieh und durchsuche dein Slack Archiv.\nKeine Registrierung nötig - nur den Export hochladen und den Code mit anderen teilen.\nGanz einfach.",
-  "exporthelp": "Wie erstelle ich einen Slack Export"
+  "exporthelp": "Wie erstelle ich einen Slack Export",
+  "jumpToDate": "springe zu Datum"
 }

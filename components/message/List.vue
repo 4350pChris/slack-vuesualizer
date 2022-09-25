@@ -48,7 +48,7 @@ const route = useRoute();
 
 const messageId = computed(() => route.query.message);
 
-onMounted(() => {
+watchEffect(() => {
   if (messageId.value) {
     const index = props.messages.findIndex(
       (message) => "_id" in message && message._id === messageId.value
