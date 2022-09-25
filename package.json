@@ -23,7 +23,7 @@
     "@types/request": "^2.48.8",
     "autoprefixer": "^10.4.12",
     "daisyui": "^2.31.0",
-    "nuxt": "^3.0.0-rc.10",
+    "nuxt": "^3.0.0-rc.11",
     "unplugin-icons": "^0.14.10"
   },
   "dependencies": {
