@@ -52,5 +52,6 @@
   },
   "retry": "retry",
   "description": "Show your Slack archive in a searchable way.\nNo registration required - just upload your export and share the code.\nIt's that easy.",
-  "exporthelp": "How to export my Slack data"
+  "exporthelp": "How to export my Slack data",
+  "jumpToDate": "jump to date"
 }

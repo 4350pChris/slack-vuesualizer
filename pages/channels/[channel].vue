@@ -1,10 +1,29 @@
 <template>
   <section class="flex flex-col h-full w-full max-w-xl">
-    <ChannelHeader
-      class="my-2 md:my-4"
-      :channel="channel"
-      :messages="messages?.length"
-    />
+    <div class="my-2 md:my-4 flex flex-nowrap justify-between items-start">
+      <ChannelHeader
+        class="flex-1"
+        :channel="channel"
+        :messages="messages?.length"
+      />
+      <div class="relative">
+        <label
+          class="btn btn-circle btn-ghost"
+          for="jumptodate"
+          :title="$t('jumpToDate')"
+        >
+          <span class="sr-only">{{ $t("jumpToDate") }}</span>
+          <CalendarIcon class="w-6 h-6" />
+        </label>
+        <input
+          id="jumptodate"
+          name="jumptodate"
+          type="date"
+          class="w-0 h-0 invisible"
+          @change="jumpToDate"
+        />
+      </div>
+    </div>
     <div v-if="pending" class="h-full w-full flex justify-center">
       <LoadingSpinner class="w-12 h-12" />
     </div>
@@ -14,6 +33,7 @@
 
 <script lang="ts" setup>
 import LoadingSpinner from "~icons/line-md/loading-alt-loop";
+import CalendarIcon from "~icons/mdi/calendar-search";
 import type { Channel } from "~/types/Channel";
 import type { Message } from "~/types/Message";
 
@@ -40,8 +60,7 @@ const toTs = useTsToDate();
 
 const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-// a and b are javascript Date objects
-function dateDiffInDays(a, b) {
+function dateDiffInDays(a: Date, b: Date) {
   // Discard the time and time-zone information.
   const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
   const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
@@ -77,4 +96,15 @@ const withSeparators = computed(() =>
     }
   )
 );
+
+const jumpToDate = (e: Event) => {
+  const date = new Date((e.target as HTMLInputElement).value);
+  const message = messages.value.find((m) => date < toTs(m.ts));
+  if (message) {
+    navigateTo({
+      path: route.path,
+      query: { ...route.query, message: message._id },
+    });
+  }
+};
 </script>
