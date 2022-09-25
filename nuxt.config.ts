@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
+  css: ["assets/css/index.css"],
   runtimeConfig: {
     mongodbUri: "",
   },
