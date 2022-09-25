@@ -22,7 +22,7 @@
     "@types/minio": "^7.0.13",
     "@types/request": "^2.48.8",
     "autoprefixer": "^10.4.11",
-    "daisyui": "^2.28.0",
+    "daisyui": "^2.31.0",
     "nuxt": "^3.0.0-rc.10",
     "unplugin-icons": "^0.14.10"
   },
@@ -30,7 +30,7 @@
     "@headlessui/vue": "^1.7.2",
     "@vueuse/core": "^9.2.0",
     "@vueuse/nuxt": "^9.1.1",
-    "@zip.js/zip.js": "^2.6.30",
+    "@zip.js/zip.js": "^2.6.32",
     "async-sema": "^3.1.1",
     "emoji-js": "^3.7.0",
     "formidable": "^2.0.1",
