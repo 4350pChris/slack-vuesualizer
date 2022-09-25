@@ -1,8 +1,6 @@
 <template>
-  <div class="card w-full max-w-xl">
-    <div class="card-body">
-      <UploadStepper @abort="navigateTo('/')" />
-    </div>
+  <div class="w-full max-w-xl">
+    <UploadStepper @abort="navigateTo('/')" />
   </div>
 </template>
 

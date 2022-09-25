@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="form-control text-center">
+  <div class="text-center">
+    <div class="form-contro">
       <label for="file" class="cursor-pointer">
         <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
         <span class="text-lg font-bold font-mono">
@@ -16,7 +16,8 @@
         @change="handleUpload"
       />
     </div>
-    <code v-if="model" class="my-2">{{ model.name }}</code>
+    <p v-if="invalid" class="text-error">{{ $t("stepper.wrongfile") }}</p>
+    <code v-else-if="model" class="my-2">{{ model.name }}</code>
   </div>
 </template>
 
@@ -32,6 +33,7 @@ interface Emits {
 
 interface Props {
   modelValue: File;
+  invalid: boolean;
 }
 
 const emit = defineEmits<Emits>();

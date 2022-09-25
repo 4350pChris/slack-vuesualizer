@@ -47,7 +47,8 @@
   "stepper": {
     "choose": "Dateiauswahl",
     "channels": "Channelauswahl",
-    "profit": "Profit"
+    "profit": "Profit",
+    "wrongfile": "Das ist kein Slack Export. Versuch's nochmal."
   },
   "retry": "wiederholen",
   "description": "Sieh und durchsuche dein Slack Archiv.\nKeine Registrierung nötig - nur den Export hochladen und den Code mit anderen teilen.\nGanz einfach.",

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center">
-    <ul class="steps mb-4">
+    <ul class="steps sticky top-16 bg-base-100 w-full py-2">
       <li
         data-content="📁"
         class="step capitalize"
@@ -31,7 +31,7 @@
       </li>
     </ul>
     <Transition name="slide-x" mode="out-in">
-      <UploadFileForm v-if="step === 0" v-model="file" />
+      <UploadFileForm v-if="step === 0" v-model="file" :invalid="fileInvalid" />
       <UploadChannelSelect
         v-else-if="step === 1"
         :channels="channels"
@@ -46,7 +46,10 @@
       <UploadSuccess v-else-if="step === 3" :token="token" />
     </Transition>
   </div>
-  <div v-if="step < 2" class="card-actions justify-between">
+  <div
+    v-if="step < 2"
+    class="mt-4 flex justify-between sticky bottom-0 py-2 bg-base-100"
+  >
     <button class="btn btn-ghost" @click="$emit('abort')">
       {{ $t("abort") }}
     </button>
@@ -56,7 +59,7 @@
       </button>
       <button
         class="btn btn-outline btn-primary"
-        :disabled="channels.length === 0"
+        :disabled="!file || fileInvalid"
         @click="step++"
       >
         {{ $t("next") }}
@@ -76,6 +79,7 @@ defineEmits<Emits>();
 
 const step = ref(0);
 const file = ref<File>(null);
+const fileInvalid = ref(false);
 
 const entries = ref<Entry[]>([]);
 
@@ -94,8 +98,15 @@ const { readZip } = useZip();
 watch(channels, (c) => (selectedChannels.value = c));
 
 watch(file, async () => {
-  if (file.value) {
-    entries.value = await readZip(file.value);
+  fileInvalid.value = false;
+  if (!file.value) {
+    return;
+  }
+  entries.value = await readZip(file.value);
+  if (!entries.value.find((entry) => entry.filename === "users.json")) {
+    fileInvalid.value = true;
+  } else {
+    step.value++;
   }
 });
 

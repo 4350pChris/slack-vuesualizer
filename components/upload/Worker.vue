@@ -1,10 +1,12 @@
 <template>
   <div class="w-full">
-    <progress
-      class="mb-4 progress w-full animate-blink"
-      :value="((errors.size + done.size) / (channels.length + 1)) * 100"
-      max="100"
-    />
+    <div class="sticky top-36 pb-4 bg-base-100">
+      <progress
+        class="progress w-full"
+        :value="((errors.size + done.size) / (channels.length + 1)) * 100"
+        max="100"
+      />
+    </div>
     <button
       v-if="retriable"
       class="btn btn-outline btn-primary btn-block"
