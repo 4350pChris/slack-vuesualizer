@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col max-w-md text-center">
+  <div class="flex flex-col max-w-md text-center lg:pt-4">
     <h1 class="flex flex-col justify-center items-center gap-2 mb-4">
       <SlackIcon class="w-32 h-32" />
       <span class="font-medium text-5xl">Vuesualizer</span>
