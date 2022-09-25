@@ -21,7 +21,7 @@
     "@types/formidable": "^2.0.5",
     "@types/minio": "^7.0.13",
     "@types/request": "^2.48.8",
-    "autoprefixer": "^10.4.11",
+    "autoprefixer": "^10.4.12",
     "daisyui": "^2.31.0",
     "nuxt": "^3.0.0-rc.10",
     "unplugin-icons": "^0.14.10"
