@@ -12,6 +12,8 @@
 </template>
 
 <script lang="ts" setup>
-const token = useCookie("mongouuid");
-const { copied, copy } = useClipboard({ copiedDuring: 3000, source: token });
+const token = useToken();
+const link = useShareLink();
+
+const { copied, copy } = useClipboard({ copiedDuring: 3000, source: link });
 </script>

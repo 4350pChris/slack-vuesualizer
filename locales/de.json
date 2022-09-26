@@ -24,15 +24,13 @@
     "word": "Import",
     "inProgress": "Datei wird hochgeladen. Das könnte eine Minute dauern....",
     "success": "Import erfolgreich!",
-    "done": "Dein Code ist {0}. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
+    "done": "Hier ist dein Link {0}. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
     "button": "Datei auswählen (.zip)",
     "delete": "Lösche hochgeladene Datei"
   },
   "token": {
-    "yours": "du hast schon einen Code?",
-    "invalid": "ungültiger Code",
-    "copy": "Code kopieren",
-    "copied": "Code wurde kopiert!"
+    "copy": "Link kopieren",
+    "copied": "kopiert!"
   },
   "workspace": {
     "word": "Workspace",
@@ -51,7 +49,7 @@
     "wrongfile": "Das ist kein Slack Export. Versuch's nochmal."
   },
   "retry": "wiederholen",
-  "description": "Sieh und durchsuche dein Slack Archiv.\nKeine Registrierung nötig - nur den Export hochladen und den Code mit anderen teilen.\nGanz einfach.",
+  "description": "Sieh und durchsuche dein Slack Archiv.\nKeine Registrierung nötig - nur den Export hochladen und den Link mit anderen teilen.\nGanz einfach.",
   "exporthelp": "Wie erstelle ich einen Slack Export",
   "jumpToDate": "springe zu Datum"
 }

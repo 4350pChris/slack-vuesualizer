@@ -28,7 +28,7 @@
 import GithubIcon from "~icons/line-md/github-loop";
 import SlackIcon from "~icons/logos/slack-icon";
 
-const token = useCookie("mongouuid");
+const token = useToken();
 
 const leave = async () => {
   token.value = undefined;

@@ -24,15 +24,13 @@
     "word": "upload",
     "inProgress": "File is uploading. Do not worry, this may take a couple of seconds.",
     "success": "Upload successful!",
-    "done": "Your token is {0}. You may share it with others to give them access to your Slack archive.",
+    "done": "Here's your link {0}. You may share it with others to give them access to your Slack archive.",
     "button": "choose file (.zip)",
     "delete": "delete uploaded export"
   },
   "token": {
-    "yours": "already have a token?",
-    "invalid": "invalid token",
-    "copy": "copy token",
-    "copied": "copied to clipboard!"
+    "copy": "copy link",
+    "copied": "copied!"
   },
   "workspace": {
     "word": "workspace",
@@ -51,7 +49,7 @@
     "wrongfile": "That is not a Slack export file. Please try again."
   },
   "retry": "retry",
-  "description": "Show your Slack archive in a searchable way.\nNo registration required - just upload your export and share the code.\nIt's that easy.",
+  "description": "Show your Slack archive in a searchable way.\nNo registration required - just upload your export and share the link.\nIt's that easy.",
   "exporthelp": "How to export my Slack data",
   "jumpToDate": "jump to date"
 }
