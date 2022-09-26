@@ -36,7 +36,6 @@
 </template>
 
 <script lang="ts" setup>
-import LoadingSpinner from "~icons/line-md/loading-alt-loop";
 import CalendarIcon from "~icons/mdi/calendar-search";
 import type { Channel } from "~/types/Channel";
 import type { Message } from "~/types/Message";

@@ -104,12 +104,22 @@ const uploadWorkspaceData = async () => {
     const workspaceEntries = props.entries.filter(
       (e) => !e.filename.includes("/") && !e.directory
     );
-    const data = await Promise.all(
+    let data = await Promise.all(
       workspaceEntries.map(async (e) => ({
         name: e.filename.split(".json")[0],
         data: await parseData([e]),
       }))
     );
+
+    // remove channels that are not to be imported
+    data = data.map((d) => {
+      if (d.name !== "channels") {
+        return d;
+      }
+      d.data = d.data.filter((c) => props.channels.includes(c.name));
+      return d;
+    });
+
     await $fetch(`/api/import/workspace`, {
       method: "POST",
       body: { data },
@@ -117,6 +127,7 @@ const uploadWorkspaceData = async () => {
     done.value.add("vuesualizer-workspace");
   } catch (e) {
     errors.value.add("vuesualizer-workspace");
+    throw e;
   } finally {
     queue.value.delete("vuesualizer-workspace");
   }
