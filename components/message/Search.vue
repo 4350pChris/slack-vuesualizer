@@ -44,7 +44,7 @@
                 tag="h3"
                 class="capitalize font-medium text-lg flex-1"
               >
-                <span class="font-bold">"{{ query }}"</span>
+                <span class="font-bold normal-case">"{{ query }}"</span>
                 <span>{{
                   $t(
                     "search.channels",
