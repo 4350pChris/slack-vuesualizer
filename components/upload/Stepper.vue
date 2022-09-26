@@ -59,7 +59,7 @@
       </button>
       <button
         class="btn btn-outline btn-primary"
-        :disabled="!file || fileInvalid"
+        :disabled="nextDisabled"
         @click="step++"
       >
         {{ $t("next") }}
@@ -80,6 +80,7 @@ defineEmits<Emits>();
 const step = ref(0);
 const file = ref<File>(null);
 const fileInvalid = ref(false);
+const workerDone = ref(false);
 
 const entries = ref<Entry[]>([]);
 
@@ -109,6 +110,20 @@ watch(file, async () => {
 });
 
 const handleWorkerDone = () => {
+  workerDone.value = true;
   step.value++;
 };
+
+const nextDisabled = computed(() => {
+  switch (step.value) {
+    case 0:
+      return file.value === null || fileInvalid.value;
+    case 1:
+      return selectedChannels.value.length === 0;
+    case 2:
+      return !workerDone.value;
+    default:
+      return false;
+  }
+});
 </script>
