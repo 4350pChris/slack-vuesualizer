@@ -1,5 +1,12 @@
 <template>
-  <span v-text="node.text" :class="{ 'font-bold': node.style?.bold }"></span>
+  <span
+    v-text="node.text"
+    :class="{
+      'font-bold': node.style?.bold,
+      italic: node.style?.italic,
+      'line-through': node.style?.strike,
+    }"
+  ></span>
 </template>
 
 <script lang="ts" setup>

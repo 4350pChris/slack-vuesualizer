@@ -32,6 +32,8 @@ export type Attachment = {
 export type TextLeaf = {
   style?: {
     bold?: boolean;
+    italic?: boolean;
+    strike?: boolean;
   };
   type: "text";
   text: string;
