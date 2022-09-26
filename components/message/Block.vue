@@ -22,6 +22,10 @@
     :node="node"
   />
   <MessageBlocksChannel v-else-if="node.type === 'channel'" :node="node" />
+  <MessageBlocksRichTextPreformatted
+    v-else-if="node.type === 'rich_text_preformatted'"
+    :node="node"
+  />
   <p v-else class="text-warning">{{ node }}</p>
 </template>
 

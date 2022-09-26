@@ -34,6 +34,7 @@ export type TextLeaf = {
     bold?: boolean;
     italic?: boolean;
     strike?: boolean;
+    code?: boolean;
   };
   type: "text";
   text: string;
@@ -70,6 +71,11 @@ export type RichTextQuote = {
   elements: Block[];
 };
 
+export type RichTextPreformatted = {
+  type: "rich_text_preformatted";
+  elements: Block[];
+};
+
 export type RichTextSection = {
   type: "rich_text_section";
   elements: Block[];
@@ -94,6 +100,7 @@ export type Block =
   | RichTextSection
   | RichTextQuote
   | RichTextList
+  | RichTextPreformatted
   | TextLeaf
   | EmojiLeaf
   | BroadcastLeaf
