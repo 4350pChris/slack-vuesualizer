@@ -10,7 +10,7 @@
 
 @layer utilities {
   .skeleton-loader {
-    @apply block bg-repeat-y bg-gray-200/80 bg-gradient-to-r from-gray-100/0 via-gray-100/50 to-gray-100/80 animate-pulse;
+    @apply block bg-repeat-y bg-slate-200/80 dark:bg-slate-700 bg-gradient-to-r from-slate-100/0 via-slate-100/50 to-slate-100/80 dark:from-slate-500/0 dark:via-slate-500/50 dark:to-slate-500/80 animate-pulse;
     background-size: 50px 500px;
     background-position: 0 0;
     animation: shine 1s infinite;
