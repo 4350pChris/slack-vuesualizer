@@ -97,8 +97,7 @@ const uploadChannel = async (channel: string) => {
       )
     );
 
-    // done.value.add(channel);
-    errors.value.add(channel);
+    done.value.add(channel);
   } catch (e) {
     errors.value.add(channel);
   } finally {
