@@ -48,7 +48,7 @@
   </div>
   <div
     v-if="step < 2"
-    class="mt-4 flex justify-between sticky bottom-0 py-2 bg-base-100"
+    class="border-t mt-4 flex justify-between sticky bottom-0 py-4 -mb-2 bg-base-100"
   >
     <button class="btn btn-ghost" @click="$emit('abort')">
       {{ $t("abort") }}
