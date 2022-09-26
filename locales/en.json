@@ -24,7 +24,7 @@
     "word": "upload",
     "inProgress": "File is uploading. Do not worry, this may take a couple of seconds.",
     "success": "Upload successful!",
-    "done": "Here's your link {0}. You may share it with others to give them access to your Slack archive.",
+    "done": "Here's your link. You may share it with others to give them access to your Slack archive.",
     "button": "choose file (.zip)",
     "delete": "delete uploaded export"
   },

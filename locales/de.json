@@ -24,7 +24,7 @@
     "word": "Import",
     "inProgress": "Datei wird hochgeladen. Das könnte eine Minute dauern....",
     "success": "Import erfolgreich!",
-    "done": "Hier ist dein Link {0}. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
+    "done": "Hier ist dein Link. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
     "button": "Datei auswählen (.zip)",
     "delete": "Lösche hochgeladene Datei"
   },
