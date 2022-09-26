@@ -7,22 +7,18 @@
         max="100"
       />
     </div>
-    <button
-      v-if="retriable"
-      class="btn btn-outline btn-primary btn-block"
-      @click="doUpload"
-    >
-      {{ $t("retry") }}
-    </button>
-    <ul class="list-none space-y-2">
+    <ul class="list-none space-y-2" ref="list">
       <li
         v-for="channel in ['vuesualizer-workspace', ...channels]"
         :key="channel"
         class="flex gap-2 justify-start items-center"
       >
-        <ConfirmIcon v-if="done.has(channel)" class="w-5 h-5 text-success" />
+        <UploadingLoopIcon v-if="queue.has(channel)" class="w-5 h-5" />
+        <ConfirmIcon
+          v-else-if="done.has(channel)"
+          class="w-5 h-5 text-success"
+        />
         <AlertIcon v-else-if="errors.has(channel)" class="w-5 h-5 text-error" />
-        <UploadingLoopIcon v-else-if="queue.has(channel)" class="w-5 h-5" />
         <CircleIcon v-else class="w-5 h-5" />
         <span v-if="channel === 'vuesualizer-workspace'">
           {{ $t("workspace.word") }}
@@ -30,6 +26,16 @@
         <span v-else>{{ channel }}</span>
       </li>
     </ul>
+    <Transition name="fade">
+      <div
+        v-if="retriable"
+        class="sticky bottom-0 -mb-4 bg-base-100 py-4 border-t"
+      >
+        <button class="btn btn-outline btn-primary btn-block" @click="doUpload">
+          {{ $t("retry") }}
+        </button>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -60,6 +66,8 @@ const retriable = ref(false);
 
 const { parseData } = useZip();
 
+const list = ref<HTMLElement>();
+
 const sema = new Sema(3);
 
 const uploadChannel = async (channel: string) => {
@@ -89,7 +97,8 @@ const uploadChannel = async (channel: string) => {
       )
     );
 
-    done.value.add(channel);
+    // done.value.add(channel);
+    errors.value.add(channel);
   } catch (e) {
     errors.value.add(channel);
   } finally {
@@ -97,6 +106,19 @@ const uploadChannel = async (channel: string) => {
     sema.release();
   }
 };
+
+watchEffect(() => {
+  const channel = props.channels.filter((c) => queue.value.has(c)).at(-1);
+
+  const position = props.channels.lastIndexOf(channel);
+
+  const childEl = unrefElement(list)?.children[position];
+
+  childEl?.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+  });
+});
 
 const uploadWorkspaceData = async () => {
   try {
@@ -124,6 +146,7 @@ const uploadWorkspaceData = async () => {
       method: "POST",
       body: { data },
     });
+
     done.value.add("vuesualizer-workspace");
   } catch (e) {
     errors.value.add("vuesualizer-workspace");
