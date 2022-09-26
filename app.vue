@@ -35,7 +35,7 @@ useHead({
     },
     {
       property: "og:image",
-      content: "/favicon.png",
+      content: "/vuesualizer.png",
     },
     {
       property: "og:type",
@@ -47,7 +47,7 @@ useHead({
     },
     {
       property: "twitter:card",
-      content: "summary_large_image",
+      content: "summary",
     },
     {
       name: "twitter:title",
@@ -59,7 +59,7 @@ useHead({
     },
     {
       property: "twitter:image",
-      content: "/favicon.png",
+      content: "/vuesualizer.png",
     },
     {
       property: "twitter:url",
@@ -86,7 +86,7 @@ useHead({
 useSchemaOrg([
   definePerson({
     name: "Chris-Robin Ennen",
-    link: ["https://github.com/4350pChris"],
+    sameAs: ["https://github.com/4350pChris"],
   }),
   defineWebSite({ name: "Slack Vuesualizer" }),
   defineWebPage(),
