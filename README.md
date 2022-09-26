@@ -1,8 +1,12 @@
-<img alt="Slack" width="250" height="250" src="./assets/Slack_Mark.svg"/>
+<img alt="Slack" width="250" height="250" src="./public/Slack_Mark.svg"/>
 
 # Slack Vuesualizer
 
-Viewer for your Slack export.
+Are you on Slack's free tier and want to see archived messages, maybe even search through them?
+
+This app enables you to do just that!
+
+Use the hosted version at [https://slack-vuesualizer.vercel.app/](https://slack-vuesualizer.vercel.app/) for free or spin up your own website using the Docker image.
 
 ## WIP
 
@@ -11,12 +15,18 @@ This is a work in progress.
 ## Features
 
 * full-text search for messages using MongoDB
-* view all messages per channel, with proper formatting, files, etc.
-* view all users
+* view all messages per channel with proper formatting, files, etc.
+* view and search through all users
+* pleasant UI
 
-## Setup
+## Technologies
 
-Docker setup is preferred. If you don't have Docker or are interested in developing, see how to run this [locally](#locally) further below.
+* [Nuxt 3](https://v3.nuxtjs.org/)
+* [TailwindCSS](https://tailwindcss.com/) and [DaisyUI](https://daisyui.com)
+* [Iconify](https://github.com/iconify/iconify)
+* [MongoDB](https://www.mongodb.com/)
+* [Docker](https://www.docker.com/)
+* [Vercel](https://vercel.com/)
 
 ## Docker
 
@@ -38,7 +48,6 @@ There is a docker-compose file in this project that spins up a local MongoDB ins
 You can easily add this image to it like this:
 
 ```yaml
-...
   services:
     app:
       image: chris5896/slack-vuesualizer
@@ -61,14 +70,13 @@ npm install
 
 Create an .env file to specify your MongoDB instance.
 
-
 ```bash
 NUXT_MONGODB_URI=mongodb://root:example@localhost:27017
 ```
 
 ### Development Server
 
-Start the development server on http://localhost:3000
+Start the development server on [http://localhost:3000](http://localhost:3000)
 
 ```bash
 npm run dev
