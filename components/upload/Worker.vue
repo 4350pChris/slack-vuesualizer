@@ -73,10 +73,22 @@ const uploadChannel = async (channel: string) => {
 
     const data = await parseData(channelEntries);
 
-    await $fetch(`/api/import/channel/${channel}`, {
-      method: "POST",
-      body: { data },
-    });
+    // split into groups to prevent request from being too large for Vercel to handle
+    const groups = [];
+    const size = 500;
+
+    for (let i = 0; i < data.length; i += size) {
+      groups.push(data.slice(i, i + size));
+    }
+
+    await Promise.all(
+      groups.map((group) =>
+        $fetch(`/api/import/channel/${channel}`, {
+          method: "POST",
+          body: { data: group },
+        })
+      )
+    );
 
     done.value.add(channel);
   } catch (e) {
