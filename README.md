@@ -1,4 +1,4 @@
-<img alt="Slack" width="250" height="250" src="./Slack_Mark.svg"/>
+<img alt="Slack" width="250" height="250" src="./assets/Slack_Mark.svg"/>
 
 # Slack Vuesualizer
 
