@@ -47,7 +47,7 @@ interface Props {
 }
 
 interface Emits {
-  (event: "done", token: string): void;
+  (event: "done"): void;
 }
 
 const props = defineProps<Props>();
@@ -55,7 +55,6 @@ const emit = defineEmits<Emits>();
 
 const queue = ref(new Set<string>());
 const done = ref(new Set<string>());
-const token = ref("");
 const errors = ref(new Set<string>());
 const retriable = ref(false);
 
@@ -111,11 +110,10 @@ const uploadWorkspaceData = async () => {
         data: await parseData([e]),
       }))
     );
-    const { uuid } = await $fetch(`/api/import/workspace`, {
+    await $fetch(`/api/import/workspace`, {
       method: "POST",
       body: { data },
     });
-    token.value = uuid;
     done.value.add("vuesualizer-workspace");
   } catch (e) {
     errors.value.add("vuesualizer-workspace");
@@ -138,7 +136,7 @@ const doUpload = async () => {
   await Promise.all(channelsToUpload.map(uploadChannel));
 
   if (done.value.size === props.channels.length + 1) {
-    emit("done", token.value);
+    emit("done");
   } else {
     retriable.value = true;
   }

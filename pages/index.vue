@@ -18,7 +18,6 @@
       <UploadIcon class="w-6 h-6" />
       {{ $t("upload.button") }}
     </NuxtLink>
-    <UploadTokenForm />
   </div>
 </template>
 
@@ -30,4 +29,6 @@ import QuestionIcon from "~icons/line-md/question";
 definePageMeta({
   layout: "upload",
 });
+
+const token = useToken();
 </script>

@@ -43,7 +43,7 @@
         :entries="entries"
         @done="handleWorkerDone"
       />
-      <UploadSuccess v-else-if="step === 3" :token="token" />
+      <UploadSuccess v-else-if="step === 3" />
     </Transition>
   </div>
   <div
@@ -91,8 +91,6 @@ const channels = computed(() =>
 );
 const selectedChannels = ref<string[]>([]);
 
-const token = ref("");
-
 const { readZip } = useZip();
 
 watch(channels, (c) => (selectedChannels.value = c));
@@ -110,8 +108,7 @@ watch(file, async () => {
   }
 });
 
-const handleWorkerDone = (uuid: string) => {
-  token.value = uuid;
+const handleWorkerDone = () => {
   step.value++;
 };
 </script>
