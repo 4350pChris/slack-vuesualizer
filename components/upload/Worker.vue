@@ -141,6 +141,9 @@ const uploadWorkspaceData = async () => {
       return d;
     });
 
+    // guard against empty datasets
+    data = data.filter((d) => !(d.data.length === 1 && d.data[0] === ""));
+
     await $fetch(`/api/import/workspace`, {
       method: "POST",
       body: { data },
