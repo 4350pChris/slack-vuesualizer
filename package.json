@@ -1,5 +1,31 @@
 {
   "private": true,
+  "name": "slack-vuesualizer",
+  "description": "A visualizer for your Slack exports. Search through messages, show old files, etc.",
+  "keywords": [
+    "slack",
+    "export",
+    "import",
+    "workspace",
+    "search",
+    "mongodb",
+    "nuxt",
+    "nuxt3",
+    "vue",
+    "vue.js",
+    "typescript"
+  ],
+  "version": "1.0.0",
+  "homepage": "https://github.com/4350pChris/slack-vuesualizer",
+  "license": "MIT",
+  "author": {
+    "name": "Chris-Robin Ennen",
+    "email": "slack-vuesualizer@ennen.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4350pChris/slack-vuesualizer.git"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
