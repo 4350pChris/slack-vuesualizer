@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
     "@intlify/nuxt3",
+    "nuxt-schema-org",
   ],
   colorMode: {
     preference: "system",
@@ -28,6 +29,9 @@ export default defineNuxtConfig({
     options: {
       linkExactActiveClass: "active",
     },
+  },
+  schemaOrg: {
+    canonicalHost: process.env.NUXT_CANONICAL_HOST,
   },
   intlify: {
     vueI18n: {
