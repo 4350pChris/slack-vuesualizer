@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   css: ["assets/css/index.css"],
   runtimeConfig: {
     mongodbUri: "",
+    canonicalHost: "",
   },
   modules: [
     [

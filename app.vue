@@ -12,6 +12,8 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 
+const { canonicalHost } = useRuntimeConfig();
+
 useHead({
   title: "Slack Vuesualizer",
   meta: [
@@ -22,6 +24,46 @@ useHead({
     {
       name: "format-detection",
       content: "telephone=no",
+    },
+    {
+      name: "og:title",
+      content: "Slack Vuesualizer",
+    },
+    {
+      name: "og:description",
+      content: t("description"),
+    },
+    {
+      property: "og:image",
+      content: "/favicon.png",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+    {
+      property: "og:url",
+      content: canonicalHost,
+    },
+    {
+      property: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:title",
+      content: "Slack Vuesualizer",
+    },
+    {
+      name: "twitter:description",
+      content: t("description"),
+    },
+    {
+      property: "twitter:image",
+      content: "/favicon.png",
+    },
+    {
+      property: "twitter:url",
+      content: canonicalHost,
     },
   ],
   link: [
