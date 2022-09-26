@@ -24,6 +24,21 @@ useHead({
       content: "telephone=no",
     },
   ],
+  link: [
+    {
+      rel: "icon",
+      href: "/favicon.png",
+    },
+    {
+      rel: "mask-icon",
+      href: "/Slack_Mark_Monochrome_White.svg",
+      color: "#000000",
+    },
+    {
+      rel: "apple-touch-icon",
+      href: "/favicon.png",
+    },
+  ],
 });
 
 useSchemaOrg([

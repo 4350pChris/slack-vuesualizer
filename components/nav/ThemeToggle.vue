@@ -28,4 +28,15 @@ onMounted(() => {
 watch(dark, (d) => {
   colorMode.preference = d ? "business" : "fantasy";
 });
+
+const themeColor = computed(() => (dark.value ? "#212121" : "#000000"));
+
+useHead({
+  meta: [
+    {
+      name: "theme-color",
+      content: themeColor,
+    },
+  ],
+});
 </script>
