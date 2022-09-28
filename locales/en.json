@@ -51,5 +51,8 @@
   "retry": "retry",
   "description": "Show your Slack archive in a searchable way.\nNo registration required - just upload your export and share the link.\nIt's that easy.",
   "exporthelp": "How to export my Slack data",
-  "jumpToDate": "jump to date"
+  "jumpToDate": "jump to date",
+  "file": "file | files",
+  "totalFiles": "{0} total @:file",
+  "hiddenFiles": "{0} @:file hidden"
 }

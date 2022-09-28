@@ -1,4 +1,5 @@
 import type { Profile } from "./User";
+import type { File } from "./File";
 
 export type Reaction = {
   name: string;
@@ -9,17 +10,6 @@ export type Reaction = {
 export type Reply = {
   user: string;
   ts: string;
-};
-
-export type File = {
-  id: string;
-  name: string;
-  title: string;
-  mimetype: string;
-  user: string;
-  url_private: string;
-  permalink: string;
-  mode?: string;
 };
 
 export type Attachment = {
