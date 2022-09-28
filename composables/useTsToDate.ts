@@ -1,2 +1,5 @@
-export default () => (ts: string) =>
-  new Date(parseInt(ts.split(".")[0]) * 1000);
+export default () => (ts: string | number) => {
+  const timestampInSeconds =
+    typeof ts === "number" ? ts : parseInt(ts.split(".")[0]);
+  return new Date(timestampInSeconds * 1000);
+};

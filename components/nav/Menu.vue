@@ -12,6 +12,12 @@
         {{ $t("user", 2) }}
       </NuxtLink>
     </li>
+    <li>
+      <NuxtLink class="capitalize rounded-box" to="/files">
+        <FilesIcon />
+        {{ $t("file", 2) }}
+      </NuxtLink>
+    </li>
     <li></li>
     <li class="menu-title capitalize">
       <span>{{ $t("channel.word", 2) }}</span>
@@ -33,6 +39,7 @@
 
 <script lang="ts" setup>
 import AccountIcon from "~icons/mdi/account";
+import FilesIcon from "~icons/mdi/file-multiple";
 import HomeIcon from "~icons/mdi/home";
 import UploadIcon from "~icons/mdi/upload";
 import type { Channel } from "~~/types/Channel";
