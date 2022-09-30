@@ -80,8 +80,4 @@ const previewImage = computed(() => {
     return props.file.thumb_video;
   }
 });
-
-if (props.file.mimetype.startsWith("video")) {
-  console.log(props.file);
-}
 </script>
