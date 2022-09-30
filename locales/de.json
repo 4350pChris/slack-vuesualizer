@@ -54,5 +54,8 @@
   "jumpToDate": "springe zu Datum",
   "file": "Datei | Dateien",
   "totalFiles": "{0} @:file insgesamt",
-  "hiddenFiles": "{0} @:file versteckt"
+  "hiddenFiles": "{0} @:file versteckt",
+  "filter": {
+    "from": "von"
+  }
 }
