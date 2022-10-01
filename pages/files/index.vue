@@ -1,34 +1,42 @@
 <template>
   <div class="flex flex-col gap-4 mb-2">
     <div class="sticky top-0 bg-base-100 py-2">
-      <div class="text-lg font-bold mb-2">
-        <p>{{ $t("totalFiles", [files.length], files.length) }}</p>
-        <p>
-          {{
-            $t(
-              "hiddenFiles",
-              [files.length - notHidden.length],
-              files.length - notHidden.length
-            )
-          }}
-        </p>
-      </div>
-      <FilesFilter />
+      <FilesFilter
+        v-model:users="selectedUsers"
+        v-model:channels="selectedChannels"
+      />
     </div>
     <ul class="list-none space-y-4">
-      <li v-for="file in notHidden" :key="file.id">
-        <FilesDetail :file="file" />
+      <li v-for="message in messages" :key="message._id">
+        <FilesDetailRow :file="message.file" :channel="message.channel" />
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { ShownFile } from "~~/types/File";
+import type { Channel } from "~~/types/Channel";
+import type { User } from "~~/types/User";
 
-const { data: files } = await useFetch("/api/files", {
-  headers: useRequestHeaders(["cookie"]),
-});
+const selectedUsers = ref<User[]>([]);
+const selectedChannels = ref<Channel[]>([]);
 
-const notHidden = files.value.filter((f) => "name" in f) as ShownFile[];
+const userIds = useArrayMap(selectedUsers, ({ id }) => id);
+const channelNames = useArrayMap(selectedChannels, ({ name }) => name);
+
+const { data: messages } = useAsyncData(
+  "files",
+  () =>
+    $fetch("/api/files", {
+      method: "POST",
+      body: {
+        users: userIds.value,
+        channels: channelNames.value,
+      },
+      headers: useRequestHeaders(["cookie"]),
+    }),
+  {
+    watch: [userIds, channelNames],
+  }
+);
 </script>

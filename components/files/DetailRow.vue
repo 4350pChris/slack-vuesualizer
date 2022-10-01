@@ -1,19 +1,24 @@
 <template>
   <div class="flex gap-4 items-start">
-    <div class="h-full w-40">
+    <div class="h-20 w-20 rounded-box">
       <img
         v-if="previewImage"
         :src="previewImage"
-        class="max-h-full max-w-full"
+        class="max-h-full max-w-full truncate rounded-box"
         loading="lazy"
         :alt="file.title"
+      />
+      <AudioIcon
+        v-else-if="isAudioFile(file)"
+        class="w-full h-full p-4 text-current"
       />
     </div>
     <div class="flex flex-col">
       <div class="flex items-center gap-4">
-        <span>{{ user.profile.display_name || user.profile.real_name }}</span>
+        <span class="text-sm font-bold">{{ channel }}</span>
         <span class="text-sm">{{ $d(tsToDate(file.timestamp), "long") }}</span>
       </div>
+      <span>{{ useUserName(user) }}</span>
       <a
         class="fancy-link"
         :href="file.url_private"
@@ -39,9 +44,11 @@ import type {
   ImageFile,
   VideoFile,
 } from "~~/types/File";
+import AudioIcon from "~icons/mdi/headphones";
 import { useI18n } from "vue-i18n";
 
 interface Props {
+  channel: string;
   file: ShownFile;
 }
 
@@ -65,6 +72,10 @@ function fileHasThumb80(f: ShownFile): f is ImageFile {
 
 function fileHasThumbVideo(f: ShownFile): f is VideoFile {
   return "thumb_video" in f;
+}
+
+function isAudioFile(f: ShownFile) {
+  return f.mimetype.startsWith("audio");
 }
 
 const size = computed(() =>
