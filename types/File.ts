@@ -40,3 +40,9 @@ export type VideoFile = ShownFile & {
 };
 
 export type File = HiddenFile | ShownFile;
+
+export type SearchResult = {
+  _id: string;
+  channel: string;
+  file: ShownFile;
+};
