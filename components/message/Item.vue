@@ -39,7 +39,7 @@
       </p>
     </div>
     <SearchIcon v-if="searched" class="w-8 h-8 self-center mr-2" />
-    <div class="flex gap-2 col-start-2" v-if="message.reactions">
+    <div class="flex gap-2 col-start-2 flex-wrap" v-if="message.reactions">
       <MessageReaction
         v-for="(reaction, i) in message.reactions"
         :key="i"
