@@ -5,6 +5,28 @@
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
+    },
+    {
+      "groupName": "icons",
+      "matchPackageNames": ["unplugin-icons"],
+      "matchPackagePrefixes": ["@iconify-json/"]
+    },
+    {
+      "groupName": "definitelyTyped",
+      "matchPackagePrefixes": ["@types/"]
+    },
+    {
+      "groupName": "nuxt plugins",
+      "matchPackageNames": ["@intlify/nuxt3", "nuxt-schema-org"],
+      "matchPackagePrefixes": ["@nuxtjs/"]
+    },
+    {
+      "groupName": "headlessui",
+      "matchPackagePrefixes": ["@headlessui/"]
+    },
+    {
+      "groupName": "vueuse",
+      "matchPackagePrefixes": ["@vueuse/"]
     }
   ]
 }
