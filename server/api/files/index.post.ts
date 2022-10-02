@@ -8,6 +8,8 @@ interface Body {
   channels: string[];
   users: string[];
   sort: Sortable;
+  page: number;
+  size: number;
 }
 
 const mongoSortFromBody: (sort: Sortable) => Record<string, number> = (
@@ -30,32 +32,31 @@ const mongoSortFromBody: (sort: Sortable) => Record<string, number> = (
 export default defineEventHandler(async (event) => {
   const db = await mongo(event.context.mongouuid);
 
-  const { users, channels, sort } = await useBody<Body>(event);
+  const { users, channels, sort, page, size } = await useBody<Body>(event);
 
-  const filters: Filter<Message>[] = [
-    {
-      "files.name": { $exists: true },
-    },
-  ];
+  const filter: Filter<Message> = {
+    "files.name": { $exists: true },
+  };
 
   if (users?.length > 0) {
-    filters.push({ user: { $in: users } });
+    filter.user = { $in: users };
   }
 
   if (channels?.length > 0) {
-    filters.push({ channel: { $in: channels } });
+    filter.channel = { $in: channels };
   }
 
   const sorting = mongoSortFromBody(sort);
 
-  const messages = await db
-    .collection<Message>("messages")
+  const coll = db.collection<Message>("messages");
+
+  const messages = await coll
     .aggregate<SearchResult>([
       {
         $unwind: "$files",
       },
       {
-        $match: { $and: filters },
+        $match: filter,
       },
       {
         $group: {
@@ -72,7 +73,11 @@ export default defineEventHandler(async (event) => {
         $sort: sorting,
       },
     ])
+    .skip(page * size)
+    .limit(size)
     .toArray();
 
-  return messages;
+  const count = await coll.countDocuments(filter);
+
+  return { count: Math.ceil(count / size), messages };
 });
