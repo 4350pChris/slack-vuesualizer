@@ -14,21 +14,21 @@ interface Emits {
 const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
-const queue = ref(new Set<string>())
-const done = ref(new Set<string>())
-const errors = ref(new Set<string>())
-const retriable = ref(false)
+const queue = $ref(new Set<string>())
+const done = $ref(new Set<string>())
+const errors = $ref(new Set<string>())
+let retriable = $ref(false)
 
 const { parseData } = useZip()
 
-const list = ref<HTMLElement>()
+const list = $ref<HTMLElement>()
 
 const sema = new Sema(3)
 
 const uploadChannel = async (channel: string) => {
   try {
     await sema.acquire()
-    queue.value.add(channel)
+    queue.add(channel)
     const channelEntries = props.entries.filter(
       e => !e.directory && e.filename.startsWith(`${channel}/`),
     )
@@ -51,19 +51,19 @@ const uploadChannel = async (channel: string) => {
       ),
     )
 
-    done.value.add(channel)
+    done.add(channel)
   }
   catch (e) {
-    errors.value.add(channel)
+    errors.add(channel)
   }
   finally {
-    queue.value.delete(channel)
+    queue.delete(channel)
     sema.release()
   }
 }
 
 watchEffect(() => {
-  const channel = props.channels.filter(c => queue.value.has(c)).at(-1)
+  const channel = props.channels.filter(c => queue.has(c)).at(-1)
 
   const position = props.channels.lastIndexOf(channel)
 
@@ -77,7 +77,7 @@ watchEffect(() => {
 
 const uploadWorkspaceData = async () => {
   try {
-    queue.value.add('vuesualizer-workspace')
+    queue.add('vuesualizer-workspace')
     const workspaceEntries = props.entries.filter(
       e => !e.filename.includes('/') && !e.directory,
     )
@@ -105,33 +105,33 @@ const uploadWorkspaceData = async () => {
       body: { data },
     })
 
-    done.value.add('vuesualizer-workspace')
+    done.add('vuesualizer-workspace')
   }
   catch (e) {
-    errors.value.add('vuesualizer-workspace')
+    errors.add('vuesualizer-workspace')
     throw e
   }
   finally {
-    queue.value.delete('vuesualizer-workspace')
+    queue.delete('vuesualizer-workspace')
   }
 }
 
 const doUpload = async () => {
-  retriable.value = false
+  retriable = false
 
-  if (!done.value.has('vuesualizer-workspace'))
+  if (!done.has('vuesualizer-workspace'))
     await uploadWorkspaceData()
 
   const channelsToUpload = props.channels.filter(
-    channel => !done.value.has(channel),
+    channel => !done.has(channel),
   )
 
   await Promise.all(channelsToUpload.map(uploadChannel))
 
-  if (done.value.size === props.channels.length + 1)
+  if (done.size === props.channels.length + 1)
     emit('done')
   else
-    retriable.value = true
+    retriable = true
 }
 
 onMounted(doUpload)
