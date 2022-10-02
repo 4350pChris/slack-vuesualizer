@@ -9,17 +9,17 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const scroller = ref(null)
+const scroller = $ref(null)
 const route = useRoute()
 
-const messageId = computed(() => route.query.message)
+const messageId = $computed(() => route.query.message)
 
 watchEffect(() => {
-  if (messageId.value) {
+  if (messageId) {
     const index = props.messages.findIndex(
-      message => '_id' in message && message._id === messageId.value,
+      message => '_id' in message && message._id === messageId,
     )
-    setTimeout(() => scroller.value?.scrollToItem(index), 0)
+    setTimeout(() => scroller?.scrollToItem(index), 0)
   }
 })
 </script>

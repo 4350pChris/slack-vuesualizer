@@ -3,10 +3,10 @@ import type { UserLeaf } from '~~/types/Message'
 
 const props = defineProps<{ node: UserLeaf }>()
 
-const users = useUsers()
+const users = $(useUsers())
 
-const user = computed(() =>
-  users.value.find(u => u.id === props.node.user_id),
+const user = $computed(() =>
+  users.find(u => u.id === props.node.user_id),
 )
 </script>
 

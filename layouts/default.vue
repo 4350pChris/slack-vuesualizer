@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-const users = useUsers()
+let users = $(useUsers())
 
-const { data: fetchedUsers } = await useFetch('/api/users', {
+const { data: fetchedUsers } = $(await useFetch('/api/users', {
   headers: useRequestHeaders(['cookie']),
-})
+}))
 
-watchEffect(() => (users.value = fetchedUsers.value))
+watchEffect(() => (users = fetchedUsers))
 
-const { data: fetchedChannels } = await useFetch('/api/channels', {
+const { data: fetchedChannels } = $(await useFetch('/api/channels', {
   headers: useRequestHeaders(['cookie']),
-})
+}))
 
-const channels = useChannels()
+let channels = $(useChannels())
 
-watchEffect(() => (channels.value = fetchedChannels.value))
+watchEffect(() => (channels = fetchedChannels))
 </script>
 
 <template>

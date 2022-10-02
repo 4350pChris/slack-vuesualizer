@@ -5,22 +5,22 @@ import type { Message } from '~/types/Message'
 
 const route = useRoute()
 
-const { data: channel } = await useFetch<Channel>(
+const { data: channel } = $(await useFetch<Channel>(
   `/api/channels/${route.params.channel}`,
   {
     pick: ['name', 'purpose', 'creator', 'created'],
     headers: useRequestHeaders(['cookie']),
     initialCache: false,
   },
-)
+))
 
-const { data: messages, pending } = await useLazyFetch<Message[]>(
+const { data: messages, pending } = $(await useLazyFetch<Message[]>(
   `/api/channels/${route.params.channel}/messages`,
   {
     headers: useRequestHeaders(['cookie']),
     initialCache: false,
   },
-)
+))
 
 const toTs = useTsToDate()
 
@@ -34,8 +34,8 @@ function dateDiffInDays(a: Date, b: Date) {
   return Math.floor((utc2 - utc1) / _MS_PER_DAY)
 }
 
-const withSeparators = computed(() =>
-  messages.value.reduce(
+const withSeparators = $computed(() =>
+  messages.reduce(
     ({ messages, date }, message) => {
       const messageDate = toTs(message.ts)
       let separator = false
@@ -66,7 +66,7 @@ const withSeparators = computed(() =>
 const jumpToDate = (e: Event) => {
   const date = new Date((e.target as HTMLInputElement).value)
   const message
-    = messages.value.find(m => date < toTs(m.ts)) ?? messages.value.at(-1)
+    = messages.find(m => date < toTs(m.ts)) ?? messages.at(-1)
   if (message) {
     navigateTo({
       path: route.path,

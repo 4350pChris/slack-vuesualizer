@@ -4,21 +4,20 @@ import SunIcon from '~icons/line-md/sun-rising-twotone-loop'
 
 const colorMode = useColorMode()
 
-const dark = ref<boolean>()
+let dark = $ref<boolean>()
 
 onMounted(() => {
-  dark.value
-    = colorMode.preference === 'business'
-    || colorMode.value === 'dark'
-    || (colorMode.value === 'system'
-      && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  dark = colorMode.preference === 'business'
+        || colorMode.value === 'dark'
+        || (colorMode.value === 'system'
+        && window.matchMedia('(prefers-color-scheme: dark)').matches)
 })
 
-watch(dark, (d) => {
+watch($$(dark), (d) => {
   colorMode.preference = d ? 'business' : 'fantasy'
 })
 
-const themeColor = computed(() => (dark.value ? '#212121' : '#000000'))
+const themeColor = $computed(() => (dark ? '#212121' : '#000000'))
 
 useHead({
   meta: [

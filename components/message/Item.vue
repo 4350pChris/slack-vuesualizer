@@ -12,10 +12,10 @@ interface Props {
 const props = defineProps<Props>()
 
 const toTs = useTsToDate()
-const users = useUsers()
+const users = $(useUsers())
 
-const user = computed(() =>
-  users.value.find(
+const user = $computed(() =>
+  users.find(
     u => u.id === props.message.user || u.id === props.message.bot_id,
   ),
 )

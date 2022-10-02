@@ -17,16 +17,16 @@ const props = defineProps<Props>()
 
 const emit = defineEmits<Emits>()
 
-const model = useVModel(props, 'modelValue', emit)
+let model = $(useVModel(props, 'modelValue', emit))
 
-const dropZoneRef = ref<HTMLDivElement>()
-const fileInputRef = ref<HTMLInputElement>()
+const dropZoneRef = $ref<HTMLDivElement>()
+const fileInputRef = $ref<HTMLInputElement>()
 
 const handleUpload = (files: File[] | null) => {
-  model.value = files[0]
+  model = files[0]
 }
 
-useDropZone(dropZoneRef, handleUpload)
+useDropZone($$(dropZoneRef), handleUpload)
 </script>
 
 <template>

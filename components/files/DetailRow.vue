@@ -17,11 +17,11 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const { locale } = useI18n()
+const { locale } = $(useI18n())
 
-const users = useUsers()
+const users = $(useUsers())
 
-const user = computed(() => users.value.find(u => u.id === props.file.user))
+const user = $computed(() => users.find(u => u.id === props.file.user))
 
 const tsToDate = useTsToDate()
 
@@ -41,11 +41,11 @@ function isAudioFile(f: ShownFile) {
   return f.mimetype.startsWith('audio')
 }
 
-const size = computed(() =>
-  filesize(props.file.size, { locale: locale.value }),
+const size = $computed(() =>
+  filesize(props.file.size, { locale }),
 )
 
-const previewImage = computed(() => {
+const previewImage = $computed(() => {
   if (fileHasThumbPdf(props.file))
     return props.file.thumb_pdf
   else if (fileHasThumb80(props.file))

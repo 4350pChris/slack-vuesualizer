@@ -6,21 +6,21 @@ import TextSearch from '~icons/mdi/text-search'
 import type { Message } from '~/types/Message'
 
 const route = useRoute()
-const query = ref('')
-const results = ref<Message[]>([])
-const allChannels = ref(false)
-const _searching = ref(false)
-const searching = refDebounced(_searching, 150)
+const query = $ref('')
+let results = $ref<Message[]>([])
+let allChannels = $ref(false)
+let _searching = $ref(false)
+const searching = $(refDebounced($$(_searching), 150))
 
 const search = useDebounceFn(async () => {
   const params: { query: string; channel?: string | string[] } = {
-    query: query.value,
+    query,
   }
-  if (!allChannels.value && route.params.channel)
+  if (!allChannels && route.params.channel)
     params.channel = route.params.channel
 
   try {
-    results.value = await $fetch('/api/messages/search', {
+    results = await $fetch('/api/messages/search', {
       params,
       headers: useRequestHeaders(['cookie']),
     })
@@ -28,39 +28,39 @@ const search = useDebounceFn(async () => {
   catch (e) {
     console.error(e)
   }
-  _searching.value = false
+  _searching = false
 }, 500)
 
-watch([query, allChannels], () => {
-  if (!query.value) {
-    results.value = []
+watch([$$(query), $$(allChannels)], () => {
+  if (!query) {
+    results = []
     return
   }
-  _searching.value = true
+  _searching = true
   return search()
 })
 
 whenever(
   () => !route.params.channel,
   () => {
-    allChannels.value = true
+    allChannels = true
   },
   { immediate: true },
 )
 
-const wrapper = ref<HTMLElement>(null)
-const input = ref<HTMLInputElement>(null)
-const visible = ref(false)
+const wrapper = $ref<HTMLElement>(null)
+const input = $ref<HTMLInputElement>(null)
+let visible = $ref(false)
 
 whenever(
-  () => visible.value && input.value,
+  () => visible && input,
   () => {
     unrefElement(input).focus()
   },
 )
 
-onClickOutside(wrapper, () => (visible.value = false), {
-  ignore: [input],
+onClickOutside($$(wrapper), () => (visible = false), {
+  ignore: [$$(input)],
 })
 
 const keys = useMagicKeys()
@@ -68,12 +68,12 @@ const keys = useMagicKeys()
 const ctrlK = keys['Ctrl+K']
 
 whenever(ctrlK, () => {
-  visible.value = true
+  visible = true
 })
 
 onKeyDown(['Escape'], (e) => {
   e.preventDefault()
-  visible.value = false
+  visible = false
 })
 </script>
 
