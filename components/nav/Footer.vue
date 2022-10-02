@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-const token = useToken()
+let token = $(useToken())
 
 const leave = async () => {
-  token.value = undefined
+  token = undefined
   await navigateTo('/')
 }
 </script>

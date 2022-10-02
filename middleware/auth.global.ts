@@ -1,13 +1,13 @@
 export default defineNuxtRouteMiddleware((to) => {
   const urlToken = to.query.token
-  const token = useCookie('mongouuid')
+  let token = $(useCookie('mongouuid'))
 
   if (typeof urlToken === 'string')
-    token.value = urlToken
+    token = urlToken
 
-  if (token.value && to.path === '/')
+  if (token && to.path === '/')
     return navigateTo('/workspace')
 
-  if (!token.value && to.meta.layout !== 'upload')
+  if (!token && to.meta.layout !== 'upload')
     return navigateTo('/upload')
 })

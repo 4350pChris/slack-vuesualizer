@@ -8,15 +8,15 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const name = computed(() => props.reaction.name)
+const name = $computed(() => props.reaction.name)
 
-const { emojiUnicode } = useEmoji(name)
+const { emojiUnicode } = $(useEmoji(name))
 
-const users = useUsers()
+const users = $(useUsers())
 
-const userNames = computed(() =>
+const userNames = $computed(() =>
   props.reaction.users.map(
-    user => users.value.find(({ id }) => id === user)?.profile.display_name,
+    user => users.find(({ id }) => id === user)?.profile.display_name,
   ),
 )
 </script>

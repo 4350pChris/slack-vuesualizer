@@ -57,7 +57,7 @@ const model = useVModel(props, 'modelValue', emit)
             v-if="selected"
             class="flex absolute inset-y-0 left-3 items-center"
           >
-            <span class="w-6 h-6 i-mdi:confirm" />
+            <span class="w-6 h-6 i-line-md:confirm" />
           </span>
           <span class="truncate block">
             <slot name="item" :item="item" />
