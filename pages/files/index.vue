@@ -67,7 +67,7 @@ const { data: searchResult } = useAsyncData(
           <FilesDetailRow :file="message.file" :channel="message.channel" />
         </li>
       </ul>
-      <div class="sticky bottom-0 bg-base-100 py-2">
+      <div class="fixed w-full bottom-0 bg-base-100 py-4">
         <BasePagination v-model="page" :pages="searchResult.count" />
       </div>
     </template>
