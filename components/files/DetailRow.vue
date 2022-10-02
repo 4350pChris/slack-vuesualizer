@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import filesize from "filesize";
+import { filesize } from "filesize";
 import type {
   PdfFile,
   DocFile,
