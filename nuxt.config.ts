@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
+  experimental: {
+    reactivityTransform: true,
+  },
   css: ['assets/css/index.css'],
   runtimeConfig: {
     mongodbUri: '',
