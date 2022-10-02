@@ -1,5 +1,5 @@
 <template>
-  <BaseMultiSelect v-model="model" :items="users" keyProp="id" multiple>
+  <BaseSelect v-model="model" :items="users" keyProp="id" multiple>
     <template #activator>
       {{
         $t("filter.from") +
@@ -12,7 +12,7 @@
       }}
     </template>
     <template #item="{ item }">{{ useUserName(item) }}</template>
-  </BaseMultiSelect>
+  </BaseSelect>
 </template>
 
 <script lang="ts" setup>
