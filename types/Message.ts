@@ -1,89 +1,89 @@
-import type { Profile } from "./User";
-import type { File } from "./File";
+import type { Profile } from './User'
+import type { File } from './File'
 
-export type Reaction = {
-  name: string;
-  users: string[];
-  count: number;
-};
+export interface Reaction {
+  name: string
+  users: string[]
+  count: number
+}
 
-export type Reply = {
-  user: string;
-  ts: string;
-};
+export interface Reply {
+  user: string
+  ts: string
+}
 
-export type Attachment = {
-  id: number;
-  color: string;
-  fallback: string;
-  title_link: string;
-};
+export interface Attachment {
+  id: number
+  color: string
+  fallback: string
+  title_link: string
+}
 
-export type TextLeaf = {
+export interface TextLeaf {
   style?: {
-    bold?: boolean;
-    italic?: boolean;
-    strike?: boolean;
-    code?: boolean;
-  };
-  type: "text";
-  text: string;
-};
+    bold?: boolean
+    italic?: boolean
+    strike?: boolean
+    code?: boolean
+  }
+  type: 'text'
+  text: string
+}
 
-export type EmojiLeaf = {
-  type: "emoji";
-  name: string;
-  unicode?: string;
-};
+export interface EmojiLeaf {
+  type: 'emoji'
+  name: string
+  unicode?: string
+}
 
-export type UserLeaf = {
-  type: "user";
-  user_id: string;
-};
+export interface UserLeaf {
+  type: 'user'
+  user_id: string
+}
 
-export type BroadcastLeaf = {
-  type: "broadcast";
-  range: string;
-};
+export interface BroadcastLeaf {
+  type: 'broadcast'
+  range: string
+}
 
-export type LinkLeaf = {
-  type: "link";
-  url: string;
-};
+export interface LinkLeaf {
+  type: 'link'
+  url: string
+}
 
-export type ChannelLeaf = {
-  type: "channel";
-  channel_id: string;
-};
+export interface ChannelLeaf {
+  type: 'channel'
+  channel_id: string
+}
 
-export type RichTextQuote = {
-  type: "rich_text_quote";
-  elements: Block[];
-};
+export interface RichTextQuote {
+  type: 'rich_text_quote'
+  elements: Block[]
+}
 
-export type RichTextPreformatted = {
-  type: "rich_text_preformatted";
-  elements: Block[];
-};
+export interface RichTextPreformatted {
+  type: 'rich_text_preformatted'
+  elements: Block[]
+}
 
-export type RichTextSection = {
-  type: "rich_text_section";
-  elements: Block[];
-};
+export interface RichTextSection {
+  type: 'rich_text_section'
+  elements: Block[]
+}
 
-export type RichTextList = {
-  type: "rich_text_list";
-  elements: Block[];
-  indent: number;
-  border?: number;
-  style: "ordered" | "bullet";
-};
+export interface RichTextList {
+  type: 'rich_text_list'
+  elements: Block[]
+  indent: number
+  border?: number
+  style: 'ordered' | 'bullet'
+}
 
-export type RichText = {
-  type: "rich_text";
-  block_id: string;
-  elements: Block[];
-};
+export interface RichText {
+  type: 'rich_text'
+  block_id: string
+  elements: Block[]
+}
 
 export type Block =
   | RichText
@@ -96,32 +96,32 @@ export type Block =
   | BroadcastLeaf
   | LinkLeaf
   | UserLeaf
-  | ChannelLeaf;
+  | ChannelLeaf
 
-export type ApiMessage = {
-  _id: string;
-  type: string;
-  channel: string;
-  subtype?: string;
-  ts: string;
-  user?: string;
-  bot_id?: string;
-  text: string;
+export interface ApiMessage {
+  _id: string
+  type: string
+  channel: string
+  subtype?: string
+  ts: string
+  user?: string
+  bot_id?: string
+  text: string
   user_profile?: Pick<
     Profile,
-    "image_72" | "first_name" | "real_name" | "display_name"
-  > & { avatar_hash: string };
-  reactions?: Reaction[];
-  replies?: Reply[];
-  reply_users?: string[];
-  reply_users_count?: number;
-  reply_count?: number;
-  files?: File[];
-  blocks?: Block[];
-  attachments?: Attachment[];
-};
+    'image_72' | 'first_name' | 'real_name' | 'display_name'
+  > & { avatar_hash: string }
+  reactions?: Reaction[]
+  replies?: Reply[]
+  reply_users?: string[]
+  reply_users_count?: number
+  reply_count?: number
+  files?: File[]
+  blocks?: Block[]
+  attachments?: Attachment[]
+}
 
-export type Message = Omit<ApiMessage, "replies"> & {
-  reply?: boolean;
-  last_reply?: boolean;
-};
+export type Message = Omit<ApiMessage, 'replies'> & {
+  reply?: boolean
+  last_reply?: boolean
+}

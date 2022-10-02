@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import type { RichTextList } from '~/types/Message'
+
+defineProps<{ node: RichTextList }>()
+</script>
+
 <template>
   <component
     :is="node.style === 'ordered' ? 'ol' : 'ul'"
@@ -13,9 +19,3 @@
     </li>
   </component>
 </template>
-
-<script lang="ts" setup>
-import type { RichTextList } from "~/types/Message";
-
-defineProps<{ node: RichTextList }>();
-</script>
