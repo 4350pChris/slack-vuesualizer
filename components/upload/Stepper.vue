@@ -1,3 +1,62 @@
+<script lang="ts" setup>
+import type { Entry } from '@zip.js/zip.js'
+
+interface Emits {
+  (event: 'abort'): void
+}
+
+defineEmits<Emits>()
+
+const step = ref(0)
+const file = ref<File>(null)
+const fileInvalid = ref(false)
+const workerDone = ref(false)
+
+const entries = ref<Entry[]>([])
+
+const channels = computed(() =>
+  entries.value
+    .filter(entry => entry.directory)
+    .map(dir => dir.filename.slice(0, -1))
+    .sort(),
+)
+const selectedChannels = ref<string[]>([])
+
+const { readZip } = useZip()
+
+watch(channels, c => (selectedChannels.value = c))
+
+watch(file, async () => {
+  fileInvalid.value = false
+  if (!file.value)
+    return
+
+  entries.value = await readZip(file.value)
+  if (!entries.value.find(entry => entry.filename === 'users.json'))
+    fileInvalid.value = true
+  else
+    step.value++
+})
+
+const handleWorkerDone = () => {
+  workerDone.value = true
+  step.value++
+}
+
+const nextDisabled = computed(() => {
+  switch (step.value) {
+    case 0:
+      return file.value === null || fileInvalid.value
+    case 1:
+      return selectedChannels.value.length === 0
+    case 2:
+      return !workerDone.value
+    default:
+      return false
+  }
+})
+</script>
+
 <template>
   <div class="flex flex-col items-center">
     <ul class="steps sticky top-16 bg-base-100 w-full py-2">
@@ -34,8 +93,8 @@
       <UploadFileForm v-if="step === 0" v-model="file" :invalid="fileInvalid" />
       <UploadChannelSelect
         v-else-if="step === 1"
-        :channels="channels"
         v-model="selectedChannels"
+        :channels="channels"
       />
       <UploadWorker
         v-else-if="step === 2"
@@ -67,63 +126,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { Entry } from "@zip.js/zip.js";
-
-interface Emits {
-  (event: "abort"): void;
-}
-
-defineEmits<Emits>();
-
-const step = ref(0);
-const file = ref<File>(null);
-const fileInvalid = ref(false);
-const workerDone = ref(false);
-
-const entries = ref<Entry[]>([]);
-
-const channels = computed(() =>
-  entries.value
-    .filter((entry) => entry.directory)
-    .map((dir) => dir.filename.slice(0, -1))
-    .sort()
-);
-const selectedChannels = ref<string[]>([]);
-
-const { readZip } = useZip();
-
-watch(channels, (c) => (selectedChannels.value = c));
-
-watch(file, async () => {
-  fileInvalid.value = false;
-  if (!file.value) {
-    return;
-  }
-  entries.value = await readZip(file.value);
-  if (!entries.value.find((entry) => entry.filename === "users.json")) {
-    fileInvalid.value = true;
-  } else {
-    step.value++;
-  }
-});
-
-const handleWorkerDone = () => {
-  workerDone.value = true;
-  step.value++;
-};
-
-const nextDisabled = computed(() => {
-  switch (step.value) {
-    case 0:
-      return file.value === null || fileInvalid.value;
-    case 1:
-      return selectedChannels.value.length === 0;
-    case 2:
-      return !workerDone.value;
-    default:
-      return false;
-  }
-});
-</script>

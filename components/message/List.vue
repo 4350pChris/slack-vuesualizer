@@ -1,10 +1,36 @@
+<script lang="ts" setup>
+import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+import type { Message } from '~~/types/Message.js'
+
+interface Props {
+  messages: Array<Message | { date: Date }>
+}
+
+const props = defineProps<Props>()
+
+const scroller = ref(null)
+const route = useRoute()
+
+const messageId = computed(() => route.query.message)
+
+watchEffect(() => {
+  if (messageId.value) {
+    const index = props.messages.findIndex(
+      message => '_id' in message && message._id === messageId.value,
+    )
+    setTimeout(() => scroller.value?.scrollToItem(index), 0)
+  }
+})
+</script>
+
 <template>
   <DynamicScroller
+    ref="scroller"
     class="h-full"
     :items="messages"
     :min-item-size="64"
-    keyField="_id"
-    ref="scroller"
+    key-field="_id"
   >
     <template #default="{ item, index, active }">
       <DynamicScrollerItem
@@ -31,29 +57,3 @@
     </template>
   </DynamicScroller>
 </template>
-
-<script lang="ts" setup>
-import type { Message } from "~~/types/Message.js";
-import "vue-virtual-scroller/dist/vue-virtual-scroller.css";
-import { DynamicScroller, DynamicScrollerItem } from "vue-virtual-scroller";
-
-interface Props {
-  messages: Array<Message | { date: Date }>;
-}
-
-const props = defineProps<Props>();
-
-const scroller = ref(null);
-const route = useRoute();
-
-const messageId = computed(() => route.query.message);
-
-watchEffect(() => {
-  if (messageId.value) {
-    const index = props.messages.findIndex(
-      (message) => "_id" in message && message._id === messageId.value
-    );
-    setTimeout(() => scroller.value?.scrollToItem(index), 0);
-  }
-});
-</script>

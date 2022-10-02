@@ -1,6 +1,13 @@
+<script lang="ts" setup>
+const link = useShareLink()
+const { copy, copied } = useClipboard({ source: link })
+</script>
+
 <template>
   <div class="text-center flex flex-col gap-4">
-    <h2 class="text-lg font-bold">{{ $t("upload.success") }}</h2>
+    <h2 class="text-lg font-bold">
+      {{ $t("upload.success") }}
+    </h2>
     <p>
       {{ $t("upload.done") }}
     </p>
@@ -18,8 +25,3 @@
     </NuxtLink>
   </div>
 </template>
-
-<script lang="ts" setup>
-const link = useShareLink();
-const { copy, copied } = useClipboard({ source: link });
-</script>

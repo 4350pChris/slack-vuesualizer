@@ -48,14 +48,14 @@ There is a docker-compose file in this project that spins up a local MongoDB ins
 You can easily add this image to it like this:
 
 ```yaml
-  services:
-    app:
-      image: chris5896/slack-vuesualizer
-      restart: unless-stopped
-      ports:
-        - "3000:3000"
-      environment:
-        NUXT_MONGODB_URI: "mongodb://root:example@localhost:27017"
+services:
+  app:
+    image: chris5896/slack-vuesualizer
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      NUXT_MONGODB_URI: 'mongodb://root:example@localhost:27017'
 ```
 
 ## Locally

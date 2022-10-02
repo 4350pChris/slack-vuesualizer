@@ -1,3 +1,13 @@
+<script lang="ts" setup>
+import type { User } from '~/types/User'
+
+interface Props {
+  user: User
+}
+
+defineProps<Props>()
+</script>
+
 <template>
   <div class="flex justify-start gap-4 bg-base-100 text-base-content">
     <UserAvatar
@@ -9,7 +19,9 @@
         <p class="font-medium">
           {{ user.profile.real_name ?? user.profile.display_name }}
         </p>
-        <p class="text-sm">{{ user.profile.display_name }}</p>
+        <p class="text-sm">
+          {{ user.profile.display_name }}
+        </p>
         <div>
           <span
             v-if="user.is_bot"
@@ -23,8 +35,7 @@
           <a
             class="text-sm border-b-2 border-transparent hover:border-primary transition"
             :href="`mailto:${user.profile.email}`"
-            >{{ user.profile.email }}</a
-          >
+          >{{ user.profile.email }}</a>
         </template>
         <template v-if="user.profile.phone">
           <span class="w-5 h-5 i-mdi:phone" />
@@ -36,13 +47,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { User } from "~/types/User";
-
-interface Props {
-  user: User;
-}
-
-defineProps<Props>();
-</script>

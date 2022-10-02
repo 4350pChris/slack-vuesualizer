@@ -1,36 +1,38 @@
-<template>
-  <BaseSelect v-model="model" :items="users" keyProp="id" multiple>
-    <template #activator>
-      {{
-        $t("filter.from") +
-        (model.length === 0
-          ? ""
-          : " " +
-            (model.length === 1
-              ? useUserName(model[0])
-              : `${model.length} ${$t("user", model.length)}`))
-      }}
-    </template>
-    <template #item="{ item }">{{ useUserName(item) }}</template>
-  </BaseSelect>
-</template>
-
 <script lang="ts" setup>
-import type { User } from "~~/types/User";
+import type { User } from '~~/types/User'
 
 interface Props {
-  modelValue: User[];
+  modelValue: User[]
 }
 
 interface Emits {
-  (event: "update:modelValue", payload: User[]): void;
+  (event: 'update:modelValue', payload: User[]): void
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 
-const emit = defineEmits<Emits>();
+const emit = defineEmits<Emits>()
 
-const users = useUsers();
+const users = useUsers()
 
-const model = useVModel(props, "modelValue", emit);
+const model = useVModel(props, 'modelValue', emit)
 </script>
+
+<template>
+  <BaseSelect v-model="model" :items="users" key-prop="id" multiple>
+    <template #activator>
+      {{
+        $t("filter.from")
+          + (model.length === 0
+            ? ""
+            : ` ${
+              model.length === 1
+                ? useUserName(model[0])
+                : `${model.length} ${$t("user", model.length)}`}`)
+      }}
+    </template>
+    <template #item="{ item }">
+      {{ useUserName(item) }}
+    </template>
+  </BaseSelect>
+</template>

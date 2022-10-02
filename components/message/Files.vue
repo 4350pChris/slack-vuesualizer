@@ -1,10 +1,22 @@
+<script lang="ts" setup>
+import type { File } from '~~/types/File'
+
+interface Props {
+  files: File[]
+}
+
+defineProps<Props>()
+</script>
+
 <template>
   <div class="p-2 flex gap-2">
     <div>
       <span class="w-8 h-8 i-mdi:file" />
     </div>
     <div>
-      <div class="font-bold mb-2">{{ $t("file", files.length) }}</div>
+      <div class="font-bold mb-2">
+        {{ $t("file", files.length) }}
+      </div>
       <ul v-for="file in files" :key="file.id">
         <li>
           <a
@@ -22,13 +34,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { File } from "~~/types/File";
-
-interface Props {
-  files: File[];
-}
-
-defineProps<Props>();
-</script>

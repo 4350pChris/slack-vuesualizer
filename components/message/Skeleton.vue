@@ -4,10 +4,10 @@
   >
     <div
       class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl skeleton-loader animate-shine"
-    ></div>
+    />
     <div class="flex flex-col gap-2 w-full overflow-hidden col-start-2">
-      <div class="skeleton-loader animate-shine h-5 w-48"></div>
-      <div class="skeleton-loader animate-shine h-16"></div>
+      <div class="skeleton-loader animate-shine h-5 w-48" />
+      <div class="skeleton-loader animate-shine h-16" />
     </div>
   </div>
 </template>
