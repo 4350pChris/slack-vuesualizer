@@ -12,7 +12,7 @@
       class="md:hidden btn btn-primary btn-circle modal-button fixed bottom-4 right-4"
     >
       <span class="sr-only">{{ $t("filter.header") }}</span>
-      <FilterIcon class="w-6 h-6" aria-hidden="true" />
+      <i class="i-mdi:filter-variant" aria-hidden="true" />
     </label>
     <Teleport to="body">
       <input type="checkbox" id="filter-modal" class="modal-toggle" />
@@ -38,11 +38,9 @@
 </template>
 
 <script lang="ts" setup>
-import FilterIcon from "~icons/mdi/filter-variant";
 import { Sortable } from "~~/types/Sort";
 import type { Channel } from "~~/types/Channel";
 import type { User } from "~~/types/User";
-import type { SearchResult } from "~~/types/File";
 
 const selectedUsers = ref<User[]>([]);
 const selectedChannels = ref<Channel[]>([]);

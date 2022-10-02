@@ -15,7 +15,7 @@
             @click="visible = false"
             :title="$t('close')"
           >
-            <CloseIcon class="w-6 h-6" />
+            <span class="w-6 h-6 i-line-md:close" />
           </button>
         </div>
         <button
@@ -23,7 +23,7 @@
           class="btn btn-outline btn-block gap-4"
           @click="visible = true"
         >
-          <TextSearch class="w-6 h-6" />
+          <span class="w-6 h-6 i-mdi:text-search" />
           <span class="font-mono">{{ $t("search.messages") }}</span>
           <div class="hidden md:inline-block">
             <kbd class="kbd text-base-content">Ctrl</kbd>
@@ -74,7 +74,7 @@
                 v-if="searching"
                 class="p-2 bg-base-100 w-full h-full flex justify-center mt-8"
               >
-                <LoadingSpinner class="w-12 h-12" />
+                <span class="w-12 h-12 i-line-md:loading-alt-loop" />
               </div>
               <MessageResults
                 class="min-h-0 overflow-auto"
@@ -91,9 +91,6 @@
 </template>
 
 <script lang="ts" setup>
-import LoadingSpinner from "~icons/line-md/loading-alt-loop";
-import CloseIcon from "~icons/line-md/close";
-import TextSearch from "~icons/mdi/text-search";
 import type { Message } from "~/types/Message";
 import { onKeyDown } from "@vueuse/core";
 

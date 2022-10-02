@@ -13,7 +13,7 @@
           :title="$t('jumpToDate')"
         >
           <span class="sr-only">{{ $t("jumpToDate") }}</span>
-          <CalendarIcon class="w-6 h-6" />
+          <span class="w-6 h-6 i-mdi:calendar-search" />
         </label>
         <input
           id="jumptodate"
@@ -36,7 +36,6 @@
 </template>
 
 <script lang="ts" setup>
-import CalendarIcon from "~icons/mdi/calendar-search";
 import type { Channel } from "~/types/Channel";
 import type { Message } from "~/types/Message";
 

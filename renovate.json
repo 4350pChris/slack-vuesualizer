@@ -8,7 +8,6 @@
     },
     {
       "groupName": "icons",
-      "matchPackageNames": ["unplugin-icons"],
       "matchPackagePrefixes": ["@iconify-json/"]
     },
     {

@@ -6,7 +6,7 @@
       </button>
     </div>
     <p class="flex items-center gap-2">
-      <SlackIcon class="w-8 h-8" />
+      <span class="w-8 h-8 i-logos:slack-icon" />
       <span class="font-medium text-2xl">Vuesualizer</span>
     </p>
     <div>
@@ -17,7 +17,7 @@
         rel="noopener noreferrer"
         title="GitHub"
       >
-        <GithubIcon class="w-6 h-6" />
+        <span class="w-6 h-6 i-line-md:github-loop" />
         <span>{{ $t("github") }}</span>
       </a>
     </div>
@@ -25,9 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-import GithubIcon from "~icons/line-md/github-loop";
-import SlackIcon from "~icons/logos/slack-icon";
-
 const token = useToken();
 
 const leave = async () => {

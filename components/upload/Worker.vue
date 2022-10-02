@@ -13,13 +13,19 @@
         :key="channel"
         class="flex gap-2 justify-start items-center"
       >
-        <UploadingLoopIcon v-if="queue.has(channel)" class="w-5 h-5" />
-        <ConfirmIcon
-          v-else-if="done.has(channel)"
-          class="w-5 h-5 text-success"
+        <span
+          v-if="queue.has(channel)"
+          class="w-5 h-5 i-line-md:uploading-loop"
         />
-        <AlertIcon v-else-if="errors.has(channel)" class="w-5 h-5 text-error" />
-        <CircleIcon v-else class="w-5 h-5" />
+        <span
+          v-else-if="done.has(channel)"
+          class="w-5 h-5 i-line-md:confirm-circle text-success"
+        />
+        <span
+          v-else-if="errors.has(channel)"
+          class="w-5 h-5 i-line-md:alert-circle text-error"
+        />
+        <span v-else class="w-5 h-5 i-line-md:circle" />
         <span v-if="channel === 'vuesualizer-workspace'">
           {{ $t("workspace.word") }}
         </span>
@@ -40,10 +46,6 @@
 </template>
 
 <script lang="ts" setup>
-import ConfirmIcon from "~icons/line-md/confirm-circle";
-import AlertIcon from "~icons/line-md/alert-circle";
-import CircleIcon from "~icons/line-md/circle";
-import UploadingLoopIcon from "~icons/line-md/uploading-loop";
 import { Sema } from "async-sema";
 import type { Entry } from "@zip.js/zip.js";
 

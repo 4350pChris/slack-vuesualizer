@@ -11,8 +11,8 @@
       <span class="truncate">
         <slot name="activator" />
       </span>
-      <ChevronDownIcon
-        class="w-6 h-6 transition"
+      <span
+        class="w-6 h-6 i-mdi:chevron-down transition"
         aria-hidden="true"
         :class="{ 'rotate-180': open }"
       />
@@ -25,14 +25,14 @@
           v-for="(item, i) in items"
           :key="keyProp ? item[keyProp] : i"
           :value="item"
-          class="rounded-box bg-base-100 ui-active:bg-base-200 text-base-content transition pl-10 pr-4 py-2 select-none cursor-pointer relative"
+          class="rounded-box bg-base-100 text-base-content transition pl-10 pr-4 py-2 select-none cursor-pointer relative"
           v-slot="{ selected }"
         >
           <span
             v-if="selected"
             class="flex absolute inset-y-0 left-3 items-center"
           >
-            <ConfirmIcon class="w-6 h-6" />
+            <span class="w-6 h-6 i-mdi:confirm" />
           </span>
           <span class="truncate block">
             <slot name="item" :item="item" />
@@ -50,8 +50,6 @@ import {
   ListboxOptions,
   ListboxOption,
 } from "@headlessui/vue";
-import ConfirmIcon from "~icons/line-md/confirm";
-import ChevronDownIcon from "~icons/mdi/chevron-down";
 
 interface Props {
   modelValue: any;

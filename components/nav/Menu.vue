@@ -2,19 +2,19 @@
   <ul class="menu menu-compact">
     <li>
       <NuxtLink class="capitalize rounded-box" to="/workspace">
-        <HomeIcon />
+        <span class="i-mdi:home" />
         {{ $t("workspace.word") }}
       </NuxtLink>
     </li>
     <li>
       <NuxtLink class="capitalize rounded-box" to="/users">
-        <AccountIcon />
+        <span class="i-mdi:account" />
         {{ $t("user", 2) }}
       </NuxtLink>
     </li>
     <li>
       <NuxtLink class="capitalize rounded-box" to="/files">
-        <FilesIcon />
+        <span class="i-mdi:file-multiple" />
         {{ $t("file", 2) }}
       </NuxtLink>
     </li>
@@ -30,7 +30,7 @@
     <li></li>
     <li>
       <NuxtLink class="rounded-box capitalize" to="/upload">
-        <UploadIcon />
+        <span class="i-mdi:upload" />
         {{ $t("upload.word") }}
       </NuxtLink>
     </li>
@@ -38,10 +38,6 @@
 </template>
 
 <script lang="ts" setup>
-import AccountIcon from "~icons/mdi/account";
-import FilesIcon from "~icons/mdi/file-multiple";
-import HomeIcon from "~icons/mdi/home";
-import UploadIcon from "~icons/mdi/upload";
 import type { Channel } from "~~/types/Channel";
 
 interface Props {

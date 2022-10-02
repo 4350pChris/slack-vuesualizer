@@ -1,8 +1,4 @@
 {
   // https://v3.nuxtjs.org/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "types": ["unplugin-icons/types/vue"],
-    "jsx": "preserve"
-  }
+  "extends": "./.nuxt/tsconfig.json"
 }

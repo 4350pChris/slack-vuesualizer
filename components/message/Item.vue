@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid row-auto grid-cols-[3rem,minmax(0,1fr),auto] lg:grid-cols-[4rem,minmax(0,1fr),auto] auto-cols-max gap-2 px-2 py-4 min-h-12 relative"
+    class="grid row-auto grid-cols-[3rem_minmax(0,1fr)_auto] lg:grid-cols-[4rem_minmax(0,1fr)_auto] auto-cols-max gap-2 px-2 py-4 min-h-12 relative"
     :class="{ 'mb-2': message.last_reply, 'animate-blink': searched }"
   >
     <span
@@ -38,7 +38,7 @@
         {{ message.text }}
       </p>
     </div>
-    <SearchIcon v-if="searched" class="w-8 h-8 self-center mr-2" />
+    <span v-if="searched" class="w-8 h-8 i-line-md:search self-center mr-2" />
     <div class="flex gap-2 col-start-2 flex-wrap" v-if="message.reactions">
       <MessageReaction
         v-for="(reaction, i) in message.reactions"
@@ -66,7 +66,6 @@
 </template>
 
 <script lang="ts" setup>
-import SearchIcon from "~icons/line-md/search";
 import type { Message } from "~/types/Message";
 
 interface Props {

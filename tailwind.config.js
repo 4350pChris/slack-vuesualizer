@@ -29,11 +29,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("daisyui"),
-    require("@headlessui/tailwindcss"),
-  ],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
     themes: ["fantasy", "business"],
     darkTheme: "business",
