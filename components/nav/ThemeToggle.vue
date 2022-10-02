@@ -28,14 +28,13 @@ useHead({
 
 <template>
   <button
-    class="hover:bg-slate-100 dark:hover:bg-slate-600 transition rounded-full p-2"
+    class="hover:bg-slate-100 dark:hover:bg-slate-600 transition rounded-full p-2 swap swap-rotate" :class="{ 'swap-active': dark }"
     @click="dark = !dark"
   >
     <span class="sr-only">{{ $t("switchTheme") }}</span>
-    <div v-if="dark" class="h-8 w-8 i-line-md:moon text-sky-100" />
+    <div class="h-8 w-8 i-line-md:moon text-sky-100 swap-on" />
     <div
-      v-else
-      class="h-8 w-8 i-line-md:sun-rising-twotone-loop text-amber-400"
+      class="h-8 w-8 i-line-md:sun-rising-twotone-loop text-amber-400 swap-off"
     />
   </button>
 </template>
