@@ -143,7 +143,7 @@ onMounted(doUpload)
 
 <template>
   <div class="w-full">
-    <div class="sticky top-36 pb-4 bg-base-100">
+    <div class="sticky inset-x-0 top-36 z-10 pb-4 bg-base-100">
       <progress
         class="progress w-full"
         :value="((errors.size + done.size) / (channels.length + 1)) * 100"
