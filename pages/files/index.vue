@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-4 mb-2">
+  <div class="flex flex-col gap-4">
     <div class="sticky top-0 bg-base-100 py-2 hidden md:block">
       <FilesFilter
         v-model:users="selectedUsers"
@@ -27,10 +27,13 @@
       </label>
     </Teleport>
     <ul class="list-none space-y-4">
-      <li v-for="message in messages" :key="message._id">
+      <li v-for="message in searchResult.messages" :key="message._id">
         <FilesDetailRow :file="message.file" :channel="message.channel" />
       </li>
     </ul>
+    <div class="sticky bottom-0 bg-base-100 py-2">
+      <BasePagination v-model="page" :pages="searchResult.count" />
+    </div>
   </div>
 </template>
 
@@ -39,15 +42,17 @@ import FilterIcon from "~icons/mdi/filter-variant";
 import { Sortable } from "~~/types/Sort";
 import type { Channel } from "~~/types/Channel";
 import type { User } from "~~/types/User";
+import type { SearchResult } from "~~/types/File";
 
 const selectedUsers = ref<User[]>([]);
 const selectedChannels = ref<Channel[]>([]);
 const sorting = ref<Sortable>(Sortable.Newest);
+const page = ref(0);
 
 const userIds = useArrayMap(selectedUsers, ({ id }) => id);
 const channelNames = useArrayMap(selectedChannels, ({ name }) => name);
 
-const { data: messages } = useAsyncData(
+const { data: searchResult } = useAsyncData(
   "files",
   () =>
     $fetch("/api/files", {
@@ -56,11 +61,13 @@ const { data: messages } = useAsyncData(
         users: userIds.value,
         channels: channelNames.value,
         sort: sorting.value,
+        page: page.value,
+        size: 25,
       },
       headers: useRequestHeaders(["cookie"]),
     }),
   {
-    watch: [userIds, channelNames, sorting],
+    watch: [userIds, channelNames, sorting, page],
   }
 );
 </script>
