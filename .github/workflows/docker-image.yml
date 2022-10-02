@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - '*'
+    tags:
+      - '*'
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -41,7 +43,7 @@ jobs:
             chris5896/slack-vuesualizer
           tags: |
             type=ref,event=branch
-            type=raw,value=latest
+            type=semver,pattern={{version}}
       - 
         name: Login to DockerHub
         uses: docker/login-action@v2
