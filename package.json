@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@iconify-json/ion": "1.1.4",
-    "@iconify-json/line-md": "1.1.15",
+    "@iconify-json/line-md": "1.1.16",
     "@iconify-json/logos": "1.1.16",
     "@iconify-json/mdi": "1.1.33",
     "@iconify-json/twemoji": "1.1.5",
