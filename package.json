@@ -68,6 +68,6 @@
     "vue-virtual-scroller": "^2.0.0-alpha.1"
   },
   "volta": {
-    "node": "16.17.0"
+    "node": "16.17.1"
   }
 }
