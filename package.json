@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@headlessui/tailwindcss": "0.1.1",
-    "@headlessui/vue": "1.7.2",
+    "@headlessui/vue": "1.7.3",
     "@vueuse/core": "9.2.0",
     "@vueuse/nuxt": "9.2.0",
     "@zip.js/zip.js": "2.6.32",
