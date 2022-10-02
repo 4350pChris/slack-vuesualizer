@@ -46,14 +46,14 @@
     "vue-virtual-scroller": "2.0.0-alpha.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.27.0",
+    "@antfu/eslint-config": "0.27.0",
     "@iconify-json/ion": "1.1.4",
     "@iconify-json/line-md": "1.1.16",
     "@iconify-json/logos": "1.1.16",
     "@iconify-json/mdi": "1.1.33",
     "@iconify-json/twemoji": "1.1.5",
     "@intlify/nuxt3": "0.2.4",
-    "@kidonng/daisyui": "^2.31.0",
+    "@kidonng/daisyui": "2.31.0",
     "@nuxtjs/color-mode": "3.1.6",
     "@tailwindcss/typography": "0.5.7",
     "@types/adm-zip": "0.5.0",
@@ -61,16 +61,16 @@
     "@types/formidable": "2.0.5",
     "@types/minio": "7.0.13",
     "@types/request": "2.48.8",
-    "@unocss/nuxt": "^0.45.26",
-    "@unocss/preset-icons": "^0.45.26",
-    "@unocss/preset-uno": "^0.45.26",
-    "@unocss/preset-web-fonts": "^0.45.26",
-    "@unocss/reset": "^0.45.26",
-    "@unocss/transformer-directives": "^0.45.26",
-    "eslint": "^8.24.0",
+    "@unocss/nuxt": "0.45.26",
+    "@unocss/preset-icons": "0.45.26",
+    "@unocss/preset-uno": "0.45.26",
+    "@unocss/preset-web-fonts": "0.45.26",
+    "@unocss/reset": "0.45.26",
+    "@unocss/transformer-directives": "0.45.26",
+    "eslint": "8.24.0",
     "nuxt": "3.0.0-rc.11",
     "nuxt-schema-org": "1.1.0-beta.4",
-    "unocss-preset-daisy": "^1.2.0"
+    "unocss-preset-daisy": "1.2.0"
   },
   "volta": {
     "node": "16.17.1"
