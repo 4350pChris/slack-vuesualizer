@@ -1,3 +1,15 @@
+<script lang="ts" setup>
+import GithubIcon from '~icons/line-md/github-loop'
+import SlackIcon from '~icons/logos/slack-icon'
+
+const token = useToken()
+
+const leave = async () => {
+  token.value = undefined
+  await navigateTo('/')
+}
+</script>
+
 <template>
   <footer class="flex flex-col items-center gap-4 p-2">
     <div class="mb-4">
@@ -23,15 +35,3 @@
     </div>
   </footer>
 </template>
-
-<script lang="ts" setup>
-import GithubIcon from "~icons/line-md/github-loop";
-import SlackIcon from "~icons/logos/slack-icon";
-
-const token = useToken();
-
-const leave = async () => {
-  token.value = undefined;
-  await navigateTo("/");
-};
-</script>

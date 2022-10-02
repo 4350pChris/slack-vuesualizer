@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import type { Block } from '~/types/Message'
+
+defineProps<{ node: Block }>()
+</script>
+
 <template>
   <MessageBlocksRichText
     v-if="node.type === 'rich_text'"
@@ -26,11 +32,7 @@
     v-else-if="node.type === 'rich_text_preformatted'"
     :node="node"
   />
-  <p v-else class="text-warning">{{ node }}</p>
+  <p v-else class="text-warning">
+    {{ node }}
+  </p>
 </template>
-
-<script lang="ts" setup>
-import type { Block } from "~/types/Message";
-
-defineProps<{ node: Block }>();
-</script>

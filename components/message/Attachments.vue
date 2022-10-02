@@ -1,6 +1,18 @@
+<script lang="ts" setup>
+import type { Attachment } from '~~/types/Message'
+
+interface Props {
+  attachments: Attachment[]
+}
+
+defineProps<Props>()
+</script>
+
 <template>
   <div class="p-2">
-    <div class="font-bold mb-2">Attachments</div>
+    <div class="font-bold mb-2">
+      Attachments
+    </div>
     <ul
       v-for="attachment in attachments"
       :key="attachment.id"
@@ -21,13 +33,3 @@
     </ul>
   </div>
 </template>
-
-<script lang="ts" setup>
-import type { Attachment } from "~~/types/Message";
-
-interface Props {
-  attachments: Attachment[];
-}
-
-defineProps<Props>();
-</script>

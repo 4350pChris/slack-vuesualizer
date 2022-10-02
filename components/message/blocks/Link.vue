@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import type { LinkLeaf } from '~/types/Message'
+
+defineProps<{ node: LinkLeaf }>()
+</script>
+
 <template>
   <a
     class="fancy-link"
@@ -8,9 +14,3 @@
     {{ node.url }}
   </a>
 </template>
-
-<script lang="ts" setup>
-import type { LinkLeaf } from "~/types/Message";
-
-defineProps<{ node: LinkLeaf }>();
-</script>

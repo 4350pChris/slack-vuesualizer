@@ -1,71 +1,69 @@
-import { mongo } from "~~/server/utils/mongo";
-import type { Filter } from "mongodb";
-import { Sortable } from "~~/types/Sort";
-import type { SearchResult } from "~~/types/File";
-import type { Message } from "~~/types/Message";
+import type { Filter } from 'mongodb'
+import { mongo } from '~~/server/utils/mongo'
+import { Sortable } from '~~/types/Sort'
+import type { SearchResult } from '~~/types/File'
+import type { Message } from '~~/types/Message'
 
 interface Body {
-  channels: string[];
-  users: string[];
-  sort: Sortable;
-  page: number;
-  size: number;
+  channels: string[]
+  users: string[]
+  sort: Sortable
+  page: number
+  size: number
 }
 
 const mongoSortFromBody: (sort: Sortable) => Record<string, number> = (
-  sort
+  sort,
 ) => {
   switch (sort) {
     case Sortable.AtoZ:
-      return { "file.name": 1 };
+      return { 'file.name': 1 }
     case Sortable.ZtoA:
-      return { "file.name": -1 };
+      return { 'file.name': -1 }
     case Sortable.Newest:
-      return { "file.timestamp": -1 };
+      return { 'file.timestamp': -1 }
     case Sortable.Oldest:
-      return { "file.timestamp": 1 };
+      return { 'file.timestamp': 1 }
     default:
-      throw new Error("Unknown sorting");
+      throw new Error('Unknown sorting')
   }
-};
+}
 
 export default defineEventHandler(async (event) => {
-  const db = await mongo(event.context.mongouuid);
+  const db = await mongo(event.context.mongouuid)
 
-  const { users, channels, sort, page, size } = await useBody<Body>(event);
+  const { users, channels, sort, page, size } = await useBody<Body>(event)
 
   const filter: Filter<Message> = {
-    "files.name": { $exists: true },
-  };
-
-  if (users?.length > 0) {
-    filter.user = { $in: users };
+    'files.name': { $exists: true },
   }
 
-  if (channels?.length > 0) {
-    filter.channel = { $in: channels };
-  }
+  if (users?.length > 0)
+    filter.user = { $in: users }
 
-  const sorting = mongoSortFromBody(sort);
+  if (channels?.length > 0)
+    filter.channel = { $in: channels }
 
-  const coll = db.collection<Message>("messages");
+  const sorting = mongoSortFromBody(sort)
+
+  const coll = db.collection<Message>('messages')
 
   const messages = await coll
     .aggregate<SearchResult>([
       {
-        $unwind: "$files",
+        $unwind: '$files',
       },
       {
         $match: filter,
       },
       {
         $group: {
-          _id: "$files.id",
+          _id: '$files.id',
           file: {
-            $mergeObjects: "$files",
+            $mergeObjects: '$files',
           },
           channel: {
-            $first: "$channel",
+            $first: '$channel',
           },
         },
       },
@@ -75,9 +73,9 @@ export default defineEventHandler(async (event) => {
     ])
     .skip(page * size)
     .limit(size)
-    .toArray();
+    .toArray()
 
-  const count = await coll.countDocuments(filter);
+  const count = await coll.countDocuments(filter)
 
-  return { count: Math.ceil(count / size), messages };
-});
+  return { count: Math.ceil(count / size), messages }
+})

@@ -1,6 +1,6 @@
 export enum Sortable {
-  AtoZ = "atoz",
-  ZtoA = "ztoa",
-  Newest = "newest",
-  Oldest = "oldest",
+  AtoZ = 'atoz',
+  ZtoA = 'ztoa',
+  Newest = 'newest',
+  Oldest = 'oldest',
 }

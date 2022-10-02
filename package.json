@@ -1,7 +1,18 @@
 {
-  "private": true,
   "name": "slack-vuesualizer",
+  "version": "1.0.0",
+  "private": true,
   "description": "A visualizer for your Slack exports. Search through messages, show old files, etc.",
+  "author": {
+    "name": "Chris-Robin Ennen",
+    "email": "slack-vuesualizer@ennen.dev"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/4350pChris/slack-vuesualizer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4350pChris/slack-vuesualizer.git"
+  },
   "keywords": [
     "slack",
     "export",
@@ -15,24 +26,28 @@
     "vue.js",
     "typescript"
   ],
-  "version": "1.0.0",
-  "homepage": "https://github.com/4350pChris/slack-vuesualizer",
-  "license": "MIT",
-  "author": {
-    "name": "Chris-Robin Ennen",
-    "email": "slack-vuesualizer@ennen.dev"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/4350pChris/slack-vuesualizer.git"
-  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
   },
+  "dependencies": {
+    "@headlessui/tailwindcss": "0.1.1",
+    "@headlessui/vue": "1.7.3",
+    "@vueuse/core": "9.3.0",
+    "@vueuse/nuxt": "9.3.0",
+    "@zip.js/zip.js": "2.6.33",
+    "async-sema": "3.1.1",
+    "emoji-js": "3.7.0",
+    "filesize": "10.0.5",
+    "formidable": "2.0.1",
+    "mongodb": "4.10.0",
+    "request": "2.88.2",
+    "vue-virtual-scroller": "2.0.0-alpha.1"
+  },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.27.0",
     "@iconify-json/ion": "1.1.4",
     "@iconify-json/line-md": "1.1.16",
     "@iconify-json/logos": "1.1.16",
@@ -49,23 +64,10 @@
     "@types/request": "2.48.8",
     "autoprefixer": "10.4.12",
     "daisyui": "2.31.0",
+    "eslint": "^8.24.0",
     "nuxt": "3.0.0-rc.11",
     "nuxt-schema-org": "1.1.0-beta.4",
     "unplugin-icons": "0.14.11"
-  },
-  "dependencies": {
-    "@headlessui/tailwindcss": "0.1.1",
-    "@headlessui/vue": "1.7.3",
-    "@vueuse/core": "9.3.0",
-    "@vueuse/nuxt": "9.3.0",
-    "@zip.js/zip.js": "2.6.33",
-    "async-sema": "3.1.1",
-    "emoji-js": "3.7.0",
-    "filesize": "10.0.5",
-    "formidable": "2.0.1",
-    "mongodb": "4.10.0",
-    "request": "2.88.2",
-    "vue-virtual-scroller": "2.0.0-alpha.1"
   },
   "volta": {
     "node": "16.17.1"

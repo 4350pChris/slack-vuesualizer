@@ -1,28 +1,28 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class", "[data-theme='business']"],
+  darkMode: ['class', '[data-theme=\'business\']'],
   content: [
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
-    "app.vue",
+    './components/**/*.{js,vue,ts}',
+    './layouts/**/*.vue',
+    './pages/**/*.vue',
+    './plugins/**/*.{js,ts}',
+    'app.vue',
   ],
-  safelist: ["active"],
+  safelist: ['active'],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Mulish", ...defaultTheme.fontFamily.sans],
-        mono: ["'Red Hat Mono'", ...defaultTheme.fontFamily.mono],
+        sans: ['Mulish', ...defaultTheme.fontFamily.sans],
+        mono: ['\'Red Hat Mono\'', ...defaultTheme.fontFamily.mono],
       },
       animation: {
-        blink: "blink 2s cubic-bezier(0.4, 0, 0.6, 1)",
+        blink: 'blink 2s cubic-bezier(0.4, 0, 0.6, 1)',
       },
       keyframes: {
         blink: {
-          "50%": {
+          '50%': {
             opacity: 0.5,
           },
         },
@@ -30,12 +30,12 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/typography"),
-    require("daisyui"),
-    require("@headlessui/tailwindcss"),
+    require('@tailwindcss/typography'),
+    require('daisyui'),
+    require('@headlessui/tailwindcss'),
   ],
   daisyui: {
-    themes: ["fantasy", "business"],
-    darkTheme: "business",
+    themes: ['fantasy', 'business'],
+    darkTheme: 'business',
   },
-};
+}
