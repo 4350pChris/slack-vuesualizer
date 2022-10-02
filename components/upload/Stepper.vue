@@ -60,7 +60,7 @@ const nextDisabled = $computed(() => {
 
 <template>
   <div class="flex flex-col items-center">
-    <ul class="steps sticky top-16 bg-base-100 w-full py-2">
+    <ul class="steps sticky top-16 bg-base-100 w-full py-2 z-10">
       <li
         data-content="📁"
         class="step capitalize"
