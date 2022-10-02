@@ -1,9 +1,8 @@
 <template>
   <Listbox
     v-model="model"
-    multiple
     as="div"
-    class="relative text-sm max-w-[12rem] w-full"
+    class="relative text-sm min-w-[10rem] max-w-[12rem] w-full"
     v-slot="{ open }"
   >
     <ListboxButton
@@ -20,11 +19,11 @@
     </ListboxButton>
     <Transition name="slide-y">
       <ListboxOptions
-        class="absolute mt-1 max-h-60 w-full overflow-auto rounded-box bg-base-100 text-base-content p-2 shadow-lg"
+        class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-box bg-base-100 text-base-content p-2 shadow-lg"
       >
         <ListboxOption
-          v-for="item in items"
-          :key="item[keyProp]"
+          v-for="(item, i) in items"
+          :key="keyProp ? item[keyProp] : i"
           :value="item"
           class="rounded-box bg-base-100 ui-active:bg-base-200 text-base-content transition pl-10 pr-4 py-2 select-none cursor-pointer relative"
           v-slot="{ selected }"
@@ -55,18 +54,16 @@ import ConfirmIcon from "~icons/line-md/confirm";
 import ChevronDownIcon from "~icons/mdi/chevron-down";
 
 interface Props {
-  modelValue: any[];
+  modelValue: any | any[];
   items: any[];
-  keyProp?: string;
+  keyProp?: string | number | symbol;
 }
 
 interface Emits {
-  (event: "update:modelValue", payload: any[]): void;
+  (event: "update:modelValue", payload: any | any[]): void;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  keyProp: "id",
-});
+const props = defineProps<Props>();
 
 const emit = defineEmits<Emits>();
 

@@ -14,10 +14,8 @@
       />
     </div>
     <div class="flex flex-col">
-      <div class="flex items-center gap-4">
-        <span class="text-sm font-bold">{{ channel }}</span>
-        <span class="text-sm">{{ $d(tsToDate(file.timestamp), "long") }}</span>
-      </div>
+      <span class="text-sm">{{ $d(tsToDate(file.timestamp), "long") }}</span>
+      <span class="text-sm font-bold">{{ channel }}</span>
       <span>{{ useUserName(user) }}</span>
       <a
         class="fancy-link"

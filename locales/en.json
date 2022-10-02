@@ -56,7 +56,13 @@
   "totalFiles": "{0} total @:file",
   "hiddenFiles": "{0} @:file hidden",
   "filter": {
+    "header": "filter",
+    "sort": "sort",
     "from": "from",
-    "in": "in"
+    "in": "in",
+    "atoz": "A to Z",
+    "ztoa": "Z to A",
+    "oldest": "oldest first",
+    "newest": "newest first"
   }
 }
