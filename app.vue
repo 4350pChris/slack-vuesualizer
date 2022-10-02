@@ -1,5 +1,5 @@
 <template>
-  <div class="antialiased">
+  <div class="antialiased font-sans">
     <NuxtLoadingIndicator />
     <NuxtLayout>
       <NuxtPage />

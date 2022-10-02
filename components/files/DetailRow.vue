@@ -8,9 +8,9 @@
         loading="lazy"
         :alt="file.title"
       />
-      <AudioIcon
+      <span
         v-else-if="isAudioFile(file)"
-        class="w-full h-full p-4 text-current"
+        class="w-full h-full i-mdi:headphones p-4 text-current"
       />
     </div>
     <div class="flex flex-col">
@@ -42,7 +42,6 @@ import type {
   ImageFile,
   VideoFile,
 } from "~~/types/File";
-import AudioIcon from "~icons/mdi/headphones";
 import { useI18n } from "vue-i18n";
 
 interface Props {

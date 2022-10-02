@@ -11,12 +11,15 @@
         </p>
         <p class="text-sm">{{ user.profile.display_name }}</p>
         <div>
-          <RobotIcon v-if="user.is_bot" class="w-8 h-8 text-base-content/75" />
+          <span
+            v-if="user.is_bot"
+            class="w-8 h-8 i-mdi:robot-outline text-base-content/75"
+          />
         </div>
       </div>
-      <div class="grid grid-cols-[1.5rem,minmax(0,max-content)] gap-2">
+      <div class="grid grid-cols-[1.5rem_minmax(0,max-content)] gap-2">
         <template v-if="user.profile.email">
-          <EmailIcon class="w-5 h-5" />
+          <span class="w-5 h-5 i-mdi:email" />
           <a
             class="text-sm border-b-2 border-transparent hover:border-primary transition"
             :href="`mailto:${user.profile.email}`"
@@ -24,7 +27,7 @@
           >
         </template>
         <template v-if="user.profile.phone">
-          <PhoneIcon class="w-5 h-5" />
+          <span class="w-5 h-5 i-mdi:phone" />
           <a class="font-mono text-sm" :href="`tel:${user.profile.phone}`">{{
             user.profile.phone
           }}</a>
@@ -35,9 +38,6 @@
 </template>
 
 <script lang="ts" setup>
-import RobotIcon from "~icons/mdi/robot-outline";
-import EmailIcon from "~icons/mdi/email";
-import PhoneIcon from "~icons/mdi/phone";
 import type { User } from "~/types/User";
 
 interface Props {

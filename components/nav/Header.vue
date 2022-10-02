@@ -5,7 +5,7 @@
     <nav class="navbar w-full container mx-auto relative gap-2">
       <div class="flex-0 lg:hidden" v-if="!simple">
         <label for="drawer" class="btn btn-ghost btn-circle" tabindex="0">
-          <MenuIcon class="w-6 h-6" />
+          <span class="w-6 h-6 i-line-md:menu" />
         </label>
       </div>
       <div class="flex justify-center grow">
@@ -21,8 +21,6 @@
 </template>
 
 <script lang="ts" setup>
-import MenuIcon from "~icons/line-md/menu";
-
 interface Props {
   simple?: boolean;
 }

@@ -9,14 +9,8 @@ export default defineNuxtConfig({
     canonicalHost: "",
   },
   modules: [
-    [
-      "unplugin-icons/nuxt",
-      {
-        autoInstall: true,
-      },
-    ],
     "@vueuse/nuxt",
-    "@nuxtjs/tailwindcss",
+    "@unocss/nuxt",
     "@nuxtjs/color-mode",
     "@intlify/nuxt3",
     "nuxt-schema-org",

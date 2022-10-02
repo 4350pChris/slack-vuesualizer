@@ -1,2 +1,5 @@
-@import "./font.css";
+@import "@unocss/reset/tailwind.css";
+@import "@kidonng/daisyui/index.css";
+@import "@kidonng/daisyui/themes/fantasy.css";
+@import "@kidonng/daisyui/themes/business.css";
 @import "./transitions/index.css";

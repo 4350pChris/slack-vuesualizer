@@ -4,8 +4,8 @@
       class="flex w-full justify-between items-center px-4 py-2 text-left hover:bg-base-200/50 dark:hover:bg-slate-200/10 transition rounded-box"
     >
       <h1 class="text-xl font-bold">{{ channel?.name }}</h1>
-      <ChevronDownIcon
-        class="w-6 h-6 transition"
+      <span
+        class="w-6 h-6 i-mdi:chevron-down transition"
         :class="{ 'rotate-180': open }"
       />
     </DisclosureButton>
@@ -35,7 +35,6 @@
 
 <script lang="ts" setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue";
-import ChevronDownIcon from "~icons/mdi/chevron-down";
 import type { Channel } from "~/types/Channel";
 
 interface Props {

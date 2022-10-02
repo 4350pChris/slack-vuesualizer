@@ -4,15 +4,15 @@
     @click="dark = !dark"
   >
     <span class="sr-only">{{ $t("switchTheme") }}</span>
-    <MoonIcon v-if="dark" class="h-8 w-8 text-sky-100" />
-    <SunIcon v-else class="h-8 w-8 text-amber-400" />
+    <div v-if="dark" class="h-8 w-8 i-line-md:moon text-sky-100"></div>
+    <div
+      v-else
+      class="h-8 w-8 i-line-md:sun-rising-twotone-loop text-amber-400"
+    ></div>
   </button>
 </template>
 
 <script lang="ts" setup>
-import MoonIcon from "~icons/line-md/moon";
-import SunIcon from "~icons/line-md/sun-rising-twotone-loop";
-
 const colorMode = useColorMode();
 
 const dark = ref<boolean>();

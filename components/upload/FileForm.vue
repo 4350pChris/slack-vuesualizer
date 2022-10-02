@@ -2,10 +2,10 @@
   <div class="text-center">
     <div class="form-control" ref="dropZoneRef">
       <label for="file" class="cursor-pointer">
-        <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
-        <span class="text-lg font-bold font-mono">
+        <div class="-mt-4 h-40 w-40 i-mdi:cloud-upload-outline mx-auto"></div>
+        <div class="text-lg font-bold font-mono">
           {{ $t("upload.button") }}
-        </span>
+        </div>
       </label>
       <input
         type="file"
@@ -23,8 +23,6 @@
 </template>
 
 <script lang="ts" setup>
-import CloudUpload from "~icons/mdi/cloud-upload-outline";
-
 interface Emits {
   (
     event: "update:modelValue",

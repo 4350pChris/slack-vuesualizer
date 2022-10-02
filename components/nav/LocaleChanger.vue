@@ -3,7 +3,7 @@
     <div class="relative">
       <ListboxLabel class="sr-only">{{ $t("language") }}</ListboxLabel>
       <ListboxButton class="btn btn-ghost btn-circle">
-        <LanguageIcon aria-hidden="true" class="w-6 h-6" />
+        <span aria-hidden="true" class="w-6 h-6 i-ion:language" />
       </ListboxButton>
       <Transition name="slide-y">
         <ListboxOptions
@@ -19,16 +19,14 @@
             <li
               class="gap-2 btn btn-ghost flex-nowrap w-max-content justify-start"
             >
-              <GermanFlag
-                v-if="locale === 'de'"
-                class="w-6 h-6"
-                :class="[active || selected ? 'grayscale-0' : 'grayscale']"
-              />
-              <UkFlag
-                v-else-if="locale === 'en'"
-                class="w-6 h-6"
-                :class="[active || selected ? 'grayscale-0' : 'grayscale']"
-              />
+              <span
+                class="w-6 h-6 grayscale"
+                :class="{
+                  'i-twemoji:flag-germany': locale === 'de',
+                  'i-twemoji:flag-united-kingdom': locale === 'en',
+                  'grayscale-0': active || selected,
+                }"
+              ></span>
               <span
                 class="capitalize"
                 v-t="{ path: 'thisLanguage', locale }"
@@ -42,7 +40,6 @@
 </template>
 
 <script lang="ts" setup>
-import LanguageIcon from "~icons/ion/language";
 import {
   Listbox,
   ListboxButton,
@@ -50,11 +47,4 @@ import {
   ListboxOptions,
   ListboxLabel,
 } from "@headlessui/vue";
-
-const GermanFlag = defineAsyncComponent(
-  () => import("~icons/twemoji/flag-germany")
-);
-const UkFlag = defineAsyncComponent(
-  () => import("~icons/twemoji/flag-united-kingdom")
-);
 </script>
