@@ -54,13 +54,13 @@ import ConfirmIcon from "~icons/line-md/confirm";
 import ChevronDownIcon from "~icons/mdi/chevron-down";
 
 interface Props {
-  modelValue: any | any[];
+  modelValue: any;
   items: any[];
   keyProp?: string | number | symbol;
 }
 
 interface Emits {
-  (event: "update:modelValue", payload: any | any[]): void;
+  (event: "update:modelValue", payload: any): void;
 }
 
 const props = defineProps<Props>();
