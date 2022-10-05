@@ -53,7 +53,7 @@ const model = useVModel(props, 'modelValue', emit)
           :key="keyProp ? item[keyProp] : i"
           v-slot="{ selected }"
           :value="item"
-          class="rounded-box bg-base-100 ui-active:bg-base-200 text-base-content transition pl-10 pr-4 py-2 select-none cursor-pointer relative"
+          class="rounded-box bg-base-100 ui-active:bg-base-200/50 ui-active:text-base-content dark:ui-active:bg-slate-200/10 ui-selected:bg-primary ui-selected:text-primary-content text-base-content transition pl-10 pr-4 py-2 select-none cursor-pointer relative"
         >
           <span
             v-if="selected"

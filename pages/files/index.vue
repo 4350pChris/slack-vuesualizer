@@ -61,7 +61,7 @@ const { data: searchResult } = useAsyncData(
       </label>
     </Teleport>
     <template v-if="searchResult">
-      <ul class="list-none space-y-4 pb-8">
+      <ul class="list-none space-y-8 pb-8">
         <li v-for="message in searchResult.messages" :key="message._id">
           <FilesDetailRow :file="message.file" :channel="message.channel" />
         </li>
