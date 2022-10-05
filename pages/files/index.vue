@@ -63,7 +63,7 @@ const { data: searchResult } = useAsyncData(
     <template v-if="searchResult">
       <ul class="list-none space-y-8 pb-8">
         <li v-for="message in searchResult.messages" :key="message._id">
-          <FilesDetailRow :file="message.file" :channel="message.channel" />
+          <FilesDetailRow :file="message.files" :channel="message.channel" />
         </li>
       </ul>
       <div class="fixed w-full bottom-0 bg-base-100 py-4">

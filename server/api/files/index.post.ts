@@ -17,13 +17,13 @@ const mongoSortFromBody: (sort: Sortable) => Record<string, number> = (
 ) => {
   switch (sort) {
     case Sortable.AtoZ:
-      return { 'file.name': 1 }
+      return { 'files.name': 1 }
     case Sortable.ZtoA:
-      return { 'file.name': -1 }
+      return { 'files.name': -1 }
     case Sortable.Newest:
-      return { 'file.timestamp': -1 }
+      return { 'files.timestamp': -1 }
     case Sortable.Oldest:
-      return { 'file.timestamp': 1 }
+      return { 'files.timestamp': 1 }
     default:
       throw new Error('Unknown sorting')
   }
@@ -55,17 +55,6 @@ export default defineEventHandler(async (event) => {
       },
       {
         $match: filter,
-      },
-      {
-        $group: {
-          _id: '$files.id',
-          file: {
-            $mergeObjects: '$files',
-          },
-          channel: {
-            $first: '$channel',
-          },
-        },
       },
       {
         $sort: sorting,

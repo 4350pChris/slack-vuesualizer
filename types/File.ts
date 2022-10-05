@@ -44,5 +44,5 @@ export type File = HiddenFile | ShownFile
 export interface SearchResult {
   _id: string
   channel: string
-  file: ShownFile
+  files: ShownFile
 }
