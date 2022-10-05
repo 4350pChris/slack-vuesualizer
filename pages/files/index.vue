@@ -43,7 +43,7 @@ const { data: searchResult } = useAsyncData(
     </div>
     <label
       for="filter-modal"
-      class="md:hidden btn btn-primary btn-circle modal-button fixed bottom-16 right-4"
+      class="z-10 md:hidden btn btn-primary btn-circle modal-button fixed bottom-2 right-4"
     >
       <span class="sr-only">{{ $t("filter.header") }}</span>
       <FilterIcon class="w-6 h-6" aria-hidden="true" />
