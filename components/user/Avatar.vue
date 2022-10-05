@@ -1,17 +1,16 @@
 <script lang="ts">
+export default {
+  inheritAttrs: false,
+}
 </script>
 
 <script lang="ts" setup>
 import PlaceholderIcon from '~icons/mdi/account-question-outline'
-defineProps<Props>()
-
-export default {
-  inheritAttrs: false,
-}
 
 interface Props {
   src: string
 }
+defineProps<Props>()
 </script>
 
 <template>
