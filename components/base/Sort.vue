@@ -29,7 +29,7 @@ const model = useVModel(props, 'modelValue', emit)
       {{ model }}
     </template>
     <template #item="{ item }">
-      {{ item }}
+      {{ $t(`filter.${item}`) }}
     </template>
   </BaseSelect>
 </template>

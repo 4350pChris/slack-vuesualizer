@@ -3,7 +3,6 @@ import FilterIcon from '~icons/mdi/filter-variant'
 import { Sortable } from '~~/types/Sort'
 import type { Channel } from '~~/types/Channel'
 import type { User } from '~~/types/User'
-import type { SearchResult } from '~~/types/File'
 
 const selectedUsers = $ref<User[]>([])
 const selectedChannels = $ref<Channel[]>([])
@@ -44,7 +43,7 @@ const { data: searchResult } = useAsyncData(
     </div>
     <label
       for="filter-modal"
-      class="md:hidden btn btn-primary btn-circle modal-button fixed bottom-4 right-4"
+      class="md:hidden btn btn-primary btn-circle modal-button fixed bottom-16 right-4"
     >
       <span class="sr-only">{{ $t("filter.header") }}</span>
       <FilterIcon class="w-6 h-6" aria-hidden="true" />
@@ -62,7 +61,7 @@ const { data: searchResult } = useAsyncData(
       </label>
     </Teleport>
     <template v-if="searchResult">
-      <ul class="list-none space-y-4">
+      <ul class="list-none space-y-4 pb-8">
         <li v-for="message in searchResult.messages" :key="message._id">
           <FilesDetailRow :file="message.file" :channel="message.channel" />
         </li>
