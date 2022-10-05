@@ -58,7 +58,7 @@
     "@types/adm-zip": "0.5.0",
     "@types/emoji-js": "3.5.0",
     "@types/formidable": "2.0.5",
-    "@types/minio": "7.0.13",
+    "@types/minio": "7.0.14",
     "@types/request": "2.48.8",
     "@unocss/nuxt": "0.45.26",
     "@unocss/preset-icons": "0.45.26",
