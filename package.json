@@ -37,7 +37,7 @@
     "@headlessui/vue": "1.7.3",
     "@vueuse/core": "9.3.0",
     "@vueuse/nuxt": "9.3.0",
-    "@zip.js/zip.js": "2.6.41",
+    "@zip.js/zip.js": "2.6.43",
     "async-sema": "3.1.1",
     "emoji-js": "3.7.0",
     "filesize": "10.0.5",
