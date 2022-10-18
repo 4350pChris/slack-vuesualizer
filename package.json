@@ -63,7 +63,7 @@
     "autoprefixer": "10.4.12",
     "daisyui": "2.31.0",
     "eslint": "8.25.0",
-    "nuxt": "3.0.0-rc.11",
+    "nuxt": "3.0.0-rc.12",
     "nuxt-schema-org": "1.1.0-beta.5",
     "unplugin-icons": "0.14.12"
   },
