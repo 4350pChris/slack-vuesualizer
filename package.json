@@ -61,7 +61,7 @@
     "@types/formidable": "2.0.5",
     "@types/request": "2.48.8",
     "autoprefixer": "10.4.13",
-    "daisyui": "2.37.0",
+    "daisyui": "2.38.0",
     "eslint": "8.26.0",
     "nuxt": "3.0.0-rc.12",
     "nuxt-schema-org": "1.1.0-beta.5",
