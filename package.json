@@ -35,8 +35,8 @@
   "dependencies": {
     "@headlessui/tailwindcss": "0.1.1",
     "@headlessui/vue": "1.7.4",
-    "@vueuse/core": "9.4.0",
-    "@vueuse/nuxt": "9.4.0",
+    "@vueuse/core": "9.5.0",
+    "@vueuse/nuxt": "9.5.0",
     "@zip.js/zip.js": "2.6.52",
     "async-sema": "3.1.1",
     "emoji-js": "3.7.0",
