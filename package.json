@@ -64,7 +64,7 @@
     "daisyui": "2.39.1",
     "eslint": "8.27.0",
     "nuxt": "3.0.0-rc.13",
-    "nuxt-schema-org": "1.1.0-beta.5",
+    "nuxt-schema-org": "1.1.0-beta.6",
     "unplugin-icons": "0.14.13"
   },
   "volta": {
