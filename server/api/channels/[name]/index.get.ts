@@ -6,10 +6,8 @@ export default defineEventHandler(async (event) => {
   const db = await mongo(event.context.mongouuid)
   const channel = await db.collection<Channel>('channels').findOne({ name })
 
-  if (!channel) {
-    event.res.statusCode = 404
-    event.res.end()
-  }
+  if (!channel)
+    createError({ statusCode: 404, statusMessage: 'Channel not found' })
 
   return channel
 })

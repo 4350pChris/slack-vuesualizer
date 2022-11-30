@@ -23,7 +23,7 @@ export default function (messages: ApiMessage[]): Message[] {
           ({
             ...s,
             reply: true,
-            last_reply: i === m.replies.length - 1,
+            last_reply: i === m.replies!.length - 1,
           } as Message),
       )
       const parentMessageIndex = cpy.findIndex(({ _id }) => _id === m._id)

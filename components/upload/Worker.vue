@@ -69,6 +69,9 @@ const uploadChannel = async (channel: string) => {
 watchEffect(() => {
   const channel = props.channels.filter(c => queue.has(c)).at(-1)
 
+  if (!channel)
+    return
+
   const position = props.channels.lastIndexOf(channel)
 
   const childEl = unrefElement(list)?.children[position]
