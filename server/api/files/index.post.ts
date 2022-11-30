@@ -12,9 +12,9 @@ interface Body {
   size: number
 }
 
-const mongoSortFromBody: (sort: Sortable) => Record<string, number> = (
-  sort,
-) => {
+const mongoSortFromBody = (
+  sort: Sortable,
+): Record<`files.${string}`, number> => {
   switch (sort) {
     case Sortable.AtoZ:
       return { 'files.name': 1 }
