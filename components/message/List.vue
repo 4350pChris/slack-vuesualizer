@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { Message } from '~~/types/Message.js'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
+import type { Message } from '~~/types/Message.js'
 
 interface Props {
   messages: Array<Message | { date: Date }>
@@ -9,7 +9,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const scroller = $ref(null)
+const scroller = $ref<any>(null)
 const route = useRoute()
 
 const messageId = $computed(() => route.query.message)

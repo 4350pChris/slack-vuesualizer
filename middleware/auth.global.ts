@@ -1,4 +1,4 @@
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware((to, _) => {
   const urlToken = to.query.token
   let token = $(useCookie('mongouuid'))
 

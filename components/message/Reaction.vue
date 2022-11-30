@@ -31,9 +31,9 @@ const userNames = $computed(() =>
       <PopoverPanel
         class="absolute z-10 text-sm left-1/2 -translate-x-1/2 py-2 px-4 bg-base-100 text-base-content rounded-lg shadow-lg leading-relaxed ring-1 ring-black/10 dark:ring-slate-300/25"
       >
-        <p v-for="user in userNames" :key="name">
+        <div v-for="user in userNames" :key="user">
           {{ user }}
-        </p>
+        </div>
       </PopoverPanel>
     </Transition>
   </Popover>

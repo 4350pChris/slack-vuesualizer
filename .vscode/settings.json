@@ -5,5 +5,5 @@
     "source.fixAll.eslint": true,
     "source.organizeImports": false
   },
-  "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
+  "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs"
 }
