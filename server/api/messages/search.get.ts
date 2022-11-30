@@ -3,7 +3,10 @@ import { mongo } from '~/server/utils/mongo'
 import type { Message } from '~/types/Message'
 
 export default defineEventHandler(async (event) => {
-  const { query, channel } = useQuery(event)
+  const { query, channel } = getQuery(event)
+
+  if (!query)
+    throw createError({ statusCode: 400, statusMessage: 'Missing query' })
 
   const db = await mongo(event.context.mongouuid)
 
@@ -12,7 +15,7 @@ export default defineEventHandler(async (event) => {
   }
 
   if (channel)
-    filter.$and.push({ channel: decodeURIComponent(channel.toString()) })
+    filter.$and!.push({ channel: decodeURIComponent(channel.toString()) })
 
   const messages = await db
     .collection<Message>('messages')
