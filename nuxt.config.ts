@@ -1,3 +1,5 @@
+import type { NuxtConfig } from 'nuxt/config'
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   typescript: {
@@ -11,6 +13,7 @@ export default defineNuxtConfig({
     mongodbUri: '',
     canonicalHost: '',
   },
+  plugins: [{ src: '~/plugins/vercel.js', mode: 'client' }],
   modules: [
     [
       'unplugin-icons/nuxt',
@@ -85,4 +88,4 @@ export default defineNuxtConfig({
       },
     },
   },
-})
+} as NuxtConfig)
