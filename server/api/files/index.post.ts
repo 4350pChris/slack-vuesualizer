@@ -32,7 +32,7 @@ const mongoSortFromBody = (
 export default defineEventHandler(async (event) => {
   const db = await mongo(event.context.mongouuid)
 
-  const { users, channels, sort, page, size } = await useBody<Body>(event)
+  const { users, channels, sort, page, size } = await readBody<Body>(event)
 
   const filter: Filter<Message> = {
     'files.name': { $exists: true },

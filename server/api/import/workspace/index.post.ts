@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
   await createDb(db)
 
-  const { data } = await useBody(event)
+  const { data } = await readBody(event)
 
   await Promise.all(
     data.map(({ name, data }) => db.collection(name).insertMany(data)),
