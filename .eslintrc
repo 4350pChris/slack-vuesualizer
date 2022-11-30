@@ -1,6 +1,7 @@
 {
   "extends": "@antfu",
   "rules": {
-    "import/first": "off"
+    "import/first": "off",
+    "antfu/generic-spacing": "off"
   }
 }
