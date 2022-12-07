@@ -44,7 +44,7 @@
     "filesize": "10.0.5",
     "formidable": "2.1.1",
     "mongodb": "4.12.1",
-    "vue-virtual-scroller": "2.0.0-beta.4"
+    "vue-virtual-scroller": "2.0.0-beta.5"
   },
   "devDependencies": {
     "@antfu/eslint-config": "0.33.1",
