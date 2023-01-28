@@ -66,7 +66,7 @@
     "eslint": "8.32.0",
     "nuxt": "3.1.1",
     "nuxt-schema-org": "1.1.0-beta.6",
-    "unplugin-icons": "0.15.1"
+    "unplugin-icons": "0.15.2"
   },
   "volta": {
     "node": "16.19.0"
