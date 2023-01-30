@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-const { canonicalHost } = useRuntimeConfig()
+const config = useRuntimeConfig()
 
 useHead({
   title: 'Slack Vuesualizer',
@@ -34,7 +34,7 @@ useHead({
     },
     {
       property: 'og:url',
-      content: canonicalHost,
+      content: config.public.siteUrl,
     },
     {
       property: 'twitter:card',
@@ -54,7 +54,7 @@ useHead({
     },
     {
       property: 'twitter:url',
-      content: canonicalHost,
+      content: config.public.siteUrl,
     },
   ],
   link: [

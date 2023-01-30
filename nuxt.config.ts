@@ -11,7 +11,9 @@ export default defineNuxtConfig({
   css: ['assets/css/index.css'],
   runtimeConfig: {
     mongodbUri: '',
-    canonicalHost: '',
+    public: {
+      siteUrl: '',
+    },
   },
   plugins: [{ src: '~/plugins/vercel.ts', mode: 'client' }],
   modules: [
@@ -36,9 +38,6 @@ export default defineNuxtConfig({
     options: {
       linkExactActiveClass: 'active',
     },
-  },
-  schemaOrg: {
-    canonicalHost: process.env.NUXT_CANONICAL_HOST,
   },
   intlify: {
     vueI18n: {
