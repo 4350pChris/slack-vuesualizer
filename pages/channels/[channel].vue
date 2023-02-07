@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import CalendarIcon from '~icons/mdi/calendar-search'
+import Datepicker from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
 import type { Channel } from '~/types/Channel'
 import type { Message } from '~/types/Message'
 
@@ -22,7 +23,7 @@ const { data: messages, pending } = $(await useLazyFetch<Message[]>(
   },
 ))
 
-const toTs = useTsToDate()
+const toDate = useTsToDate()
 
 const _MS_PER_DAY = 1000 * 60 * 60 * 24
 
@@ -37,7 +38,7 @@ function dateDiffInDays(a: Date, b: Date) {
 const withSeparators = $computed(() =>
   messages?.reduce(
     ({ messages, date }, message) => {
-      const messageDate = toTs(message.ts)
+      const messageDate = toDate(message.ts)
       let separator = false
       if (date === null) {
         separator = true
@@ -63,44 +64,34 @@ const withSeparators = $computed(() =>
   ),
 )
 
-const jumpToDate = (e: Event) => {
-  const date = new Date((e.target as HTMLInputElement).value)
-  const message
-    = messages?.find(m => date < toTs(m.ts)) ?? messages!.at(-1)
+const date = ref<Date>()
+
+whenever(date, (d) => {
+  const message = messages?.find(m => d < toDate(m.ts)) ?? messages!.at(-1)
   if (message) {
     navigateTo({
       path: route.path,
       query: { ...route.query, message: message._id },
     })
   }
-}
+})
 </script>
 
 <template>
   <section class="flex flex-col h-full w-full max-w-xl">
-    <div class="my-2 md:my-4 flex flex-nowrap justify-between items-start">
+    <div class="my-2 md:my-4 flex flex-col gap-2">
       <ChannelHeader
         class="flex-1"
         :channel="channel"
         :messages="messages?.length"
       />
-      <div class="relative">
-        <label
-          class="btn btn-circle btn-ghost"
-          for="jumptodate"
-          :title="$t('jumpToDate')"
-        >
-          <span class="sr-only">{{ $t("jumpToDate") }}</span>
-          <CalendarIcon class="w-6 h-6" />
-        </label>
-        <input
-          id="jumptodate"
-          name="jumptodate"
-          type="date"
-          class="w-0 h-0 invisible"
-          @change="jumpToDate"
-        >
-      </div>
+      <Datepicker
+        v-model="date"
+        :placeholder="$t('jumpToDate')"
+        :start-date="toDate(messages?.[0]?.ts)"
+        :min-date="toDate(messages?.[0]?.ts)"
+        :max-date="toDate(messages?.at(-1)?.ts)"
+      />
     </div>
     <div v-if="pending" class="flex flex-col gap-4 overflow-y-hidden">
       <MessageSkeleton
