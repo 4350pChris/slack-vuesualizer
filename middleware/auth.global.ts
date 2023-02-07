@@ -6,7 +6,7 @@ export default defineNuxtRouteMiddleware((to, _) => {
     token = urlToken
 
   if (token && to.path === '/')
-    return navigateTo('/workspace')
+    return navigateTo(`/workspace?token=${token}`)
 
   if (!token && to.meta.layout !== 'upload')
     return navigateTo('/upload')
