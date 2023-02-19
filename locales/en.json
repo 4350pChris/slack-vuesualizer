@@ -29,7 +29,7 @@
     "delete": "delete uploaded export"
   },
   "token": {
-    "copy": "copy link",
+    "copy": "copy invite link",
     "copied": "copied!"
   },
   "workspace": {

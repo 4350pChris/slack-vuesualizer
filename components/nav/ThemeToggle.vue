@@ -31,7 +31,8 @@ useHead({
 
 <template>
   <button
-    class="hover:bg-slate-100 dark:hover:bg-slate-600 transition rounded-full p-2 swap swap-rotate" :class="{ 'swap-active': dark }"
+    class="btn btn-ghost btn-circle swap swap-rotate" :class="{ 'swap-active': dark }"
+    title="Switch theme"
     @click="dark = !dark"
   >
     <span class="sr-only">{{ $t("switchTheme") }}</span>

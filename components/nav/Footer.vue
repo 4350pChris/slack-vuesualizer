@@ -5,7 +5,7 @@ import SlackIcon from '~icons/logos/slack-icon'
 let token = $(useToken())
 
 const leave = async () => {
-  token = undefined
+  token = null
   await navigateTo('/')
 }
 </script>

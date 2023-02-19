@@ -4,7 +4,7 @@
   "user": "Benutzer | Benutzer",
   "search": {
     "channels": "@:channel.word {0} | allen @:channel.word",
-    "messages": "@:message suchem",
+    "messages": "suchen",
     "results": "Suchergebnisse für {0} in {1}",
     "everywhere": "überall suchen",
     "users": "@:users suchen"
@@ -29,7 +29,7 @@
     "delete": "Lösche hochgeladene Datei"
   },
   "token": {
-    "copy": "Link kopieren",
+    "copy": "Einladungslink kopieren",
     "copied": "kopiert!"
   },
   "workspace": {

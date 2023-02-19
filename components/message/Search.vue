@@ -48,14 +48,14 @@ whenever(
   { immediate: true },
 )
 
-const wrapper = $ref<HTMLElement>(null)
-const input = $ref<HTMLInputElement>(null)
+const wrapper = $ref<HTMLElement | null>(null)
+const input = $ref<HTMLInputElement | null>(null)
 let visible = $ref(false)
 
 whenever(
   () => visible && input,
   () => {
-    unrefElement(input).focus()
+    unrefElement(input)?.focus()
   },
 )
 
@@ -141,7 +141,7 @@ onKeyDown(['Escape'], (e) => {
                     :disabled="!route.params.channel"
                   >
                   <span
-                    class="capitalize font-mono label-text whitespace-nowrap ml-4"
+                    class="capitalize font-mono font-medium label-text whitespace-nowrap ml-4"
                   >
                     {{ $t("search.everywhere") }}
                   </span>
