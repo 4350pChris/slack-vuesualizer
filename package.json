@@ -51,7 +51,7 @@
     "formidable": "2.1.1",
     "mongodb": "5.1.0",
     "nuxt": "3.2.2",
-    "nuxt-schema-org": "2.1.1",
+    "nuxt-schema-org": "2.1.2",
     "vue-virtual-scroller": "2.0.0-beta.8"
   },
   "devDependencies": {
