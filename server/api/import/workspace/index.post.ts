@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
   const { data } = await readBody<{ data: DataIn[] }>(event)
 
   await Promise.all(
-    data.map(({ name, data }) => db.collection(name).insertMany(data)),
+    data.map(({ name, data }) => data.length > 0 && db.collection(name).insertMany(data)),
   )
 
   setCookie(event, 'mongouuid', uuid)
