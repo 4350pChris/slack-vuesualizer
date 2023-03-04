@@ -55,7 +55,7 @@
     "vue-virtual-scroller": "2.0.0-beta.8"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "0.35.3",
+    "@antfu/eslint-config": "0.36.0",
     "@iconify-json/ion": "1.1.8",
     "@iconify-json/line-md": "1.1.23",
     "@iconify-json/logos": "1.1.23",
