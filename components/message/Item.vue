@@ -19,6 +19,8 @@ const user = $computed(() =>
     u => u.id === props.message.user || u.id === props.message.bot_id,
   ),
 )
+
+const hasReplies = $computed(() => (props.message.reply_count ?? 0) > 0)
 </script>
 
 <template>
@@ -31,9 +33,9 @@ const user = $computed(() =>
       class="absolute left-9"
       :class="{
         'border-l-2 border-slate-800/25 dark:border-slate-400/50 h-full':
-          message.reply || message.reply_count > 0,
+          message.reply || hasReplies,
         '!h-6': message.last_reply,
-        'top-4 !h-[calc(100%-1rem)]': message.reply_count > 0,
+        'top-4 !h-[calc(100%-1rem)]': hasReplies,
       }"
     />
     <UserAvatar
@@ -69,7 +71,7 @@ const user = $computed(() =>
       />
     </div>
     <MessageReplies
-      v-if="!simple && message.reply_count > 0"
+      v-if="!simple && hasReplies"
       class="col-start-2"
       :reply-count="message.reply_count"
       :users="message.reply_users"

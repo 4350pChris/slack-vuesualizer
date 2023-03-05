@@ -1,5 +1,4 @@
 export default defineEventHandler(async (event) => {
-  console.log('Deleting workspace', event.context.mongouuid)
   const db = await mongo(event.context.mongouuid)
 
   await db.dropDatabase()
