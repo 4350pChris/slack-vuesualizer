@@ -1,4 +1,4 @@
-import { randomUUID } from 'crypto'
+import { randomUUID } from 'node:crypto'
 import type { Db } from 'mongodb'
 import { mongo } from '~/server/utils/mongo'
 import type { ApiMessage } from '~~/types/Message'

@@ -12,10 +12,11 @@ const leave = async () => {
 
 <template>
   <footer class="flex flex-col items-center gap-4 p-2">
-    <div class="mb-4">
+    <div class="flex flex-col gap-4 mb-4">
       <button class="btn btn-sm btn-outline btn-error" @click="leave">
         {{ $t("workspace.leave") }}
       </button>
+      <WorkspaceDelete />
     </div>
     <p class="flex items-center gap-2">
       <SlackIcon class="w-8 h-8" />

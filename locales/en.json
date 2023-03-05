@@ -34,9 +34,13 @@
   },
   "workspace": {
     "word": "workspace",
-    "open": "open workspace",
-    "yours": "your workspace contains",
-    "leave": "leave workspace"
+    "open": "open @:workspace.word",
+    "yours": "your @:workspace.word contains",
+    "leave": "leave @:workspace.word",
+    "delete": {
+      "button": "delete @:workspace.word",
+      "confirm": "Are you sure you want to delete this @:workspace.word ? This action cannot be undone. To confirm, enter {0} below."
+    }
   },
   "or": "or",
   "abort": "abort",
