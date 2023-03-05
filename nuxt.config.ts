@@ -8,9 +8,6 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  experimental: {
-    reactivityTransform: true,
-  },
   css: ['assets/css/index.css'],
   runtimeConfig: {
     mongodbUri: '',
@@ -20,6 +17,7 @@ export default defineNuxtConfig({
   },
   plugins: [{ src: '~/plugins/vercel.ts', mode: 'client' }],
   modules: [
+    '@vue-macros/nuxt',
     [
       'unplugin-icons/nuxt',
       {
