@@ -36,7 +36,11 @@
     "word": "Workspace",
     "open": "Workspace öffnen",
     "yours": "dein Workspace enthält",
-    "leave": "Workspace verlassen"
+    "leave": "Workspace verlassen",
+    "delete": {
+      "button": "@:workspace.word löschen",
+      "confirm": "Bist du dir sicher, dass du diesen @:workspace.word löschen möchtest? Dies kann nicht rückgängig gemacht werden. Wenn ja, gib {0} in das Textfeld ein."
+    }
   },
   "or": "oder",
   "abort": "abbrechen",
