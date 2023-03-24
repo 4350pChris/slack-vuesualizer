@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "0.37.0",
-    "@iconify-json/ion": "1.1.8",
+    "@iconify-json/ion": "1.1.9",
     "@iconify-json/line-md": "1.1.23",
     "@iconify-json/logos": "1.1.23",
     "@iconify-json/mdi": "1.1.50",
