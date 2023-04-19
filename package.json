@@ -39,7 +39,7 @@
     "@nuxtjs/color-mode": "3.2.0",
     "@nuxtjs/tailwindcss": "6.6.6",
     "@tailwindcss/typography": "0.5.9",
-    "@vercel/analytics": "^0.1.5",
+    "@vercel/analytics": "^1.0.0",
     "@vuepic/vue-datepicker": "^4.0.0",
     "@vueuse/core": "9.13.0",
     "@vueuse/nuxt": "9.13.0",
