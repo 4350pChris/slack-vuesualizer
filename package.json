@@ -67,7 +67,7 @@
     "@types/request": "2.48.8",
     "@vue-macros/nuxt": "^1.2.1",
     "autoprefixer": "10.4.14",
-    "eslint": "8.39.0",
+    "eslint": "8.40.0",
     "unplugin-icons": "0.15.3"
   },
   "volta": {
