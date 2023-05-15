@@ -37,7 +37,7 @@
     "@headlessui/vue": "1.7.13",
     "@intlify/nuxt3": "0.2.4",
     "@nuxtjs/color-mode": "3.2.0",
-    "@nuxtjs/tailwindcss": "6.6.8",
+    "@nuxtjs/tailwindcss": "6.7.0",
     "@tailwindcss/typography": "0.5.9",
     "@vercel/analytics": "^1.0.0",
     "@vuepic/vue-datepicker": "^4.0.0",
