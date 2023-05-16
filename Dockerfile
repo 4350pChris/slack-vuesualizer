@@ -1,4 +1,4 @@
-FROM node:18.15.0-alpine
+FROM node:20.2.0-alpine
 
 ARG MODE=production
 ARG PORT=3000
