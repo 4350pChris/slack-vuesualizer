@@ -58,7 +58,7 @@
     "@antfu/eslint-config": "0.38.6",
     "@iconify-json/ion": "1.1.10",
     "@iconify-json/line-md": "1.1.24",
-    "@iconify-json/logos": "1.1.29",
+    "@iconify-json/logos": "1.1.30",
     "@iconify-json/mdi": "1.1.52",
     "@iconify-json/twemoji": "1.1.11",
     "@types/adm-zip": "0.5.0",
