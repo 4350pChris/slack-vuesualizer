@@ -50,7 +50,7 @@
     "filesize": "10.0.7",
     "formidable": "2.1.1",
     "mongodb": "5.5.0",
-    "nuxt": "3.5.1",
+    "nuxt": "3.5.2",
     "nuxt-schema-org": "2.2.0",
     "vue-virtual-scroller": "2.0.0-beta.8"
   },
