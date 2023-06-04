@@ -2,9 +2,7 @@
 
 # Slack Vuesualizer
 
-Are you on Slack's free tier and want to see archived messages, maybe even search through them?
-
-This app enables you to do just that!
+A web app to view, search and share a Slack team's exported files.
 
 Use the hosted version at [https://slack-vuesualizer.vercel.app/](https://slack-vuesualizer.vercel.app/) for free or spin up your own website using the Docker image.
 
@@ -14,7 +12,7 @@ This is a work in progress.
 
 ## Features
 
-* full-text search for messages using MongoDB
+* full-text search for up to tens of thousands of messages per channel
 * view all messages per channel with proper formatting, files, etc.
 * view and search through all users
 * pleasant UI
