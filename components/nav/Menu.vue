@@ -2,7 +2,6 @@
 import AccountIcon from '~icons/mdi/account'
 import FilesIcon from '~icons/mdi/file-multiple'
 import HomeIcon from '~icons/mdi/home'
-import UploadIcon from '~icons/mdi/upload'
 import type { Channel } from '~~/types/Channel'
 
 interface Props {
@@ -39,13 +38,6 @@ defineProps<Props>()
     <li v-for="channel in channels" :key="channel.id" class="rounded-box">
       <NuxtLink class="rounded-box" :to="`/channels/${channel.name}`">
         {{ channel.name }}
-      </NuxtLink>
-    </li>
-    <li />
-    <li>
-      <NuxtLink class="rounded-box capitalize" to="/upload">
-        <UploadIcon />
-        {{ $t("upload.word") }}
       </NuxtLink>
     </li>
   </ul>
