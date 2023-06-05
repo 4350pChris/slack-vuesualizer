@@ -12,17 +12,17 @@ interface Props {
 const props = defineProps<Props>()
 
 const toTs = useTsToDate()
-const users = $(useUsers())
+const users = useUsers()
 
-const user = $computed(() =>
-  users.find(
+const user = computed(() =>
+  users.value.find(
     u => u.id === props.message.user || u.id === props.message.bot_id,
   ),
 )
 
-const hasReplies = $computed(() => (props.message.reply_count ?? 0) > 0)
+const hasReplies = computed(() => (props.message.reply_count ?? 0) > 0)
 
-const timestamp = $computed(() => toTs(props.message.ts))
+const timestamp = computed(() => toTs(props.message.ts))
 </script>
 
 <template>
