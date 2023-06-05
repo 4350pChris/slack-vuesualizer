@@ -1,8 +1,0 @@
-{
-  "outputDirectory": ".vercel",
-  "git": {
-    "deploymentEnabled": {
-      "main": false
-    }
-  }
-}
