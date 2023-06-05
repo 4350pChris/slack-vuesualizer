@@ -3,17 +3,22 @@ export default defineNuxtConfig({
   build: {
     transpile: ['@vuepic/vue-datepicker'],
   },
+
   typescript: {
     shim: false,
   },
+
   css: ['assets/css/index.css'],
+
   runtimeConfig: {
     mongodbUri: '',
     public: {
       siteUrl: '',
     },
   },
+
   plugins: [{ src: '~/plugins/vercel.ts', mode: 'client' }],
+
   modules: [
     '@vue-macros/nuxt',
     [
@@ -28,16 +33,19 @@ export default defineNuxtConfig({
     '@intlify/nuxt3',
     'nuxt-schema-org',
   ],
+
   colorMode: {
     preference: 'system',
     dataValue: 'theme',
     classSuffix: '',
   },
+
   router: {
     options: {
       linkExactActiveClass: 'active',
     },
   },
+
   intlify: {
     vueI18n: {
       locale: 'en',
@@ -85,5 +93,9 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+
+  devtools: {
+    enabled: true,
   },
 })

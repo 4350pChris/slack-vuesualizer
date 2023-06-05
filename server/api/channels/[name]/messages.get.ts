@@ -3,7 +3,7 @@ import normalizeMessages from '~/server/utils/normalizeMessages'
 import type { Message } from '~/types/Message'
 
 export default defineEventHandler(async (event) => {
-  const channel = decodeURIComponent(event.context.params.name)
+  const channel = decodeURIComponent(event.context.params!.name)
   const db = await mongo(event.context.mongouuid)
   const messages = await db
     .collection<Message>('messages')
