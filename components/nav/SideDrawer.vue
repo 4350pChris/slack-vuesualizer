@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-const toggle = ref<HTMLElement>(null)
+const toggle = ref<HTMLElement>()
 
 const channels = useChannels()
+const dms = useDms()
 </script>
 
 <template>
@@ -11,7 +12,7 @@ const channels = useChannels()
     <label ref="toggle" for="drawer" class="drawer-overlay" />
     <aside
       class="bg-base-100 text-base-content w-80 px-2 py-4"
-      @click="toggle.click()"
+      @click="toggle?.click()"
     >
       <div class="md:hidden mb-4 gap-2" @click.stop>
         <div class="flex justify-center">
@@ -22,7 +23,7 @@ const channels = useChannels()
           <NavThemeToggle />
         </div>
       </div>
-      <NavMenu :channels="channels" />
+      <NavMenu :channels="channels" :dms="dms" />
       <NavFooter class="mt-8" />
       <div
         class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"

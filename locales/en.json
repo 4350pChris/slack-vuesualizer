@@ -12,7 +12,8 @@
   "channel": {
     "word": "channel | channels",
     "created": "created on {when} by {who}",
-    "all": "all channels"
+    "all": "all channels",
+    "empty": "This @:channel.word is empty."
   },
   "github": "view on github",
   "noresults": "no results found",
@@ -68,5 +69,8 @@
     "ztoa": "Z to A",
     "oldest": "oldest first",
     "newest": "newest first"
+  },
+  "dm": {
+    "word": "direct message | direct messages"
   }
 }

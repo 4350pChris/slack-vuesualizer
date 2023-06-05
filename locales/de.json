@@ -12,7 +12,8 @@
   "channel": {
     "word": "Channel | Channels",
     "created": "Erstellt am {when} von {who}",
-    "all": "Alle @:channel.word"
+    "all": "Alle @:channel.word",
+    "empty": "Dieser @:channel.word ist leer."
   },
   "github": "zu Github",
   "noresults": "keine Ergebnisse",
@@ -68,5 +69,8 @@
     "ztoa": "Z bis A",
     "oldest": "älteste zuerst",
     "newest": "neueste zuerst"
+  },
+  "dm": {
+    "word": "Direktnachricht | Direktnachrichten"
   }
 }
