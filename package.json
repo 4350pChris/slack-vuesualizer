@@ -72,6 +72,6 @@
     "unplugin-icons": "0.16.2"
   },
   "volta": {
-    "node": "20.2.0"
+    "node": "18.16.0"
   }
 }
