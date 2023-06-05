@@ -53,7 +53,7 @@ services:
     ports:
       - '3000:3000'
     environment:
-      NUXT_MONGODB_URI: 'mongodb://root:example@localhost:27017'
+      NUXT_MONGODB_URI: 'mongodb://root:example@mongo:27017'
 ```
 
 ## Locally
