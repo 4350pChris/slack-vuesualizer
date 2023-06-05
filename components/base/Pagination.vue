@@ -33,11 +33,11 @@ const buttons = $computed(() => {
 </script>
 
 <template>
-  <div class="btn-group">
+  <div class="join">
     <button
       v-for="i in buttons"
       :key="i"
-      class="btn btn-sm"
+      class="btn btn-sm join-item"
       :class="{ 'btn-active': i === model }"
       :disabled="i < 0"
       @click="model = i"
