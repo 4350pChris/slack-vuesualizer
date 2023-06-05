@@ -1,13 +1,5 @@
 <script lang="ts" setup>
-import { filesize } from 'filesize'
-import { useI18n } from 'vue-i18n'
-import type {
-  DocFile,
-  ImageFile,
-  PdfFile,
-  ShownFile,
-  VideoFile,
-} from '~~/types/File'
+import type { ShownFile } from '~~/types/File'
 import AudioIcon from '~icons/mdi/headphones'
 
 interface Props {
@@ -17,42 +9,11 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const { locale } = $(useI18n())
+const users = useUsers()
 
-const users = $(useUsers())
+const user = computed(() => users.value.find(u => u.id === props.file.user))
 
-const user = $computed(() => users.find(u => u.id === props.file.user))
-
-const tsToDate = useTsToDate()
-
-function fileHasThumbPdf(f: ShownFile): f is PdfFile | DocFile {
-  return 'thumb_pdf' in f
-}
-
-function fileHasThumb80(f: ShownFile): f is ImageFile {
-  return 'thumb_80' in f
-}
-
-function fileHasThumbVideo(f: ShownFile): f is VideoFile {
-  return 'thumb_video' in f
-}
-
-function isAudioFile(f: ShownFile) {
-  return f.mimetype.startsWith('audio')
-}
-
-const size = $computed(() =>
-  filesize(props.file.size, { locale }),
-)
-
-const previewImage = $computed(() => {
-  if (fileHasThumbPdf(props.file))
-    return props.file.thumb_pdf
-  else if (fileHasThumb80(props.file))
-    return props.file.thumb_80
-  else if (fileHasThumbVideo(props.file))
-    return props.file.thumb_video
-})
+const { isAudioFile, previewImage, size, timestamp } = useFile(toRef(props, 'file'))
 </script>
 
 <template>
@@ -71,9 +32,9 @@ const previewImage = $computed(() => {
       />
     </div>
     <div class="flex flex-col">
-      <span class="text-sm">{{ $d(tsToDate(file.timestamp), "long") }}</span>
+      <span v-if="timestamp" class="text-sm">{{ $d(timestamp, "long") }}</span>
       <span class="text-sm font-bold">{{ channel }}</span>
-      <span>{{ useUserName(user) }}</span>
+      <span v-if="user">{{ useUserName(user) }}</span>
       <a
         class="fancy-link"
         :href="file.url_private"

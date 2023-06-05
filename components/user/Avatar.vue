@@ -8,7 +8,7 @@ export default {
 import PlaceholderIcon from '~icons/mdi/account-question-outline'
 
 interface Props {
-  src: string
+  src?: string
 }
 defineProps<Props>()
 </script>

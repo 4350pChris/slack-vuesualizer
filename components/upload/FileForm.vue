@@ -9,7 +9,7 @@ interface Emits {
 }
 
 interface Props {
-  modelValue: File
+  modelValue?: File
   invalid: boolean
 }
 
@@ -17,16 +17,17 @@ const props = defineProps<Props>()
 
 const emit = defineEmits<Emits>()
 
-let model = $(useVModel(props, 'modelValue', emit))
+const model = useVModel(props, 'modelValue', emit)
 
-const dropZoneRef = $ref<HTMLDivElement>()
-const fileInputRef = $ref<HTMLInputElement>()
+const dropZoneRef = ref<HTMLDivElement>()
+const fileInputRef = ref<HTMLInputElement>()
 
 const handleUpload = (files: File[] | null) => {
-  model = files[0]
+  if (files)
+    model.value = files[0]
 }
 
-useDropZone($$(dropZoneRef), handleUpload)
+useDropZone(dropZoneRef, handleUpload)
 </script>
 
 <template>
@@ -45,7 +46,7 @@ useDropZone($$(dropZoneRef), handleUpload)
         class="hidden"
         name="file"
         accept="application/zip"
-        @change="handleUpload([...fileInputRef.files])"
+        @change="handleUpload(fileInputRef!.files ? [...fileInputRef!.files] : null)"
       >
     </div>
     <p v-if="invalid" class="text-error">

@@ -11,9 +11,11 @@ export const useZip = () => {
     const parsedData: any[] = []
     for (const entry of entries) {
       const writer = new zip.TextWriter('utf-8')
-      const data = await entry.getData(writer)
+      const data = await entry.getData?.(writer)
+
       // data should always be an array of objects
-      parsedData.push(...JSON.parse(data))
+      if (data)
+        parsedData.push(...JSON.parse(data))
     }
     return parsedData
   }

@@ -41,7 +41,6 @@ const timestamp = $computed(() => toTs(props.message.ts))
       }"
     />
     <UserAvatar
-      v-if="user"
       class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl"
       :src="user?.profile?.image_48"
     />

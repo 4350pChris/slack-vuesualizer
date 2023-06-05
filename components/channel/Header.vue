@@ -10,11 +10,11 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const users = $(useUsers())
+const users = useUsers()
 
-const created = $computed(() => new Date(props.channel?.created * 1000))
-const creator = $computed(() =>
-  users.find(u => u.id === props.channel?.creator),
+const created = computed(() => props.channel && new Date(props.channel?.created * 1000))
+const creator = computed(() =>
+  users.value.find(u => u.id === props.channel?.creator),
 )
 </script>
 
@@ -39,7 +39,7 @@ const creator = $computed(() =>
         <p class="text-sm leading-relaxed capitalize">
           {{
             $t("channel.created", {
-              when: created.toLocaleDateString(),
+              when: created?.toLocaleDateString(),
               who: creator?.real_name,
             })
           }}

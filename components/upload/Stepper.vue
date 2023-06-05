@@ -7,51 +7,51 @@ interface Emits {
 
 defineEmits<Emits>()
 
-let step = $ref(0)
-const file = $ref<File>(null)
-let fileInvalid = $ref(false)
-let workerDone = $ref(false)
+const step = ref(0)
+const file = ref<File>()
+const fileInvalid = ref(false)
+const workerDone = ref(false)
 
-let entries = $ref<Entry[]>([])
+const entries = ref<Entry[]>([])
 
-const channels = $computed(() =>
-  entries
+const channels = computed(() =>
+  entries.value
     .filter(entry => entry.directory)
     .map(dir => dir.filename.slice(0, -1))
     .sort(),
 )
 
-let selectedChannels = $ref<string[]>([])
+const selectedChannels = ref<string[]>([])
 
 const { readZip } = useZip()
 
-watch($$(channels), c => (selectedChannels = c))
+watch(channels, c => (selectedChannels.value = c))
 
-watch($$(file), async () => {
-  fileInvalid = false
-  if (!file)
+watch(file, async () => {
+  fileInvalid.value = false
+  if (!file.value)
     return
 
-  entries = await readZip(file)
-  if (!entries.find(entry => entry.filename === 'users.json'))
-    fileInvalid = true
+  entries.value = await readZip(file.value)
+  if (!entries.value.find(entry => entry.filename === 'users.json'))
+    fileInvalid.value = true
   else
-    step++
+    step.value++
 })
 
 const handleWorkerDone = () => {
-  workerDone = true
-  step++
+  workerDone.value = true
+  step.value++
 }
 
-const nextDisabled = $computed(() => {
-  switch (step) {
+const nextDisabled = computed(() => {
+  switch (step.value) {
     case 0:
-      return file === null || fileInvalid
+      return file.value === null || fileInvalid.value
     case 1:
-      return selectedChannels.length === 0
+      return selectedChannels.value.length === 0
     case 2:
-      return !workerDone
+      return !workerDone.value
     default:
       return false
   }

@@ -2,6 +2,7 @@
   "extends": "@antfu",
   "rules": {
     "import/first": "off",
-    "antfu/generic-spacing": "off"
+    "antfu/generic-spacing": "off",
+    "antfu/top-level-function": "off"
   }
 }
