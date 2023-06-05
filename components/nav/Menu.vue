@@ -59,7 +59,7 @@ const dmsWithUsernames = computed(() => props.dms.map(
         </ul>
       </details>
     </li>
-    <li v-if="dms">
+    <li v-if="dms.length > 0">
       <details open>
         <summary class="capitalize">
           {{ $t("dm.word", 2) }}
