@@ -7,10 +7,10 @@ defineEmits<{
 
 const { t } = useI18n()
 
-const confirmInput = $ref('')
+const confirmInput = ref('')
 
-const confirmDisabled = $computed(() => {
-  return confirmInput !== t('workspace.delete.button')
+const confirmDisabled = computed(() => {
+  return confirmInput.value !== t('workspace.delete.button')
 })
 </script>
 

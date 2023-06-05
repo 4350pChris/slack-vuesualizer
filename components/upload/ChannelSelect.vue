@@ -12,13 +12,13 @@ const props = defineProps<Props>()
 
 const emit = defineEmits<Emits>()
 
-let model = $(useVModel(props, 'modelValue', emit))
+const model = useVModel(props, 'modelValue', emit)
 
 const toggleAll = () => {
-  if (model.length === props.channels.length)
-    model = []
+  if (model.value.length === props.channels.length)
+    model.value = []
   else
-    model = props.channels
+    model.value = props.channels
 }
 </script>
 

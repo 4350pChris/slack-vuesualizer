@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-const users = $(useUsers())
+const users = useUsers()
 
-const query = $ref('')
+const query = ref('')
 
-const results = $(useArrayFilter($$(users), ({ profile, real_name, name }) =>
+const results = useArrayFilter(users, ({ profile, real_name, name }) =>
   [
     name,
     real_name,
@@ -13,9 +13,9 @@ const results = $(useArrayFilter($$(users), ({ profile, real_name, name }) =>
     profile.last_name,
     profile.real_name,
   ].some(s =>
-    s?.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
+    s?.toLocaleLowerCase().includes(query.value.toLocaleLowerCase()),
   ),
-))
+)
 </script>
 
 <template>

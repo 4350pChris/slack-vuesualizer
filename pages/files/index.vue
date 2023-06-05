@@ -4,13 +4,13 @@ import { Sortable } from '~~/types/Sort'
 import type { Channel } from '~~/types/Channel'
 import type { User } from '~~/types/User'
 
-const selectedUsers = $ref<User[]>([])
-const selectedChannels = $ref<Channel[]>([])
-const sort = $ref<Sortable>(Sortable.Newest)
-const page = $ref(0)
+const selectedUsers = ref<User[]>([])
+const selectedChannels = ref<Channel[]>([])
+const sort = ref<Sortable>(Sortable.Newest)
+const page = ref(0)
 
-const users = $(useArrayMap($$(selectedUsers), ({ id }) => id))
-const channels = $(useArrayMap($$(selectedChannels), ({ name }) => name))
+const users = useArrayMap(selectedUsers, ({ id }) => id)
+const channels = useArrayMap(selectedChannels, ({ name }) => name)
 
 const { data: searchResult } = useAsyncData(
   'files',
@@ -18,16 +18,16 @@ const { data: searchResult } = useAsyncData(
     $fetch('/api/files', {
       method: 'POST',
       body: {
-        users,
-        channels,
-        sort,
-        page,
+        users: users.value,
+        channels: channels.value,
+        sort: sort.value,
+        page: page.value,
         size: 25,
       },
       headers: useRequestHeaders(['cookie']),
     }),
   {
-    watch: [$$(users), $$(channels), $$(sort), $$(page)],
+    watch: [users, channels, sort, page],
   },
 )
 </script>

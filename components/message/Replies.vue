@@ -8,10 +8,10 @@ interface Props {
 
 defineProps<Props>()
 
-const localUsers = $(useUsers())
+const localUsers = useUsers()
 
 const getUserImage = (id: string) =>
-  localUsers.find(user => user.id === id)?.profile.image_48
+  localUsers.value.find(user => user.id === id)?.profile.image_48
 </script>
 
 <template>

@@ -3,10 +3,10 @@ import type { ChannelLeaf } from '~/types/Message'
 
 const props = defineProps<{ node: ChannelLeaf }>()
 
-const channels = $(useChannels())
+const channels = useChannels()
 
-const channel = $computed(() =>
-  channels.find(c => c.id === props.node.channel_id),
+const channel = computed(() =>
+  channels.value.find(c => c.id === props.node.channel_id),
 )
 </script>
 

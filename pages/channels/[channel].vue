@@ -6,20 +6,20 @@ import type { Message } from '~/types/Message'
 
 const route = useRoute()
 
-const { data: channel } = $(await useFetch<Channel>(
+const { data: channel } = await useFetch<Channel>(
   `/api/channels/${route.params.channel}`,
   {
     pick: ['name', 'purpose', 'creator', 'created'],
     headers: useRequestHeaders(['cookie']),
   },
-))
+)
 
-const { data: messages, pending } = $(await useLazyFetch<Message[]>(
+const { data: messages, pending } = await useLazyFetch<Message[]>(
   `/api/channels/${route.params.channel}/messages`,
   {
     headers: useRequestHeaders(['cookie']),
   },
-))
+)
 
 const toDate = useTsToDate()
 
@@ -33,8 +33,8 @@ function dateDiffInDays(a: Date, b: Date) {
   return Math.floor((utc2 - utc1) / _MS_PER_DAY)
 }
 
-const withSeparators = $computed(() =>
-  messages?.reduce(
+const withSeparators = computed(() =>
+  messages.value?.reduce(
     ({ messages, date }, message) => {
       const messageDate = toDate(message.ts)
       let separator = false
@@ -65,7 +65,7 @@ const withSeparators = $computed(() =>
 const date = ref<Date>()
 
 whenever(date, (d) => {
-  const message = messages?.find(m => d < toDate(m.ts)) ?? messages!.at(-1)
+  const message = messages.value?.find(m => d < toDate(m.ts)) ?? messages.value!.at(-1)
   if (message) {
     navigateTo({
       path: route.path,

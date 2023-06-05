@@ -2,10 +2,10 @@
 import GithubIcon from '~icons/line-md/github-loop'
 import SlackIcon from '~icons/logos/slack-icon'
 
-let token = $(useToken())
+const token = useToken()
 
 const leave = async () => {
-  token = null
+  token.value = null
   await navigateTo('/')
 }
 </script>
