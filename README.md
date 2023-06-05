@@ -1,6 +1,6 @@
-<img alt="Slack" width="250" height="250" src="./public/Slack_Mark.svg"/>
-
 # Slack Vuesualizer
+
+<img alt="Slack" width="250" height="250" src="./public/Slack_Mark.svg"/>
 
 A web app to view, search and share a Slack team's exported files.
 
