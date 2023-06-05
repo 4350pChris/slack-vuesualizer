@@ -1,28 +1,28 @@
 <script lang="ts" setup>
-let token = $(useToken())
+const token = useToken()
 
 const deleteWorkspace = async () => {
   await $fetch('/api/workspaces', {
     method: 'DELETE',
     headers: useRequestHeaders(['cookie']),
   })
-  token = null
+  token.value = null
   await navigateTo('/')
 }
+
+const dialog = ref<HTMLDialogElement>()
 </script>
 
 <template>
-  <label class="btn btn-sm btn-outline btn-error modal-button" for="delete-workspace-modal">
+  <button class="btn btn-sm btn-outline btn-error" @click="unrefElement(dialog)?.showModal()">
     {{ $t('workspace.delete.button') }}
-  </label>
+  </button>
   <Teleport to="body">
-    <input id="delete-workspace-modal" type="checkbox" class="modal-toggle">
-    <label for="delete-workspace-modal" class="modal modal-bottom cursor-pointer">
-      <label for="" class="modal-box min-h-[24rem] relative">
-        <LazyWorkspaceConfirmDelete
-          @confirm="deleteWorkspace"
-        />
-      </label>
-    </label>
+    <dialog ref="dialog" class="modal modal-bottom sm:modal-middle">
+      <LazyWorkspaceConfirmDelete class="modal-box" @confirm="deleteWorkspace" />
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
   </Teleport>
 </template>
