@@ -3,54 +3,26 @@ import { onKeyDown } from '@vueuse/core'
 import LoadingSpinner from '~icons/line-md/loading-alt-loop'
 import CloseIcon from '~icons/line-md/close'
 import TextSearch from '~icons/mdi/text-search'
-import type { Message } from '~/types/Message'
 
 const route = useRoute()
-const query = $ref('')
-let results = $ref<Message[]>([])
-let allChannels = $ref(false)
-let _searching = $ref(false)
-const searching = $(refDebounced($$(_searching), 150))
 
-const search = useDebounceFn(async () => {
-  const params: { query: string; channel?: string | string[] } = {
-    query,
-  }
-  if (!allChannels && route.params.channel)
-    params.channel = route.params.channel
+const channel = computed(() => route.params.channel)
 
-  try {
-    results = await $fetch('/api/messages/search', {
-      params,
-      headers: useRequestHeaders(['cookie']),
-    })
-  }
-  catch (e) {
-    console.error(e)
-  }
-  _searching = false
-}, 500)
+const { searching: _searching, allChannels, query, results } = useSearch(channel)
 
-watch([$$(query), $$(allChannels)], () => {
-  if (!query) {
-    results = []
-    return
-  }
-  _searching = true
-  return search()
-})
+const searching = refDebounced(_searching, 150)
 
 whenever(
   () => !route.params.channel,
   () => {
-    allChannels = true
+    allChannels.value = true
   },
   { immediate: true },
 )
 
-const wrapper = $ref<HTMLElement | null>(null)
-const input = $ref<HTMLInputElement | null>(null)
-let visible = $ref(false)
+const wrapper = ref<HTMLElement | null>(null)
+const input = ref<HTMLInputElement | null>(null)
+const visible = ref(false)
 
 whenever(
   () => visible && input,
@@ -59,8 +31,8 @@ whenever(
   },
 )
 
-onClickOutside($$(wrapper), () => (visible = false), {
-  ignore: [$$(input)],
+onClickOutside(wrapper, () => (visible.value = false), {
+  ignore: [input],
 })
 
 const keys = useMagicKeys()
@@ -68,12 +40,12 @@ const keys = useMagicKeys()
 const ctrlK = keys['Ctrl+K']
 
 whenever(ctrlK, () => {
-  visible = true
+  visible.value = true
 })
 
 onKeyDown(['Escape'], (e) => {
   e.preventDefault()
-  visible = false
+  visible.value = false
 })
 </script>
 

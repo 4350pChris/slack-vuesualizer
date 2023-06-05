@@ -21,6 +21,8 @@ const user = $computed(() =>
 )
 
 const hasReplies = $computed(() => (props.message.reply_count ?? 0) > 0)
+
+const timestamp = $computed(() => toTs(props.message.ts))
 </script>
 
 <template>
@@ -39,6 +41,7 @@ const hasReplies = $computed(() => (props.message.reply_count ?? 0) > 0)
       }"
     />
     <UserAvatar
+      v-if="user"
       class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl"
       :src="user?.profile?.image_48"
     />
@@ -47,8 +50,8 @@ const hasReplies = $computed(() => (props.message.reply_count ?? 0) > 0)
         <span v-if="user" class="font-bold mr-4">
           {{ user.profile.display_name || user.real_name }}
         </span>
-        <span class="font-mono text-sm">
-          {{ $d(toTs(message.ts), "long") }}
+        <span v-if="timestamp" class="font-mono text-sm">
+          {{ $d(timestamp, "long") }}
         </span>
       </p>
       <template v-if="message.blocks?.length">
