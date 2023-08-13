@@ -66,7 +66,7 @@
     "@types/formidable": "2.0.6",
     "@types/request": "2.48.8",
     "@vue-macros/nuxt": "^1.2.1",
-    "autoprefixer": "10.4.14",
+    "autoprefixer": "10.4.15",
     "eslint": "8.47.0",
     "nuxt": "^3.5.2",
     "unplugin-icons": "0.16.5"
