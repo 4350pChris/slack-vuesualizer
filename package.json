@@ -38,7 +38,7 @@
     "@intlify/nuxt3": "0.2.4",
     "@nuxtjs/color-mode": "3.3.0",
     "@nuxtjs/tailwindcss": "6.8.0",
-    "@tailwindcss/typography": "0.5.9",
+    "@tailwindcss/typography": "0.5.10",
     "@vercel/analytics": "^1.0.0",
     "@vuepic/vue-datepicker": "^5.0.0",
     "@vueuse/core": "10.4.1",
