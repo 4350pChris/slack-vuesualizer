@@ -67,7 +67,7 @@
     "@types/request": "2.48.8",
     "@vue-macros/nuxt": "^1.2.1",
     "autoprefixer": "10.4.15",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "nuxt": "^3.5.2",
     "unplugin-icons": "0.16.5"
   },
