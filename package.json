@@ -47,7 +47,7 @@
     "async-sema": "3.1.1",
     "daisyui": "3.9.2",
     "emoji-js": "3.7.0",
-    "filesize": "10.0.12",
+    "filesize": "10.1.0",
     "formidable": "2.1.2",
     "mongodb": "5.8.1",
     "nuxt-schema-org": "2.2.0",
