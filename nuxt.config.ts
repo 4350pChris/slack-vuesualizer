@@ -30,7 +30,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
-    '@intlify/nuxt3',
+    '@nuxtjs/i18n',
     'nuxt-schema-org',
   ],
 
@@ -46,53 +46,11 @@ export default defineNuxtConfig({
     },
   },
 
-  intlify: {
-    vueI18n: {
-      locale: 'en',
-      fallbackLocale: 'de',
-      datetimeFormats: {
-        de: {
-          short: {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-          },
-          long: {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            weekday: 'short',
-            hour: 'numeric',
-            minute: 'numeric',
-          },
-          timeOfDay: {
-            hour: 'numeric',
-            minute: 'numeric',
-          },
-        },
-        en: {
-          short: {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-          },
-          long: {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            weekday: 'short',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true,
-          },
-          timeOfDay: {
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true,
-          },
-        },
-      },
-    },
+  i18n: {
+    locales: ['en', 'de'],
+    defaultLocale: 'en',
+    strategy: 'prefix',
+    vueI18n: './i18n.config.ts'
   },
 
   devtools: {

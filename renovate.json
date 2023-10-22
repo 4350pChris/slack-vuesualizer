@@ -23,7 +23,7 @@
     },
     {
       "groupName": "nuxt plugins",
-      "matchPackageNames": ["@intlify/nuxt3", "nuxt-schema-org"],
+      "matchPackageNames": ["@nuxtjs/", "nuxt-schema-org"],
       "matchPackagePrefixes": ["@nuxtjs/"]
     },
     {

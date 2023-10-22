@@ -20,8 +20,8 @@ const { copy, copied } = useClipboard({ source: link })
         {{ link }}
       </button>
     </div>
-    <NuxtLink class="btn btn-primary btn-outline" to="/workspace">
+    <NuxtLinkLocale class="btn btn-primary btn-outline" to="/workspace">
       {{ $t("workspace.open") }}
-    </NuxtLink>
+    </NuxtLinkLocale>
   </div>
 </template>

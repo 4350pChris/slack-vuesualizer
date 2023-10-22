@@ -28,9 +28,9 @@ const token = useToken()
       <span>{{ $t("exporthelp") }}</span>
       <QuestionIcon class="w-4 h-4" />
     </a>
-    <NuxtLink class="btn btn-outline gap-2 mb-12" to="/upload">
+    <NuxtLinkLocale class="btn btn-outline gap-2 mb-12" to="/upload">
       <UploadIcon class="w-6 h-6" />
       {{ $t("upload.button") }}
-    </NuxtLink>
+    </NuxtLinkLocale>
   </div>
 </template>

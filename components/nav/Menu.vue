@@ -28,22 +28,22 @@ const dmsWithUsernames = computed(() => props.dms.map(
 <template>
   <ul class="menu menu-compact">
     <li>
-      <NuxtLink class="capitalize rounded-box" to="/workspace">
+      <NuxtLinkLocale class="capitalize rounded-box" to="/workspace">
         <HomeIcon />
         {{ $t("workspace.word") }}
-      </NuxtLink>
+      </NuxtLinkLocale>
     </li>
     <li>
-      <NuxtLink class="capitalize rounded-box" to="/users">
+      <NuxtLinkLocale class="capitalize rounded-box" to="/users">
         <AccountIcon />
         {{ $t("user", 2) }}
-      </NuxtLink>
+      </NuxtLinkLocale>
     </li>
     <li>
-      <NuxtLink class="capitalize rounded-box" to="/files">
+      <NuxtLinkLocale class="capitalize rounded-box" to="/files">
         <FilesIcon />
         {{ $t("file", 2) }}
-      </NuxtLink>
+      </NuxtLinkLocale>
     </li>
     <li>
       <details open>
@@ -52,9 +52,9 @@ const dmsWithUsernames = computed(() => props.dms.map(
         </summary>
         <ul>
           <li v-for="channel in channels" :key="channel.id" class="rounded-box">
-            <NuxtLink class="rounded-box" :to="`/channels/${channel.name}`">
+            <NuxtLinkLocale class="rounded-box" :to="`/channels/${channel.name}`">
               {{ channel.name }}
-            </NuxtLink>
+            </NuxtLinkLocale>
           </li>
         </ul>
       </details>
@@ -66,9 +66,9 @@ const dmsWithUsernames = computed(() => props.dms.map(
         </summary>
         <ul>
           <li v-for="dm in dmsWithUsernames" :key="dm.id" class="rounded-box">
-            <NuxtLink class="rounded-box" :to="`/channels/${dm.id}`">
+            <NuxtLinkLocale class="rounded-box" :to="`/channels/${dm.id}`">
               {{ dm.members.map(u => useUserName(u)).join(", ") }}
-            </NuxtLink>
+            </NuxtLinkLocale>
           </li>
         </ul>
       </details>

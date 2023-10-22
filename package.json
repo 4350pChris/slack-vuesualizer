@@ -35,7 +35,6 @@
   "dependencies": {
     "@headlessui/tailwindcss": "0.2.0",
     "@headlessui/vue": "1.7.16",
-    "@intlify/nuxt3": "0.2.4",
     "@nuxtjs/color-mode": "3.3.0",
     "@nuxtjs/tailwindcss": "6.8.0",
     "@tailwindcss/typography": "0.5.10",
@@ -61,6 +60,7 @@
     "@iconify-json/mdi": "1.1.54",
     "@iconify-json/twemoji": "1.1.12",
     "@nuxt/devtools": "^0.8.0",
+    "@nuxtjs/i18n": "^8.0.0-rc.5",
     "@types/adm-zip": "0.5.2",
     "@types/emoji-js": "3.5.0",
     "@types/formidable": "2.0.6",
@@ -68,7 +68,9 @@
     "@vue-macros/nuxt": "^1.2.1",
     "autoprefixer": "10.4.16",
     "eslint": "8.51.0",
-    "nuxt": "^3.5.2",
+    "nuxt": "^3.8.0",
+    "nuxt-headlessui": "^1.1.4",
+    "ufo": "^1.3.1",
     "unplugin-icons": "0.17.0"
   },
   "volta": {

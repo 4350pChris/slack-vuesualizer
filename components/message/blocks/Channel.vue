@@ -11,7 +11,7 @@ const channel = computed(() =>
 </script>
 
 <template>
-  <NuxtLink class="text-info" :to="`/channels/${channel?.name}`">
+  <NuxtLinkLocale class="text-info" :to="`/channels/${channel?.name}`">
     {{ channel?.name }}
-  </NuxtLink>
+  </NuxtLinkLocale>
 </template>

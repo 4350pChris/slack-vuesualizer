@@ -3,6 +3,8 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "types": ["unplugin-icons/types/vue"],
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }

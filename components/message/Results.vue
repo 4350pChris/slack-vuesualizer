@@ -18,7 +18,7 @@ defineEmits<Emits>()
   <div>
     <ul v-if="results.length > 0" class="list-none flex flex-col gap-4 p-1">
       <li v-for="result in results" :key="result._id">
-        <NuxtLink
+        <NuxtLinkLocale
           :to="`/channels/${result.channel}?message=${result._id}`"
           @click="$emit('close')"
         >
@@ -29,7 +29,7 @@ defineEmits<Emits>()
             :message="result"
             :simple="true"
           />
-        </NuxtLink>
+        </NuxtLinkLocale>
       </li>
     </ul>
     <p v-else class="capitalize font-medium">
