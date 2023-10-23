@@ -32,7 +32,7 @@ useHead({
 <template>
   <button
     class="btn btn-ghost btn-circle swap swap-rotate" :class="{ 'swap-active': dark }"
-    title="Switch theme"
+    :title="$t('switchTheme')"
     @click="dark = !dark"
   >
     <span class="sr-only">{{ $t("switchTheme") }}</span>

@@ -22,7 +22,7 @@ const UkFlag = defineAsyncComponent(
       <ListboxLabel class="sr-only">
         {{ $t("language") }}
       </ListboxLabel>
-      <ListboxButton class="btn btn-ghost btn-circle" title="Change language">
+      <ListboxButton class="btn btn-ghost btn-circle" :title="$t('changeLanguage')">
         <LanguageIcon aria-hidden="true" class="w-6 h-6" />
       </ListboxButton>
       <Transition name="slide-y">
