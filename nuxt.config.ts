@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     },
   },
 
-  plugins: [{ src: '~/plugins/vercel.ts', mode: 'client' }],
+  plugins: [],
 
   modules: [
     '@vue-macros/nuxt',
