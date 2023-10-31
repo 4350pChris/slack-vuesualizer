@@ -47,7 +47,7 @@
     "daisyui": "3.9.4",
     "emoji-js": "3.7.0",
     "filesize": "10.1.0",
-    "formidable": "2.1.2",
+    "formidable": "3.5.1",
     "mongodb": "5.9.1",
     "nuxt-schema-org": "2.2.0",
     "vue-virtual-scroller": "2.0.0-beta.8"
