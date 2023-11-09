@@ -39,7 +39,7 @@
     "@nuxtjs/tailwindcss": "6.9.5",
     "@tailwindcss/typography": "0.5.10",
     "@vercel/analytics": "^1.0.0",
-    "@vuepic/vue-datepicker": "^5.0.0",
+    "@vuepic/vue-datepicker": "^7.0.0",
     "@vueuse/core": "10.6.0",
     "@vueuse/nuxt": "10.6.0",
     "@zip.js/zip.js": "2.7.31",
