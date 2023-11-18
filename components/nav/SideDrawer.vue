@@ -11,7 +11,7 @@ const dms = useDms()
   >
     <label ref="toggle" for="drawer" class="drawer-overlay" />
     <aside
-      class="bg-base-100 text-base-content w-80 px-2 py-4"
+      class="h-full bg-base-100 text-base-content w-80 px-2 py-4"
       @click="toggle?.click()"
     >
       <div class="md:hidden mb-4 gap-2" @click.stop>
