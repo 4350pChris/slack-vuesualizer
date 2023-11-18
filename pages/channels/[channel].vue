@@ -5,6 +5,7 @@ import '@vuepic/vue-datepicker/dist/main.css'
 const route = useRoute()
 const date = ref<Date>()
 const toDate = useTsToDate()
+const colorMode = useColorMode()
 
 const { channel, messages, withSeparators, pending } = await useMessages(route.params.channel as string)
 const localeRoute = useLocaleRoute()
@@ -39,6 +40,7 @@ whenever(date, (d) => {
         />
         <Datepicker
           v-model="date"
+          :dark="colorMode.value === 'business'"
           :placeholder="$t('jumpToDate')"
           :start-date="toDate(messages[0].ts)"
           :min-date="toDate(messages[0].ts)"
