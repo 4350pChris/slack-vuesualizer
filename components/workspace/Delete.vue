@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 const token = useToken()
-
+const localeRoute = useLocaleRoute()
 const deleteWorkspace = async () => {
   await $fetch('/api/workspaces', {
     method: 'DELETE',
     headers: useRequestHeaders(['cookie']),
   })
   token.value = null
-  await navigateTo('/')
+  await navigateTo(localeRoute({ name: 'index' }))
 }
 
 const dialog = ref<HTMLDialogElement>()

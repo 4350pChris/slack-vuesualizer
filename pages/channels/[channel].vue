@@ -7,14 +7,15 @@ const date = ref<Date>()
 const toDate = useTsToDate()
 
 const { channel, messages, withSeparators, pending } = await useMessages(route.params.channel as string)
+const localeRoute = useLocaleRoute()
 
 whenever(date, (d) => {
   const message = messages.value?.find(m => d < toDate(m.ts)) ?? messages.value!.at(-1)
   if (message) {
-    navigateTo({
+    navigateTo(localeRoute({
       path: route.path,
       query: { ...route.query, message: message._id },
-    })
+    }))
   }
 })
 </script>

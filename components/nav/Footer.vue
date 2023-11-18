@@ -3,10 +3,11 @@ import GithubIcon from '~icons/line-md/github-loop'
 import SlackIcon from '~icons/logos/slack-icon'
 
 const token = useToken()
+const localeRoute = useLocaleRoute()
 
 const leave = async () => {
   token.value = null
-  await navigateTo('/')
+  await navigateTo(localeRoute({ name: 'index' }))
 }
 </script>
 
