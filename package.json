@@ -47,7 +47,6 @@
     "daisyui": "3.9.4",
     "emoji-js": "3.8.0",
     "filesize": "10.1.0",
-    "formidable": "2.1.2",
     "mongodb": "5.9.1",
     "nuxt-schema-org": "2.2.0",
     "vue-virtual-scroller": "2.0.0-beta.8"
@@ -63,7 +62,6 @@
     "@nuxtjs/i18n": "^8.0.0-rc.5",
     "@types/adm-zip": "0.5.4",
     "@types/emoji-js": "3.5.2",
-    "@types/formidable": "3.4.5",
     "@types/request": "2.48.12",
     "@vue-macros/nuxt": "^1.2.1",
     "autoprefixer": "10.4.16",
