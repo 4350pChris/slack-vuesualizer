@@ -60,7 +60,7 @@
     "@iconify-json/twemoji": "1.1.12",
     "@nuxt/devtools": "^1.0.0",
     "@nuxtjs/i18n": "^8.0.0-rc.5",
-    "@types/adm-zip": "0.5.4",
+    "@types/adm-zip": "0.5.5",
     "@types/emoji-js": "3.5.2",
     "@types/request": "2.48.12",
     "@vue-macros/nuxt": "^1.2.1",
