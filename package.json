@@ -56,7 +56,7 @@
     "@iconify-json/ion": "1.1.14",
     "@iconify-json/line-md": "1.1.33",
     "@iconify-json/logos": "1.1.40",
-    "@iconify-json/mdi": "1.1.57",
+    "@iconify-json/mdi": "1.1.58",
     "@iconify-json/twemoji": "1.1.14",
     "@nuxt/devtools": "^1.0.0",
     "@nuxtjs/i18n": "^8.0.0-rc.5",
