@@ -48,7 +48,7 @@
     "daisyui": "4.4.24",
     "emoji-js": "3.8.0",
     "filesize": "10.1.0",
-    "mongodb": "5.9.2",
+    "mongodb": "6.3.0",
     "nuxt-schema-org": "2.2.0",
     "vue-virtual-scroller": "2.0.0-beta.8"
   },
