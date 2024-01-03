@@ -64,7 +64,6 @@
     "@types/adm-zip": "0.5.5",
     "@types/emoji-js": "3.5.2",
     "@types/request": "2.48.12",
-    "@vue-macros/nuxt": "^1.2.1",
     "autoprefixer": "10.4.16",
     "eslint": "8.56.0",
     "nuxt": "3.8.2",
