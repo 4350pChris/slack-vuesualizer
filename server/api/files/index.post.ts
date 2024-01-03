@@ -25,7 +25,7 @@ const mongoSortFromBody = (
     case Sortable.Oldest:
       return { 'files.timestamp': 1 }
     default:
-      throw createError({ statusCode: 400, message: 'Unknown sorting' })
+      throw createError({ statusCode: 400, statusMessage: 'Unknown sorting' })
   }
 }
 

@@ -1,4 +1,5 @@
 import { Sema } from 'async-sema'
+import { FetchError } from "ofetch"
 import type { Entry } from '@zip.js/zip.js'
 
 export const useUpload = () => {
@@ -6,6 +7,7 @@ export const useUpload = () => {
   const done = ref(new Set<string>())
   const errors = ref(new Set<string>())
   const retriable = ref(false)
+  const full = ref(false)
 
   const { parseData } = useZip()
 
@@ -84,6 +86,11 @@ export const useUpload = () => {
     }
     catch (e) {
       errors.value.add('vuesualizer-workspace')
+
+      if (e instanceof FetchError && e.response?.status === 409) {
+        full.value = true
+      }
+
       throw e
     }
     finally {
@@ -114,6 +121,7 @@ export const useUpload = () => {
     queue,
     done,
     errors,
+    full,
     retriable,
     list,
     doUpload,

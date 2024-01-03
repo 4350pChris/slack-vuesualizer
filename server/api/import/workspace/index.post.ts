@@ -20,7 +20,15 @@ export default defineEventHandler(async (event) => {
   const uuid = randomUUID()
   const db = await mongo(uuid)
 
-  await createDb(db)
+  try {
+    await createDb(db)
+  } catch (e) {
+    // collections are full
+    throw createError({
+      statusCode: 409,
+      statusMessage: 'Database is full'
+    })
+  }
 
   const { data } = await readBody<{ data: DataIn[] }>(event)
 

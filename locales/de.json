@@ -28,7 +28,8 @@
     "success": "Import erfolgreich!",
     "done": "Hier ist dein Link. Teile ihn mit anderen um ihnen Zugang zu dem Slack Archiv zu geben.",
     "button": "Datei auswählen (.zip)",
-    "delete": "Lösche hochgeladene Datei"
+    "delete": "Lösche hochgeladene Datei",
+    "full": "Leider gibt es keinen Platz für weitere Workspaces."
   },
   "token": {
     "copy": "Einladungslink kopieren",

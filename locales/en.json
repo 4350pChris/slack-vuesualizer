@@ -28,7 +28,8 @@
     "success": "Upload successful!",
     "done": "Here's your link. You may share it with others to give them access to your Slack archive.",
     "button": "choose file (.zip)",
-    "delete": "delete uploaded export"
+    "delete": "delete uploaded export",
+    "full": "Unfortunately, we cannot accept any more uploads at this time. Please try again later."
   },
   "token": {
     "copy": "copy invite link",

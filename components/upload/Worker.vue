@@ -17,7 +17,7 @@ interface Emits {
 const props = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
-const { queue, list, done, errors, retriable, doUpload } = useUpload()
+const { queue, list, done, errors, retriable, full, doUpload } = useUpload()
 
 watchEffect(() => {
   const channel = props.channels.filter(c => queue.value.has(c)).at(-1)
@@ -36,35 +36,34 @@ watchEffect(() => {
 })
 
 const handleUpload = async () => {
-  const success = await doUpload(props.channels, props.entries)
+  try {
+    const success = await doUpload(props.channels, props.entries)
 
-  if (success)
-    emit('done')
+    if (success)
+      emit('done')
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 onMounted(handleUpload)
 </script>
 
 <template>
-  <div class="w-full">
+    <Transition name="fade">
+      <p v-if="full" class="text-2xl text-center sticky bottom-0 -mb-4 bg-base-100 py-4">
+        {{ $t("upload.full") }}
+      </p>
+    </Transition>
+  <div v-if="!full" class="w-full">
     <div class="sticky inset-x-0 top-36 z-10 pb-4 bg-base-100">
-      <progress
-        class="progress w-full"
-        :value="((errors.size + done.size) / (channels.length + 1)) * 100"
-        max="100"
-      />
+      <progress class="progress w-full" :value="((errors.size + done.size) / (channels.length + 1)) * 100" max="100" />
     </div>
     <ul ref="list" class="list-none space-y-2">
-      <li
-        v-for="channel in ['vuesualizer-workspace', ...channels]"
-        :key="channel"
-        class="flex gap-2 justify-start items-center"
-      >
+      <li v-for="channel in ['vuesualizer-workspace', ...channels]" :key="channel"
+        class="flex gap-2 justify-start items-center">
         <UploadingLoopIcon v-if="queue.has(channel)" class="w-5 h-5" />
-        <ConfirmIcon
-          v-else-if="done.has(channel)"
-          class="w-5 h-5 text-success"
-        />
+        <ConfirmIcon v-else-if="done.has(channel)" class="w-5 h-5 text-success" />
         <AlertIcon v-else-if="errors.has(channel)" class="w-5 h-5 text-error" />
         <CircleIcon v-else class="w-5 h-5" />
         <span v-if="channel === 'vuesualizer-workspace'">
@@ -74,10 +73,7 @@ onMounted(handleUpload)
       </li>
     </ul>
     <Transition name="fade">
-      <div
-        v-if="retriable"
-        class="sticky bottom-0 -mb-4 bg-base-100 py-4 border-t"
-      >
+      <div v-if="retriable" class="sticky bottom-0 -mb-4 bg-base-100 py-4 border-t">
         <button class="btn btn-outline btn-primary btn-block" @click="handleUpload">
           {{ $t("retry") }}
         </button>
