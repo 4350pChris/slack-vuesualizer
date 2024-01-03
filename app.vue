@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 
 const { t } = useI18n()
 
@@ -85,6 +86,7 @@ useSchemaOrg([
 </script>
 
 <template>
+  <SpeedInsights />
   <div class="antialiased">
     <NuxtLoadingIndicator />
     <NuxtLayout>
