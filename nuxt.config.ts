@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
     'nuxt-schema-org',
+    'nuxt-vercel-analytics'
   ],
 
   colorMode: {
