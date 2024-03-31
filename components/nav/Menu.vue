@@ -10,6 +10,7 @@ interface Props {
   dms: Dm[]
   channels: Channel[]
   groups: Channel[]
+  mpims: Channel[]
 }
 
 const props = defineProps<Props>()
@@ -18,13 +19,21 @@ const users = useUsers()
 
 const findUser = (id: string) => users.value.find(u => u.id === id)
 
-const dmsWithUsernames = computed(() => props.dms.map(
-  ({ members, ...dm }) => ({
-    ...dm,
-    name: dm.id,
-    members: members.map(id => findUser(id)).filter(Boolean) as User[],
-  }),
-))
+const withUsernames = <T extends Dm>(channel: T) => ({
+  ...channel,
+  members: channel.members.map(id => {
+    const user = findUser(id)
+    if (user) {
+      return useUserName(user)
+    }
+  }).filter(Boolean).join(", "),
+})
+
+const dmsWithUsernames = useArrayMap(() => props.dms, (dm) => ({
+  ...withUsernames(dm),
+  name: dm.id
+}))
+const mpimsWithUsernames = useArrayMap(() => props.mpims, withUsernames)
 </script>
 
 <template>
@@ -63,7 +72,7 @@ const dmsWithUsernames = computed(() => props.dms.map(
           {{ $t("dm.word", 2) }}
         </template>
         <template #channel="{ channel }">
-          {{ channel.members.map(u => useUserName(u)).join(", ") }}
+          {{ channel.members }}
         </template>
       </NavChannelList>
     </li>
@@ -74,6 +83,16 @@ const dmsWithUsernames = computed(() => props.dms.map(
         </template>
         <template #channel="{ channel }">
           {{ channel.name }}
+        </template>
+      </NavChannelList>
+    </li>
+    <li v-if="mpims.length > 0">
+      <NavChannelList :channels="mpimsWithUsernames" type="private-channels">
+        <template #title>
+          {{ $t("mpims.word", 2) }}
+        </template>
+        <template #channel="{ channel }">
+          {{ channel.members }}
         </template>
       </NavChannelList>
     </li>

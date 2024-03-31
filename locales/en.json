@@ -77,5 +77,8 @@
   },
   "group": {
     "word": "group | groups"
+  },
+  "mpims": {
+    "word": "private channel | private channels"
   }
 }

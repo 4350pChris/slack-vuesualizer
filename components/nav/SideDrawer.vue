@@ -4,6 +4,7 @@ const toggle = ref<HTMLElement>()
 const channels = useChannels()
 const dms = useDms()
 const groups = useGroups()
+const mpims = useMpims()
 </script>
 
 <template>
@@ -24,7 +25,7 @@ const groups = useGroups()
           <NavThemeToggle />
         </div>
       </div>
-      <NavMenu :channels="channels" :dms="dms" :groups="groups" />
+      <NavMenu :channels="channels" :dms="dms" :groups="groups" :mpims="mpims" />
       <NavFooter class="mt-8" />
       <div
         class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"
