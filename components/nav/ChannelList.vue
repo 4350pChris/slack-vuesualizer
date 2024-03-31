@@ -1,7 +1,7 @@
 <script lang="ts" setup generic="T extends {id: string, name: string}">
 type Props = {
   channels: T[]
-  type: "channels" | "groups" | "dms"
+  type: "channels" | "groups" | "dms" | "private-channels"
 }
 
 defineProps<Props>()

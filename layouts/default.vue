@@ -32,6 +32,14 @@ const { data: fetchedGroups } = await useFetch('/api/groups', {
 })
 
 whenever(fetchedGroups, g => (groups.value = g), { immediate: true })
+
+const mpims = useMpims()
+
+const { data: fetchedMpims } = await useFetch('/api/mpims', {
+  headers: useRequestHeaders(['cookie']),
+})
+
+whenever(fetchedMpims, m => (mpims.value = m), { immediate: true })
 </script>
 
 <template>
