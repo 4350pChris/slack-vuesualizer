@@ -24,6 +24,14 @@ const { data: fetchedDms } = await useFetch('/api/dms', {
 })
 
 whenever(fetchedDms, d => (dms.value = d), { immediate: true })
+
+const groups = useGroups()
+
+const { data: fetchedGroups } = await useFetch('/api/groups', {
+  headers: useRequestHeaders(['cookie']),
+})
+
+whenever(fetchedGroups, g => (groups.value = g), { immediate: true })
 </script>
 
 <template>

@@ -1,16 +1,7 @@
 import type { MaybeRef } from '@vueuse/core'
-import type { Channel } from '~/types/Channel'
 import type { Message } from '~/types/Message'
 
 export const useMessages = async (channelId: MaybeRef<string>) => {
-  const { data: channel } = await useFetch<Channel>(
-    `/api/channels/${unref(channelId)}`,
-    {
-      pick: ['name', 'purpose', 'creator', 'created'],
-      headers: useRequestHeaders(['cookie']),
-    },
-  )
-
   const { data: messages, pending } = await useLazyFetch<Message[]>(
     `/api/channels/${unref(channelId)}/messages`,
     {
@@ -33,17 +24,17 @@ export const useMessages = async (channelId: MaybeRef<string>) => {
   const withSeparators = computed(() =>
     messages.value?.reduce(
       ({ messages, date }, message) => {
-        const messageDate = toDate(message.ts)
+        const messageDate = toDate(message.ts) ?? null
         let separator = false
         if (date === null) {
           separator = true
         }
-        else {
+        else if (messageDate && date) {
           const diff = dateDiffInDays(date, messageDate)
           if (diff !== 0)
             separator = true
         }
-        if (separator && !message.reply)
+        if (messageDate && separator && !message.reply)
           messages.push({ date: messageDate, _id: messageDate.getTime() })
 
         messages.push(message)
@@ -60,7 +51,6 @@ export const useMessages = async (channelId: MaybeRef<string>) => {
   )
 
   return {
-    channel,
     messages,
     withSeparators,
     pending,

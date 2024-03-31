@@ -9,6 +9,7 @@ import type { Channel } from '~~/types/Channel'
 interface Props {
   dms: Dm[]
   channels: Channel[]
+  groups: Channel[]
 }
 
 const props = defineProps<Props>()
@@ -47,7 +48,7 @@ const dmsWithUsernames = computed(() => props.dms.map(
       </NuxtLinkLocale>
     </li>
     <li v-if="channels.length > 0">
-      <NavChannelList :channels="props.channels">
+      <NavChannelList :channels="props.channels" type="channels">
         <template #title>
           {{ $t("channel.word", 2) }}
         </template>
@@ -57,12 +58,22 @@ const dmsWithUsernames = computed(() => props.dms.map(
       </NavChannelList>
     </li>
     <li v-if="dms.length > 0">
-      <NavChannelList :channels="dmsWithUsernames">
+      <NavChannelList :channels="dmsWithUsernames" type="dms">
         <template #title>
           {{ $t("dm.word", 2) }}
         </template>
         <template #channel="{ channel }">
           {{ channel.members.map(u => useUserName(u)).join(", ") }}
+        </template>
+      </NavChannelList>
+    </li>
+    <li v-if="groups.length > 0">
+      <NavChannelList :channels="props.groups" type="groups">
+        <template #title>
+          {{ $t("group.word", 2) }}
+        </template>
+        <template #channel="{ channel }">
+          {{ channel.name }}
         </template>
       </NavChannelList>
     </li>
