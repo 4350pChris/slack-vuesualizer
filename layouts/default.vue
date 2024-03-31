@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+
 const users = useUsers()
 
 const { data: fetchedUsers } = await useFetch('/api/users', {

@@ -20,6 +20,7 @@ const findUser = (id: string) => users.value.find(u => u.id === id)
 const dmsWithUsernames = computed(() => props.dms.map(
   ({ members, ...dm }) => ({
     ...dm,
+    name: dm.id,
     members: members.map(id => findUser(id)).filter(Boolean) as User[],
   }),
 ))
@@ -45,33 +46,25 @@ const dmsWithUsernames = computed(() => props.dms.map(
         {{ $t("file", 2) }}
       </NuxtLinkLocale>
     </li>
-    <li>
-      <details open>
-        <summary class="capitalize">
+    <li v-if="channels.length > 0">
+      <NavChannelList :channels="props.channels">
+        <template #title>
           {{ $t("channel.word", 2) }}
-        </summary>
-        <ul>
-          <li v-for="channel in channels" :key="channel.id" class="rounded-box">
-            <NuxtLinkLocale class="rounded-box" :to="`/channels/${channel.name}`">
-              {{ channel.name }}
-            </NuxtLinkLocale>
-          </li>
-        </ul>
-      </details>
+        </template>
+        <template #channel="{ channel }">
+          {{ channel.name }}
+        </template>
+      </NavChannelList>
     </li>
     <li v-if="dms.length > 0">
-      <details open>
-        <summary class="capitalize">
+      <NavChannelList :channels="dmsWithUsernames">
+        <template #title>
           {{ $t("dm.word", 2) }}
-        </summary>
-        <ul>
-          <li v-for="dm in dmsWithUsernames" :key="dm.id" class="rounded-box">
-            <NuxtLinkLocale class="rounded-box" :to="`/channels/${dm.id}`">
-              {{ dm.members.map(u => useUserName(u)).join(", ") }}
-            </NuxtLinkLocale>
-          </li>
-        </ul>
-      </details>
+        </template>
+        <template #channel="{ channel }">
+          {{ channel.members.map(u => useUserName(u)).join(", ") }}
+        </template>
+      </NavChannelList>
     </li>
   </ul>
 </template>

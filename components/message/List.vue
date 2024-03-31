@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
 import type { Message } from '~~/types/Message.js'
 
