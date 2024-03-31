@@ -1,7 +1,6 @@
 <script lang="ts" setup generic="T extends {id: string, name: string}">
 type Props = {
   channels: T[]
-  type: "channels" | "groups" | "dms" | "private-channels"
 }
 
 defineProps<Props>()
@@ -14,7 +13,7 @@ defineProps<Props>()
     </summary>
     <ul>
       <li v-for="channel in channels" :key="channel.id" class="rounded-box">
-        <NuxtLinkLocale class="rounded-box" :to="`/${type}/${channel.name}`">
+        <NuxtLinkLocale class="rounded-box" :to="`/channels/${channel.name}`">
           <slot :channel="channel" name="channel" />
         </NuxtLinkLocale>
       </li>

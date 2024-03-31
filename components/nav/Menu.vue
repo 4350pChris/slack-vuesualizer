@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { Dm } from '~/types/Dm'
-import type { User } from '~/types/User'
 import AccountIcon from '~icons/mdi/account'
 import FilesIcon from '~icons/mdi/file-multiple'
 import HomeIcon from '~icons/mdi/home'
@@ -29,10 +28,7 @@ const withUsernames = <T extends Dm>(channel: T) => ({
   }).filter(Boolean).join(", "),
 })
 
-const dmsWithUsernames = useArrayMap(() => props.dms, (dm) => ({
-  ...withUsernames(dm),
-  name: dm.id
-}))
+const dmsWithUsernames = useArrayMap(() => props.dms, withUsernames)
 const mpimsWithUsernames = useArrayMap(() => props.mpims, withUsernames)
 </script>
 

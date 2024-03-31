@@ -9,5 +9,5 @@ export default defineEventHandler(async (event) => {
   if (!dm)
     throw createError({ statusCode: 404, statusMessage: 'Dm not found' })
 
-  return dm
+  return { ...dm, name: dm.id }
 })

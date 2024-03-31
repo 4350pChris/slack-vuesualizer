@@ -3,4 +3,5 @@ export interface Dm {
   id: string
   created: number
   members: string[]
+  name: string
 }

@@ -3,10 +3,11 @@ const route = useRoute()
 
 const channelId = computed(() => route.params.channel as string)
 
+const { typeById } = useChannels()
+
 const { data: channel } = await useFetch(
-  `/api/channels/${channelId.value}`,
+  `/api/${typeById(channelId.value)}/${channelId.value}`,
   {
-    pick: ['name', 'purpose', 'creator', 'created'],
     headers: useRequestHeaders(['cookie']),
   },
 )

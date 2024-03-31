@@ -9,37 +9,9 @@ const { data: fetchedUsers } = await useFetch('/api/users', {
 
 whenever(fetchedUsers, u => (users.value = u), { immediate: true })
 
-const { data: fetchedChannels } = await useFetch('/api/channels', {
-  headers: useRequestHeaders(['cookie']),
-})
+const { load } = useChannels()
 
-const channels = useChannels()
-
-whenever(fetchedChannels, c => (channels.value = c), { immediate: true })
-
-const dms = useDms()
-
-const { data: fetchedDms } = await useFetch('/api/dms', {
-  headers: useRequestHeaders(['cookie']),
-})
-
-whenever(fetchedDms, d => (dms.value = d), { immediate: true })
-
-const groups = useGroups()
-
-const { data: fetchedGroups } = await useFetch('/api/groups', {
-  headers: useRequestHeaders(['cookie']),
-})
-
-whenever(fetchedGroups, g => (groups.value = g), { immediate: true })
-
-const mpims = useMpims()
-
-const { data: fetchedMpims } = await useFetch('/api/mpims', {
-  headers: useRequestHeaders(['cookie']),
-})
-
-whenever(fetchedMpims, m => (mpims.value = m), { immediate: true })
+await load()
 </script>
 
 <template>

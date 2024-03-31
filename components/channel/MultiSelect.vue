@@ -15,7 +15,7 @@ const emit = defineEmits<Emits>()
 
 const model = useVModel(props, 'modelValue', emit)
 
-const channels = useChannels()
+const { channels } = useChannels()
 </script>
 
 <template>
