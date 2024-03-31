@@ -22,7 +22,7 @@ defineProps<Props>()
         <p class="font-medium">
           {{ user.profile.real_name ?? user.profile.display_name }}
         </p>
-        <p class="text-sm">
+        <p v-if="user.profile.real_name" class="text-sm">
           {{ user.profile.display_name }}
         </p>
         <div>
