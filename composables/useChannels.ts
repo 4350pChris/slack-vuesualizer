@@ -14,7 +14,7 @@ export function useChannels() {
     ...mpims.value,
   ])
 
-  const load = async () => {
+  const load = () => useAsyncData('channels', async () => {
     const [_channels, _dms, _groups, _mpims] = await Promise.all([
       $fetch<Channel[]>('/api/channels'),
       $fetch<Dm[]>('/api/dms'),
@@ -26,7 +26,7 @@ export function useChannels() {
     dms.value = _dms
     groups.value = _groups
     mpims.value = _mpims
-  }
+  })
 
   const typeById = (id: string) => {
     if (dms.value.some((dm) => dm.id === id)) return 'dms'
