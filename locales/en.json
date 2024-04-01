@@ -6,11 +6,12 @@
     "unknown": "unknown user | {n} unknown users"
   },
   "search": {
-    "channels": "@:channel.word {0} | all @:channel.word",
+    "channelresults": "@:channel.word {0} | all @:channel.word",
     "messages": "search messages",
     "results": "search results for {0} in {1}",
     "everywhere": "search everywhere",
-    "users": "search users"
+    "users": "search users",
+    "channels": "search @:channel.word"
   },
   "channel": {
     "word": "channel | channels",

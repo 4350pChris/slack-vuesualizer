@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 const toggle = ref<HTMLElement>()
-
-const { properChannels, dms, groups, mpims } = useChannels()
 </script>
 
 <template>
@@ -22,7 +20,7 @@ const { properChannels, dms, groups, mpims } = useChannels()
           <NavThemeToggle />
         </div>
       </div>
-      <NavMenu :channels="properChannels" :dms="dms" :groups="groups" :mpims="mpims" />
+      <NavMenu />
       <NavFooter class="mt-8" />
       <div
         class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"
