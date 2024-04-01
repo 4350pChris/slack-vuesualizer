@@ -4,10 +4,6 @@ export default defineNuxtConfig({
     transpile: ['@vuepic/vue-datepicker'],
   },
 
-  typescript: {
-    shim: false,
-  },
-
   css: ['assets/css/index.css'],
 
   runtimeConfig: {
