@@ -8,7 +8,7 @@ const toggle = ref<HTMLElement>()
   >
     <label ref="toggle" for="drawer" class="drawer-overlay" />
     <aside
-      class="h-full bg-base-100 text-base-content w-80 px-2 py-4"
+      class="h-full flex flex-col bg-base-100 text-base-content w-80 px-2 py-4"
       @click="toggle?.click()"
     >
       <div class="md:hidden mb-4 gap-2" @click.stop>
@@ -21,10 +21,8 @@ const toggle = ref<HTMLElement>()
         </div>
       </div>
       <NavMenu />
+      <div class="grow" />
       <NavFooter class="mt-8" />
-      <div
-        class="from-base-100 pointer-events-none sticky bottom-0 flex h-20 bg-gradient-to-t to-transparent"
-      />
     </aside>
   </div>
 </template>

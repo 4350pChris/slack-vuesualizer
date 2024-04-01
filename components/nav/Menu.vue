@@ -6,27 +6,27 @@ import ChatIcon from '~icons/mdi/chat'
 </script>
 
 <template>
-  <ul class="menu menu-compact">
+  <ul class="menu menu-lg rounded-box capitalize">
     <li>
-      <NuxtLinkLocale class="capitalize rounded-box" to="/workspace">
+      <NuxtLinkLocale to="/workspace">
         <HomeIcon />
         {{ $t("workspace.word") }}
       </NuxtLinkLocale>
     </li>
     <li>
-      <NuxtLinkLocale class="capitalize rounded-box" to="/users">
+      <NuxtLinkLocale to="/users">
         <AccountIcon />
         {{ $t("user.word", 2) }}
       </NuxtLinkLocale>
     </li>
     <li>
-      <NuxtLinkLocale class="capitalize rounded-box" to="/files">
+      <NuxtLinkLocale to="/files">
         <FilesIcon />
         {{ $t("file", 2) }}
       </NuxtLinkLocale>
     </li>
     <li>
-      <NuxtLinkLocale class="capitalize rounded-box" to="/channels">
+      <NuxtLinkLocale to="/channels">
         <ChatIcon />
         {{ $t("channel.word", 2) }}
       </NuxtLinkLocale>
