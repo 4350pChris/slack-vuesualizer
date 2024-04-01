@@ -28,7 +28,7 @@ const { channels, users, sorting } = useVModels(props, emit)
       <legend class="text-sm font-bold">
         {{ $t("filter.header") }}
       </legend>
-      <div class="flex justify-start gap-2">
+      <div class="flex flex-wrap justify-start gap-2">
         <UserMultiSelect v-model="users" />
         <ChannelMultiSelect v-model="channels" />
       </div>
