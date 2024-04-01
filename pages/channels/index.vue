@@ -25,7 +25,7 @@ const filterChannelsByQuery = (channels: Dm[], query: string) =>
       class="flex-none w-full max-w-lg input input-bordered">
     <div role="tablist" class="tabs tabs-lifted">
       <template v-for="tab in tabs" :key="tab.name">
-        <input name="channel_tabs" role="tab" type="radio" class="tab"
+        <input name="channel_tabs" role="tab" type="radio" class="tab whitespace-nowrap"
           :class="{ 'tab-active': selectedTab.name === tab.name }" :aria-label="tab.name" @change="selectedTab = tab" />
         <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
           <template v-if="selectedTab.name === tab.name">
