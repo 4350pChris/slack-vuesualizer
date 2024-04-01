@@ -14,12 +14,20 @@ export function useChannels() {
     ...mpims.value,
   ])
 
-  const load = () => useAsyncData('channels', async () => {
+  const load = () => callOnce(async () => {
     const [_channels, _dms, _groups, _mpims] = await Promise.all([
-      $fetch<Channel[]>('/api/channels'),
-      $fetch<Dm[]>('/api/dms'),
-      $fetch<Channel[]>('/api/groups'),
-      $fetch<Channel[]>('/api/mpims'),
+      $fetch<Channel[]>('/api/channels', {
+        headers: useRequestHeaders(['cookie']),
+      }),
+      $fetch<Dm[]>('/api/dms', {
+        headers: useRequestHeaders(['cookie']),
+      }),
+      $fetch<Channel[]>('/api/groups', {
+        headers: useRequestHeaders(['cookie']),
+      }),
+      $fetch<Channel[]>('/api/mpims', {
+        headers: useRequestHeaders(['cookie'])
+      }),
     ])
 
     properChannels.value = _channels
