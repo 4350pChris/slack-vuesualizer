@@ -16,7 +16,6 @@ export default defineNuxtConfig({
   plugins: [],
 
   modules: [
-    '@vue-macros/nuxt',
     [
       'unplugin-icons/nuxt',
       {
