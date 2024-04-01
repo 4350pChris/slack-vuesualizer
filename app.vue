@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { provideUseId } from '@headlessui/vue'
 import { useI18n } from 'vue-i18n'
+
+provideUseId(() => useId())
 
 const { t } = useI18n()
 
