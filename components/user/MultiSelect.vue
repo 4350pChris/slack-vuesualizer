@@ -28,7 +28,7 @@ const model = useVModel(props, 'modelValue', emit)
             : ` ${
               model.length === 1
                 ? useUserName(model[0])
-                : `${model.length} ${$t("user", model.length)}`}`)
+                : `${model.length} ${$t("user.word", model.length)}`}`)
       }}
     </template>
     <template #item="{ item }">

@@ -1,7 +1,10 @@
 {
   "message": "message | messages",
   "reply": "reply | replies",
-  "user": "user | users",
+  "user": {
+    "word": "user | users",
+    "unknown": "unknown user | {n} unknown users"
+  },
   "search": {
     "channels": "@:channel.word {0} | all @:channel.word",
     "messages": "search messages",

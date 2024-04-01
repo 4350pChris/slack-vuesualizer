@@ -14,22 +14,17 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const users = useUsers()
+const { withUsernames } = useWithUsernames()
 
-const findUser = (id: string) => users.value.find(u => u.id === id)
+const dmsWithUsernames = useArrayMap(() => props.dms, ({ members, ...rest }) => ({
+  ...rest,
+  members: withUsernames(members).memberString,
+}))
 
-const withUsernames = <T extends Dm>(channel: T) => ({
-  ...channel,
-  members: channel.members.map(id => {
-    const user = findUser(id)
-    if (user) {
-      return useUserName(user)
-    }
-  }).filter(Boolean).join(", "),
-})
-
-const dmsWithUsernames = useArrayMap(() => props.dms, withUsernames)
-const mpimsWithUsernames = useArrayMap(() => props.mpims, withUsernames)
+const mpimsWithUsernames = useArrayMap(() => props.mpims, ({ members, ...rest }) => ({
+  ...rest,
+  members: withUsernames(members).memberString,
+}))
 </script>
 
 <template>
@@ -43,7 +38,7 @@ const mpimsWithUsernames = useArrayMap(() => props.mpims, withUsernames)
     <li>
       <NuxtLinkLocale class="capitalize rounded-box" to="/users">
         <AccountIcon />
-        {{ $t("user", 2) }}
+        {{ $t("user.word", 2) }}
       </NuxtLinkLocale>
     </li>
     <li>
@@ -53,7 +48,7 @@ const mpimsWithUsernames = useArrayMap(() => props.mpims, withUsernames)
       </NuxtLinkLocale>
     </li>
     <li v-if="channels.length > 0">
-      <NavChannelList :channels="props.channels" type="channels">
+      <NavChannelList :channels="props.channels">
         <template #title>
           {{ $t("channel.word", 2) }}
         </template>
@@ -63,7 +58,7 @@ const mpimsWithUsernames = useArrayMap(() => props.mpims, withUsernames)
       </NavChannelList>
     </li>
     <li v-if="dms.length > 0">
-      <NavChannelList :channels="dmsWithUsernames" type="dms">
+      <NavChannelList :channels="dmsWithUsernames">
         <template #title>
           {{ $t("dm.word", 2) }}
         </template>
@@ -73,7 +68,7 @@ const mpimsWithUsernames = useArrayMap(() => props.mpims, withUsernames)
       </NavChannelList>
     </li>
     <li v-if="groups.length > 0">
-      <NavChannelList :channels="props.groups" type="groups">
+      <NavChannelList :channels="props.groups">
         <template #title>
           {{ $t("group.word", 2) }}
         </template>
@@ -83,7 +78,7 @@ const mpimsWithUsernames = useArrayMap(() => props.mpims, withUsernames)
       </NavChannelList>
     </li>
     <li v-if="mpims.length > 0">
-      <NavChannelList :channels="mpimsWithUsernames" type="private-channels">
+      <NavChannelList :channels="mpimsWithUsernames">
         <template #title>
           {{ $t("mpims.word", 2) }}
         </template>

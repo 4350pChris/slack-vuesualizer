@@ -4,19 +4,19 @@ type Props = {
 }
 
 defineProps<Props>()
+
+const show = ref(false)
 </script>
 
 <template>
-  <details>
-    <summary class="capitalize">
-      <slot name="title" />
-    </summary>
-    <ul>
-      <li v-for="channel in channels" :key="channel.id" class="rounded-box">
-        <NuxtLinkLocale class="rounded-box" :to="`/channels/${channel.name}`">
-          <slot :channel="channel" name="channel" />
-        </NuxtLinkLocale>
-      </li>
-    </ul>
-  </details>
+  <button class="capitalize menu-dropdown-toggle" :class="{ 'menu-dropdown-show': show }" @click="show = !show">
+    <slot name="title" />
+  </button>
+  <ul v-if="show" class="menu-dropdown" :class="{ 'menu-dropdown-show': show }">
+    <li v-for="channel in channels" :key="channel.id" class="rounded-box">
+      <NuxtLinkLocale class="rounded-box" :to="`/channels/${channel.name}`">
+        <slot :channel="channel" name="channel" />
+      </NuxtLinkLocale>
+    </li>
+  </ul>
 </template>

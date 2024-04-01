@@ -5,7 +5,7 @@ const users = useUsers()
 <template>
   <StatsBase>
     <template #content>
-      {{ $t("user", 2) }}
+      {{ $t("user.word", users.length) }}
     </template>
     <template #title>
       {{ users.length }}

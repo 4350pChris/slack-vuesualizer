@@ -12,13 +12,9 @@ const name = computed(() => props.reaction.name)
 
 const { emojiUnicode } = useEmoji(name)
 
-const users = useUsers()
+const { withUsernames } = useWithUsernames()
 
-const userNames = computed(() =>
-  props.reaction.users.map(
-    user => users.value.find(({ id }) => id === user)?.profile.display_name,
-  ),
-)
+const keyedMembers = computed(() => withUsernames(props.reaction.users).keyedMembers)
 </script>
 
 <template>
@@ -29,10 +25,12 @@ const userNames = computed(() =>
     </PopoverButton>
     <Transition name="slide-y">
       <PopoverPanel
-        class="absolute z-10 text-sm left-1/2 -translate-x-1/2 py-2 px-4 bg-base-100 text-base-content rounded-lg shadow-lg leading-relaxed ring-1 ring-black/10 dark:ring-slate-300/25"
-      >
-        <div v-for="user in userNames" :key="user">
+        class="absolute z-10 text-sm left-1/2 -translate-x-1/2 py-2 px-4 bg-base-100 text-base-content rounded-lg shadow-lg leading-relaxed ring-1 ring-black/10 dark:ring-slate-300/25">
+        <div v-for="user in keyedMembers.usernames" :key="user">
           {{ user }}
+        </div>
+        <div v-if="keyedMembers.unknown > 0">
+          {{ $t('user.unknown', keyedMembers.unknown) }}
         </div>
       </PopoverPanel>
     </Transition>
