@@ -98,7 +98,7 @@ onKeyDown(['Escape'], (e) => {
                 <span class="font-bold normal-case">"{{ query }}"</span>
                 <span>{{
                   $t(
-                    "search.channels",
+                    "search.channelresults",
                     [route.params.channel],
                     allChannels ? 2 : 1,
                   )
