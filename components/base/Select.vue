@@ -5,7 +5,6 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/vue'
-import ConfirmIcon from '~icons/line-md/confirm'
 import ChevronDownIcon from '~icons/mdi/chevron-down'
 import { RecycleScroller } from 'vue-virtual-scroller';
 
