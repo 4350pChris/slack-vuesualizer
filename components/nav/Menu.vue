@@ -14,6 +14,12 @@ import ChatIcon from '~icons/mdi/chat'
       </NuxtLinkLocale>
     </li>
     <li>
+      <NuxtLinkLocale to="/channels">
+        <ChatIcon />
+        {{ $t("channel.word", 2) }}
+      </NuxtLinkLocale>
+    </li>
+    <li>
       <NuxtLinkLocale to="/users">
         <AccountIcon />
         {{ $t("user.word", 2) }}
@@ -23,12 +29,6 @@ import ChatIcon from '~icons/mdi/chat'
       <NuxtLinkLocale to="/files">
         <FilesIcon />
         {{ $t("file", 2) }}
-      </NuxtLinkLocale>
-    </li>
-    <li>
-      <NuxtLinkLocale to="/channels">
-        <ChatIcon />
-        {{ $t("channel.word", 2) }}
       </NuxtLinkLocale>
     </li>
   </ul>
