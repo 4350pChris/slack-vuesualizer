@@ -19,15 +19,14 @@ const token = useToken()
     <p class="whitespace-pre-wrap text-lg mt-4 mb-2">
       {{ $t("description") }}
     </p>
-    <a
-      href="https://slack.com/help/articles/201658943-Export-your-workspace-data"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn btn-link mb-4"
-    >
+    <a href="https://slack.com/help/articles/201658943-Export-your-workspace-data" target="_blank"
+      rel="noopener noreferrer" class="btn btn-link mb-4">
       <span>{{ $t("exporthelp") }}</span>
       <QuestionIcon class="w-4 h-4" />
     </a>
+    <NuxtLinkLocale class="btn btn-link mb-4" to="/?token=00a621e7-2eb8-475a-bb33-a1e542563e94">
+      <span>{{ $t("demo") }}</span>
+    </NuxtLinkLocale>
     <NuxtLinkLocale class="btn btn-outline gap-2 mb-12" to="/upload">
       <UploadIcon class="w-6 h-6" />
       {{ $t("upload.button") }}
