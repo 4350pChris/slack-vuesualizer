@@ -9,8 +9,10 @@ const channelId = computed(() => route.params.channel as string)
 
 const { typeById } = useChannels()
 
+const channelType = computed(() => typeById(channelId.value))
+
 const { data: channel } = await useFetch(
-  `/api/${typeById(channelId.value)}/${channelId.value}`,
+  `/api/${channelType.value}/${channelId.value}`,
   {
     headers: useRequestHeaders(['cookie']),
   },
@@ -23,6 +25,22 @@ const { data: messages, pending } = useLazyFetch<Message[]>(
   },
 )
 
+const { withUsernames } = useWithUsernames()
+
+const name = computed(() => {
+  if (!channel.value) {
+    return ""
+  }
+
+  switch (channelType.value) {
+    case 'channels':
+    case 'groups':
+      return channel.value.name
+    case 'mpims':
+    case 'dms':
+      return withUsernames(channel.value.members).memberString
+  }
+})
 const date = ref<Date>()
 const toDate = useTsToDate()
 const colorMode = useColorMode()
@@ -43,7 +61,7 @@ whenever(date, (d) => {
 <template>
   <section class="flex flex-col h-full w-full max-w-xl">
     <div class="my-2 md:my-4 flex flex-col gap-2">
-      <ChannelHeader v-if="channel" class="flex-1" v-bind="channel" :messages="messages?.length ?? 0" />
+      <ChannelHeader v-if="channel" class="flex-1" v-bind="channel" :name :messages="messages?.length ?? 0" />
       <Datepicker v-model="date" :dark="colorMode.value === 'business'" :placeholder="$t('jumpToDate')"
         :start-date="toDate(messages?.[0]?.ts)" :min-date="toDate(messages?.[0]?.ts)"
         :max-date="toDate(messages?.at(-1)?.ts)" />
