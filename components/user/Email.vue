@@ -9,9 +9,9 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="flex gap-1 items-center" :data-flip-id="email">
+  <div class="flex gap-2 items-center" :data-flip-id="email">
     <EmailIcon class="w-5 h-5" />
-    <a class="text-sm border-b-2 border-transparent hover:border-primary transition whitespace-nowrap" :href="`mailto:${email}`">
+    <a class="border-b-2 border-transparent hover:border-primary transition whitespace-nowrap" :href="`mailto:${email}`">
       {{ email }}
     </a>
   </div>

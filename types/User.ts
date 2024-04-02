@@ -25,4 +25,6 @@ export interface User {
   is_owner: boolean
   deleted: boolean
   is_bot: boolean
+  color: string
+  tz: string
 }
