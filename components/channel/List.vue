@@ -18,7 +18,7 @@ defineProps<Props>()
     <NuxtLinkLocale
       class="h-12 p-4 rounded-box flex items-center channel-link hover:bg-base-200/50 dark:hover:bg-slate-200/10"
       :to="`/channels/${item.name}`">
-      {{ item.label ?? item.name }}
+      <ChannelTitle :title="item.label ?? item.name" />
     </NuxtLinkLocale>
   </RecycleScroller>
 </template>

@@ -3,11 +3,12 @@ import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
 import type { Message } from '~~/types/Message.js'
 
 interface Props {
-  messages: Array<Message | { date: Date }>
+  messages: Message[]
 }
 
 const props = defineProps<Props>()
 
+const { withSeparators } = useMessages(() => props.messages)
 const scroller = ref<any>(null)
 const route = useRoute()
 
@@ -15,7 +16,7 @@ const messageId = computed(() => route.query.message)
 
 watchEffect(() => {
   if (messageId) {
-    const index = props.messages.findIndex(
+    const index = withSeparators.value.items.findIndex(
       message => '_id' in message && message._id === messageId.value,
     )
     setTimeout(() => scroller.value?.scrollToItem(index), 0)
@@ -27,7 +28,7 @@ watchEffect(() => {
   <DynamicScroller
     ref="scroller"
     class="h-full"
-    :items="messages"
+    :items="withSeparators.items"
     :min-item-size="64"
     key-field="_id"
   >
