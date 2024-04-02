@@ -56,38 +56,27 @@ const nextDisabled = computed(() => {
       return false
   }
 })
+
+const { t } = useI18n()
+
+const steps = [
+  { label: t('stepper.choose'), content: "📁" },
+  { label: t('stepper.channels'), content: "💬" },
+  { label: t('upload.word'), content: "↑" },
+  { label: t('stepper.profit'), content: "✓" },
+] as const
 </script>
 
 <template>
   <div class="flex flex-col items-center">
     <ul class="steps sticky top-16 bg-base-100 w-full py-2 z-10">
       <li
-        data-content="📁"
+        v-for="(s, i) in steps"
+        :data-content="s.content"
         class="step capitalize"
-        :class="{ 'step-info': step >= 0 }"
+        :class="step >= i ? 'step-info' : 'dark:step-neutral'"
       >
-        {{ $t("stepper.choose") }}
-      </li>
-      <li
-        data-content="💬"
-        class="step capitalize"
-        :class="{ 'step-info': step >= 1 }"
-      >
-        {{ $t("stepper.channels") }}
-      </li>
-      <li
-        data-content="↑"
-        class="step capitalize"
-        :class="{ 'step-info': step >= 2 }"
-      >
-        {{ $t("upload.word") }}
-      </li>
-      <li
-        data-content="✓"
-        class="step capitalize"
-        :class="{ 'step-info': step >= 3 }"
-      >
-        {{ $t("stepper.profit") }}
+        {{ s.label }}
       </li>
     </ul>
     <Transition name="slide-x" mode="out-in">
@@ -110,15 +99,15 @@ const nextDisabled = computed(() => {
     v-if="step < 2"
     class="border-t mt-4 flex justify-between sticky bottom-0 py-4 -mb-2 bg-base-100"
   >
-    <button class="btn btn-ghost" @click="$emit('abort')">
+    <button class="btn  btn-outline" @click="$emit('abort')">
       {{ $t("abort") }}
     </button>
     <div class="flex gap-2">
-      <button v-if="step > 0" class="btn btn-ghost" @click="step--">
+      <button v-if="step > 0" class="btn btn-outline" @click="step--">
         {{ $t("back") }}
       </button>
       <button
-        class="btn btn-outline btn-primary"
+        class="btn btn-primary"
         :disabled="nextDisabled"
         @click="step++"
       >
