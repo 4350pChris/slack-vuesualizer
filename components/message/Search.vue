@@ -94,6 +94,7 @@ onKeyDown(['Escape'], (e) => {
                 keypath="search.results"
                 tag="h3"
                 class="capitalize font-medium text-lg flex-1"
+                scope="global"
               >
                 <span class="font-bold normal-case">"{{ query }}"</span>
                 <span>{{

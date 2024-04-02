@@ -16,7 +16,7 @@ const confirmDisabled = computed(() => {
 
 <template>
   <form class="flex flex-col justify-center items-center gap-4 max-w-sm mx-auto" @submit.prevent="$emit('confirm')">
-    <i18n-t keypath="workspace.delete.confirm" tag="p">
+    <i18n-t keypath="workspace.delete.confirm" tag="p" scope="global">
       <span class="font-bold">{{ $t('workspace.delete.button') }}</span>
     </i18n-t>
     <input v-model="confirmInput" class="input input-bordered" type="text" :placeholder="$t('workspace.delete.button')">
