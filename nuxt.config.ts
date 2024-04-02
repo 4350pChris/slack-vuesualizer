@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
     'nuxt-schema-org',
+    '@nuxtjs/robots',
   ],
 
   colorMode: {
