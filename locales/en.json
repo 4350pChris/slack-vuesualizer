@@ -86,5 +86,6 @@
   "mpims": {
     "word": "private channel | private channels"
   },
-  "demo": "Take a peek at the demo Slack export featuring Rick and Morty!"
+  "demo": "Take a peek at the demo Slack export featuring Rick and Morty!",
+  "members": "one member | {n} members"
 }
