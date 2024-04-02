@@ -9,6 +9,7 @@ type Props = {
   messages: number
   creator?: string
   purpose?: Topic
+  members: string[]
 }
 
 const props = defineProps<Props>()
@@ -45,6 +46,9 @@ const creator = computed(() => {
         </p>
         <p class="text-sm leading-relaxed capitalize">
           {{ creator }}
+        </p>
+        <p class="text-sm capitalize">
+          {{ $t("members", members.length) }}
         </p>
         <p v-if="messages" class="text-sm">
           {{ messages }}
