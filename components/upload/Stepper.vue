@@ -47,7 +47,7 @@ const handleWorkerDone = () => {
 const nextDisabled = computed(() => {
   switch (step.value) {
     case 0:
-      return file.value === null || fileInvalid.value
+      return !file.value || fileInvalid.value
     case 1:
       return selectedChannels.value.length === 0
     case 2:
