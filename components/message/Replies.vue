@@ -10,8 +10,8 @@ defineProps<Props>()
 
 const localUsers = useUsers()
 
-const getUserImage = (id: string) =>
-  localUsers.value.find(user => user.id === id)?.profile.image_48
+const getUser = (id: string) =>
+  localUsers.value.find(user => user.id === id)
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const getUserImage = (id: string) =>
         v-for="user in users?.slice(0, 3)"
         :key="user"
         class="w-8"
-        :src="getUserImage(user)"
+        :user="getUser(user)"
       />
       <div v-if="users && users.length > 3" class="avatar placeholder">
         <div class="w-8 bg-neutral text-neutral-content">
