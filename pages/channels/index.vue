@@ -50,7 +50,7 @@ const listItems = computed(() => {
   <section class="flex flex-col gap-4 pt-4 h-full">
     <input v-model="query" type="text" :placeholder="$t('search.channels')"
       class="flex-none w-full max-w-lg input input-bordered">
-    <div class="flex flex-row flex-wrap gap-4">
+    <div v-if="tabs.length > 1" class="flex flex-row flex-wrap gap-4">
       <template v-for="(tab, i) in tabs" :key="tab.name">
         <input type="checkbox" :id="tab.name" :value="i" v-model="selectedTabs" class="hidden">
         <label
