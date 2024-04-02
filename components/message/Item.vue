@@ -35,7 +35,7 @@ const timestamp = computed(() => toTs(props.message.ts))
       '!h-6': message.last_reply,
       'top-4 !h-[calc(100%-1rem)]': hasReplies,
     }" />
-    <UserAvatar class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl" :src="user?.profile?.image_48" />
+    <UserAvatar class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl" :user />
     <div class="flex flex-col flex-1 overflow-hidden col-start-2">
       <p class="mb-2">
         <span v-if="user" class="font-bold mr-4">
