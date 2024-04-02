@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import RobotIcon from '~icons/mdi/robot-outline'
 import type { User } from '~~/types/User';
 
 type Props = {
@@ -9,5 +10,8 @@ defineProps<Props>()
 </script>
 
 <template>
-  <slot :username="useUserName(user)" :data-flip-id="user.id + '-username'" />
+  <div class="flex gap-2 items-center" :data-flip-id="user.id + '-username'">
+    <RobotIcon v-if="user.is_bot" class="w-8 h-8 text-base-content/75" alt="bot" aria-label="bot user" />
+    <slot :username="useUserName(user)" />
+  </div>
 </template>

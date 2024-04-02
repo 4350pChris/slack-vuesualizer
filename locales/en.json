@@ -3,7 +3,8 @@
   "reply": "reply | replies",
   "user": {
     "word": "user | users",
-    "unknown": "unknown user | {n} unknown users"
+    "unknown": "unknown user | {n} unknown users",
+    "contact": "contact information"
   },
   "search": {
     "channelresults": "@:channel.word {0} | all @:channel.word",

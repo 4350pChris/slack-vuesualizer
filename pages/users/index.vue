@@ -45,10 +45,10 @@ registerAutoFlip((to) => to.path.includes('/users'))
       <NuxtLinkLocale class="flex justify-start gap-4 p-4 transition" :to="`/users/${item.id}`">
         <UserAvatar :key="item.id" class="h-16 md:h-24 w-16 md:w-24 rounded-box" :user="item" />
         <div class="flex flex-col gap-2">
-          <UserName :user="item" #default="{ username, dataFlipId }">
-            <span class="text-lg md:text-xl" :data-flip-id="dataFlipId">{{ username }}</span>
+          <UserName :user="item" #default="{ username }">
+            <span class="text-lg md:text-xl">{{ username }}</span>
           </UserName>
-          <UserEmail v-if="item.profile.email" :email="item.profile.email" @click.stop />
+          <UserEmail v-if="item.profile.email" :email="item.profile.email" class="text-sm" @click.stop />
         </div>
       </NuxtLinkLocale>
     </RecycleScroller>
