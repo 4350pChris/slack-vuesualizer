@@ -1,16 +1,14 @@
 <script lang="ts" setup>
-const { data } = await useFetch('/api/channels', {
-  headers: useRequestHeaders(['cookie']),
-})
+const { channels } = useChannels()
 </script>
 
 <template>
   <StatsBase>
     <template #content>
-      {{ $t("channel.word", 2) }}
+      {{ $t("channel.word", channels.length) }}
     </template>
     <template #title>
-      {{ data?.length }}
+      {{ channels?.length }}
     </template>
   </StatsBase>
 </template>
