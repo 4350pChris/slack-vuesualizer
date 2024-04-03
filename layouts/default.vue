@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 
 const users = useUsers()
@@ -16,6 +17,7 @@ await load()
 
 <template>
   <div>
+    <SpeedInsights />
     <NavHeader />
     <div class="container mx-auto bg-base-100 drawer lg:drawer-open">
       <input id="drawer" class="drawer-toggle" type="checkbox">
