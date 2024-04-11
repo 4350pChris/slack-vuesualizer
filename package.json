@@ -35,7 +35,7 @@
   "dependencies": {
     "@headlessui/tailwindcss": "0.2.0",
     "@headlessui/vue": "^1.7.19",
-    "@nuxtjs/color-mode": "3.3.3",
+    "@nuxtjs/color-mode": "3.4.0",
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/tailwindcss": "6.11.4",
     "@tailwindcss/typography": "0.5.10",
