@@ -37,7 +37,7 @@
     "@headlessui/vue": "^1.7.19",
     "@nuxtjs/color-mode": "3.4.0",
     "@nuxtjs/robots": "^3.0.0",
-    "@nuxtjs/tailwindcss": "6.11.4",
+    "@nuxtjs/tailwindcss": "6.12.0",
     "@tailwindcss/typography": "0.5.10",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
