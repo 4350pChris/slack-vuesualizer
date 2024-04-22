@@ -1,6 +1,6 @@
 # Slack Vuesualizer
 
-![slack](https://raw.githubusercontent.com/4350pChris/slack-vuesualizer/main/public/Slack_Mark.svg)
+<img alt="Slack" width="250" height="250" src="./public/Slack_Mark.svg"/>
 
 A web app to view, search and share a Slack team's exported files.
 
