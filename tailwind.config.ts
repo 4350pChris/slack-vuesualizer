@@ -13,6 +13,9 @@ export default <Partial<Config>> {
     './plugins/**/*.{js,ts}',
     'app.vue',
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   safelist: ['active'],
   theme: {
     extend: {
