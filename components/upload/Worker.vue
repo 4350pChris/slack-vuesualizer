@@ -50,34 +50,36 @@ onMounted(handleUpload)
 </script>
 
 <template>
+  <div class="w-full">
     <Transition name="fade">
       <p v-if="full" class="text-2xl text-center sticky bottom-0 -mb-4 bg-base-100 py-4">
         {{ $t("upload.full") }}
       </p>
     </Transition>
-  <div v-if="!full" class="w-full">
-    <div class="sticky inset-x-0 top-36 z-10 pb-4 bg-base-100">
-      <progress class="progress w-full" :value="((errors.size + done.size) / (channels.length + 1)) * 100" max="100" />
-    </div>
-    <ul ref="list" class="list-none space-y-2">
-      <li v-for="channel in ['vuesualizer-workspace', ...channels]" :key="channel"
-        class="flex gap-2 justify-start items-center">
-        <UploadingLoopIcon v-if="queue.has(channel)" class="w-5 h-5" />
-        <ConfirmIcon v-else-if="done.has(channel)" class="w-5 h-5 text-success" />
-        <AlertIcon v-else-if="errors.has(channel)" class="w-5 h-5 text-error" />
-        <CircleIcon v-else class="w-5 h-5" />
-        <span v-if="channel === 'vuesualizer-workspace'">
-          {{ $t("workspace.word") }}
-        </span>
-        <span v-else>{{ channel }}</span>
-      </li>
-    </ul>
-    <Transition name="fade">
-      <div v-if="retriable" class="sticky bottom-0 -mb-4 bg-base-100 py-4 border-t">
-        <button class="btn btn-outline btn-primary btn-block" @click="handleUpload">
-          {{ $t("retry") }}
-        </button>
+    <template v-if="!full">
+      <div class="sticky inset-x-0 top-36 z-10 pb-4 bg-base-100">
+        <progress class="progress w-full" :value="((errors.size + done.size) / (channels.length + 1)) * 100" max="100" />
       </div>
-    </Transition>
+      <ul ref="list" class="list-none space-y-2">
+        <li v-for="channel in ['vuesualizer-workspace', ...channels]" :key="channel"
+          class="flex gap-2 justify-start items-center">
+          <UploadingLoopIcon v-if="queue.has(channel)" class="w-5 h-5" />
+          <ConfirmIcon v-else-if="done.has(channel)" class="w-5 h-5 text-success" />
+          <AlertIcon v-else-if="errors.has(channel)" class="w-5 h-5 text-error" />
+          <CircleIcon v-else class="w-5 h-5" />
+          <span v-if="channel === 'vuesualizer-workspace'">
+            {{ $t("workspace.word") }}
+          </span>
+          <span v-else>{{ channel }}</span>
+        </li>
+      </ul>
+      <Transition name="fade">
+        <div v-if="retriable" class="sticky bottom-0 -mb-4 bg-base-100 py-4 border-t">
+          <button class="btn btn-outline btn-primary btn-block" @click="handleUpload">
+            {{ $t("retry") }}
+          </button>
+        </div>
+      </Transition>
+    </template>
   </div>
 </template>
