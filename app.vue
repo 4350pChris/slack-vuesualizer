@@ -76,15 +76,6 @@ useHead({
     },
   ],
 })
-
-useSchemaOrg([
-  definePerson({
-    name: 'Chris-Robin Ennen',
-    sameAs: ['https://github.com/4350pChris'],
-  }),
-  defineWebSite({ name: 'Slack Vuesualizer' }),
-  defineWebPage(),
-])
 </script>
 
 <template>
