@@ -4,6 +4,8 @@
 
 A web app to view, search and share a Slack team's exported files.
 
+![Screenshot](./public/screenshot.png)
+
 Use the hosted version at [https://slack-vuesualizer.vercel.app/](https://slack-vuesualizer.vercel.app/) for free or spin up your own website using the Docker image.
 
 ## WIP
