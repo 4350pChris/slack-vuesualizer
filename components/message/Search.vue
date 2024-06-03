@@ -60,6 +60,7 @@ onKeyDown(['Escape'], (e) => {
             type="text"
             :placeholder="$t('search.messages')"
             class="w-full input font-mono pr-14"
+            autofocus
           >
           <button
             class="btn btn-circle btn-ghost absolute right-0"
