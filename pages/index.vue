@@ -24,7 +24,7 @@ const token = useToken()
       <span>{{ $t("exporthelp") }}</span>
       <QuestionIcon class="w-4 h-4" />
     </a>
-    <NuxtLinkLocale class="btn btn-link mb-4" to="/?token=3132626b-c01c-4f8a-ac8c-a9073073bba8">
+    <NuxtLinkLocale class="btn btn-link mb-4" to="/?token=09e71484-c803-487b-9678-05a1783e8c78">
       <span>{{ $t("demo") }}</span>
     </NuxtLinkLocale>
     <NuxtLinkLocale class="btn btn-outline gap-2 mb-12" to="/upload">
