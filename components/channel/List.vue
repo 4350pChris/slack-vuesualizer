@@ -14,9 +14,9 @@ defineProps<Props>()
 </script>
 
 <template>
-  <RecycleScroller class="h-full" :items="listItems" :item-size="48" key-field="id" v-slot="{ item }">
+  <RecycleScroller class="h-full" :items="listItems" :item-size="56" key-field="id" v-slot="{ item }">
     <NuxtLinkLocale
-      class="h-12 p-4 rounded-box flex items-center channel-link hover:bg-base-200/50 dark:hover:bg-slate-200/10"
+      class="h-12 p-4 my-1 rounded-box flex items-center channel-link transition-colors hover:bg-base-200/50 dark:hover:bg-slate-200/10"
       :to="`/channels/${item.name}`">
       <ChannelTitle :title="item.label ?? item.name" />
     </NuxtLinkLocale>
@@ -25,6 +25,6 @@ defineProps<Props>()
 
 <style scoped>
 :deep(.vue-recycle-scroller__item-wrapper) {
-  @apply divide-y divide-gray-500;
+  @apply divide-y divide-slate-300 dark:divide-gray-500;
 }
 </style>
