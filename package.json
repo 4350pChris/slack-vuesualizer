@@ -56,9 +56,9 @@
   "devDependencies": {
     "@antfu/eslint-config": "2.21.1",
     "@iconify-json/ion": "1.1.18",
-    "@iconify-json/line-md": "1.1.37",
+    "@iconify-json/line-md": "1.1.38",
     "@iconify-json/logos": "1.1.43",
-    "@iconify-json/mdi": "1.1.66",
+    "@iconify-json/mdi": "1.1.67",
     "@iconify-json/twemoji": "1.1.15",
     "@nuxt/devtools": "^1.0.0",
     "@nuxtjs/i18n": "8.3.1",
