@@ -46,7 +46,7 @@
     "@vueuse/nuxt": "10.11.0",
     "@zip.js/zip.js": "2.7.45",
     "async-sema": "3.1.1",
-    "daisyui": "4.12.2",
+    "daisyui": "4.12.6",
     "emoji-js": "3.8.0",
     "filesize": "10.1.2",
     "gsap": "^3.12.5",
