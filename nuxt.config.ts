@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     mongodbUri: '',
     public: {
+      demoWorkspaceToken: '',
       siteUrl: '',
     },
   },
@@ -51,4 +52,6 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+
+  compatibilityDate: '2024-07-29',
 })
