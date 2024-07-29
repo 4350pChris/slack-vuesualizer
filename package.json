@@ -1,6 +1,6 @@
 {
   "name": "slack-vuesualizer",
-  "version": "v1.1.1",
+  "version": "v1.1.2",
   "private": true,
   "description": "A visualizer for your Slack exports. Search through messages, show old files, etc.",
   "author": {
