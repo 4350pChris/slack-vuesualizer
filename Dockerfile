@@ -22,4 +22,4 @@ RUN npm run build
 
 EXPOSE ${PORT}
 
-CMD ["npm", "run", "preview"]
+CMD ["node", "./server/index.mjs"]
