@@ -22,4 +22,4 @@ RUN npm run build
 
 EXPOSE ${PORT}
 
-CMD ["node", "./server/index.mjs"]
+CMD ["node", ".output/server/index.mjs"]
