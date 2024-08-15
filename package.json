@@ -59,7 +59,7 @@
     "@iconify-json/mdi": "1.1.67",
     "@iconify-json/twemoji": "1.1.15",
     "@nuxt/devtools": "^1.0.0",
-    "@nuxtjs/i18n": "8.3.3",
+    "@nuxtjs/i18n": "8.4.0",
     "@types/adm-zip": "0.5.5",
     "@types/emoji-js": "3.5.2",
     "@types/request": "2.48.12",
