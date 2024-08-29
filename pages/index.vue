@@ -7,7 +7,7 @@ definePageMeta({
   layout: 'upload',
 })
 
-const { demoWorkspaceToken } = useRuntimeConfig()
+const { demoWorkspaceToken } = useRuntimeConfig().public
 </script>
 
 <template>
