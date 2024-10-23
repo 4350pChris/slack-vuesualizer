@@ -33,7 +33,6 @@ watch(file, async () => {
     return
 
   entries.value = await readZip(file.value)
-  entries.value.forEach(console.log)
   if (!entries.value.some(entry => entry.filename === 'users.json'))
     fileInvalid.value = true
   else
