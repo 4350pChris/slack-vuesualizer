@@ -45,7 +45,7 @@
     "@zip.js/zip.js": "2.7.54",
     "async-sema": "3.1.1",
     "daisyui": "4.12.23",
-    "emoji-js": "3.8.0",
+    "emoji-js": "3.8.1",
     "filesize": "10.1.6",
     "gsap": "^3.12.5",
     "mongodb": "6.12.0",
