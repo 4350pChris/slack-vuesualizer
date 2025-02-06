@@ -33,7 +33,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@headlessui/tailwindcss": "0.2.1",
+    "@headlessui/tailwindcss": "0.2.2",
     "@headlessui/vue": "^1.7.19",
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/robots": "^5.0.0",
