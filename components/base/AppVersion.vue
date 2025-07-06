@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { version, buildDate } = useAppConfig()
+const { version, buildDate } = useRuntimeConfig().public
 </script>
 
 <template>

@@ -10,7 +10,9 @@ export default defineNuxtConfig({
     mongodbUri: '',
     public: {
       demoWorkspaceToken: '',
-      siteUrl: '',
+      canonicalHost: '',
+      version: 'latest',
+      buildDate: 'today',
     },
   },
 
