@@ -1,4 +1,4 @@
 export default defineAppConfig({
-  version: process.env.VERSION,
-  buildDate: process.env.BUILD_DATE,
+  version: process.env.NUXT_VERSION,
+  buildDate: process.env.NUXT_BUILD_DATE,
 })
