@@ -5,12 +5,6 @@ WORKDIR /app
 
 RUN corepack enable
 
-ARG VERSION=latest
-ARG BUILD_DATE=latest
-
-ENV NUXT_VERSION=${VERSION}
-ENV NUXT_BUILD_DATE=${BUILD_DATE}
-
 COPY package.json pnpm-lock.yaml ./
 
 RUN pnpm i
