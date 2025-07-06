@@ -18,19 +18,12 @@ export default defineNuxtConfig({
 
   plugins: [],
 
-  modules: [
-    [
-      'unplugin-icons/nuxt',
-      {
-        autoInstall: true,
-      },
-    ],
-    '@vueuse/nuxt',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    '@nuxtjs/i18n',
-    '@nuxtjs/robots',
-  ],
+  modules: [[
+    'unplugin-icons/nuxt',
+    {
+      autoInstall: true,
+    },
+  ], '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/i18n', '@nuxtjs/robots', '@nuxt/icon'],
 
   colorMode: {
     preference: 'system',
