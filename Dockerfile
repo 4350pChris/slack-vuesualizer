@@ -1,6 +1,10 @@
 # Build stage
 FROM node:22-alpine AS builder
 
+WORKDIR /app
+
+RUN corepack enable
+
 ARG MODE=production
 ARG PORT=3000
 ARG VERSION=latest
@@ -12,13 +16,12 @@ ENV NUXT_PORT=${PORT}
 ENV NUXT_VERSION=${VERSION}
 ENV NUXT_BUILD_DATE=${BUILD_DATE}
 
-WORKDIR /app
+COPY package.json pnpm-lock.yaml ./
 
-COPY package*.json ./
-RUN npm ci --omit=dev
+RUN pnpm i
 
-COPY . .
-RUN npm run build
+COPY . ./
+RUN pnpm run build
 
 # Production stage
 FROM node:22-alpine AS production
@@ -36,10 +39,8 @@ ENV NUXT_BUILD_DATE=${BUILD_DATE}
 
 WORKDIR /app
 
-COPY --from=builder /app/.output ./.output
-COPY --from=builder /app/package*.json ./
-RUN npm ci --omit=dev
+COPY --from=builder /app/.output ./
 
 EXPOSE ${PORT}
 
-CMD ["node", ".output/server/index.mjs"]
+CMD ["node", "/app/server/index.mjs"]
