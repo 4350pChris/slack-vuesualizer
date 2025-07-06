@@ -11,6 +11,10 @@ Slack Vuesualizer is a web app to view, search and share your old Slack messages
 
 Use the hosted version at [https://slack-vuesualizer.de/](https://slack-vuesualizer.de/) for free or spin up your own website using the Docker image as [described below](#setup).
 
+## Demo
+
+You can try out the demo workspace at [https://slack-vuesualizer.de/?token=5f305938-a64d-441d-9146-df23d8b52f18](https://slack-vuesualizer.de/?token=5f305938-a64d-441d-9146-df23d8b52f18).
+
 ## Features
 
 * full-text search for up to tens of thousands of messages per channel
