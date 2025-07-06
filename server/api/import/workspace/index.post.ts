@@ -10,7 +10,7 @@ interface DataIn {
 
 const createDb = async (db: Db) => {
   const msgCol = db.collection<ApiMessage>('messages')
-  await msgCol.createIndex({ text: 'text' }, { default_language: 'german' })
+  await msgCol.createIndex({ text: 'text' }, { default_language: 'german', language_override: 'language_override' })
   await msgCol.createIndex({ channel: 1 })
   await msgCol.createIndex({ user: 1, ts: 1 })
 }
