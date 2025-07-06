@@ -48,9 +48,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          args: |
-            --build-arg VERSION=${{ steps.meta.outputs.version }}
-            --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          build-args: |
+            VERSION: ${{ steps.meta.outputs.version }}
+            BUILD_DATE: ${{ steps.meta.outputs.build_date }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
