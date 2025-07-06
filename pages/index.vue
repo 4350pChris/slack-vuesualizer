@@ -16,6 +16,7 @@ const { demoWorkspaceToken } = useRuntimeConfig().public
       <SlackIcon class="w-32 h-32" />
       <span class="font-medium text-5xl">Vuesualizer</span>
     </h1>
+    <BaseAppVersion />
     <p class="whitespace-pre-wrap text-lg mt-4 mb-2">
       {{ $t("description") }}
     </p>

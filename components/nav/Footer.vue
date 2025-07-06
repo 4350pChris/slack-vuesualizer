@@ -35,5 +35,6 @@ const leave = async () => {
         <span>{{ $t("github") }}</span>
       </a>
     </div>
+    <BaseAppVersion />
   </footer>
 </template>
