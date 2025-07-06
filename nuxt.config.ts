@@ -11,8 +11,6 @@ export default defineNuxtConfig({
     public: {
       demoWorkspaceToken: '',
       siteUrl: '',
-      version: 'latest',
-      buildDate: 'today',
     },
   },
 
