@@ -23,11 +23,12 @@ export default defineEventHandler(async (event) => {
   try {
     await createDb(db)
   } catch (e) {
+    console.error('Error creating database:', e)
     // collections are full
     throw createError({
       statusCode: 409,
       statusMessage: 'Database is full',
-      cause: e
+      cause: e,
     })
   }
 
