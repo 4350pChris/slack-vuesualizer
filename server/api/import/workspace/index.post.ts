@@ -26,7 +26,8 @@ export default defineEventHandler(async (event) => {
     // collections are full
     throw createError({
       statusCode: 409,
-      statusMessage: 'Database is full'
+      statusMessage: 'Database is full',
+      cause: e
     })
   }
 
