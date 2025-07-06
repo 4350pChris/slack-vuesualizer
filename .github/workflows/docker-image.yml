@@ -45,12 +45,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set build date
+        id: builddate
+        run: echo "date=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           build-args: |
             VERSION=${{ steps.meta.outputs.version }}
-            BUILD_DATE=${{ steps.meta.outputs.build_date }}
+            BUILD_DATE=${{ steps.builddate.outputs.date }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
