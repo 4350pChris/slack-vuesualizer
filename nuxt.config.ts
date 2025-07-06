@@ -11,6 +11,8 @@ export default defineNuxtConfig({
     public: {
       demoWorkspaceToken: '',
       siteUrl: '',
+      version: 'latest',
+      buildDate: 'today',
     },
   },
 
@@ -43,10 +45,15 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    locales: ['en', 'de'],
+    bundle: {
+      optimizeTranslationDirective: false,
+    },
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'de', name: 'Deutsch', file: 'de.json' },
+    ],
     defaultLocale: 'en',
     strategy: 'prefix',
-    vueI18n: './i18n.config.ts'
   },
 
   devtools: {
