@@ -42,7 +42,7 @@
     "@vuepic/vue-datepicker": "^11.0.0",
     "@vueuse/core": "14.0.0",
     "@vueuse/nuxt": "14.0.0",
-    "@zip.js/zip.js": "2.8.8",
+    "@zip.js/zip.js": "2.8.9",
     "async-sema": "3.1.1",
     "daisyui": "4.12.24",
     "emoji-js": "3.9.0",
