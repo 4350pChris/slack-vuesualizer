@@ -107,7 +107,7 @@ importers:
         version: 3.21.6(@netlify/blobs@9.1.2)(@parcel/watcher@2.5.6)(@types/node@24.2.0)(@vue/compiler-sfc@3.5.34)(cac@6.7.14)(db0@0.3.4)(eslint@9.39.4(jiti@2.7.0))(ioredis@5.10.1)(magicast@0.5.3)(optionator@0.9.4)(rollup-plugin-visualizer@7.0.1(rollup@4.60.4))(rollup@4.60.4)(srvx@0.11.15)(terser@5.47.1)(typescript@5.9.2)(vite@7.3.3(@types/node@24.2.0)(jiti@2.7.0)(terser@5.47.1)(yaml@2.9.0))(yaml@2.9.0)
       nuxt-headlessui:
         specifier: ^1.1.4
-        version: 1.2.1(magicast@0.5.3)(vue@3.5.34(typescript@5.9.2))
+        version: 1.2.2(magicast@0.5.3)(vue@3.5.34(typescript@5.9.2))
       ufo:
         specifier: ^1.3.1
         version: 1.6.1
@@ -1215,10 +1215,6 @@ packages:
 
   '@nuxt/kit@3.21.6':
     resolution: {integrity: sha512-5VOwxUcoM/z6w4c75hQrikHpY+TzjTLZQ+QnuO7KajyGx0IJBLVy1lw25oy79leF+GgyjJJO1cHfUfWeuEDCzA==}
-    engines: {node: '>=18.12.0'}
-
-  '@nuxt/kit@4.0.1':
-    resolution: {integrity: sha512-9vYpbuK3xcVhuDq+NyoLhbAolV/bEESaozFOMutl0jhrODcNWFrJ8wQSZIt9yxcFXUgXgUa2ms31qaUEpXrykw==}
     engines: {node: '>=18.12.0'}
 
   '@nuxt/kit@4.1.3':
@@ -4631,8 +4627,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nuxt-headlessui@1.2.1:
-    resolution: {integrity: sha512-0vwErENX7EQ0uV3+Al7nq6eOVIFSB7mEfio+iVvEyvliv5O+zE04zpNbn34Z/uSKhvXOwbOlNzn4JAyIdAT3Ow==}
+  nuxt-headlessui@1.2.2:
+    resolution: {integrity: sha512-6l23Y4OQk/PkKdadKHlXBr6/kv0u8na59+VomCWV5Zqx+9G/pM2Q5UOblbm2Vz4wH26Puo4H30zY1MS+2go3mA==}
 
   nuxt-site-config-kit@3.2.10:
     resolution: {integrity: sha512-HHBqcOLxYuw1HiAinaR/aGBvTZUdv7YcLsYDW2kuKAhLpiChACYM6lX3RTyrpLe6BNGRUJB69DbJ1VM8+QYWEA==}
@@ -7520,32 +7516,6 @@ snapshots:
       tinyglobby: 0.2.16
       ufo: 1.6.4
       unctx: 2.5.0
-      untyped: 2.0.0
-    transitivePeerDependencies:
-      - magicast
-
-  '@nuxt/kit@4.0.1(magicast@0.5.3)':
-    dependencies:
-      c12: 3.3.4(magicast@0.5.3)
-      consola: 3.4.2
-      defu: 6.1.7
-      destr: 2.0.5
-      errx: 0.1.0
-      exsolve: 1.0.8
-      ignore: 7.0.5
-      jiti: 2.7.0
-      klona: 2.0.6
-      mlly: 1.8.2
-      ohash: 2.0.11
-      pathe: 2.0.3
-      pkg-types: 2.3.1
-      scule: 1.3.0
-      semver: 7.8.0
-      std-env: 3.10.0
-      tinyglobby: 0.2.16
-      ufo: 1.6.1
-      unctx: 2.5.0
-      unimport: 5.7.0
       untyped: 2.0.0
     transitivePeerDependencies:
       - magicast
@@ -11457,10 +11427,10 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxt-headlessui@1.2.1(magicast@0.5.3)(vue@3.5.34(typescript@5.9.2)):
+  nuxt-headlessui@1.2.2(magicast@0.5.3)(vue@3.5.34(typescript@5.9.2)):
     dependencies:
       '@headlessui/vue': 1.7.23(vue@3.5.34(typescript@5.9.2))
-      '@nuxt/kit': 4.0.1(magicast@0.5.3)
+      '@nuxt/kit': 4.4.6(magicast@0.5.3)
       pathe: 2.0.3
     transitivePeerDependencies:
       - magicast
