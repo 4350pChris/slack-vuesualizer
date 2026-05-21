@@ -49,7 +49,7 @@
     "filesize": "11.0.17",
     "gsap": "^3.12.5",
     "mongodb": "6.21.0",
-    "vue-virtual-scroller": "2.0.0-beta.8"
+    "vue-virtual-scroller": "2.0.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "6.2.0",

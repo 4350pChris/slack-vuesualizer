@@ -57,8 +57,8 @@ importers:
         specifier: 6.21.0
         version: 6.21.0
       vue-virtual-scroller:
-        specifier: 2.0.0-beta.8
-        version: 2.0.0-beta.8(vue@3.5.34(typescript@5.9.2))
+        specifier: 2.0.1
+        version: 2.0.1(vue@3.5.34(typescript@5.9.2))
     devDependencies:
       '@antfu/eslint-config':
         specifier: 6.2.0
@@ -6129,16 +6129,6 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vue-observe-visibility@2.0.0-alpha.1:
-    resolution: {integrity: sha512-flFbp/gs9pZniXR6fans8smv1kDScJ8RS7rEpMjhVabiKeq7Qz3D9+eGsypncjfIyyU84saU88XZ0zjbD6Gq/g==}
-    peerDependencies:
-      vue: ^3.0.0
-
-  vue-resize@2.0.0-alpha.1:
-    resolution: {integrity: sha512-7+iqOueLU7uc9NrMfrzbG8hwMqchfVfSzpVlCMeJQe4pyibqyoifDNbKTZvwxZKDvGkB+PdFeKvnGZMoEb8esg==}
-    peerDependencies:
-      vue: ^3.0.0
-
   vue-router@4.5.1:
     resolution: {integrity: sha512-ogAF3P97NPm8fJsE4by9dwSYtDwXIY1nFY9T6DyQnGHd1E2Da94w9JIolpe42LJGIl0DwOHBi8TcRPlPGwbTtw==}
     peerDependencies:
@@ -6149,10 +6139,10 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
-  vue-virtual-scroller@2.0.0-beta.8:
-    resolution: {integrity: sha512-b8/f5NQ5nIEBRTNi6GcPItE4s7kxNHw2AIHLtDp+2QvqdTjVN0FgONwX9cr53jWRgnu+HRLPaWDOR2JPI5MTfQ==}
+  vue-virtual-scroller@2.0.1:
+    resolution: {integrity: sha512-3Drq8C61C4B3reSaZJr5nXBf/B7Beq1+h5/kYZB25MLYljTy97ISeUufRX9z6ZSZlFDXyafAOLK9XwajOWJY1A==}
     peerDependencies:
-      vue: ^3.2.0
+      vue: ^3.3.0
 
   vue@3.5.34:
     resolution: {integrity: sha512-WdLBG9gm02OgJIG9axd5Hpx0TFLdzVgfG2evFFu8Rur5O/IoGc5cMjnjh3tPL6GnRGsYvUhBSKVPYVcxRKpMCA==}
@@ -13205,14 +13195,6 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.34(typescript@5.9.2)
 
-  vue-observe-visibility@2.0.0-alpha.1(vue@3.5.34(typescript@5.9.2)):
-    dependencies:
-      vue: 3.5.34(typescript@5.9.2)
-
-  vue-resize@2.0.0-alpha.1(vue@3.5.34(typescript@5.9.2)):
-    dependencies:
-      vue: 3.5.34(typescript@5.9.2)
-
   vue-router@4.5.1(vue@3.5.34(typescript@5.9.2)):
     dependencies:
       '@vue/devtools-api': 6.6.4
@@ -13223,12 +13205,10 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.34(typescript@5.9.2)
 
-  vue-virtual-scroller@2.0.0-beta.8(vue@3.5.34(typescript@5.9.2)):
+  vue-virtual-scroller@2.0.1(vue@3.5.34(typescript@5.9.2)):
     dependencies:
       mitt: 2.1.0
       vue: 3.5.34(typescript@5.9.2)
-      vue-observe-visibility: 2.0.0-alpha.1(vue@3.5.34(typescript@5.9.2))
-      vue-resize: 2.0.0-alpha.1(vue@3.5.34(typescript@5.9.2))
 
   vue@3.5.34(typescript@5.9.2):
     dependencies:
