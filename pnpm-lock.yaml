@@ -52,7 +52,7 @@ importers:
         version: 11.0.17
       gsap:
         specifier: ^3.12.5
-        version: 3.13.0
+        version: 3.15.0
       mongodb:
         specifier: 6.21.0
         version: 6.21.0
@@ -3840,8 +3840,8 @@ packages:
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
 
-  gsap@3.13.0:
-    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
+  gsap@3.15.0:
+    resolution: {integrity: sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==}
 
   gzip-size@7.0.0:
     resolution: {integrity: sha512-O1Ld7Dr+nqPnmGpdhzLmMTQ4vAsD+rHwMm1NLUmoUFFymBOMKxCCrtDxqdBRYXdeEPEi3SyoR4TizJLQrnKBNA==}
@@ -10398,7 +10398,7 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  gsap@3.13.0: {}
+  gsap@3.15.0: {}
 
   gzip-size@7.0.0:
     dependencies:
