@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
-import type { Message } from '~~/types/Message.js'
+import type { Message } from '~/types/Message'
 
 interface Props {
   messages: Message[]

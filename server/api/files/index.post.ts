@@ -1,6 +1,6 @@
 import type { Filter } from 'mongodb'
 import { mongo } from '~~/server/utils/mongo'
-import { Sortable } from '~~/types/Sort'
+import { Sortable } from '~/types/Sort'
 import type { SearchResult } from '~~/types/File'
 import type { Message } from '~~/types/Message'
 

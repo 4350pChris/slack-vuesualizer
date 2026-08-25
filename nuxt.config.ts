@@ -1,10 +1,10 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+// https://nuxt.com/docs/4.x/api/nuxt-config
 export default defineNuxtConfig({
   build: {
     transpile: ['@vuepic/vue-datepicker'],
   },
 
-  css: ['assets/css/index.css'],
+  css: ['~/assets/css/index.css'],
 
   runtimeConfig: {
     mongodbUri: '',
@@ -15,8 +15,6 @@ export default defineNuxtConfig({
       buildDate: 'today',
     },
   },
-
-  plugins: [],
 
   modules: [[
     'unplugin-icons/nuxt',
@@ -31,6 +29,10 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+  },
+
   router: {
     options: {
       linkExactActiveClass: 'active',
@@ -38,9 +40,6 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    bundle: {
-      optimizeTranslationDirective: false,
-    },
     locales: [
       { code: 'en', name: 'English', file: 'en.json' },
       { code: 'de', name: 'Deutsch', file: 'de.json' },

@@ -1,4 +1,4 @@
-import { fullClient } from '~/server/utils/mongo'
+import { fullClient } from '~~/server/utils/mongo'
 
 const systemDatabases = new Set(['admin', 'config', 'local'])
 
