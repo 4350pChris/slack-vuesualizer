@@ -4,6 +4,7 @@ import type { Message } from '~/types/Message'
 
 type Cursor = { orderTs: string; id: string }
 const pageSize = 100
+const pageHalf = pageSize / 2
 
 const decodeCursor = (value: string): Cursor | undefined => {
   try {
@@ -35,6 +36,7 @@ export default defineEventHandler(async (event) => {
     : undefined
   const targetRootTs = targetMessage?.threadRootTs ?? target?.toString()
   const targetOrderTs = targetRootTs && `${targetRootTs.split('.')[0].padStart(12, '0')}${(targetRootTs.split('.')[1] ?? '').padEnd(6, '0').slice(0, 6)}`
+  const isAnchor = Boolean(targetOrderTs && !before && !after)
   const filter = {
     channel,
     isThreadReply: false,
@@ -52,15 +54,28 @@ export default defineEventHandler(async (event) => {
             { orderTs: cursor.orderTs, _id: { $lt: cursorId } },
           ],
         }
-      : targetOrderTs ? { orderTs: { $lte: targetOrderTs } } : {}),
+      : {}),
   }
-  const [roots, metadata, targetHasNewer] = await Promise.all([
-    db
-      .collection<Message>('messages')
+  const rootResult = isAnchor
+    ? Promise.all([
+        db.collection<Message>('messages')
+          .find({ channel, isThreadReply: false, orderTs: { $lte: targetOrderTs } })
+          .sort({ orderTs: -1, _id: -1 })
+          .limit(pageHalf + 1)
+          .toArray(),
+        db.collection<Message>('messages')
+          .find({ channel, isThreadReply: false, orderTs: { $gt: targetOrderTs } })
+          .sort({ orderTs: 1, _id: 1 })
+          .limit(pageHalf + 1)
+          .toArray(),
+      ])
+    : db.collection<Message>('messages')
       .find(filter)
       .sort(after ? { orderTs: 1, _id: 1 } : { orderTs: -1, _id: -1 })
       .limit(pageSize + 1)
-      .toArray(),
+      .toArray()
+  const [rootData, metadata] = await Promise.all([
+    rootResult,
     before || after
       ? undefined
       : Promise.all([
@@ -68,20 +83,19 @@ export default defineEventHandler(async (event) => {
           db.collection<Message>('messages').find({ channel }).sort({ orderTs: 1 }).limit(1).next(),
           db.collection<Message>('messages').find({ channel }).sort({ orderTs: -1 }).limit(1).next(),
         ]),
-    targetRootTs && !before && !after
-      ? db.collection<Message>('messages').find({
-          channel,
-          isThreadReply: false,
-          orderTs: { $gt: targetOrderTs },
-        }).hasNext()
-      : false,
   ])
 
-  const hasOlder = after ? true : roots.length > pageSize
-  const hasNewer = before ? true : after ? roots.length > pageSize : targetHasNewer
-  roots.splice(pageSize)
-  if (!after)
-    roots.reverse()
+  const [olderRoots, newerRoots] = isAnchor ? rootData as [Message[], Message[]] : [undefined, undefined]
+  const roots = isAnchor
+    ? [...olderRoots!.slice(0, pageHalf).reverse(), ...newerRoots!.slice(0, pageHalf)]
+    : rootData as Message[]
+  const hasOlder = isAnchor ? olderRoots!.length > pageHalf : after ? true : roots.length > pageSize
+  const hasNewer = isAnchor ? newerRoots!.length > pageHalf : before ? true : roots.length > pageSize
+  if (!isAnchor) {
+    roots.splice(pageSize)
+    if (!after)
+      roots.reverse()
+  }
   const replies = roots.length === 0
     ? []
     : await db
@@ -111,6 +125,7 @@ export default defineEventHandler(async (event) => {
     count: metadata?.[0],
     minTs: metadata?.[1]?.ts,
     maxTs: metadata?.[2]?.ts,
+    focusTs: isAnchor ? olderRoots![0]?.ts ?? newerRoots![0]?.ts : undefined,
     olderCursor: hasOlder ? encodeCursor(roots[0]) : undefined,
     newerCursor: hasNewer ? encodeCursor(roots.at(-1)!) : undefined,
   }

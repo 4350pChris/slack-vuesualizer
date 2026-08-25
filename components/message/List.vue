@@ -4,9 +4,9 @@ import type { Message } from '~~/types/Message.js'
 
 interface Props {
   messages: Message[]
+  focusTs?: string
   loadingOlder?: boolean
   loadingNewer?: boolean
-  resetKey?: string
 }
 
 const props = defineProps<Props>()
@@ -16,7 +16,8 @@ const { withSeparators } = useMessages(() => props.messages)
 const scroller = ref<any>(null)
 const route = useRoute()
 
-const messageId = computed(() => route.query.message)
+const messageId = computed(() => route.query.message?.toString())
+const scrollTarget = computed(() => messageId.value ?? props.focusTs)
 const restoreHeight = ref<number>()
 const scrollToBottomAfterLoad = ref(false)
 const previousScrollTop = ref(0)
@@ -55,19 +56,28 @@ const onScroll = (event: Event) => {
 }
 
 onMounted(async () => {
-  if (messageId.value)
+  await nextTick()
+  await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
+  await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
+  if (!scrollTarget.value) {
+    scroller.value?.scrollToBottom()
+    return
+  }
+
+  const index = withSeparators.value.items.findIndex(
+    message => '_id' in message && (message._id === scrollTarget.value || message.ts === scrollTarget.value),
+  )
+  if (index < 0 || !scroller.value)
     return
 
-  await nextTick()
-  scroller.value?.scrollToBottom()
-})
-
-watch(() => props.resetKey, async () => {
-  if (messageId.value)
-    return
-
-  await nextTick()
-  scroller.value?.scrollToBottom()
+  restoringScroll.value = true
+  scroller.value.scrollToItem(index)
+  requestAnimationFrame(() => {
+    const element = scroller.value?.$el as HTMLElement | undefined
+    if (element)
+      element.scrollTop -= element.clientHeight / 2
+    requestAnimationFrame(() => (restoringScroll.value = false))
+  })
 })
 
 watch(() => props.messages, async () => {
@@ -92,14 +102,6 @@ watch(() => props.messages, async () => {
   }
 })
 
-watchEffect(() => {
-  if (messageId.value) {
-    const index = withSeparators.value.items.findIndex(
-      message => '_id' in message && (message._id === messageId.value || message.ts === messageId.value),
-    )
-    setTimeout(() => scroller.value?.scrollToItem(index), 0)
-  }
-})
 </script>
 
 <template>

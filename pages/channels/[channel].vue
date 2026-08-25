@@ -10,6 +10,7 @@ type MessagePage = {
   maxTs?: string
   olderCursor?: string
   newerCursor?: string
+  focusTs?: string
 }
 
 const route = useRoute()
@@ -130,8 +131,8 @@ whenever(date, (d) => {
       <MessageSkeleton v-for="i in [1, 2, 3, 4, 5, 6, 7]" :key="i" class="shrink-0" />
     </div>
     <template v-else-if="messages.length">
-      <MessageList :messages="messages" :loading-older="loadingOlder" :loading-newer="loadingNewer"
-        :reset-key="messageListKey" @load-older="loadOlder" @load-newer="loadNewer"
+      <MessageList :key="messageListKey" :messages="messages" :focus-ts="page?.focusTs"
+        :loading-older="loadingOlder" :loading-newer="loadingNewer" @load-older="loadOlder" @load-newer="loadNewer"
         @older-restored="trimNewestPage" />
     </template>
     <div v-else class="text-xl text-center">
