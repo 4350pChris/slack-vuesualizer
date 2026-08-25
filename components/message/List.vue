@@ -17,7 +17,7 @@ const messageId = computed(() => route.query.message)
 watchEffect(() => {
   if (messageId) {
     const index = withSeparators.value.items.findIndex(
-      message => '_id' in message && message._id === messageId.value,
+      message => '_id' in message && (message._id === messageId.value || message.ts === messageId.value),
     )
     setTimeout(() => scroller.value?.scrollToItem(index), 0)
   }
@@ -51,7 +51,7 @@ watchEffect(() => {
         <MessageItem
           v-else
           :message="item"
-          :searched="messageId === item._id"
+          :searched="messageId === item._id || messageId === item.ts"
         />
       </DynamicScrollerItem>
     </template>

@@ -104,6 +104,9 @@ export interface ApiMessage {
   channel: string
   subtype?: string
   ts: string
+  thread_ts?: string
+  threadRootTs?: string
+  isThreadReply?: boolean
   user?: string
   bot_id?: string
   text: string
