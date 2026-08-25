@@ -13,12 +13,14 @@ export default defineNitroPlugin(async () => {
         const migrations = db.collection('migrations')
         const messages = db.collection('messages')
         await Promise.all([
-          messages.createIndex({ channel: 1, ts: 1 }),
-          messages.createIndex({ channel: 1, isThreadReply: 1, ts: 1, _id: 1 }),
-          messages.createIndex({ channel: 1, threadRootTs: 1, ts: 1 }),
+          messages.createIndex({ channel: 1, orderTs: 1 }),
+          messages.createIndex({ channel: 1, isThreadReply: 1, orderTs: 1, _id: 1 }),
+          messages.createIndex({ channel: 1, threadRootTs: 1, orderTs: 1 }),
+          ...['channel_1', 'user_1_ts_1', 'channel_1_ts_1', 'channel_1_isThreadReply_1_ts_1__id_1', 'channel_1_threadRootTs_1_ts_1']
+            .map(index => messages.dropIndex(index).catch(() => undefined)),
         ])
 
-        if (await migrations.findOne({ _id: 'message-thread-fields-v1' }))
+        if (await migrations.findOne({ _id: 'message-order-key-v1' }))
           return
 
         await messages.updateMany(
@@ -26,6 +28,7 @@ export default defineNitroPlugin(async () => {
             $or: [
               { threadRootTs: { $exists: false } },
               { isThreadReply: { $exists: false } },
+              { orderTs: { $exists: false } },
             ],
           },
           [
@@ -33,11 +36,35 @@ export default defineNitroPlugin(async () => {
               $set: {
                 threadRootTs: { $ifNull: ['$thread_ts', '$ts'] },
                 isThreadReply: { $ne: [{ $ifNull: ['$thread_ts', '$ts'] }, '$ts'] },
+                orderTs: {
+                  $let: {
+                    vars: { parts: { $split: ['$ts', '.'] } },
+                    in: {
+                      $concat: [
+                        {
+                          $substrCP: [
+                            '000000000000',
+                            0,
+                            { $subtract: [12, { $strLenCP: { $arrayElemAt: ['$$parts', 0] } }] },
+                          ],
+                        },
+                        { $arrayElemAt: ['$$parts', 0] },
+                        {
+                          $substrCP: [
+                            { $concat: [{ $ifNull: [{ $arrayElemAt: ['$$parts', 1] }, ''] }, '000000'] },
+                            0,
+                            6,
+                          ],
+                        },
+                      ],
+                    },
+                  },
+                },
               },
             },
           ],
         )
-        await migrations.insertOne({ _id: 'message-thread-fields-v1', completedAt: new Date() })
+        await migrations.insertOne({ _id: 'message-order-key-v1', completedAt: new Date() })
       }),
   )
 })

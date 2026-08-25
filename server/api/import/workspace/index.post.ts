@@ -11,11 +11,9 @@ interface DataIn {
 const createDb = async (db: Db) => {
   const msgCol = db.collection<ApiMessage>('messages')
   await msgCol.createIndex({ text: 'text' }, { default_language: 'german', language_override: 'language_override' })
-  await msgCol.createIndex({ channel: 1 })
-  await msgCol.createIndex({ user: 1, ts: 1 })
-  await msgCol.createIndex({ channel: 1, ts: 1 })
-  await msgCol.createIndex({ channel: 1, isThreadReply: 1, ts: 1, _id: 1 })
-  await msgCol.createIndex({ channel: 1, threadRootTs: 1, ts: 1 })
+  await msgCol.createIndex({ channel: 1, orderTs: 1 })
+  await msgCol.createIndex({ channel: 1, isThreadReply: 1, orderTs: 1, _id: 1 })
+  await msgCol.createIndex({ channel: 1, threadRootTs: 1, orderTs: 1 })
 }
 
 export default defineEventHandler(async (event) => {

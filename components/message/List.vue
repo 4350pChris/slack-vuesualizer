@@ -4,12 +4,13 @@ import type { Message } from '~~/types/Message.js'
 
 interface Props {
   messages: Message[]
-  hasOlder?: boolean
   loadingOlder?: boolean
+  loadingNewer?: boolean
+  resetKey?: string
 }
 
 const props = defineProps<Props>()
-const emit = defineEmits<{ loadOlder: [] }>()
+const emit = defineEmits<{ loadOlder: []; loadNewer: []; olderRestored: [] }>()
 
 const { withSeparators } = useMessages(() => props.messages)
 const scroller = ref<any>(null)
@@ -17,15 +18,24 @@ const route = useRoute()
 
 const messageId = computed(() => route.query.message)
 const restoreHeight = ref<number>()
+const scrollToBottomAfterLoad = ref(false)
 const previousScrollTop = ref(0)
 const restoringScroll = ref(false)
 
 const loadOlder = () => {
-  if (!props.hasOlder || props.loadingOlder)
+  if (props.loadingOlder)
     return
 
   restoreHeight.value = scroller.value?.$el.scrollHeight
   emit('loadOlder')
+}
+
+const loadNewer = () => {
+  if (props.loadingNewer)
+    return
+
+  scrollToBottomAfterLoad.value = true
+  emit('loadNewer')
 }
 
 const onScroll = (event: Event) => {
@@ -37,11 +47,23 @@ const onScroll = (event: Event) => {
 
   if (scrollTop < previousScrollTop.value && scrollTop < 300)
     loadOlder()
+  if (scrollTop > previousScrollTop.value
+    && scrollTop + (event.target as HTMLElement).clientHeight > (event.target as HTMLElement).scrollHeight - 300) {
+    loadNewer()
+  }
   previousScrollTop.value = scrollTop
 }
 
 onMounted(async () => {
-  if (messageId.value || route.query.at)
+  if (messageId.value)
+    return
+
+  await nextTick()
+  scroller.value?.scrollToBottom()
+})
+
+watch(() => props.resetKey, async () => {
+  if (messageId.value)
     return
 
   await nextTick()
@@ -49,21 +71,29 @@ onMounted(async () => {
 })
 
 watch(() => props.messages, async () => {
-  if (restoreHeight.value === undefined)
-    return
-
-  await nextTick()
-  await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
-  restoringScroll.value = true
-  const element = scroller.value?.$el as HTMLElement | undefined
-  if (element)
-    element.scrollTop += element.scrollHeight - restoreHeight.value
-  requestAnimationFrame(() => (restoringScroll.value = false))
-  restoreHeight.value = undefined
+  if (restoreHeight.value !== undefined) {
+    await nextTick()
+    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
+    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
+    restoringScroll.value = true
+    const element = scroller.value?.$el as HTMLElement | undefined
+    if (element)
+      element.scrollTop += element.scrollHeight - restoreHeight.value
+    requestAnimationFrame(() => (restoringScroll.value = false))
+    restoreHeight.value = undefined
+    emit('olderRestored')
+  }
+  else if (scrollToBottomAfterLoad.value) {
+    await nextTick()
+    restoringScroll.value = true
+    scroller.value?.scrollToBottom()
+    requestAnimationFrame(() => (restoringScroll.value = false))
+    scrollToBottomAfterLoad.value = false
+  }
 })
 
 watchEffect(() => {
-  if (messageId) {
+  if (messageId.value) {
     const index = withSeparators.value.items.findIndex(
       message => '_id' in message && (message._id === messageId.value || message.ts === messageId.value),
     )

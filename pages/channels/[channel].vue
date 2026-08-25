@@ -8,7 +8,8 @@ type MessagePage = {
   count?: number
   minTs?: string
   maxTs?: string
-  nextCursor?: string
+  olderCursor?: string
+  newerCursor?: string
 }
 
 const route = useRoute()
@@ -37,27 +38,54 @@ const { data: page, pending } = useLazyFetch<MessagePage>(
     watch: [messageQuery, dateQuery],
   },
 )
-const olderMessages = ref<Message[]>([])
+const maxPages = 5
+const pages = ref<MessagePage[]>([])
 const loadingOlder = ref(false)
-const messages = computed(() => [...olderMessages.value, ...(page.value?.messages ?? [])])
+const loadingNewer = ref(false)
+const messages = computed(() => pages.value.flatMap(page => page.messages))
+const messageListKey = computed(() => `${messageQuery.value ?? dateQuery.value ?? ''}:${page.value?.messages[0]?.ts ?? ''}`)
 
-watch([messageQuery, dateQuery], () => (olderMessages.value = []))
+watch(page, value => (pages.value = value ? [value] : []), { immediate: true })
 
 const loadOlder = async () => {
-  if (!page.value?.nextCursor || loadingOlder.value)
+  const oldestPage = pages.value[0]
+  if (!oldestPage?.olderCursor || loadingOlder.value)
     return
 
   loadingOlder.value = true
   try {
     const olderPage = await $fetch<MessagePage>(`/api/channels/${unref(channelId)}/messages`, {
-      query: { before: page.value.nextCursor },
+      query: { before: oldestPage.olderCursor },
     })
-    olderMessages.value.unshift(...olderPage.messages)
-    page.value.nextCursor = olderPage.nextCursor
+    pages.value.unshift(olderPage)
   }
   finally {
     loadingOlder.value = false
   }
+}
+
+const loadNewer = async () => {
+  const newestPage = pages.value.at(-1)
+  if (!newestPage?.newerCursor || loadingNewer.value)
+    return
+
+  loadingNewer.value = true
+  try {
+    const newerPage = await $fetch<MessagePage>(`/api/channels/${unref(channelId)}/messages`, {
+      query: { after: newestPage.newerCursor },
+    })
+    pages.value.push(newerPage)
+    if (pages.value.length > maxPages)
+      pages.value.shift()
+  }
+  finally {
+    loadingNewer.value = false
+  }
+}
+
+const trimNewestPage = () => {
+  if (pages.value.length > maxPages)
+    pages.value.pop()
 }
 
 const { withUsernames } = useWithUsernames()
@@ -102,8 +130,9 @@ whenever(date, (d) => {
       <MessageSkeleton v-for="i in [1, 2, 3, 4, 5, 6, 7]" :key="i" class="shrink-0" />
     </div>
     <template v-else-if="messages.length">
-      <MessageList :messages="messages" :has-older="Boolean(page?.nextCursor)" :loading-older="loadingOlder"
-        @load-older="loadOlder" />
+      <MessageList :messages="messages" :loading-older="loadingOlder" :loading-newer="loadingNewer"
+        :reset-key="messageListKey" @load-older="loadOlder" @load-newer="loadNewer"
+        @older-restored="trimNewestPage" />
     </template>
     <div v-else class="text-xl text-center">
       {{ $t('channel.empty') }}
