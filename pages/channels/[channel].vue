@@ -102,10 +102,8 @@ whenever(date, (d) => {
       <MessageSkeleton v-for="i in [1, 2, 3, 4, 5, 6, 7]" :key="i" class="shrink-0" />
     </div>
     <template v-else-if="messages.length">
-      <button v-if="page?.nextCursor" class="btn btn-ghost btn-sm self-center" :disabled="loadingOlder" @click="loadOlder">
-        {{ loadingOlder ? 'Loading…' : 'Load older messages' }}
-      </button>
-      <MessageList :messages="messages" />
+      <MessageList :messages="messages" :has-older="Boolean(page?.nextCursor)" :loading-older="loadingOlder"
+        @load-older="loadOlder" />
     </template>
     <div v-else class="text-xl text-center">
       {{ $t('channel.empty') }}
