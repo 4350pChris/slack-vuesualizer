@@ -8,3 +8,7 @@ node_modules
 dist
 .vercel
 .idea
+*.zip
+.DS_Store
+.pnpm-store
+.codex

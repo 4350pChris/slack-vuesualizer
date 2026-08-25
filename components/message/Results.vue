@@ -19,7 +19,7 @@ defineEmits<Emits>()
     <ul v-if="results.length > 0" class="list-none flex flex-col gap-4 p-1">
       <li v-for="result in results" :key="result._id">
         <NuxtLinkLocale
-          :to="`/channels/${result.channel}?message=${result._id}`"
+          :to="`/channels/${result.channel}?message=${result.ts}`"
           @click="$emit('close')"
         >
           <span class="font-bold">In Channel {{ result.channel }}</span>
