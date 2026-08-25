@@ -14,9 +14,10 @@ export default defineNitroPlugin(async () => {
         const messages = db.collection('messages')
         await Promise.all([
           messages.createIndex({ channel: 1, orderTs: 1 }),
+          messages.createIndex({ channel: 1, ts: 1 }),
           messages.createIndex({ channel: 1, isThreadReply: 1, orderTs: 1, _id: 1 }),
           messages.createIndex({ channel: 1, threadRootTs: 1, orderTs: 1 }),
-          ...['channel_1', 'user_1_ts_1', 'channel_1_ts_1', 'channel_1_isThreadReply_1_ts_1__id_1', 'channel_1_threadRootTs_1_ts_1']
+          ...['channel_1', 'user_1_ts_1', 'channel_1_isThreadReply_1_ts_1__id_1', 'channel_1_threadRootTs_1_ts_1']
             .map(index => messages.dropIndex(index).catch(() => undefined)),
         ])
 
