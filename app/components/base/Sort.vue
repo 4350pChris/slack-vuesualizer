@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Sortable } from '~~/types/Sort'
+import { Sortable } from '~/types/Sort'
 
 interface Props {
   modelValue: string

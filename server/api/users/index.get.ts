@@ -1,4 +1,4 @@
-import { mongo } from '~/server/utils/mongo'
+import { mongo } from '~~/server/utils/mongo'
 import type { User } from '~~/types/User'
 
 export default defineEventHandler(async (event) => {

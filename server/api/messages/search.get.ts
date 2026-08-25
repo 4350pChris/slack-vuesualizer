@@ -1,5 +1,5 @@
 import type { Filter } from 'mongodb'
-import { mongo } from '~/server/utils/mongo'
+import { mongo } from '~~/server/utils/mongo'
 import type { Message } from '~/types/Message'
 
 export default defineEventHandler(async (event) => {

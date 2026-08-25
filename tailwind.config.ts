@@ -7,11 +7,7 @@ import headlessui from '@headlessui/tailwindcss'
 export default <Partial<Config>> {
   darkMode: ['class', '[data-theme=\'business\']'],
   content: [
-    './components/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    'app.vue',
+    './app/**/*.{js,vue,ts}',
   ],
   future: {
     hoverOnlyWhenSupported: true,
