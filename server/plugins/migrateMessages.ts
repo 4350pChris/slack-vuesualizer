@@ -11,10 +11,16 @@ export default defineNitroPlugin(async () => {
       .map(async ({ name }) => {
         const db = client.db(name)
         const migrations = db.collection('migrations')
+        const messages = db.collection('messages')
+        await Promise.all([
+          messages.createIndex({ channel: 1, ts: 1 }),
+          messages.createIndex({ channel: 1, isThreadReply: 1, ts: 1, _id: 1 }),
+          messages.createIndex({ channel: 1, threadRootTs: 1, ts: 1 }),
+        ])
+
         if (await migrations.findOne({ _id: 'message-thread-fields-v1' }))
           return
 
-        const messages = db.collection('messages')
         await messages.updateMany(
           {
             $or: [
@@ -31,11 +37,6 @@ export default defineNitroPlugin(async () => {
             },
           ],
         )
-        await Promise.all([
-          messages.createIndex({ channel: 1, ts: 1 }),
-          messages.createIndex({ channel: 1, isThreadReply: 1, ts: 1, _id: 1 }),
-          messages.createIndex({ channel: 1, threadRootTs: 1, ts: 1 }),
-        ])
         await migrations.insertOne({ _id: 'message-thread-fields-v1', completedAt: new Date() })
       }),
   )
