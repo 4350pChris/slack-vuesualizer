@@ -132,6 +132,7 @@ whenever(date, (d) => {
     </div>
     <template v-else-if="messages.length">
       <MessageList :key="messageListKey" :messages="messages" :focus-ts="page?.focusTs"
+        :has-older="Boolean(pages[0]?.olderCursor)" :has-newer="Boolean(pages.at(-1)?.newerCursor)"
         :loading-older="loadingOlder" :loading-newer="loadingNewer" @load-older="loadOlder" @load-newer="loadNewer"
         @older-restored="trimNewestPage" />
     </template>

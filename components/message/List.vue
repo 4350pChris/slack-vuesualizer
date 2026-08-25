@@ -5,6 +5,8 @@ import type { Message } from '~~/types/Message.js'
 interface Props {
   messages: Message[]
   focusTs?: string
+  hasOlder?: boolean
+  hasNewer?: boolean
   loadingOlder?: boolean
   loadingNewer?: boolean
 }
@@ -24,7 +26,7 @@ const previousScrollTop = ref(0)
 const restoringScroll = ref(false)
 
 const loadOlder = () => {
-  if (props.loadingOlder)
+  if (!props.hasOlder || props.loadingOlder)
     return
 
   restoreHeight.value = scroller.value?.$el.scrollHeight
@@ -32,7 +34,7 @@ const loadOlder = () => {
 }
 
 const loadNewer = () => {
-  if (props.loadingNewer)
+  if (!props.hasNewer || props.loadingNewer)
     return
 
   scrollToBottomAfterLoad.value = true
