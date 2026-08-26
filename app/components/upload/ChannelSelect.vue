@@ -32,10 +32,10 @@ const toggleAll = () => {
           :checked="model.length === channels.length"
           @input="toggleAll"
         >
-        <span class="label-text">{{ $t("channel.all", 2) }}</span>
+        <span class="flex-1 text-sm">{{ $t("channel.all", 2) }}</span>
       </label>
     </li>
-    <li v-for="channel in channels" :key="channel" class="form-control">
+    <li v-for="channel in channels" :key="channel" class="flex flex-col">
       <label class="label cursor-pointer justify-start">
         <input
           v-model="model"
@@ -43,7 +43,7 @@ const toggleAll = () => {
           class="checkbox mr-4"
           :value="channel"
         >
-        <span class="label-text">{{ channel }}</span>
+        <span class="flex-1 text-sm">{{ channel }}</span>
       </label>
     </li>
   </ul>

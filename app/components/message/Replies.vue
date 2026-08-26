@@ -15,9 +15,9 @@ const getUser = (id: string) =>
 </script>
 
 <template>
-  <div class="flex items-center gap-4 text-left divider !h-10 !m-0">
+  <div class="flex items-center gap-4 text-left divider h-10! m-0!">
     <span v-if="replyCount" class="font-bold">{{ $t("reply", replyCount) }} ({{ replyCount }})</span>
-    <div class="flex-shrink-0 avatar-group -space-x-4">
+  <div class="shrink-0 avatar-group -space-x-4">
       <UserAvatar
         v-for="user in users?.slice(0, 3)"
         :key="user"

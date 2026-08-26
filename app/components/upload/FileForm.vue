@@ -32,7 +32,7 @@ useDropZone(dropZoneRef, handleUpload)
 
 <template>
   <div class="text-center">
-    <div ref="dropZoneRef" class="form-control">
+    <div ref="dropZoneRef" class="flex flex-col">
       <label for="file" class="cursor-pointer">
         <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
         <span class="text-lg font-bold font-mono">
