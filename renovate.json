@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
+  "extends": ["config:recommended"],
   "packageRules": [
     {
       "matchDatasources": ["npm"],
@@ -13,30 +13,37 @@
     },
     {
       "matchDepTypes": ["devDependencies"],
-      "matchPackagePatterns": ["lint", "prettier"],
-      "automerge": true
+      "automerge": true,
+      "matchPackageNames": [
+        "/lint/",
+        "/prettier/"
+      ]
     },
     {
       "groupName": "icons",
-      "matchPackageNames": ["unplugin-icons"],
-      "matchPackagePrefixes": ["@iconify-json/"]
+      "matchPackageNames": ["unplugin-icons", "@iconify-json/{/,}**"]
     },
     {
       "groupName": "definitelyTyped",
-      "matchPackagePrefixes": ["@types/"]
+      "matchPackageNames": [
+        "@types/{/,}**"
+      ]
     },
     {
       "groupName": "nuxt plugins",
-      "matchPackageNames": ["@nuxtjs/"],
-      "matchPackagePrefixes": ["@nuxtjs/"]
+      "matchPackageNames": ["@nuxtjs/", "@nuxtjs/{/,}**"]
     },
     {
       "groupName": "headlessui",
-      "matchPackagePrefixes": ["@headlessui/"]
+      "matchPackageNames": [
+        "@headlessui/{/,}**"
+      ]
     },
     {
       "groupName": "vueuse",
-      "matchPackagePrefixes": ["@vueuse/"]
+      "matchPackageNames": [
+        "@vueuse/{/,}**"
+      ]
     }
   ]
 }
