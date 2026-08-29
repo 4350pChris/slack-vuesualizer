@@ -37,10 +37,10 @@ useHead({
     },
     {
       property: 'og:url',
-      content: config.public.siteUrl,
+      content: config.public.canonicalHost,
     },
     {
-      property: 'twitter:card',
+      name: 'twitter:card',
       content: 'summary',
     },
     {
@@ -52,12 +52,12 @@ useHead({
       content: t('description'),
     },
     {
-      property: 'twitter:image',
+      name: 'twitter:image',
       content: '/vuesualizer.png',
     },
     {
-      property: 'twitter:url',
-      content: config.public.siteUrl,
+      name: 'twitter:url',
+      content: config.public.canonicalHost,
     },
   ],
   link: [
