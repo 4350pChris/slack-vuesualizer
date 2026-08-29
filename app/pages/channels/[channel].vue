@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Datepicker from '@vuepic/vue-datepicker'
+import { VueDatePicker } from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 import type { Message } from '~/types/Message';
 
@@ -123,7 +123,7 @@ whenever(date, (d) => {
   <section class="flex flex-col h-full w-full max-w-xl">
     <div class="my-2 md:my-4 flex flex-col gap-2">
       <ChannelHeader v-if="channel" class="flex-1" v-bind="channel" :name :messages="page?.count ?? messages.length" />
-      <Datepicker v-model="date" :dark="colorMode.value === 'business'" :placeholder="$t('jumpToDate')"
+      <VueDatePicker v-model="date" :dark="colorMode.value === 'business'" :placeholder="$t('jumpToDate')"
         :start-date="toDate(page?.minTs)" :min-date="toDate(page?.minTs)"
         :max-date="toDate(page?.maxTs)" />
     </div>
