@@ -34,6 +34,7 @@ const findWorkspace = async (client: Awaited<ReturnType<typeof fullClient>>) => 
 export default defineNitroPlugin(async () => {
   const config = useRuntimeConfig()
   const exportPath = config.startupExportPath
+  const workspaceUrl = (token: string) => `${String(config.public.canonicalHost).replace(/\/$/, '')}/?token=${token}`
 
   if (!exportPath)
     return
@@ -41,7 +42,7 @@ export default defineNitroPlugin(async () => {
   const client = await fullClient()
   const existingWorkspace = await findWorkspace(client)
   if (existingWorkspace) {
-    console.info(`Startup Slack workspace: /?token=${existingWorkspace}`)
+    console.info(`Startup Slack workspace: ${workspaceUrl(existingWorkspace)}`)
     return
   }
 
@@ -90,7 +91,7 @@ export default defineNitroPlugin(async () => {
       await insertInBatches(messages, prepareMessages(channel, data))
     }
 
-    console.info(`Startup Slack workspace: /?token=${workspaceToken}`)
+    console.info(`Startup Slack workspace: ${workspaceUrl(workspaceToken)}`)
   }
   catch (error) {
     await db.dropDatabase().catch(() => undefined)
