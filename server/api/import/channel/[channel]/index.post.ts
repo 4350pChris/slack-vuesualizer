@@ -1,10 +1,6 @@
 import { mongo } from '~~/server/utils/mongo'
-import type { ApiMessage, Message } from '~/types/Message'
-
-const orderTs = (ts: string) => {
-  const [seconds = '', fraction = ''] = ts.split('.')
-  return `${seconds.padStart(12, '0')}${fraction.padEnd(6, '0').slice(0, 6)}`
-}
+import { prepareMessages } from '~~/server/utils/importMessages'
+import type { Message } from '~/types/Message'
 
 export default defineEventHandler(async (event) => {
   const channelParam = event.context.params?.channel
@@ -17,16 +13,7 @@ export default defineEventHandler(async (event) => {
 
   await db
     .collection<Message>('messages')
-    .insertMany(data.map((entry) => {
-      const message = { ...entry, channel } as ApiMessage
-      const threadRootTs = message.thread_ts ?? message.ts
-      return {
-        ...message,
-        threadRootTs,
-        isThreadReply: threadRootTs !== message.ts,
-        orderTs: orderTs(message.ts),
-      }
-    }))
+    .insertMany(prepareMessages(channel, data))
 
   event.node.res.statusCode = 201
   return 'ok'

@@ -1,20 +1,10 @@
 import { randomUUID } from 'node:crypto'
-import type { Db } from 'mongodb'
 import { mongo } from '~~/server/utils/mongo'
-import type { ApiMessage } from '~/types/Message'
+import { createMessageIndexes } from '~~/server/utils/importMessages'
 
 interface DataIn {
   name: string
   data: any[]
-}
-
-const createDb = async (db: Db) => {
-  const msgCol = db.collection<ApiMessage>('messages')
-  await msgCol.createIndex({ text: 'text' }, { default_language: 'german', language_override: 'language_override' })
-  await msgCol.createIndex({ channel: 1, orderTs: 1 })
-  await msgCol.createIndex({ channel: 1, ts: 1 })
-  await msgCol.createIndex({ channel: 1, isThreadReply: 1, orderTs: 1, _id: 1 })
-  await msgCol.createIndex({ channel: 1, threadRootTs: 1, orderTs: 1 })
 }
 
 export default defineEventHandler(async (event) => {
@@ -23,7 +13,7 @@ export default defineEventHandler(async (event) => {
   const db = await mongo(uuid)
 
   try {
-    await createDb(db)
+    await createMessageIndexes(db)
   } catch (e) {
     console.error('Error creating database:', e)
     // collections are full
