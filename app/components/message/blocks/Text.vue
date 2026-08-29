@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TextLeaf } from '~~/types/Message'
+import type { TextLeaf } from '~/types/Message'
 
 defineProps<{ node: TextLeaf }>()
 </script>

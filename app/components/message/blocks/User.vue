@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { UserLeaf } from '~~/types/Message'
+import type { UserLeaf } from '~/types/Message'
 
 const props = defineProps<{ node: UserLeaf }>()
 

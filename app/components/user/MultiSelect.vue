@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { User } from '~~/types/User'
+import type { User } from '~/types/User'
 
 interface Props {
   modelValue: User[]

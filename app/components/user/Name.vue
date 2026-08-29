@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import RobotIcon from '~icons/mdi/robot-outline'
-import type { User } from '~~/types/User';
+import type { User } from '~/types/User';
 
 type Props = {
   user: User

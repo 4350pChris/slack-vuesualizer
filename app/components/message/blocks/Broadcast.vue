@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { BroadcastLeaf } from '~~/types/Message'
+import type { BroadcastLeaf } from '~/types/Message'
 
 defineProps<{ node: BroadcastLeaf }>()
 </script>

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import FilterIcon from '~icons/mdi/filter-variant'
 import { Sortable } from '~/types/Sort'
-import type { Channel } from '~~/types/Channel'
-import type { User } from '~~/types/User'
+import type { Channel } from '~/types/Channel'
+import type { User } from '~/types/User'
 
 const selectedUsers = ref<User[]>([])
 const selectedChannels = ref<Channel[]>([])

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { Sortable } from '~~/types/Sort'
-import type { Channel } from '~~/types/Channel'
-import type { User } from '~~/types/User'
+import type { Sortable } from '~/types/Sort'
+import type { Channel } from '~/types/Channel'
+import type { User } from '~/types/User'
 
 interface Props {
   channels: Channel[]

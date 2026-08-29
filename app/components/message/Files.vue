@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import FileIcon from '~icons/mdi/file'
-import type { File } from '~~/types/File'
+import type { File } from '~/types/File'
 
 interface Props {
   files: File[]

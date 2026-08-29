@@ -1,5 +1,5 @@
 import type { MaybeRef } from '@vueuse/core'
-import type { User } from '~~/types/User'
+import type { User } from '~/types/User'
 
 export const useUserName = (user: MaybeRef<User>) => {
   const u = unref(user)

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Channel } from '~~/types/Channel'
+import type { Channel } from '~/types/Channel'
 
 interface Props {
   modelValue: Channel[]

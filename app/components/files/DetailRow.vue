@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ShownFile } from '~~/types/File'
+import type { ShownFile } from '~/types/File'
 import AudioIcon from '~icons/mdi/headphones'
 
 interface Props {

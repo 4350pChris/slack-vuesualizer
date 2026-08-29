@@ -1,5 +1,5 @@
 import { mongo } from '~~/server/utils/mongo'
-import type { User } from '~~/types/User'
+import type { User } from '~/types/User'
 
 export default defineEventHandler(async (event) => {
   const db = await mongo(event.context.mongouuid)

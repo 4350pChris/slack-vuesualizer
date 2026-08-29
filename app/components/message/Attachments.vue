@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { Attachment } from '~~/types/Message'
+import type { Attachment } from '~/types/Message'
 
 interface Props {
   attachments: Attachment[]

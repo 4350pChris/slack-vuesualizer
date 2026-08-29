@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import PlaceholderIcon from '~icons/mdi/account-question-outline'
-import type { User } from '~~/types/User';
+import type { User } from '~/types/User';
 
 interface Props {
   user?: User
