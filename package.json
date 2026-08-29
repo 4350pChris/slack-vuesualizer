@@ -49,6 +49,8 @@
     "filesize": "11.0.22",
     "gsap": "^3.12.5",
     "mongodb": "6.21.0",
+    "vue": "3.5.42",
+    "vue-router": "5.3.0",
     "vue-virtual-scroller": "2.0.1"
   },
   "devDependencies": {
