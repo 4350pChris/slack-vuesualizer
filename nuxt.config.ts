@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     {
       autoInstall: true,
     },
-  ], '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/i18n', '@nuxtjs/robots', '@nuxt/icon'],
+  ], '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/i18n', '@nuxtjs/robots'],
 
   colorMode: {
     preference: 'system',
