@@ -2,6 +2,7 @@
 import FilterIcon from '~icons/mdi/filter-variant'
 import { Sortable } from '~/types/Sort'
 import type { Channel } from '~/types/Channel'
+import type { SearchResult } from '~/types/File'
 import type { User } from '~/types/User'
 
 const selectedUsers = ref<User[]>([])
@@ -12,24 +13,17 @@ const page = ref(0)
 const users = useArrayMap(selectedUsers, ({ id }) => id)
 const channels = useArrayMap(selectedChannels, ({ name }) => name)
 
-const { data: searchResult } = useAsyncData(
-  'files',
-  () =>
-    $fetch('/api/files', {
-      method: 'POST',
-      body: {
-        users: users.value,
-        channels: channels.value,
-        sort: sort.value,
-        page: page.value,
-        size: 25,
-      },
-      headers: useRequestHeaders(['cookie']),
-    }),
-  {
-    watch: [users, channels, sort, page],
-  },
-)
+const { data: searchResult } = useFetch<{ count: number, messages: SearchResult[] }>('/api/files', {
+  key: 'files',
+  method: 'POST',
+  body: computed(() => ({
+    users: users.value,
+    channels: channels.value,
+    sort: sort.value,
+    page: page.value,
+    size: 25,
+  })),
+})
 </script>
 
 <template>
