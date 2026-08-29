@@ -119,13 +119,6 @@ watch(() => props.messages, async () => {
       <DynamicScrollerItem
         :item="item"
         :active="active"
-        :size-dependencies="[
-          item.files,
-          item.text,
-          item.blocks,
-          item.reactions,
-          item.last_reply,
-        ]"
         :data-index="index"
       >
         <div v-if="item.date" class="divider font-mono text-sm my-2 px-4">
