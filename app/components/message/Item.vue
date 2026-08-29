@@ -32,8 +32,8 @@ const timestamp = computed(() => toTs(props.message.ts))
     <span v-if="!disableReplyBar" class="absolute left-9" :class="{
       'border-l-2 border-slate-800/25 dark:border-slate-400/50 h-full':
         message.reply || hasReplies,
-      '!h-6': message.last_reply,
-      'top-4 !h-[calc(100%-1rem)]': hasReplies,
+      'h-6!': message.last_reply,
+      'top-4 h-[calc(100%-1rem)]!': hasReplies,
     }" />
     <UserAvatar class="w-12 h-12 lg:w-14 lg:h-14 rounded-xl" :user />
     <div class="flex flex-col flex-1 overflow-hidden col-start-2">

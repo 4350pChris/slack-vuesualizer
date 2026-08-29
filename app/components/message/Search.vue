@@ -106,7 +106,7 @@ onKeyDown(['Escape'], (e) => {
                   )
                 }}</span>
               </i18n-t>
-              <div class="form-control">
+              <div class="flex flex-col">
                 <label class="max-w-max label cursor-pointer">
                   <input
                     v-model="allChannels"
@@ -115,7 +115,7 @@ onKeyDown(['Escape'], (e) => {
                     :disabled="!route.params.channel"
                   >
                   <span
-                    class="capitalize font-mono font-medium label-text whitespace-nowrap ml-4"
+                    class="capitalize font-mono font-medium text-sm whitespace-nowrap ml-4"
                   >
                     {{ $t("search.everywhere") }}
                   </span>

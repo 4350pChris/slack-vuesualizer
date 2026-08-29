@@ -24,6 +24,8 @@ defineProps<Props>()
 </template>
 
 <style scoped>
+@reference "~/assets/css/tailwind.css";
+
 :deep(.vue-recycle-scroller__item-wrapper) {
   @apply divide-y divide-slate-300 dark:divide-gray-500;
 }

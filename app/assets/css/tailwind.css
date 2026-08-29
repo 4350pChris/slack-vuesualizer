@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+@plugin "@headlessui/tailwindcss";
+@plugin "daisyui" {
+  themes: fantasy --default, business --prefersdark;
+}
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme='business'], [data-theme='business'] *));
+
+@theme {
+  --font-sans: Mulish, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Red Hat Mono", ui-monospace, monospace;
+  --animate-blink: blink 2s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
 
 @layer components {
   .fancy-link {
