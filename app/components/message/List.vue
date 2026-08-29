@@ -20,7 +20,7 @@ const route = useRoute()
 
 const messageId = computed(() => route.query.message?.toString())
 const scrollTarget = computed(() => messageId.value ?? props.focusTs)
-const restoreHeight = ref<number>()
+const pendingOlderTrim = ref(false)
 const scrollToBottomAfterLoad = ref(false)
 const previousScrollTop = ref(0)
 const restoringScroll = ref(false)
@@ -29,7 +29,7 @@ const loadOlder = () => {
   if (!props.hasOlder || props.loadingOlder)
     return
 
-  restoreHeight.value = scroller.value?.$el.scrollHeight
+  pendingOlderTrim.value = true
   emit('loadOlder')
 }
 
@@ -83,16 +83,9 @@ onMounted(async () => {
 })
 
 watch(() => props.messages, async () => {
-  if (restoreHeight.value !== undefined) {
+  if (pendingOlderTrim.value) {
     await nextTick()
-    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
-    await new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
-    restoringScroll.value = true
-    const element = scroller.value?.$el as HTMLElement | undefined
-    if (element)
-      element.scrollTop += element.scrollHeight - restoreHeight.value
-    requestAnimationFrame(() => (restoringScroll.value = false))
-    restoreHeight.value = undefined
+    pendingOlderTrim.value = false
     emit('olderRestored')
   }
   else if (scrollToBottomAfterLoad.value) {
@@ -113,6 +106,7 @@ watch(() => props.messages, async () => {
     :items="withSeparators.items"
     :min-item-size="64"
     key-field="_id"
+    shift
     @scroll="onScroll"
   >
     <template #default="{ item, index, active }">
