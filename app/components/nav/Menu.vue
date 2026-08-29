@@ -6,7 +6,7 @@ import ChatIcon from '~icons/mdi/chat'
 </script>
 
 <template>
-  <ul class="menu menu-lg rounded-box capitalize">
+  <ul class="menu menu-lg w-full rounded-box capitalize">
     <li>
       <NuxtLinkLocale to="/workspace">
         <HomeIcon />
