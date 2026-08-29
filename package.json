@@ -1,7 +1,6 @@
 {
   "name": "slack-vuesualizer",
-  "version": "v1.3.1",
-  "private": true,
+  "version": "v1.4.0",
   "description": "A visualizer for your Slack exports. Search through messages, show old files, etc.",
   "author": {
     "name": "Chris-Robin Ennen",
@@ -24,7 +23,15 @@
     "nuxt4",
     "vue",
     "vue.js",
-    "typescript"
+    "typescript",
+    "tailwindcss",
+    "headlessui",
+    "daisyui",
+    "vueuse",
+    "vue-router",
+    "vue-virtual-scroller",
+    "vue-datepicker",
+    "zip"
   ],
   "scripts": {
     "build": "nuxt build",
