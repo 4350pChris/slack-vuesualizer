@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     mongodbUri: '',
+    startupExportPath: '',
     public: {
       demoWorkspaceToken: '',
       canonicalHost: '',

@@ -38,6 +38,21 @@ docker compose up
 
 That's it! Docker will download the images and start the app on [http://localhost:3000](http://localhost:3000).
 
+#### Import an export at startup
+
+To load a Slack ZIP export automatically, mount the export file into the app container. The app imports the ZIP only when MongoDB has no workspace database, then writes the workspace link to its server log.
+
+```yaml
+services:
+  app:
+    volumes:
+      - ./slack-export.zip:/imports/slack-export.zip:ro
+    environment:
+      NUXT_STARTUP_EXPORT_PATH: /imports/slack-export.zip
+```
+
+The workspace link is stable across restarts. To import a changed ZIP, remove the MongoDB data volume first.
+
 #### Images
 
 There are Docker images for amd64 and arm64 available at [hub.docker.io/chris5896/slack-vuesualizer](https://hub.docker.com/repository/docker/chris5896/slack-vuesualizer) as well as the GitHub Container Registry [https://ghcr.io/4350pchris/slack-vuesualizer](https://ghcr.io/4350pchris/slack-vuesualizer)
