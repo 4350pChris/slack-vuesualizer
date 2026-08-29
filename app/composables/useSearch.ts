@@ -1,6 +1,6 @@
 import type { Message } from '~/types/Message'
 
-export function useSearch(currentChannel: Ref<string | string[]>) {
+export function useSearch(currentChannel: MaybeRefOrGetter<string | string[] | undefined>) {
   const searching = ref(false)
   const results = ref<Message[]>([])
   const query = ref('')
@@ -11,11 +11,12 @@ export function useSearch(currentChannel: Ref<string | string[]>) {
       query: query.value,
     }
 
-    if (!allChannels.value && currentChannel.value)
-      queryParams.channel = currentChannel.value
+    const channel = toValue(currentChannel)
+    if (!allChannels.value && channel)
+      queryParams.channel = channel
 
     try {
-      results.value = await $fetch('/api/messages/search', {
+      results.value = await $fetch<Message[]>('/api/messages/search' as never, {
         query: queryParams,
         headers: useRequestHeaders(['cookie']),
       })
@@ -36,7 +37,7 @@ export function useSearch(currentChannel: Ref<string | string[]>) {
   })
 
   whenever(
-    () => !currentChannel.value,
+    () => !toValue(currentChannel),
     () => {
       allChannels.value = true
     },

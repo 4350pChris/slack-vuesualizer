@@ -42,7 +42,9 @@ const filterChannelsByQuery = <T extends Dm>(channels: T[], query: string) =>
 const filteredChannels = useArrayMap(tabs, ({ channels }) => filterChannelsByQuery(channels, query.value))
 
 const listItems = computed(() => {
-  return selectedTabs.value.flatMap((i) => filteredChannels.value[i]).sort((a, b) => getDisplayedLabel(a).localeCompare(getDisplayedLabel(b)))
+  return selectedTabs.value
+    .flatMap(i => filteredChannels.value[i] ?? [])
+    .sort((a, b) => getDisplayedLabel(a).localeCompare(getDisplayedLabel(b)))
 })
 </script>
 
@@ -57,7 +59,7 @@ const listItems = computed(() => {
           class="px-4 py-1 text-base-content ring-1 ring-black/10 dark:ring-slate-300/25 hover:bg-base-200/50 dark:hover:bg-slate-200/10 transition rounded-box"
           :class="{ 'bg-primary text-primary-content hover:bg-primary/30 dark:hover:bg-primary/60 hover:text-base-content': selectedTabs.includes(i) }"
           :for="tab.name">
-          {{ tab.name }} ({{ filteredChannels[i].length }})
+          {{ tab.name }} ({{ filteredChannels[i]?.length ?? 0 }})
         </label>
       </template>
     </div>

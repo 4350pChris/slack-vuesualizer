@@ -6,7 +6,7 @@ import TextSearch from '~icons/mdi/text-search'
 
 const route = useRoute()
 
-const channel = computed(() => route.params.channel)
+const channel = computed(() => route.params.channel ?? '')
 
 const { searching: _searching, allChannels, query, results } = useSearch(channel)
 
@@ -25,7 +25,7 @@ const input = ref<HTMLInputElement | null>(null)
 const visible = ref(false)
 
 whenever(
-  () => visible && input,
+  () => visible.value && input.value !== null,
   () => {
     unrefElement(input)?.focus()
   },
@@ -37,9 +37,7 @@ onClickOutside(wrapper, () => (visible.value = false), {
 
 const keys = useMagicKeys()
 
-const ctrlK = keys['Ctrl+K']
-
-whenever(ctrlK, () => {
+whenever(() => keys['Ctrl+K']?.value ?? false, () => {
   visible.value = true
 })
 

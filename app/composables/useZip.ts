@@ -10,8 +10,11 @@ export const useZip = () => {
   const parseData = async (entries: zip.Entry[]): Promise<any[]> => {
     const parsedData: any[] = []
     for (const entry of entries) {
+      if (!('getData' in entry))
+        continue
+
       const writer = new zip.TextWriter('utf-8')
-      const data = await entry.getData?.(writer)
+      const data = await entry.getData(writer)
 
       // data should always be an array of objects
       if (data)

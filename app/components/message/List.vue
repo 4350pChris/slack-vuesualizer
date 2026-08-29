@@ -14,6 +14,10 @@ interface Props {
 const props = defineProps<Props>()
 const emit = defineEmits<{ loadOlder: []; loadNewer: []; olderRestored: [] }>()
 
+type Separator = { date: Date; _id: number }
+
+const isSeparator = (item: Message | Separator): item is Separator => 'date' in item
+
 const { withSeparators } = useMessages(() => props.messages)
 const scroller = ref<any>(null)
 const route = useRoute()
@@ -67,7 +71,7 @@ onMounted(async () => {
   }
 
   const index = withSeparators.value.items.findIndex(
-    message => '_id' in message && (message._id === scrollTarget.value || message.ts === scrollTarget.value),
+    message => !isSeparator(message) && (message._id === scrollTarget.value || message.ts === scrollTarget.value),
   )
   if (index < 0 || !scroller.value)
     return
@@ -115,7 +119,7 @@ watch(() => props.messages, async () => {
         :active="active"
         :data-index="index"
       >
-        <div v-if="item.date" class="divider font-mono text-sm my-2 px-4">
+        <div v-if="isSeparator(item)" class="divider font-mono text-sm my-2 px-4">
           {{ $d(item.date, "short") }}
         </div>
         <MessageItem

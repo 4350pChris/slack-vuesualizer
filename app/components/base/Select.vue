@@ -11,7 +11,7 @@ import { RecycleScroller } from 'vue-virtual-scroller';
 interface Props {
   modelValue: any
   items: any[]
-  keyProp?: string | number | symbol
+  keyProp?: string
 }
 
 interface Emits {

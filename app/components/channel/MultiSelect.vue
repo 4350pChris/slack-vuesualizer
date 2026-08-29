@@ -27,7 +27,7 @@ const { channels } = useChannels()
             ? ""
             : ` ${
               model.length === 1
-                ? model[0].name
+                ? model[0]?.name ?? ""
                 : `${model.length} ${$t("channel", model.length)}`}`)
       }}
     </template>

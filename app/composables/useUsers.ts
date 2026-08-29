@@ -1,4 +1,4 @@
-import type { MaybeRef } from '@vueuse/core'
+import type { MaybeRef } from 'vue'
 import type { User } from '~/types/User'
 
 export const useUserName = (user: MaybeRef<User>) => {

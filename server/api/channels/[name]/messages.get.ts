@@ -1,5 +1,4 @@
 import { mongo } from '~~/server/utils/mongo'
-import { ObjectId } from 'mongodb'
 import type { Message } from '~/types/Message'
 
 type Cursor = { orderTs: string; id: string }
@@ -20,7 +19,11 @@ const encodeCursor = (message: Message) =>
   Buffer.from(JSON.stringify({ orderTs: message.orderTs, id: message._id.toString() })).toString('base64url')
 
 export default defineEventHandler(async (event) => {
-  const channel = decodeURIComponent(event.context.params!.name)
+  const nameParam = event.context.params?.name
+  if (!nameParam)
+    throw createError({ statusCode: 400, statusMessage: 'Channel name is required' })
+
+  const channel = decodeURIComponent(nameParam)
   const { before, after, around, at } = getQuery(event)
   if (before && after)
     throw createError({ statusCode: 400, statusMessage: 'Use one cursor direction' })
@@ -28,26 +31,27 @@ export default defineEventHandler(async (event) => {
   const db = await mongo(event.context.mongouuid)
   const cursor = before ? decodeCursor(before.toString()) : undefined
   const afterCursor = after ? decodeCursor(after.toString()) : undefined
-  const cursorId = cursor && (ObjectId.isValid(cursor.id) ? new ObjectId(cursor.id) : cursor.id)
-  const afterCursorId = afterCursor && (ObjectId.isValid(afterCursor.id) ? new ObjectId(afterCursor.id) : afterCursor.id)
+  const cursorId = cursor?.id
+  const afterCursorId = afterCursor?.id
   const target = around ?? at
   const targetMessage = around
     ? await db.collection<Message>('messages').findOne({ channel, ts: around.toString() })
     : undefined
   const targetRootTs = targetMessage?.threadRootTs ?? target?.toString()
-  const targetOrderTs = targetRootTs && `${targetRootTs.split('.')[0].padStart(12, '0')}${(targetRootTs.split('.')[1] ?? '').padEnd(6, '0').slice(0, 6)}`
+  const [targetSeconds = '', targetFraction = ''] = targetRootTs?.split('.') ?? []
+  const targetOrderTs = targetRootTs && `${targetSeconds.padStart(12, '0')}${targetFraction.padEnd(6, '0').slice(0, 6)}`
   const isAnchor = Boolean(targetOrderTs && !before && !after)
   const filter = {
     channel,
     isThreadReply: false,
-    ...(afterCursor
+    ...(afterCursor && afterCursorId
       ? {
           $or: [
             { orderTs: { $gt: afterCursor.orderTs } },
             { orderTs: afterCursor.orderTs, _id: { $gt: afterCursorId } },
           ],
         }
-      : cursor
+      : cursor && cursorId
       ? {
           $or: [
             { orderTs: { $lt: cursor.orderTs } },
@@ -126,7 +130,7 @@ export default defineEventHandler(async (event) => {
     minTs: metadata?.[1]?.ts,
     maxTs: metadata?.[2]?.ts,
     focusTs: isAnchor ? olderRoots![0]?.ts ?? newerRoots![0]?.ts : undefined,
-    olderCursor: hasOlder ? encodeCursor(roots[0]) : undefined,
-    newerCursor: hasNewer ? encodeCursor(roots.at(-1)!) : undefined,
+    olderCursor: hasOlder && roots[0] ? encodeCursor(roots[0]) : undefined,
+    newerCursor: hasNewer && roots.at(-1) ? encodeCursor(roots.at(-1)!) : undefined,
   }
 })

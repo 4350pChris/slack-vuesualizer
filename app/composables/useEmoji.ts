@@ -1,5 +1,5 @@
 import EmojiConvertor from 'emoji-js'
-import type { MaybeRef } from '@vueuse/core'
+import type { MaybeRef } from 'vue'
 
 export default (name: MaybeRef<string>) => {
   const emoji = new EmojiConvertor()
