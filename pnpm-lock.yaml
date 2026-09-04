@@ -42,8 +42,8 @@ importers:
         specifier: 3.1.1
         version: 3.1.1
       daisyui:
-        specifier: 5.7.23
-        version: 5.7.23
+        specifier: 5.7.25
+        version: 5.7.25
       emoji-js:
         specifier: 3.9.0
         version: 3.9.0
@@ -2761,8 +2761,8 @@ packages:
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
-  daisyui@5.7.23:
-    resolution: {integrity: sha512-Jp5VuhfpLz9zLGEB1VTZFTSAcUn02qMazb55RSciY7V4xQgmzYm3Af160gkQc3OnMVfDUwnQXvwu4O4MwoK1NQ==}
+  daisyui@5.7.25:
+    resolution: {integrity: sha512-lE5kR8FjHxUHiCb3/PAPuaNkv0MSm6B8GWd5x/l7SLDsH58IxYCiPG8wrcRgdZCI5q8jxpeA2Utx6O6X/kpLnw==}
 
   data-uri-to-buffer@4.0.1:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
@@ -8614,7 +8614,7 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  daisyui@5.7.23: {}
+  daisyui@5.7.25: {}
 
   data-uri-to-buffer@4.0.1:
     optional: true
