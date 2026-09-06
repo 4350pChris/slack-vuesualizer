@@ -21,7 +21,7 @@ defineProps<Props>()
       <div class="flex justify-center grow">
         <MessageSearch v-if="!simple" />
       </div>
-      <div class="gap-4" :class="{ 'hidden md:flex': !simple }">
+      <div class="gap-4 hidden md:flex">
         <NavToken />
         <NavLocaleChanger />
         <NavThemeToggle />
