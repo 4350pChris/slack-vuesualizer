@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { ShownFile } from '~/types/File'
-import AudioIcon from '~icons/mdi/headphones'
 
 interface Props {
   channel: string
@@ -26,7 +25,7 @@ const { isAudioFile, previewImage, size, timestamp } = useFile(toRef(props, 'fil
         loading="lazy"
         :alt="file.title"
       >
-      <AudioIcon
+      <Icon name="mdi:headphones"
         v-else-if="isAudioFile(file)"
         class="w-full h-full p-4 text-current"
       />

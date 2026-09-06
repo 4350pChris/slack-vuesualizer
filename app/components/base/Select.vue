@@ -5,7 +5,6 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/vue'
-import ChevronDownIcon from '~icons/mdi/chevron-down'
 import { RecycleScroller } from 'vue-virtual-scroller';
 
 interface Props {
@@ -32,7 +31,7 @@ const model = useVModel(props, 'modelValue', emit)
       <span class="truncate">
         <slot name="activator" />
       </span>
-      <ChevronDownIcon class="w-6 h-6 transition" aria-hidden="true" :class="{ 'rotate-180': open }" />
+      <Icon name="mdi:chevron-down" class="w-6 h-6 transition" aria-hidden="true" :class="{ 'rotate-180': open }" />
     </ListboxButton>
     <Transition name="slide-y">
       <ListboxOptions

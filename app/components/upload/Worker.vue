@@ -1,9 +1,5 @@
 <script lang="ts" setup>
 import type { Entry } from '@zip.js/zip.js'
-import ConfirmIcon from '~icons/line-md/confirm-circle'
-import AlertIcon from '~icons/line-md/alert-circle'
-import CircleIcon from '~icons/line-md/circle'
-import UploadingLoopIcon from '~icons/line-md/uploading-loop'
 
 interface Props {
   entries: Entry[]
@@ -63,10 +59,10 @@ onMounted(handleUpload)
       <ul ref="list" class="list-none space-y-2">
         <li v-for="channel in ['vuesualizer-workspace', ...channels]" :key="channel"
           class="flex gap-2 justify-start items-center">
-          <UploadingLoopIcon v-if="queue.has(channel)" class="w-5 h-5" />
-          <ConfirmIcon v-else-if="done.has(channel)" class="w-5 h-5 text-success" />
-          <AlertIcon v-else-if="errors.has(channel)" class="w-5 h-5 text-error" />
-          <CircleIcon v-else class="w-5 h-5" />
+          <Icon v-if="queue.has(channel)" name="line-md:uploading-loop" class="w-5 h-5" />
+          <Icon v-else-if="done.has(channel)" name="line-md:confirm-circle" class="w-5 h-5 text-success" />
+          <Icon v-else-if="errors.has(channel)" name="line-md:alert-circle" class="w-5 h-5 text-error" />
+          <Icon v-else name="line-md:circle" class="w-5 h-5" />
           <span v-if="channel === 'vuesualizer-workspace'">
             {{ $t("workspace.word") }}
           </span>

@@ -1,8 +1,5 @@
 <script lang="ts" setup>
 import { onKeyDown } from '@vueuse/core'
-import LoadingSpinner from '~icons/line-md/loading-alt-loop'
-import CloseIcon from '~icons/line-md/close'
-import TextSearch from '~icons/mdi/text-search'
 
 const route = useRoute()
 
@@ -65,7 +62,7 @@ onKeyDown(['Escape'], (e) => {
             :title="$t('close')"
             @click="visible = false"
           >
-            <CloseIcon class="w-6 h-6" />
+            <Icon name="line-md:close" class="w-6 h-6" />
           </button>
         </div>
         <button
@@ -73,7 +70,7 @@ onKeyDown(['Escape'], (e) => {
           class="btn btn-outline btn-block gap-4"
           @click="visible = true"
         >
-          <TextSearch class="w-6 h-6" />
+          <Icon name="mdi:text-search" class="w-6 h-6" />
           <span class="font-mono">{{ $t("search.messages") }}</span>
           <div class="hidden md:inline-block">
             <kbd class="kbd text-base-content">Ctrl</kbd>
@@ -125,7 +122,7 @@ onKeyDown(['Escape'], (e) => {
                 v-if="searching"
                 class="p-2 bg-base-100 w-full h-full flex justify-center mt-8"
               >
-                <LoadingSpinner class="w-12 h-12" />
+                <Icon name="line-md:loading-alt-loop" class="w-12 h-12" />
               </div>
               <MessageResults
                 v-else

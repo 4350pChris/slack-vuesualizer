@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import ChevronDownIcon from '~icons/mdi/chevron-down'
 import type { Topic } from '~/types/Channel'
 
 type Props = {
@@ -37,7 +36,7 @@ const creator = computed(() => {
           {{ title }}
         </h1>
       </ChannelTitle>
-      <ChevronDownIcon class="w-6 h-6 transition" :class="{ 'rotate-180': open }" />
+      <Icon name="mdi:chevron-down" class="w-6 h-6 transition" :class="{ 'rotate-180': open }" />
     </DisclosureButton>
     <Transition name="slide-y">
       <DisclosurePanel class="my-2 flex flex-col gap-2">

@@ -6,14 +6,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/vue'
-import LanguageIcon from '~icons/ion/language'
 
-const GermanFlag = defineAsyncComponent(
-  () => import('~icons/twemoji/flag-germany'),
-)
-const UkFlag = defineAsyncComponent(
-  () => import('~icons/twemoji/flag-united-kingdom'),
-)
 </script>
 
 <template>
@@ -23,7 +16,7 @@ const UkFlag = defineAsyncComponent(
         {{ $t("language") }}
       </ListboxLabel>
       <ListboxButton class="btn btn-ghost btn-circle" :title="$t('changeLanguage')">
-        <LanguageIcon aria-hidden="true" class="w-6 h-6" />
+        <Icon name="ion:language" aria-hidden="true" class="w-6 h-6" />
       </ListboxButton>
       <Transition name="slide-y">
         <ListboxOptions
@@ -39,13 +32,15 @@ const UkFlag = defineAsyncComponent(
             <li
               class="gap-2 btn btn-ghost flex-nowrap w-max-content justify-start"
             >
-              <GermanFlag
+              <Icon
                 v-if="locale === 'de'"
+                name="twemoji:flag-germany"
                 class="w-6 h-6"
                 :class="[active || selected ? 'grayscale-0' : 'grayscale']"
               />
-              <UkFlag
+              <Icon
                 v-else-if="locale === 'en'"
+                name="twemoji:flag-united-kingdom"
                 class="w-6 h-6"
                 :class="[active || selected ? 'grayscale-0' : 'grayscale']"
               />

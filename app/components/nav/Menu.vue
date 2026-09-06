@@ -1,33 +1,29 @@
 <script lang="ts" setup>
-import AccountIcon from '~icons/mdi/account'
-import FilesIcon from '~icons/mdi/file-multiple'
-import HomeIcon from '~icons/mdi/home'
-import ChatIcon from '~icons/mdi/chat'
 </script>
 
 <template>
   <ul class="menu menu-lg w-full rounded-box capitalize">
     <li>
       <NuxtLinkLocale to="/workspace">
-        <HomeIcon />
+        <Icon name="mdi:home" />
         {{ $t("workspace.word") }}
       </NuxtLinkLocale>
     </li>
     <li>
       <NuxtLinkLocale to="/channels">
-        <ChatIcon />
+        <Icon name="mdi:chat" />
         {{ $t("channel.word", 2) }}
       </NuxtLinkLocale>
     </li>
     <li>
       <NuxtLinkLocale to="/users">
-        <AccountIcon />
+        <Icon name="mdi:account" />
         {{ $t("user.word", 2) }}
       </NuxtLinkLocale>
     </li>
     <li>
       <NuxtLinkLocale to="/files">
-        <FilesIcon />
+        <Icon name="mdi:file-multiple" />
         {{ $t("file", 2) }}
       </NuxtLinkLocale>
     </li>

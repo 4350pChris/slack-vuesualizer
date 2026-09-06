@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import FileIcon from '~icons/mdi/file'
 import type { File } from '~/types/File'
 
 interface Props {
@@ -12,7 +11,7 @@ defineProps<Props>()
 <template>
   <div class="p-2 flex gap-2">
     <div>
-      <FileIcon class="w-8 h-8" />
+      <Icon name="mdi:file" class="w-8 h-8" />
     </div>
     <div>
       <div class="font-bold mb-2">

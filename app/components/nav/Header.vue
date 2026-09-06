@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import MenuIcon from '~icons/line-md/menu'
-
 interface Props {
   simple?: boolean
 }
@@ -15,7 +13,7 @@ defineProps<Props>()
     <nav class="navbar w-full container mx-auto relative gap-2">
       <div v-if="!simple" class="flex-0 lg:hidden">
         <label for="drawer" class="btn btn-ghost btn-circle" tabindex="0">
-          <MenuIcon class="w-6 h-6" />
+          <Icon name="line-md:menu" class="w-6 h-6" />
         </label>
       </div>
       <div class="flex justify-center grow">

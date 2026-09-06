@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import FilterIcon from '~icons/mdi/filter-variant'
 import { Sortable } from '~/types/Sort'
 import type { Channel } from '~/types/Channel'
 import type { SearchResult } from '~/types/File'
@@ -40,7 +39,7 @@ const { data: searchResult } = useFetch<{ count: number, messages: SearchResult[
       class="z-10 md:hidden btn btn-primary btn-circle modal-button fixed bottom-2 right-4"
     >
       <span class="sr-only">{{ $t("filter.header") }}</span>
-      <FilterIcon class="w-6 h-6" aria-hidden="true" />
+      <Icon name="mdi:filter-variant" class="w-6 h-6" aria-hidden="true" />
     </label>
     <Teleport to="body">
       <input id="filter-modal" type="checkbox" class="modal-toggle">

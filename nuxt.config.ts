@@ -17,12 +17,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: [[
-    'unplugin-icons/nuxt',
-    {
-      autoInstall: true,
-    },
-  ], '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/i18n', '@nuxtjs/robots'],
+  modules: ['@nuxt/icon', '@vueuse/nuxt', '@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxtjs/i18n', '@nuxtjs/robots'],
+
+  icon: {
+    clientBundle: {
+      scan: true,
+    }
+  },
 
   colorMode: {
     preference: 'system',
