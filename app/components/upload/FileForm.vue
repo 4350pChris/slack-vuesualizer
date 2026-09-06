@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import CloudUpload from '~icons/mdi/cloud-upload-outline'
 
 interface Emits {
   (
@@ -34,7 +33,7 @@ useDropZone(dropZoneRef, handleUpload)
   <div class="text-center">
     <div ref="dropZoneRef" class="flex flex-col">
       <label for="file" class="cursor-pointer">
-        <CloudUpload class="-mt-4 h-40 w-40 mx-auto" />
+        <Icon name="mdi:cloud-upload-outline" class="-mt-4 h-40 w-40 mx-auto" />
         <span class="text-lg font-bold font-mono">
           {{ $t("upload.button") }}
         </span>

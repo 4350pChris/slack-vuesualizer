@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import SearchIcon from '~icons/line-md/search'
 import type { Message } from '~/types/Message'
 
 interface Props {
@@ -52,7 +51,7 @@ const timestamp = computed(() => toTs(props.message.ts))
         {{ message.text }}
       </p>
     </div>
-    <SearchIcon v-if="searched" class="w-8 h-8 self-center mr-2" />
+    <Icon v-if="searched" name="line-md:search" class="w-8 h-8 self-center mr-2" />
     <div v-if="message.reactions" class="flex gap-2 col-start-2 flex-wrap">
       <MessageReaction v-for="(reaction, i) in message.reactions" :key="i" :reaction="reaction" />
     </div>

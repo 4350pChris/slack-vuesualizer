@@ -21,7 +21,7 @@
     },
     {
       "groupName": "icons",
-      "matchPackageNames": ["unplugin-icons", "@iconify-json/{/,}**"]
+      "matchPackageNames": ["@nuxt/icon", "@iconify-json/{/,}**"]
     },
     {
       "groupName": "definitelyTyped",

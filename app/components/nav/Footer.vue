@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import GithubIcon from '~icons/line-md/github-loop'
-import SlackIcon from '~icons/logos/slack-icon'
-
 const token = useToken()
 const localeRoute = useLocaleRoute()
 
@@ -20,7 +17,7 @@ const leave = async () => {
       <WorkspaceDelete />
     </div>
     <p class="flex items-center gap-2">
-      <SlackIcon class="w-8 h-8" />
+      <Icon name="logos:slack-icon" class="w-8 h-8" />
       <span class="font-medium text-2xl">Vuesualizer</span>
     </p>
     <div>
@@ -31,7 +28,7 @@ const leave = async () => {
         rel="noopener noreferrer"
         title="GitHub"
       >
-        <GithubIcon class="w-6 h-6" />
+        <Icon name="line-md:github-loop" class="w-6 h-6" />
         <span>{{ $t("github") }}</span>
       </a>
     </div>

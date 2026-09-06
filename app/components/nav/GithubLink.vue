@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import GithubIcon from '~icons/line-md/github-loop'
-
 interface Props {
   simple?: boolean
 }
@@ -19,7 +17,7 @@ withDefaults(defineProps<Props>(), {
     rel="noopener"
     title="GitHub"
   >
-    <GithubIcon class="w-6 h-6" />
+    <Icon name="line-md:github-loop" class="w-6 h-6" />
     <span :class="{ 'sr-only': simple }">{{ $t("github") }}</span>
   </a>
 </template>

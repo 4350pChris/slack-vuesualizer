@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import PlaceholderIcon from '~icons/mdi/account-question-outline'
 import type { User } from '~/types/User';
 
 interface Props {
@@ -30,7 +29,7 @@ const srcset = computed(() => {
   <div class="avatar" :data-flip-id="`${user?.id}-avatar`">
     <div v-bind="$attrs">
       <img v-if="user" :srcset decoding="async" class="w-full h-full">
-      <PlaceholderIcon v-else class="w-full h-full bg-base-100" />
+      <Icon v-else name="mdi:account-question-outline" class="w-full h-full bg-base-100" />
     </div>
   </div>
 </template>

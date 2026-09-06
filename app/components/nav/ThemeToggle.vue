@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import MoonIcon from '~icons/line-md/moon'
-import SunIcon from '~icons/line-md/sun-rising-twotone-loop'
-
 const colorMode = useColorMode()
 
 const dark = ref<boolean>(false)
@@ -36,7 +33,7 @@ useHead({
     @click="dark = !dark"
   >
     <span class="sr-only">{{ $t("switchTheme") }}</span>
-    <MoonIcon v-if="dark" class="h-8 w-8 text-sky-100" />
-    <SunIcon v-else class="h-8 w-8 text-amber-400" />
+    <Icon v-if="dark" name="line-md:moon" class="h-8 w-8 text-sky-100" />
+    <Icon v-else name="line-md:sun-rising-twotone-loop" class="h-8 w-8 text-amber-400" />
   </button>
 </template>
