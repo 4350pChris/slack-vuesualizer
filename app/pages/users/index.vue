@@ -40,7 +40,7 @@ registerAutoFlip((to) => to.path.includes('/users'))
   <section class="flex flex-col gap-4 pt-4 h-full">
     <input v-model="query" type="text" :placeholder="$t('search.users')"
       class="flex-none w-full max-w-lg input input-bordered">
-    <RecycleScroller :prerender="10" class="h-full pr-4 menu bg-base-100 rounded-box" :items="results" :item-size
+    <RecycleScroller :prerender="10" class="h-full w-full pr-4 menu bg-base-100 rounded-box" :items="results" :item-size
       key-field="id" v-slot="{ item }" listTag="ul" itemTag="li">
       <NuxtLinkLocale class="flex justify-start gap-4 p-4 transition" :to="`/users/${item.id}`">
         <UserAvatar :key="item.id" class="h-16 md:h-24 w-16 md:w-24 rounded-box" :user="item" />
