@@ -73,7 +73,7 @@
     "@types/adm-zip": "0.5.8",
     "@types/emoji-js": "3.5.2",
     "@types/request": "2.48.13",
-    "autoprefixer": "10.5.4",
+    "autoprefixer": "10.5.5",
     "eslint": "10.9.1",
     "nuxt": "^4.5.2",
     "nuxt-headlessui": "^1.1.4",
