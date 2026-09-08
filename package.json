@@ -74,7 +74,7 @@
     "@types/emoji-js": "3.5.2",
     "@types/request": "2.48.13",
     "autoprefixer": "10.5.5",
-    "eslint": "10.9.1",
+    "eslint": "10.10.0",
     "nuxt": "^4.5.2",
     "nuxt-headlessui": "^1.1.4",
     "tailwindcss": "^4.3.3",
