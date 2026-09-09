@@ -39,8 +39,8 @@ importers:
         specifier: 14.4.0
         version: 14.4.0(1b7913032cb19e776557633d4db576fb)
       '@zip.js/zip.js':
-        specifier: 2.11.1
-        version: 2.11.1
+        specifier: 2.11.2
+        version: 2.11.2
       async-sema:
         specifier: 3.1.1
         version: 3.1.1
@@ -2361,8 +2361,8 @@ packages:
     resolution: {integrity: sha512-ueFCcIPaMgtuYDS9u0qlUoEvj6GiSsKrwnOLPp9SshqjtcRaR1IEHRjoReq3sXNydsF5i0ZnmuYgXq9dV53t0g==}
     engines: {node: '>=18.0.0'}
 
-  '@zip.js/zip.js@2.11.1':
-    resolution: {integrity: sha512-x86tIhuszaDZ9ek8Tp9AkcSvyWffiTH8SiDNhsmtW+DoSKkTDnLkX3lHGG39whb6gMWo6q+cU6DYTF/2htjwuQ==}
+  '@zip.js/zip.js@2.11.2':
+    resolution: {integrity: sha512-gvlhhtTzqoGcl3bpFpMieJgFiVGnEgD777JgERXhbU89cCnYc2Srl5gs+kcCoy31hfx+xD4UCDO1MB2+UtqcZA==}
     engines: {bun: '>=0.7.0', deno: '>=1.0.0', node: '>=18.0.0'}
 
   abbrev@3.0.1:
@@ -8299,7 +8299,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@zip.js/zip.js@2.11.1': {}
+  '@zip.js/zip.js@2.11.2': {}
 
   abbrev@3.0.1: {}
 
