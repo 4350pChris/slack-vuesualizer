@@ -54,7 +54,7 @@
     "async-sema": "3.1.1",
     "daisyui": "5.7.38",
     "emoji-js": "3.9.0",
-    "filesize": "11.0.23",
+    "filesize": "11.0.24",
     "gsap": "^3.12.5",
     "mongodb": "7.6.0",
     "vue": "3.5.42",
