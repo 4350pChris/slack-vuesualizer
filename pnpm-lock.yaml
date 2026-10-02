@@ -22,7 +22,7 @@ importers:
         version: 4.0.1(magic-string@1.1.0)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.5)(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.2.5)(rollup@4.62.4)(vite@8.2.2(@types/node@24.2.0)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0)))
       '@nuxtjs/robots':
         specifier: ^6.0.0
-        version: 6.2.3(95427491105f800a5a36d4f24d8db23e)
+        version: 6.2.4(95427491105f800a5a36d4f24d8db23e)
       '@nuxtjs/tailwindcss':
         specifier: 7.0.0-beta.1
         version: 7.0.0-beta.1(magic-string@1.1.0)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.5)(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.2.5)(rollup@4.62.4)(vite@8.2.2(@types/node@24.2.0)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0)))(vite@8.2.2(@types/node@24.2.0)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0))
@@ -1128,8 +1128,8 @@ packages:
     resolution: {integrity: sha512-20YXYOcc8cSh/pSpNgj+MHAn11qUbsFR1IBJh6qYtRPVhUUmgqJ1DyMu39MB+uEYYL/fsberL2ByMYrFaROslw==}
     engines: {node: '>=20.11.1'}
 
-  '@nuxtjs/robots@6.2.3':
-    resolution: {integrity: sha512-ivIlqDBoUPSnFcOjCDWHFqBkIgZraGbVlWE7P/x6UiHwdFMQPDgQ0K+dVq4e9dEnMUqb04lzpbQClXeI7gyszg==}
+  '@nuxtjs/robots@6.2.4':
+    resolution: {integrity: sha512-+MyHUT6fAqJHnGPxzSrPgXCp+giH04A9aS4RwSvjgHDzYQ+xOqpaSy8jb7U7sPlXmPZE2Et3ened9ccfmwGPKA==}
     peerDependencies:
       zod: '>=3'
     peerDependenciesMeta:
@@ -7191,7 +7191,7 @@ snapshots:
       - vue
       - webpack
 
-  '@nuxtjs/robots@6.2.3(95427491105f800a5a36d4f24d8db23e)':
+  '@nuxtjs/robots@6.2.4(95427491105f800a5a36d4f24d8db23e)':
     dependencies:
       '@fingerprintjs/botd': 2.0.0
       '@nuxt/kit': 4.5.2(magic-string@1.1.0)(magicast@0.5.4)(oxc-parser@0.141.0)(rolldown@1.2.5)(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.2.5)(rollup@4.62.4)(vite@8.2.2(@types/node@24.2.0)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0)))
