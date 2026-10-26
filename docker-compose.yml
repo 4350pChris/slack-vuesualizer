@@ -11,7 +11,7 @@ services:
       NUXT_MONGODB_URI: 'mongodb://root:example@mongo:27017'
 
   mongo:
-    image: mongo:8
+    image: mongo:9
     restart: unless-stopped
     volumes:
       - mongo-data:/data/db
