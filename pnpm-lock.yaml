@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@headlessui/tailwindcss':
         specifier: 0.2.2
-        version: 0.2.2(tailwindcss@4.3.4)
+        version: 0.2.2(tailwindcss@4.3.5)
       '@headlessui/vue':
         specifier: ^1.7.19
         version: 1.7.23(vue@3.5.45(typescript@5.9.3))
@@ -28,7 +28,7 @@ importers:
         version: 7.0.0-beta.1(magic-string@1.4.5)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.15)(unplugin@3.7.0(esbuild@0.28.2)(rolldown@1.2.15)(rollup@4.67.5)(vite@8.3.5(@types/node@24.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0)))(vite@8.3.5(@types/node@24.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0))
       '@tailwindcss/typography':
         specifier: 0.5.20
-        version: 0.5.20(tailwindcss@4.3.4)
+        version: 0.5.20(tailwindcss@4.3.5)
       '@vuepic/vue-datepicker':
         specifier: ^14.0.0
         version: 14.0.0(vue@3.5.45(typescript@5.9.3))
@@ -116,7 +116,7 @@ importers:
         version: 1.2.2(magicast@0.5.5)(vue@3.5.45(typescript@5.9.3))
       tailwindcss:
         specifier: ^4.3.3
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -5266,8 +5266,8 @@ packages:
   tailwindcss@4.3.3:
     resolution: {integrity: sha512-gOhV3P7ufE62QDGg1zVaTgCR+EtPv92k2nIhVcVKcLmxT1sUBsQGhnZj175j+MqRt4zLF7ic+sCYjfhxMxj7YQ==}
 
-  tailwindcss@4.3.4:
-    resolution: {integrity: sha512-PCJZTFFdG+sL3gvnP1Do9o6GbkvH2q0p04xSs3f7cSvmAeK+sttG+/7ncK1fdRwKFfC7n+wDDJaOMBSefkI9ow==}
+  tailwindcss@4.3.5:
+    resolution: {integrity: sha512-FcQk9BuffmEHJP2G0XmB2SplU1aLTI7j07Kunk+U74Ny+XiWOtzXz9aujFZ/avntw1e2cOv/3PkgzflQ7gX2vQ==}
 
   tapable@2.3.3:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
@@ -6804,9 +6804,9 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
-  '@headlessui/tailwindcss@0.2.2(tailwindcss@4.3.4)':
+  '@headlessui/tailwindcss@0.2.2(tailwindcss@4.3.5)':
     dependencies:
-      tailwindcss: 4.3.4
+      tailwindcss: 4.3.5
 
   '@headlessui/vue@1.7.23(vue@3.5.45(typescript@5.9.3))':
     dependencies:
@@ -7807,7 +7807,7 @@ snapshots:
       '@tailwindcss/vite': 4.3.3(vite@8.3.5(@types/node@24.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0))
       exsolve: 1.1.1
       pathe: 2.0.3
-      tailwindcss: 4.3.4
+      tailwindcss: 4.3.5
     transitivePeerDependencies:
       - magic-string
       - magicast
@@ -8362,10 +8362,10 @@ snapshots:
       postcss: 8.5.26
       tailwindcss: 4.3.3
 
-  '@tailwindcss/typography@0.5.20(tailwindcss@4.3.4)':
+  '@tailwindcss/typography@0.5.20(tailwindcss@4.3.5)':
     dependencies:
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.3.4
+      tailwindcss: 4.3.5
 
   '@tailwindcss/vite@4.3.3(vite@8.3.5(@types/node@24.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0))':
     dependencies:
@@ -12135,7 +12135,7 @@ snapshots:
 
   tailwindcss@4.3.3: {}
 
-  tailwindcss@4.3.4: {}
+  tailwindcss@4.3.5: {}
 
   tapable@2.3.3: {}
 
