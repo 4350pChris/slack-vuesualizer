@@ -44,7 +44,7 @@
     "@headlessui/vue": "^1.7.19",
     "@nuxt/icon": "^2.5.1",
     "@nuxtjs/color-mode": "4.1.0",
-    "@nuxtjs/robots": "^6.0.0",
+    "@nuxtjs/robots": "^7.0.0",
     "@nuxtjs/tailwindcss": "7.0.0-beta.1",
     "@tailwindcss/typography": "0.5.20",
     "@vuepic/vue-datepicker": "^14.0.0",
