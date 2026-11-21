@@ -51,8 +51,8 @@ importers:
         specifier: 3.9.0
         version: 3.9.0
       filesize:
-        specifier: 11.0.34
-        version: 11.0.34
+        specifier: 11.0.35
+        version: 11.0.35
       gsap:
         specifier: ^3.12.5
         version: 3.15.1
@@ -3629,8 +3629,8 @@ packages:
   file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
 
-  filesize@11.0.34:
-    resolution: {integrity: sha512-IlP6n9IeHCAmwM/iOMQz1NgJ3g3uLvp8JMl0oWEfPmULJhuh73XYQNWEqFitklYbBrlxaIHRMuMPcIUnkgTtuw==}
+  filesize@11.0.35:
+    resolution: {integrity: sha512-nYIrQN/m4a0VYYoUeENvFf8mCDaB9PNbKETinw4DRdBcX5yB2nY3YtFz9iMfg/YDQWyYPOn/THVtsqLN/IH0Ag==}
     engines: {node: '>= 10.8.0'}
 
   fill-range@7.1.1:
@@ -10001,7 +10001,7 @@ snapshots:
 
   file-uri-to-path@1.0.0: {}
 
-  filesize@11.0.34: {}
+  filesize@11.0.35: {}
 
   fill-range@7.1.1:
     dependencies:
