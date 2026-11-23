@@ -103,8 +103,8 @@ importers:
         specifier: 2.48.13
         version: 2.48.13
       autoprefixer:
-        specifier: 10.6.2
-        version: 10.6.2(postcss@8.5.32)
+        specifier: 10.7.0
+        version: 10.7.0(postcss@8.5.32)
       eslint:
         specifier: 10.15.0
         version: 10.15.0(jiti@2.7.0)(supports-color@10.2.2)
@@ -2740,8 +2740,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  autoprefixer@10.6.2:
-    resolution: {integrity: sha512-VOw9/yGTGwPPgzFcODtcv6zhEPIeIWkRSe10L2ri2f5vZ7ID7lCt6jZzRF5/ubgOZ+szYydmEF5AYsA5jxX1tA==}
+  autoprefixer@10.7.0:
+    resolution: {integrity: sha512-M4rWhYFPp8YSAfqLDT/wRN9trfe/Z/aZLPxrLQJUQRTPrChss2T+hmgaV5770J52bLuGOMzt6Hjl8tEb6YWv5Q==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -2809,6 +2809,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  baseline-browser-mapping@2.11.39:
+    resolution: {integrity: sha512-Q9buOYhr2ggrEZpImICecZTJHCCd8yXkRUokFlUEQ8uiD6oP82F4W4jWnhOHZYV+wlvrC51V7Wy0ULyWjil5Wg==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
@@ -2846,6 +2851,11 @@ packages:
 
   browserslist@4.29.3:
     resolution: {integrity: sha512-1R4kiYKXGViqEN0CnoDrXc1StD9niAwu+j2dukWzrD4bJgsD4lDmEp0CRbc6E/vYJIfTHwPmwyaKtVSudICdPA==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
+  browserslist@4.29.6:
+    resolution: {integrity: sha512-CmVVIQ3RVc5HxYEc9X84GvxK/C8C1wH8TlKAiO7uTxF8PDwt7r8t9Qk3J9NkMOVzX5O/HbLv3yzxZg9HPrnI9w==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -2912,6 +2922,9 @@ packages:
 
   caniuse-lite@1.0.30001815:
     resolution: {integrity: sha512-uDybUEyfgbyJJ93J1vikTylBX31AkdVYeVPeffMQpf8XN7hSfr0oZOn4VFOIMNvtU5+rHvC5Udg2TgtJKHm23Q==}
+
+  caniuse-lite@1.0.30001826:
+    resolution: {integrity: sha512-wTB+9tIbLro/BCXwLuNV1meHE4L9dS6dArMDwgYfNBPMYScqClHyGunhkCSDtHhe/69Xl0sHlKgBVZ+fNsYtWA==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -3219,6 +3232,9 @@ packages:
 
   electron-to-chromium@1.5.451:
     resolution: {integrity: sha512-vUNKPrUzw8ByEMOxloq0a71iD/mPuPxVkbDm3G5YhnxTzOw/I6qAg2MUS0cYj/c267lWmw26yW4Vv7foxTxPLg==}
+
+  electron-to-chromium@1.5.492:
+    resolution: {integrity: sha512-4uMs7omhajKiud0GqALLTazS/zyvHLTLmDWVTR+e6BnyJo5bSNrph/JoRWEFJJmY75ct9hCiSGsbFF9fLe5gDw==}
 
   emoji-datasource@16.0.0:
     resolution: {integrity: sha512-/qHKqK5Nr3+8zhgO6kHmF43Fm5C8HNn0AaFRIpgw8HF3+uF0Vfc8jgLI1ZQS5ba1vBzksS8NBCjHejwLb2D/Sg==}
@@ -4618,6 +4634,10 @@ packages:
     resolution: {integrity: sha512-kQK9LGGFiHtrWiNhZtA7Qbw17AQz+dmsEKODRIVTXA9+e5MS/2gZEBhYJt13GrAz5/IOZKddH/0Z3TP/Zgo+yw==}
     engines: {node: '>=18'}
 
+  node-releases@2.0.65:
+    resolution: {integrity: sha512-PfvofsGQ+MiOQIPkX9fU8ELUWmy5zL74CdQaph/ismKszfFkfwXaw0cGiwbwym2hT9k5+mdyl8O5WQ1MD8EHmA==}
+    engines: {node: '>=18'}
+
   nopt@8.1.0:
     resolution: {integrity: sha512-ieGu42u/Qsa4TFktmaKEwM6MQH0pOWnaB3htzh0JRtx84+Mebc0cbZYN5bC+6WTZ4+77xrL9Pn5m7CV6VIkV7A==}
     engines: {node: ^18.17.0 || >=20.5.0}
@@ -5819,6 +5839,12 @@ packages:
 
   update-browserslist-db@1.3.4:
     resolution: {integrity: sha512-t8wonIOdQyOjtPd2VktlBu6QjTVTks6v8bSi7kd0r2Vll8TK1JYDZtRRdbmCHOAMphkZgrzK+L+vXK4pyZ8t4A==}
+    hasBin: true
+    peerDependencies:
+      browserslist: '>= 4.21.0'
+
+  update-browserslist-db@1.4.0:
+    resolution: {integrity: sha512-WPJuOnjI9FWDct4fB+ej4Mz8opLaw5CDcZ2t44tFZ0vIQVYWzBhWR3mkixuUj/A7+vY4V9+ApOZ2YYLwdgq46w==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
@@ -7609,7 +7635,7 @@ snapshots:
       '@nuxt/kit': 4.6.4(@nuxt/schema@4.6.4)(confbox@0.3.1)(dotenv@17.4.2)(giget@3.3.1)(jiti@2.7.0)(magic-string@1.4.5)(mlly@1.8.2)(oxc-parser@0.141.0)(rolldown@1.2.15)(unplugin@3.7.0(esbuild@0.28.2)(rolldown@1.2.15)(rollup@4.67.5)(vite@8.3.5(@types/node@24.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0)))
       '@vitejs/plugin-vue': 6.0.10(vite@8.3.5(@types/node@24.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0))(vue@3.5.45(typescript@5.9.3))
       '@vitejs/plugin-vue-jsx': 5.1.6(supports-color@10.2.2)(vite@8.3.5(@types/node@24.2.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.49.2)(yaml@2.9.0))(vue@3.5.45(typescript@5.9.3))
-      autoprefixer: 10.6.2(postcss@8.5.32)
+      autoprefixer: 10.7.0(postcss@8.5.32)
       clickable-path: 0.1.1
       consola: 3.4.2
       cssnano: 9.9.0(postcss@8.5.32)
@@ -9093,10 +9119,10 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  autoprefixer@10.6.2(postcss@8.5.32):
+  autoprefixer@10.7.0(postcss@8.5.32):
     dependencies:
-      browserslist: 4.29.3
-      caniuse-lite: 1.0.30001815
+      browserslist: 4.29.6
+      caniuse-lite: 1.0.30001826
       fraction.js: 5.3.4
       picocolors: 1.1.1
       postcss: 8.5.32
@@ -9140,6 +9166,8 @@ snapshots:
   baseline-browser-mapping@2.11.21: {}
 
   baseline-browser-mapping@2.11.27: {}
+
+  baseline-browser-mapping@2.11.39: {}
 
   bindings@1.5.0:
     dependencies:
@@ -9186,6 +9214,14 @@ snapshots:
       electron-to-chromium: 1.5.451
       node-releases: 2.0.57
       update-browserslist-db: 1.3.4(browserslist@4.29.3)
+
+  browserslist@4.29.6:
+    dependencies:
+      baseline-browser-mapping: 2.11.39
+      caniuse-lite: 1.0.30001826
+      electron-to-chromium: 1.5.492
+      node-releases: 2.0.65
+      update-browserslist-db: 1.4.0(browserslist@4.29.6)
 
   bson@7.3.2: {}
 
@@ -9260,6 +9296,8 @@ snapshots:
   caniuse-lite@1.0.30001810: {}
 
   caniuse-lite@1.0.30001815: {}
+
+  caniuse-lite@1.0.30001826: {}
 
   ccount@2.0.1: {}
 
@@ -9479,6 +9517,8 @@ snapshots:
   electron-to-chromium@1.5.422: {}
 
   electron-to-chromium@1.5.451: {}
+
+  electron-to-chromium@1.5.492: {}
 
   emoji-datasource@16.0.0: {}
 
@@ -11209,6 +11249,8 @@ snapshots:
 
   node-releases@2.0.57: {}
 
+  node-releases@2.0.65: {}
+
   nopt@8.1.0:
     dependencies:
       abbrev: 3.0.1
@@ -12592,6 +12634,12 @@ snapshots:
   update-browserslist-db@1.3.4(browserslist@4.29.3):
     dependencies:
       browserslist: 4.29.3
+      escalade: 3.2.0
+      picocolors: 1.1.1
+
+  update-browserslist-db@1.4.0(browserslist@4.29.6):
+    dependencies:
+      browserslist: 4.29.6
       escalade: 3.2.0
       picocolors: 1.1.1
 
