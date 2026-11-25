@@ -73,8 +73,8 @@ importers:
         specifier: 10.0.0
         version: 10.0.0(@typescript-eslint/typescript-estree@8.72.0(supports-color@10.2.2)(typescript@5.9.3))(@typescript-eslint/utils@8.72.0(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@5.9.3))(@vue/compiler-sfc@3.5.46)(eslint@10.15.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(ts-declaration-location@1.0.7(typescript@5.9.3))(typescript@5.9.3)
       '@iconify-json/ion':
-        specifier: 1.2.7
-        version: 1.2.7
+        specifier: 1.2.8
+        version: 1.2.8
       '@iconify-json/line-md':
         specifier: 1.2.16
         version: 1.2.16
@@ -864,8 +864,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/ion@1.2.7':
-    resolution: {integrity: sha512-ZJNG5kLCbTPr68mdP0jx6Q3lB9AMEQKO2+VvIjuJ2llGFICBLD+cvESn/qGDRIqSfk2D3PrFMf/Qg8WKIUV7cg==}
+  '@iconify-json/ion@1.2.8':
+    resolution: {integrity: sha512-ycrWwp9Z85pXD8foFybi8t7kK6u1PUtl5SWs9sywcNWRVoyL9w5iUwq1QCJzp0oL/VaJOVMEjt00xjKptgwdEQ==}
 
   '@iconify-json/line-md@1.2.16':
     resolution: {integrity: sha512-esHPUQUp30NyqJWa7MNu6ExdG8z/aEFC5r56rVyRGhtJ7acOme6YtYPnDOgVu6p+kk24rM8602xkFuBC6g6x+w==}
@@ -6897,7 +6897,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify-json/ion@1.2.7':
+  '@iconify-json/ion@1.2.8':
     dependencies:
       '@iconify/types': 2.0.0
 
